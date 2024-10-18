@@ -48,6 +48,9 @@ Public Class Form2
         Guna2Button2.FillColor = Color.FromArgb(30, 71, 125)
         Guna2Button2.ForeColor = Color.White
     End Sub
+    Private Sub Guna2TextBox1_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Guna2TextBox1.KeyPress
+        SearchonPress()
+    End Sub
 
     Private Sub Guna2CirclePictureBox1_Click(sender As Object, e As EventArgs) Handles Guna2CirclePictureBox1.Click
 
@@ -56,4 +59,64 @@ Public Class Form2
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
     End Sub
+
+    'funtions
+    Public Sub SearchonPress()
+        'Dim txtid As String = TextBox1.Text.Trim
+
+        'Try
+        '    openCon()
+        '    Dim query As String = "SELECT * FROM addemp WHERE emp_id LIKE @searchText "
+
+        '    Using command As New MySqlCommand(query, con)
+        '        command.Parameters.AddWithValue("@searchText", "%" & txtid & "%")
+
+        '        ' Execute the query and read the result
+        '        Using reader As MySqlDataReader = command.ExecuteReader()
+        '            If reader.Read() Then
+
+
+        '                ' Display the data in TextBoxes
+        '                TextBox7.Text = reader("fname").ToString()
+        '                TextBox8.Text = reader("lname").ToString()
+        '                Dim DoB As Date = Convert.ToDateTime(reader("date_emp"))
+        '                ' Set the DateTimePicker value based on the retrieved date
+        '                DateTimePicker2.Value = DoB
+        '                Dim gender As String = reader("gender").ToString()
+
+        '                ' Set the RadioButton based on the retrieved gender
+        '                If gender = "Male" Then
+        '                    RadioButton1.Checked = True
+        '                ElseIf gender = "Female" Then
+        '                    RadioButton2.Checked = True
+        '                End If
+        '                TextBox10.Text = reader("email").ToString()
+        '                TextBox9.Text = reader("Cnum").ToString()
+        '                TextBox6.Text = reader("address").ToString()
+        '                ComboBox2.Text = reader("stat").ToString()
+        '                ' Retrieve the value
+        '                Dim dateHired As Date = Convert.ToDateTime(reader("date_hired"))
+        '                ' Set the DateTimePicker value based on the retrieved date
+        '                DateTimePicker1.Value = dateHired
+        '                ' Retrieve the picture filename
+        '                Dim picFileName As String = reader("pic_file").ToString()
+        '                Label10.Text = picFileName
+        '                PictureBox1.Image = Image.FromFile(picFileName)
+
+        '                ComboBox1.Text = reader("j_title").ToString()
+
+
+        '            End If
+        '        End Using
+        '    End Using
+
+        'Catch ex As Exception
+        '    ' Handle exceptions, such as database connection issues or query errors
+        '    'MessageBox.Show("Error Searching data: " & ex.Message)
+        'Finally
+        '    con.Close() ' Ensure to close the connection in the finally block if it is open
+        'End Try
+    End Sub
+
+
 End Class

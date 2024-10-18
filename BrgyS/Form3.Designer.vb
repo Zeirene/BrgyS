@@ -102,12 +102,12 @@ Partial Class Form3
         Guna2TextBox12 = New Guna.UI2.WinForms.Guna2TextBox()
         Guna2TextBox13 = New Guna.UI2.WinForms.Guna2TextBox()
         Guna2GroupBox3 = New Guna.UI2.WinForms.Guna2GroupBox()
+        Guna2ComboBox2 = New Guna.UI2.WinForms.Guna2ComboBox()
+        Guna2ComboBox1 = New Guna.UI2.WinForms.Guna2ComboBox()
         Guna2HtmlLabel16 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Guna2HtmlLabel17 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Guna2HtmlLabel18 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Guna2TextBox15 = New Guna.UI2.WinForms.Guna2TextBox()
         Guna2TextBox16 = New Guna.UI2.WinForms.Guna2TextBox()
-        Guna2TextBox17 = New Guna.UI2.WinForms.Guna2TextBox()
         Guna2GroupBox1.SuspendLayout()
         Guna2GroupBox2.SuspendLayout()
         Guna2GroupBox3.SuspendLayout()
@@ -157,7 +157,7 @@ Partial Class Form3
         Guna2GroupBox1.ShadowDecoration.CustomizableEdges = CustomizableEdges12
         Guna2GroupBox1.Size = New Size(389, 247)
         Guna2GroupBox1.TabIndex = 17
-        Guna2GroupBox1.Text = "Groupbox 1"
+        Guna2GroupBox1.Text = "BASIC INFORMATION"
         ' 
         ' Guna2HtmlLabel10
         ' 
@@ -166,9 +166,9 @@ Partial Class Form3
         Guna2HtmlLabel10.ForeColor = Color.Black
         Guna2HtmlLabel10.Location = New Point(33, 199)
         Guna2HtmlLabel10.Name = "Guna2HtmlLabel10"
-        Guna2HtmlLabel10.Size = New Size(95, 21)
+        Guna2HtmlLabel10.Size = New Size(67, 21)
         Guna2HtmlLabel10.TabIndex = 21
-        Guna2HtmlLabel10.Text = "Information :"
+        Guna2HtmlLabel10.Text = "Address:"
         ' 
         ' Guna2TextBox9
         ' 
@@ -200,9 +200,9 @@ Partial Class Form3
         Guna2HtmlLabel3.ForeColor = Color.Black
         Guna2HtmlLabel3.Location = New Point(33, 154)
         Guna2HtmlLabel3.Name = "Guna2HtmlLabel3"
-        Guna2HtmlLabel3.Size = New Size(95, 21)
+        Guna2HtmlLabel3.Size = New Size(102, 21)
         Guna2HtmlLabel3.TabIndex = 19
-        Guna2HtmlLabel3.Text = "Information :"
+        Guna2HtmlLabel3.Text = "Middle Name:"
         ' 
         ' Guna2HtmlLabel1
         ' 
@@ -211,9 +211,9 @@ Partial Class Form3
         Guna2HtmlLabel1.ForeColor = Color.Black
         Guna2HtmlLabel1.Location = New Point(33, 108)
         Guna2HtmlLabel1.Name = "Guna2HtmlLabel1"
-        Guna2HtmlLabel1.Size = New Size(95, 21)
+        Guna2HtmlLabel1.Size = New Size(87, 21)
         Guna2HtmlLabel1.TabIndex = 18
-        Guna2HtmlLabel1.Text = "Information :"
+        Guna2HtmlLabel1.Text = "First Name:"
         ' 
         ' Guna2HtmlLabel2
         ' 
@@ -222,9 +222,9 @@ Partial Class Form3
         Guna2HtmlLabel2.ForeColor = Color.Black
         Guna2HtmlLabel2.Location = New Point(33, 62)
         Guna2HtmlLabel2.Name = "Guna2HtmlLabel2"
-        Guna2HtmlLabel2.Size = New Size(95, 21)
+        Guna2HtmlLabel2.Size = New Size(85, 21)
         Guna2HtmlLabel2.TabIndex = 17
-        Guna2HtmlLabel2.Text = "Information :"
+        Guna2HtmlLabel2.Text = "Last Name:"
         ' 
         ' Guna2TextBox8
         ' 
@@ -311,7 +311,7 @@ Partial Class Form3
         Guna2Button1.ShadowDecoration.CustomizableEdges = CustomizableEdges14
         Guna2Button1.Size = New Size(124, 41)
         Guna2Button1.TabIndex = 19
-        Guna2Button1.Text = "BUTTON 1"
+        Guna2Button1.Text = "GENERATE DOCUMENT"
         ' 
         ' Guna2Button2
         ' 
@@ -329,7 +329,7 @@ Partial Class Form3
         Guna2Button2.ShadowDecoration.CustomizableEdges = CustomizableEdges16
         Guna2Button2.Size = New Size(124, 41)
         Guna2Button2.TabIndex = 20
-        Guna2Button2.Text = "BUTTON 2"
+        Guna2Button2.Text = "CLEAR"
         ' 
         ' Guna2Button3
         ' 
@@ -347,7 +347,7 @@ Partial Class Form3
         Guna2Button3.ShadowDecoration.CustomizableEdges = CustomizableEdges18
         Guna2Button3.Size = New Size(124, 41)
         Guna2Button3.TabIndex = 22
-        Guna2Button3.Text = "BUTTON 4"
+        Guna2Button3.Text = "LOG OUT"
         ' 
         ' Guna2Button4
         ' 
@@ -365,7 +365,7 @@ Partial Class Form3
         Guna2Button4.ShadowDecoration.CustomizableEdges = CustomizableEdges20
         Guna2Button4.Size = New Size(124, 41)
         Guna2Button4.TabIndex = 21
-        Guna2Button4.Text = "BUTTON 3"
+        Guna2Button4.Text = "ADD RESIDENT"
         ' 
         ' Guna2HtmlLabel9
         ' 
@@ -450,7 +450,7 @@ Partial Class Form3
         Guna2TextBox5.Location = New Point(641, 2)
         Guna2TextBox5.Name = "Guna2TextBox5"
         Guna2TextBox5.PasswordChar = ChrW(0)
-        Guna2TextBox5.PlaceholderText = "Info"
+        Guna2TextBox5.PlaceholderText = "Address"
         Guna2TextBox5.SelectedText = ""
         Guna2TextBox5.ShadowDecoration.CustomizableEdges = CustomizableEdges22
         Guna2TextBox5.Size = New Size(182, 30)
@@ -473,7 +473,7 @@ Partial Class Form3
         Guna2TextBox2.Location = New Point(453, 2)
         Guna2TextBox2.Name = "Guna2TextBox2"
         Guna2TextBox2.PasswordChar = ChrW(0)
-        Guna2TextBox2.PlaceholderText = "Info"
+        Guna2TextBox2.PlaceholderText = "Middle Name"
         Guna2TextBox2.SelectedText = ""
         Guna2TextBox2.ShadowDecoration.CustomizableEdges = CustomizableEdges24
         Guna2TextBox2.Size = New Size(182, 30)
@@ -496,7 +496,7 @@ Partial Class Form3
         Guna2TextBox3.Location = New Point(265, 2)
         Guna2TextBox3.Name = "Guna2TextBox3"
         Guna2TextBox3.PasswordChar = ChrW(0)
-        Guna2TextBox3.PlaceholderText = "Info"
+        Guna2TextBox3.PlaceholderText = "First Name"
         Guna2TextBox3.SelectedText = ""
         Guna2TextBox3.ShadowDecoration.CustomizableEdges = CustomizableEdges26
         Guna2TextBox3.Size = New Size(182, 30)
@@ -519,7 +519,7 @@ Partial Class Form3
         Guna2TextBox4.Location = New Point(77, 2)
         Guna2TextBox4.Name = "Guna2TextBox4"
         Guna2TextBox4.PasswordChar = ChrW(0)
-        Guna2TextBox4.PlaceholderText = "Info"
+        Guna2TextBox4.PlaceholderText = "Last Name"
         Guna2TextBox4.SelectedText = ""
         Guna2TextBox4.ShadowDecoration.CustomizableEdges = CustomizableEdges28
         Guna2TextBox4.Size = New Size(182, 30)
@@ -546,7 +546,7 @@ Partial Class Form3
         Guna2GroupBox2.ShadowDecoration.CustomizableEdges = CustomizableEdges38
         Guna2GroupBox2.Size = New Size(389, 247)
         Guna2GroupBox2.TabIndex = 22
-        Guna2GroupBox2.Text = "Groupbox 1"
+        Guna2GroupBox2.Text = "ADDITIONAL INFORMATION"
         ' 
         ' Guna2HtmlLabel11
         ' 
@@ -589,9 +589,9 @@ Partial Class Form3
         Guna2HtmlLabel12.ForeColor = Color.Black
         Guna2HtmlLabel12.Location = New Point(33, 154)
         Guna2HtmlLabel12.Name = "Guna2HtmlLabel12"
-        Guna2HtmlLabel12.Size = New Size(95, 21)
+        Guna2HtmlLabel12.Size = New Size(49, 21)
         Guna2HtmlLabel12.TabIndex = 19
-        Guna2HtmlLabel12.Text = "Information :"
+        Guna2HtmlLabel12.Text = "Email:"
         ' 
         ' Guna2HtmlLabel13
         ' 
@@ -600,9 +600,9 @@ Partial Class Form3
         Guna2HtmlLabel13.ForeColor = Color.Black
         Guna2HtmlLabel13.Location = New Point(33, 108)
         Guna2HtmlLabel13.Name = "Guna2HtmlLabel13"
-        Guna2HtmlLabel13.Size = New Size(95, 21)
+        Guna2HtmlLabel13.Size = New Size(76, 21)
         Guna2HtmlLabel13.TabIndex = 18
-        Guna2HtmlLabel13.Text = "Information :"
+        Guna2HtmlLabel13.Text = "Contact #:"
         ' 
         ' Guna2HtmlLabel14
         ' 
@@ -611,9 +611,9 @@ Partial Class Form3
         Guna2HtmlLabel14.ForeColor = Color.Black
         Guna2HtmlLabel14.Location = New Point(33, 62)
         Guna2HtmlLabel14.Name = "Guna2HtmlLabel14"
-        Guna2HtmlLabel14.Size = New Size(95, 21)
+        Guna2HtmlLabel14.Size = New Size(74, 21)
         Guna2HtmlLabel14.TabIndex = 17
-        Guna2HtmlLabel14.Text = "Information :"
+        Guna2HtmlLabel14.Text = "Birthdate:"
         ' 
         ' Guna2TextBox11
         ' 
@@ -688,12 +688,12 @@ Partial Class Form3
         ' 
         Guna2GroupBox3.BorderColor = Color.Black
         Guna2GroupBox3.BorderRadius = 2
+        Guna2GroupBox3.Controls.Add(Guna2ComboBox2)
+        Guna2GroupBox3.Controls.Add(Guna2ComboBox1)
         Guna2GroupBox3.Controls.Add(Guna2HtmlLabel16)
         Guna2GroupBox3.Controls.Add(Guna2HtmlLabel17)
         Guna2GroupBox3.Controls.Add(Guna2HtmlLabel18)
-        Guna2GroupBox3.Controls.Add(Guna2TextBox15)
         Guna2GroupBox3.Controls.Add(Guna2TextBox16)
-        Guna2GroupBox3.Controls.Add(Guna2TextBox17)
         Guna2GroupBox3.CustomBorderColor = Color.Black
         Guna2GroupBox3.CustomizableEdges = CustomizableEdges45
         Guna2GroupBox3.Font = New Font("Segoe UI", 9F)
@@ -705,6 +705,42 @@ Partial Class Form3
         Guna2GroupBox3.TabIndex = 30
         Guna2GroupBox3.Text = "Groupbox 1"
         ' 
+        ' Guna2ComboBox2
+        ' 
+        Guna2ComboBox2.BackColor = Color.Transparent
+        Guna2ComboBox2.CustomizableEdges = CustomizableEdges39
+        Guna2ComboBox2.DrawMode = DrawMode.OwnerDrawFixed
+        Guna2ComboBox2.DropDownStyle = ComboBoxStyle.DropDownList
+        Guna2ComboBox2.FocusedColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        Guna2ComboBox2.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        Guna2ComboBox2.Font = New Font("Segoe UI", 10F)
+        Guna2ComboBox2.ForeColor = Color.FromArgb(CByte(68), CByte(88), CByte(112))
+        Guna2ComboBox2.ItemHeight = 30
+        Guna2ComboBox2.Items.AddRange(New Object() {"ID", "CLEARANCE", "PERMITS"})
+        Guna2ComboBox2.Location = New Point(181, 140)
+        Guna2ComboBox2.Name = "Guna2ComboBox2"
+        Guna2ComboBox2.ShadowDecoration.CustomizableEdges = CustomizableEdges40
+        Guna2ComboBox2.Size = New Size(173, 36)
+        Guna2ComboBox2.TabIndex = 21
+        ' 
+        ' Guna2ComboBox1
+        ' 
+        Guna2ComboBox1.BackColor = Color.Transparent
+        Guna2ComboBox1.CustomizableEdges = CustomizableEdges41
+        Guna2ComboBox1.DrawMode = DrawMode.OwnerDrawFixed
+        Guna2ComboBox1.DropDownStyle = ComboBoxStyle.DropDownList
+        Guna2ComboBox1.FocusedColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        Guna2ComboBox1.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        Guna2ComboBox1.Font = New Font("Segoe UI", 10F)
+        Guna2ComboBox1.ForeColor = Color.FromArgb(CByte(68), CByte(88), CByte(112))
+        Guna2ComboBox1.ItemHeight = 30
+        Guna2ComboBox1.Items.AddRange(New Object() {"BRGY ID", "NATIONAL ID", "NBI", "TIN", "PHILHEALTH", "POLICE CLEARANCE", "POSTAL", "LTAP (license to operate and posses fire armed) ", "BUILDING PERMIT ", "BUSINESS PERMIT", "TODA PERMIT", "MERACLO", "MWSI"})
+        Guna2ComboBox1.Location = New Point(181, 62)
+        Guna2ComboBox1.Name = "Guna2ComboBox1"
+        Guna2ComboBox1.ShadowDecoration.CustomizableEdges = CustomizableEdges42
+        Guna2ComboBox1.Size = New Size(173, 36)
+        Guna2ComboBox1.TabIndex = 20
+        ' 
         ' Guna2HtmlLabel16
         ' 
         Guna2HtmlLabel16.BackColor = Color.Transparent
@@ -712,9 +748,9 @@ Partial Class Form3
         Guna2HtmlLabel16.ForeColor = Color.Black
         Guna2HtmlLabel16.Location = New Point(33, 154)
         Guna2HtmlLabel16.Name = "Guna2HtmlLabel16"
-        Guna2HtmlLabel16.Size = New Size(95, 21)
+        Guna2HtmlLabel16.Size = New Size(133, 21)
         Guna2HtmlLabel16.TabIndex = 19
-        Guna2HtmlLabel16.Text = "Information :"
+        Guna2HtmlLabel16.Text = "Type of Document"
         ' 
         ' Guna2HtmlLabel17
         ' 
@@ -723,9 +759,9 @@ Partial Class Form3
         Guna2HtmlLabel17.ForeColor = Color.Black
         Guna2HtmlLabel17.Location = New Point(33, 108)
         Guna2HtmlLabel17.Name = "Guna2HtmlLabel17"
-        Guna2HtmlLabel17.Size = New Size(95, 21)
+        Guna2HtmlLabel17.Size = New Size(71, 21)
         Guna2HtmlLabel17.TabIndex = 18
-        Guna2HtmlLabel17.Text = "Information :"
+        Guna2HtmlLabel17.Text = "Payment:"
         ' 
         ' Guna2HtmlLabel18
         ' 
@@ -734,38 +770,15 @@ Partial Class Form3
         Guna2HtmlLabel18.ForeColor = Color.Black
         Guna2HtmlLabel18.Location = New Point(33, 62)
         Guna2HtmlLabel18.Name = "Guna2HtmlLabel18"
-        Guna2HtmlLabel18.Size = New Size(95, 21)
+        Guna2HtmlLabel18.Size = New Size(68, 21)
         Guna2HtmlLabel18.TabIndex = 17
-        Guna2HtmlLabel18.Text = "Information :"
-        ' 
-        ' Guna2TextBox15
-        ' 
-        Guna2TextBox15.BorderColor = Color.Black
-        Guna2TextBox15.BorderRadius = 2
-        Guna2TextBox15.CustomizableEdges = CustomizableEdges39
-        Guna2TextBox15.DefaultText = ""
-        Guna2TextBox15.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
-        Guna2TextBox15.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
-        Guna2TextBox15.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        Guna2TextBox15.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        Guna2TextBox15.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2TextBox15.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
-        Guna2TextBox15.ForeColor = Color.Black
-        Guna2TextBox15.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2TextBox15.Location = New Point(181, 150)
-        Guna2TextBox15.Name = "Guna2TextBox15"
-        Guna2TextBox15.PasswordChar = ChrW(0)
-        Guna2TextBox15.PlaceholderText = "Info"
-        Guna2TextBox15.SelectedText = ""
-        Guna2TextBox15.ShadowDecoration.CustomizableEdges = CustomizableEdges40
-        Guna2TextBox15.Size = New Size(173, 30)
-        Guna2TextBox15.TabIndex = 16
+        Guna2HtmlLabel18.Text = "Purpose:"
         ' 
         ' Guna2TextBox16
         ' 
         Guna2TextBox16.BorderColor = Color.Black
         Guna2TextBox16.BorderRadius = 2
-        Guna2TextBox16.CustomizableEdges = CustomizableEdges41
+        Guna2TextBox16.CustomizableEdges = CustomizableEdges43
         Guna2TextBox16.DefaultText = ""
         Guna2TextBox16.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
         Guna2TextBox16.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
@@ -780,32 +793,9 @@ Partial Class Form3
         Guna2TextBox16.PasswordChar = ChrW(0)
         Guna2TextBox16.PlaceholderText = "Info"
         Guna2TextBox16.SelectedText = ""
-        Guna2TextBox16.ShadowDecoration.CustomizableEdges = CustomizableEdges42
+        Guna2TextBox16.ShadowDecoration.CustomizableEdges = CustomizableEdges44
         Guna2TextBox16.Size = New Size(173, 30)
         Guna2TextBox16.TabIndex = 15
-        ' 
-        ' Guna2TextBox17
-        ' 
-        Guna2TextBox17.BorderColor = Color.Black
-        Guna2TextBox17.BorderRadius = 2
-        Guna2TextBox17.CustomizableEdges = CustomizableEdges43
-        Guna2TextBox17.DefaultText = ""
-        Guna2TextBox17.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
-        Guna2TextBox17.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
-        Guna2TextBox17.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        Guna2TextBox17.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        Guna2TextBox17.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2TextBox17.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
-        Guna2TextBox17.ForeColor = Color.Black
-        Guna2TextBox17.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2TextBox17.Location = New Point(181, 58)
-        Guna2TextBox17.Name = "Guna2TextBox17"
-        Guna2TextBox17.PasswordChar = ChrW(0)
-        Guna2TextBox17.PlaceholderText = "Info"
-        Guna2TextBox17.SelectedText = ""
-        Guna2TextBox17.ShadowDecoration.CustomizableEdges = CustomizableEdges44
-        Guna2TextBox17.Size = New Size(173, 30)
-        Guna2TextBox17.TabIndex = 14
         ' 
         ' Form3
         ' 
@@ -874,7 +864,7 @@ Partial Class Form3
     Friend WithEvents Guna2HtmlLabel16 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2HtmlLabel17 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2HtmlLabel18 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents Guna2TextBox15 As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2TextBox16 As Guna.UI2.WinForms.Guna2TextBox
-    Friend WithEvents Guna2TextBox17 As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents Guna2ComboBox1 As Guna.UI2.WinForms.Guna2ComboBox
+    Friend WithEvents Guna2ComboBox2 As Guna.UI2.WinForms.Guna2ComboBox
 End Class

@@ -57,18 +57,18 @@ Public Class Form3
     Private Sub Guna2Button2_Click(sender As Object, e As EventArgs) Handles Guna2Button2.Click
         'clear
         Guna2TextBox1.Clear()
-        Guna2TextBox2.Clear()
-        Guna2TextBox3.Clear()
-        Guna2TextBox4.Clear()
-        Guna2TextBox5.Clear()
+        'Guna2TextBox2.Clear()
+        'Guna2TextBox3.Clear()
+        'Guna2TextBox4.Clear()
+        'Guna2TextBox5.Clear()
         Guna2TextBox6.Clear()
         Guna2TextBox7.Clear()
         Guna2TextBox8.Clear()
         Guna2TextBox9.Clear()
-        Guna2TextBox10.Clear()
-        Guna2TextBox11.Clear()
-        Guna2TextBox12.Clear()
-        Guna2TextBox13.Clear()
+        'Guna2TextBox10.Clear()
+        'Guna2TextBox11.Clear()
+        'Guna2TextBox12.Clear()
+        'Guna2TextBox13.Clear()
         Guna2TextBox16.Clear()
     End Sub
 

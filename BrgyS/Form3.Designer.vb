@@ -708,6 +708,7 @@ Partial Class Form3
         ' Guna2ComboBox2
         ' 
         Guna2ComboBox2.BackColor = Color.Transparent
+        Guna2ComboBox2.BorderColor = Color.Black
         Guna2ComboBox2.CustomizableEdges = CustomizableEdges39
         Guna2ComboBox2.DrawMode = DrawMode.OwnerDrawFixed
         Guna2ComboBox2.DropDownStyle = ComboBoxStyle.DropDownList
@@ -726,6 +727,7 @@ Partial Class Form3
         ' Guna2ComboBox1
         ' 
         Guna2ComboBox1.BackColor = Color.Transparent
+        Guna2ComboBox1.BorderColor = Color.Black
         Guna2ComboBox1.CustomizableEdges = CustomizableEdges41
         Guna2ComboBox1.DrawMode = DrawMode.OwnerDrawFixed
         Guna2ComboBox1.DropDownStyle = ComboBoxStyle.DropDownList

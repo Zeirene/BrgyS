@@ -1,4 +1,5 @@
 ﻿Imports Avalonia.Controls.Documents
+Imports Avalonia.Styling
 
 Public Class Form2
     Private Sub Guna2DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs)
@@ -57,7 +58,7 @@ Public Class Form2
     End Sub
 
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        'Set time and name for clerk after login
     End Sub
 
     'funtions

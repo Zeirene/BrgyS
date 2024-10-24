@@ -38,9 +38,10 @@ Partial Class Form4
         ' Guna2HtmlLabel1
         ' 
         Guna2HtmlLabel1.BackColor = Color.Transparent
+        Guna2HtmlLabel1.Font = New Font("Bahnschrift", 8.25F)
         Guna2HtmlLabel1.Location = New Point(12, 12)
         Guna2HtmlLabel1.Name = "Guna2HtmlLabel1"
-        Guna2HtmlLabel1.Size = New Size(86, 17)
+        Guna2HtmlLabel1.Size = New Size(82, 15)
         Guna2HtmlLabel1.TabIndex = 0
         Guna2HtmlLabel1.Text = "Review Content"
         ' 
@@ -67,9 +68,10 @@ Partial Class Form4
         ' Guna2HtmlLabel2
         ' 
         Guna2HtmlLabel2.BackColor = Color.Transparent
+        Guna2HtmlLabel2.Font = New Font("Bahnschrift", 8.25F)
         Guna2HtmlLabel2.Location = New Point(12, 74)
         Guna2HtmlLabel2.Name = "Guna2HtmlLabel2"
-        Guna2HtmlLabel2.Size = New Size(69, 17)
+        Guna2HtmlLabel2.Size = New Size(64, 15)
         Guna2HtmlLabel2.TabIndex = 2
         Guna2HtmlLabel2.Text = "FULL NAME:"
         ' 
@@ -93,27 +95,30 @@ Partial Class Form4
         ' Guna2HtmlLabel3
         ' 
         Guna2HtmlLabel3.BackColor = Color.Transparent
+        Guna2HtmlLabel3.Font = New Font("Bahnschrift", 8.25F)
         Guna2HtmlLabel3.Location = New Point(12, 110)
         Guna2HtmlLabel3.Name = "Guna2HtmlLabel3"
-        Guna2HtmlLabel3.Size = New Size(75, 17)
+        Guna2HtmlLabel3.Size = New Size(71, 15)
         Guna2HtmlLabel3.TabIndex = 4
         Guna2HtmlLabel3.Text = "PERMIT TYPE:"
         ' 
         ' Guna2HtmlLabel4
         ' 
         Guna2HtmlLabel4.BackColor = Color.Transparent
+        Guna2HtmlLabel4.Font = New Font("Bahnschrift", 8.25F)
         Guna2HtmlLabel4.Location = New Point(12, 148)
         Guna2HtmlLabel4.Name = "Guna2HtmlLabel4"
-        Guna2HtmlLabel4.Size = New Size(75, 17)
+        Guna2HtmlLabel4.Size = New Size(71, 15)
         Guna2HtmlLabel4.TabIndex = 5
         Guna2HtmlLabel4.Text = "PERMIT TYPE:"
         ' 
         ' Guna2HtmlLabel5
         ' 
         Guna2HtmlLabel5.BackColor = Color.Transparent
+        Guna2HtmlLabel5.Font = New Font("Bahnschrift", 8.25F)
         Guna2HtmlLabel5.Location = New Point(12, 185)
         Guna2HtmlLabel5.Name = "Guna2HtmlLabel5"
-        Guna2HtmlLabel5.Size = New Size(75, 17)
+        Guna2HtmlLabel5.Size = New Size(71, 15)
         Guna2HtmlLabel5.TabIndex = 6
         Guna2HtmlLabel5.Text = "PERMIT TYPE:"
         ' 

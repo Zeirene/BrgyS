@@ -35,6 +35,7 @@ Partial Class Form1
         Dim CustomizableEdges11 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges12 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges13 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges14 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Guna2PictureBox1 = New Guna.UI2.WinForms.Guna2PictureBox()
         Guna2TextBox1 = New Guna.UI2.WinForms.Guna2TextBox()
         Guna2TextBox2 = New Guna.UI2.WinForms.Guna2TextBox()
@@ -42,8 +43,8 @@ Partial Class Form1
         Guna2HtmlLabel2 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Guna2Button1 = New Guna.UI2.WinForms.Guna2Button()
         Guna2Button2 = New Guna.UI2.WinForms.Guna2Button()
-        Guna2CircleButton2 = New Guna.UI2.WinForms.Guna2CircleButton()
         Guna2TextBox3 = New Guna.UI2.WinForms.Guna2TextBox()
+        Guna2Button3 = New Guna.UI2.WinForms.Guna2Button()
         CType(Guna2PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -173,30 +174,9 @@ Partial Class Form1
         Guna2Button2.TabIndex = 6
         Guna2Button2.Text = "CANCEL"
         ' 
-        ' Guna2CircleButton2
-        ' 
-        Guna2CircleButton2.Animated = True
-        Guna2CircleButton2.DisabledState.BorderColor = Color.DarkGray
-        Guna2CircleButton2.DisabledState.CustomBorderColor = Color.DarkGray
-        Guna2CircleButton2.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
-        Guna2CircleButton2.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
-        Guna2CircleButton2.FillColor = Color.Black
-        Guna2CircleButton2.FocusedColor = Color.White
-        Guna2CircleButton2.Font = New Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Guna2CircleButton2.ForeColor = Color.White
-        Guna2CircleButton2.IndicateFocus = True
-        Guna2CircleButton2.Location = New Point(996, 258)
-        Guna2CircleButton2.Name = "Guna2CircleButton2"
-        Guna2CircleButton2.PressedColor = Color.White
-        Guna2CircleButton2.PressedDepth = 60
-        Guna2CircleButton2.ShadowDecoration.CustomizableEdges = CustomizableEdges11
-        Guna2CircleButton2.ShadowDecoration.Mode = Guna.UI2.WinForms.Enums.ShadowMode.Circle
-        Guna2CircleButton2.Size = New Size(15, 15)
-        Guna2CircleButton2.TabIndex = 8
-        ' 
         ' Guna2TextBox3
         ' 
-        Guna2TextBox3.CustomizableEdges = CustomizableEdges12
+        Guna2TextBox3.CustomizableEdges = CustomizableEdges11
         Guna2TextBox3.DefaultText = ""
         Guna2TextBox3.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
         Guna2TextBox3.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
@@ -210,9 +190,28 @@ Partial Class Form1
         Guna2TextBox3.PasswordChar = ChrW(0)
         Guna2TextBox3.PlaceholderText = ""
         Guna2TextBox3.SelectedText = ""
-        Guna2TextBox3.ShadowDecoration.CustomizableEdges = CustomizableEdges13
+        Guna2TextBox3.ShadowDecoration.CustomizableEdges = CustomizableEdges12
         Guna2TextBox3.Size = New Size(0, 0)
         Guna2TextBox3.TabIndex = 9
+        ' 
+        ' Guna2Button3
+        ' 
+        Guna2Button3.Animated = True
+        Guna2Button3.BorderRadius = 50
+        Guna2Button3.CustomizableEdges = CustomizableEdges13
+        Guna2Button3.DisabledState.BorderColor = Color.DarkGray
+        Guna2Button3.DisabledState.CustomBorderColor = Color.DarkGray
+        Guna2Button3.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        Guna2Button3.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
+        Guna2Button3.FillColor = Color.Transparent
+        Guna2Button3.Font = New Font("Segoe UI", 9F)
+        Guna2Button3.ForeColor = Color.White
+        Guna2Button3.Image = My.Resources.Resources.icons8_eye_48
+        Guna2Button3.Location = New Point(986, 258)
+        Guna2Button3.Name = "Guna2Button3"
+        Guna2Button3.ShadowDecoration.CustomizableEdges = CustomizableEdges14
+        Guna2Button3.Size = New Size(27, 16)
+        Guna2Button3.TabIndex = 10
         ' 
         ' Form1
         ' 
@@ -220,8 +219,8 @@ Partial Class Form1
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         ClientSize = New Size(1076, 456)
+        Controls.Add(Guna2Button3)
         Controls.Add(Guna2TextBox3)
-        Controls.Add(Guna2CircleButton2)
         Controls.Add(Guna2Button2)
         Controls.Add(Guna2Button1)
         Controls.Add(Guna2HtmlLabel2)
@@ -248,7 +247,7 @@ Partial Class Form1
     Friend WithEvents Guna2HtmlLabel2 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2Button1 As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2Button2 As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents Guna2CircleButton2 As Guna.UI2.WinForms.Guna2CircleButton
     Friend WithEvents Guna2TextBox3 As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents Guna2Button3 As Guna.UI2.WinForms.Guna2Button
 
 End Class

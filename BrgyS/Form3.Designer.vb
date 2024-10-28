@@ -50,6 +50,9 @@ Partial Class Form3
         Dim CustomizableEdges24 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges25 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges26 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Guna2GroupBox1 = New Guna.UI2.WinForms.Guna2GroupBox()
         Guna2HtmlLabel11 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Guna2TextBox1 = New Guna.UI2.WinForms.Guna2TextBox()
@@ -78,12 +81,16 @@ Partial Class Form3
         Guna2HtmlLabel17 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Guna2HtmlLabel18 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Guna2TextBox16 = New Guna.UI2.WinForms.Guna2TextBox()
-        Guna2TabControl1 = New Guna.UI2.WinForms.Guna2TabControl()
-        TabPage1 = New TabPage()
-        TabPage2 = New TabPage()
+        Guna2DataGridView1 = New Guna.UI2.WinForms.Guna2DataGridView()
+        Names = New DataGridViewTextBoxColumn()
+        Column2 = New DataGridViewTextBoxColumn()
+        Column3 = New DataGridViewTextBoxColumn()
+        Column4 = New DataGridViewTextBoxColumn()
+        Column5 = New DataGridViewTextBoxColumn()
+        Column6 = New DataGridViewTextBoxColumn()
         Guna2GroupBox1.SuspendLayout()
         Guna2GroupBox3.SuspendLayout()
-        Guna2TabControl1.SuspendLayout()
+        CType(Guna2DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
         ' Guna2GroupBox1
@@ -297,7 +304,7 @@ Partial Class Form3
         Guna2Button1.ShadowDecoration.CustomizableEdges = CustomizableEdges14
         Guna2Button1.Size = New Size(124, 41)
         Guna2Button1.TabIndex = 19
-        Guna2Button1.Text = "confirm"
+        Guna2Button1.Text = "CONFIRM"
         ' 
         ' Guna2Button2
         ' 
@@ -534,54 +541,88 @@ Partial Class Form3
         Guna2TextBox16.Size = New Size(173, 30)
         Guna2TextBox16.TabIndex = 15
         ' 
-        ' Guna2TabControl1
+        ' Guna2DataGridView1
         ' 
-        Guna2TabControl1.Alignment = TabAlignment.Left
-        Guna2TabControl1.Controls.Add(TabPage1)
-        Guna2TabControl1.Controls.Add(TabPage2)
-        Guna2TabControl1.ItemSize = New Size(180, 40)
-        Guna2TabControl1.Location = New Point(423, 12)
-        Guna2TabControl1.Name = "Guna2TabControl1"
-        Guna2TabControl1.SelectedIndex = 0
-        Guna2TabControl1.Size = New Size(397, 292)
-        Guna2TabControl1.TabButtonHoverState.BorderColor = Color.Empty
-        Guna2TabControl1.TabButtonHoverState.FillColor = Color.FromArgb(CByte(40), CByte(52), CByte(70))
-        Guna2TabControl1.TabButtonHoverState.Font = New Font("Segoe UI Semibold", 10F)
-        Guna2TabControl1.TabButtonHoverState.ForeColor = Color.White
-        Guna2TabControl1.TabButtonHoverState.InnerColor = Color.FromArgb(CByte(40), CByte(52), CByte(70))
-        Guna2TabControl1.TabButtonIdleState.BorderColor = Color.Empty
-        Guna2TabControl1.TabButtonIdleState.FillColor = Color.FromArgb(CByte(33), CByte(42), CByte(57))
-        Guna2TabControl1.TabButtonIdleState.Font = New Font("Segoe UI Semibold", 10F)
-        Guna2TabControl1.TabButtonIdleState.ForeColor = Color.FromArgb(CByte(156), CByte(160), CByte(167))
-        Guna2TabControl1.TabButtonIdleState.InnerColor = Color.FromArgb(CByte(33), CByte(42), CByte(57))
-        Guna2TabControl1.TabButtonSelectedState.BorderColor = Color.Empty
-        Guna2TabControl1.TabButtonSelectedState.FillColor = Color.FromArgb(CByte(29), CByte(37), CByte(49))
-        Guna2TabControl1.TabButtonSelectedState.Font = New Font("Segoe UI Semibold", 10F)
-        Guna2TabControl1.TabButtonSelectedState.ForeColor = Color.White
-        Guna2TabControl1.TabButtonSelectedState.InnerColor = Color.FromArgb(CByte(76), CByte(132), CByte(255))
-        Guna2TabControl1.TabButtonSize = New Size(180, 40)
-        Guna2TabControl1.TabIndex = 31
-        Guna2TabControl1.TabMenuBackColor = Color.FromArgb(CByte(33), CByte(42), CByte(57))
+        DataGridViewCellStyle1.BackColor = Color.FromArgb(CByte(44), CByte(48), CByte(52))
+        Guna2DataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
+        Guna2DataGridView1.BorderStyle = BorderStyle.FixedSingle
+        DataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle2.BackColor = Color.FromArgb(CByte(15), CByte(16), CByte(18))
+        DataGridViewCellStyle2.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle2.ForeColor = Color.White
+        DataGridViewCellStyle2.SelectionBackColor = SystemColors.Highlight
+        DataGridViewCellStyle2.SelectionForeColor = SystemColors.HighlightText
+        DataGridViewCellStyle2.WrapMode = DataGridViewTriState.True
+        Guna2DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
+        Guna2DataGridView1.ColumnHeadersHeight = 17
+        Guna2DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
+        Guna2DataGridView1.Columns.AddRange(New DataGridViewColumn() {Names, Column2, Column3, Column4, Column5, Column6})
+        DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
+        DataGridViewCellStyle3.BackColor = Color.FromArgb(CByte(33), CByte(37), CByte(41))
+        DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F)
+        DataGridViewCellStyle3.ForeColor = SystemColors.ControlText
+        DataGridViewCellStyle3.SelectionBackColor = Color.FromArgb(CByte(114), CByte(117), CByte(119))
+        DataGridViewCellStyle3.SelectionForeColor = Color.White
+        DataGridViewCellStyle3.WrapMode = DataGridViewTriState.False
+        Guna2DataGridView1.DefaultCellStyle = DataGridViewCellStyle3
+        Guna2DataGridView1.GridColor = Color.FromArgb(CByte(50), CByte(56), CByte(62))
+        Guna2DataGridView1.Location = New Point(398, 12)
+        Guna2DataGridView1.Name = "Guna2DataGridView1"
+        Guna2DataGridView1.RowHeadersVisible = False
+        Guna2DataGridView1.Size = New Size(424, 292)
+        Guna2DataGridView1.TabIndex = 22
+        Guna2DataGridView1.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Dark
+        Guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = Color.FromArgb(CByte(44), CByte(48), CByte(52))
+        Guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.Font = Nothing
+        Guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.ForeColor = Color.Empty
+        Guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.SelectionBackColor = Color.Empty
+        Guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.SelectionForeColor = Color.Empty
+        Guna2DataGridView1.ThemeStyle.BackColor = Color.White
+        Guna2DataGridView1.ThemeStyle.GridColor = Color.FromArgb(CByte(50), CByte(56), CByte(62))
+        Guna2DataGridView1.ThemeStyle.HeaderStyle.BackColor = Color.FromArgb(CByte(15), CByte(16), CByte(18))
+        Guna2DataGridView1.ThemeStyle.HeaderStyle.BorderStyle = DataGridViewHeaderBorderStyle.None
+        Guna2DataGridView1.ThemeStyle.HeaderStyle.Font = New Font("Segoe UI", 9F)
+        Guna2DataGridView1.ThemeStyle.HeaderStyle.ForeColor = Color.White
+        Guna2DataGridView1.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
+        Guna2DataGridView1.ThemeStyle.HeaderStyle.Height = 17
+        Guna2DataGridView1.ThemeStyle.ReadOnly = False
+        Guna2DataGridView1.ThemeStyle.RowsStyle.BackColor = Color.FromArgb(CByte(33), CByte(37), CByte(41))
+        Guna2DataGridView1.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
+        Guna2DataGridView1.ThemeStyle.RowsStyle.Font = New Font("Segoe UI", 9F)
+        Guna2DataGridView1.ThemeStyle.RowsStyle.ForeColor = SystemColors.ControlText
+        Guna2DataGridView1.ThemeStyle.RowsStyle.Height = 25
+        Guna2DataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(CByte(114), CByte(117), CByte(119))
+        Guna2DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = Color.White
         ' 
-        ' TabPage1
+        ' Names
         ' 
-        TabPage1.Location = New Point(184, 4)
-        TabPage1.Name = "TabPage1"
-        TabPage1.Padding = New Padding(3)
-        TabPage1.Size = New Size(209, 284)
-        TabPage1.TabIndex = 0
-        TabPage1.Text = "TabPage1"
-        TabPage1.UseVisualStyleBackColor = True
+        Names.HeaderText = "Names"
+        Names.Name = "Names"
         ' 
-        ' TabPage2
+        ' Column2
         ' 
-        TabPage2.Location = New Point(184, 4)
-        TabPage2.Name = "TabPage2"
-        TabPage2.Padding = New Padding(3)
-        TabPage2.Size = New Size(209, 284)
-        TabPage2.TabIndex = 1
-        TabPage2.Text = "TabPage2"
-        TabPage2.UseVisualStyleBackColor = True
+        Column2.HeaderText = "2"
+        Column2.Name = "Column2"
+        ' 
+        ' Column3
+        ' 
+        Column3.HeaderText = "3"
+        Column3.Name = "Column3"
+        ' 
+        ' Column4
+        ' 
+        Column4.HeaderText = "4"
+        Column4.Name = "Column4"
+        ' 
+        ' Column5
+        ' 
+        Column5.HeaderText = "5"
+        Column5.Name = "Column5"
+        ' 
+        ' Column6
+        ' 
+        Column6.HeaderText = "6"
+        Column6.Name = "Column6"
         ' 
         ' Form3
         ' 
@@ -589,7 +630,7 @@ Partial Class Form3
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         ClientSize = New Size(825, 576)
-        Controls.Add(Guna2TabControl1)
+        Controls.Add(Guna2DataGridView1)
         Controls.Add(Guna2GroupBox3)
         Controls.Add(Guna2Button3)
         Controls.Add(Guna2Button4)
@@ -603,7 +644,7 @@ Partial Class Form3
         Guna2GroupBox1.PerformLayout()
         Guna2GroupBox3.ResumeLayout(False)
         Guna2GroupBox3.PerformLayout()
-        Guna2TabControl1.ResumeLayout(False)
+        CType(Guna2DataGridView1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
     Friend WithEvents Guna2GroupBox1 As Guna.UI2.WinForms.Guna2GroupBox
@@ -634,7 +675,11 @@ Partial Class Form3
     Friend WithEvents Guna2ComboBox2 As Guna.UI2.WinForms.Guna2ComboBox
     Friend WithEvents Guna2HtmlLabel11 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2TextBox1 As Guna.UI2.WinForms.Guna2TextBox
-    Friend WithEvents Guna2TabControl1 As Guna.UI2.WinForms.Guna2TabControl
-    Friend WithEvents TabPage1 As TabPage
-    Friend WithEvents TabPage2 As TabPage
+    Friend WithEvents Guna2DataGridView1 As Guna.UI2.WinForms.Guna2DataGridView
+    Friend WithEvents Names As DataGridViewTextBoxColumn
+    Friend WithEvents Column2 As DataGridViewTextBoxColumn
+    Friend WithEvents Column3 As DataGridViewTextBoxColumn
+    Friend WithEvents Column4 As DataGridViewTextBoxColumn
+    Friend WithEvents Column5 As DataGridViewTextBoxColumn
+    Friend WithEvents Column6 As DataGridViewTextBoxColumn
 End Class

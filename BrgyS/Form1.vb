@@ -47,7 +47,13 @@ Public Class Form1
     End Sub
 
     ' Logic to toggle password visibility when Guna2CircleButton2 is clicked
-    Private Sub Guna2CircleButton2_Click(sender As Object, e As EventArgs) Handles Guna2CircleButton2.Click
+
+
+    Private Sub Guna2CircleButton3_Click(sender As Object, e As EventArgs)
+        WindowState = FormWindowState.Minimized
+    End Sub
+
+    Private Sub Guna2Button3_Click(sender As Object, e As EventArgs) Handles Guna2Button3.Click
         If isPasswordVisible Then
             ' If the password is visible, hide it by setting PasswordChar back to '*'
             Guna2TextBox2.PasswordChar = "*"
@@ -57,9 +63,5 @@ Public Class Form1
             Guna2TextBox2.PasswordChar = ""
             isPasswordVisible = True
         End If
-    End Sub
-
-    Private Sub Guna2CircleButton3_Click(sender As Object, e As EventArgs)
-        WindowState = FormWindowState.Minimized
     End Sub
 End Class

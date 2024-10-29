@@ -118,9 +118,9 @@ Partial Class Form1
         Guna2HtmlLabel1.Font = New Font("Bahnschrift SemiBold", 15.75F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Guna2HtmlLabel1.Location = New Point(768, 69)
         Guna2HtmlLabel1.Name = "Guna2HtmlLabel1"
-        Guna2HtmlLabel1.Size = New Size(68, 27)
+        Guna2HtmlLabel1.Size = New Size(65, 27)
         Guna2HtmlLabel1.TabIndex = 3
-        Guna2HtmlLabel1.Text = "Sign In"
+        Guna2HtmlLabel1.Text = "Log-In"
         ' 
         ' Guna2HtmlLabel2
         ' 

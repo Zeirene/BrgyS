@@ -13,30 +13,42 @@ Public Class Form3
     End Sub
 
     Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
-        Select Case Guna2ComboBox1.SelectedItem.ToString()
-            Case "ID"
-                ' Show the ID form
-                Me.Close()
-                brgyID.Show()
+        'search only then fill the textbox
 
-            Case "CLEARANCE"
-                ' Show the Clearance form
-                Me.Close()
-                clearanceQCID.Show()
-                'Case "PERMITS"
-                '    Me.Close()
-                '???.Show()
-        End Select
+
+        'Select Case Guna2ComboBox1.SelectedItem.ToString()
+        '    Case "ID"
+        '        ' Show the ID form
+        '        'Me.Close()
+        '        brgyID.Show()
+
+        '    Case "CLEARANCE"
+        '        ' Show the Clearance form
+        '        'Me.Close()
+        '        clearanceQCID.Show()
+        '    Case "PERMITS"
+        '        'Me.Close()
+        '        Form7.Show()
+        'End Select
+        switchPanel(Form7)
+        'Form7.Show()
+
 
         'generate docu
         'generatedocfile()
+    End Sub
+    Sub switchPanel(ByVal panel As Form)
+        Form2.Guna2Panel1.Controls.Clear()
+        panel.TopLevel = False
+        Form2.Guna2Panel1.Controls.Add(panel)
+        panel.Show()
     End Sub
 
     Private Sub Guna2Button4_Click(sender As Object, e As EventArgs)
         'add new resident
     End Sub
 
-    Private Sub Guna2Button3_Click(sender As Object, e As EventArgs) Handles Guna2Button3.Click
+    Private Sub Guna2Button3_Click(sender As Object, e As EventArgs)
         'log out
     End Sub
 
@@ -68,6 +80,7 @@ Public Class Form3
 
 
     'function
+
     Private Sub generatedocfile()
         ' Path to the template document
         Dim templatePath As String = "C:\Users\John Roi\source\repos\BrgyS\BrgyS\DOCUMENTS\TEMPLATES\"

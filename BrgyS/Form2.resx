@@ -451,7 +451,7 @@
     <value>Bahnschrift, 8.25pt</value>
   </data>
   <data name="Guna2HtmlLabel5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1041, 32</value>
+    <value>1021, 32</value>
   </data>
   <data name="Guna2HtmlLabel5.Size" type="System.Drawing.Size, System.Drawing">
     <value>27, 15</value>
@@ -474,6 +474,9 @@
   <data name="&gt;&gt;Guna2HtmlLabel5.ZOrder" xml:space="preserve">
     <value>1</value>
   </data>
+  <metadata name="Timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
   <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
     <value>True</value>
   </metadata>
@@ -488,6 +491,12 @@
   </data>
   <data name="$this.Text" xml:space="preserve">
     <value>Dashboard Page</value>
+  </data>
+  <data name="&gt;&gt;Timer1.Name" xml:space="preserve">
+    <value>Timer1</value>
+  </data>
+  <data name="&gt;&gt;Timer1.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Timer, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </data>
   <data name="&gt;&gt;$this.Name" xml:space="preserve">
     <value>Form2</value>

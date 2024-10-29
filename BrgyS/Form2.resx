@@ -298,10 +298,10 @@
     <value>8</value>
   </data>
   <data name="Guna2Panel1.Location" type="System.Drawing.Point, System.Drawing">
-    <value>243, 90</value>
+    <value>243, 53</value>
   </data>
   <data name="Guna2Panel1.Size" type="System.Drawing.Size, System.Drawing">
-    <value>825, 576</value>
+    <value>825, 613</value>
   </data>
   <data name="Guna2Panel1.TabIndex" type="System.Int32, mscorlib">
     <value>14</value>
@@ -397,7 +397,7 @@
     <value>Bahnschrift, 8.25pt</value>
   </data>
   <data name="Guna2HtmlLabel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>243, 51</value>
+    <value>243, 32</value>
   </data>
   <data name="Guna2HtmlLabel4.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 15</value>
@@ -451,7 +451,7 @@
     <value>Bahnschrift, 8.25pt</value>
   </data>
   <data name="Guna2HtmlLabel5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>1023, 53</value>
+    <value>1041, 32</value>
   </data>
   <data name="Guna2HtmlLabel5.Size" type="System.Drawing.Size, System.Drawing">
     <value>27, 15</value>

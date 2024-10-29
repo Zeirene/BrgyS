@@ -93,8 +93,8 @@ Partial Class Form2
         ' 
         Guna2Button1.Animated = True
         Guna2Button1.BackColor = Color.White
-        Guna2Button1.BorderColor = Color.FromArgb(CByte(30), CByte(71), CByte(125))
-        Guna2Button1.BorderRadius = 6
+        Guna2Button1.BorderColor = Color.FromArgb(CByte(155), CByte(192), CByte(228))
+        Guna2Button1.BorderRadius = 5
         Guna2Button1.CheckedState.BorderColor = Color.Black
         Guna2Button1.CheckedState.FillColor = Color.FromArgb(CByte(30), CByte(71), CByte(125))
         Guna2Button1.CheckedState.ForeColor = Color.White
@@ -105,7 +105,7 @@ Partial Class Form2
         Guna2Button1.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
         Guna2Button1.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
         Guna2Button1.FillColor = Color.Transparent
-        Guna2Button1.FocusedColor = Color.FromArgb(CByte(30), CByte(71), CByte(125))
+        Guna2Button1.FocusedColor = Color.FromArgb(CByte(155), CByte(192), CByte(228))
         resources.ApplyResources(Guna2Button1, "Guna2Button1")
         Guna2Button1.ForeColor = Color.Black
         Guna2Button1.HoverState.FillColor = Color.FromArgb(CByte(30), CByte(71), CByte(125))
@@ -125,8 +125,8 @@ Partial Class Form2
         ' Guna2Button2
         ' 
         Guna2Button2.Animated = True
-        Guna2Button2.BorderColor = Color.FromArgb(CByte(30), CByte(71), CByte(125))
-        Guna2Button2.BorderRadius = 6
+        Guna2Button2.BorderColor = Color.FromArgb(CByte(155), CByte(192), CByte(228))
+        Guna2Button2.BorderRadius = 5
         Guna2Button2.CheckedState.FillColor = Color.FromArgb(CByte(30), CByte(71), CByte(125))
         Guna2Button2.CheckedState.ForeColor = Color.White
         Guna2Button2.CustomImages.CheckedImage = My.Resources.Resources.icons8_records_30__1_1
@@ -136,7 +136,7 @@ Partial Class Form2
         Guna2Button2.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
         Guna2Button2.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
         Guna2Button2.FillColor = Color.Transparent
-        Guna2Button2.FocusedColor = Color.FromArgb(CByte(30), CByte(71), CByte(125))
+        Guna2Button2.FocusedColor = Color.FromArgb(CByte(155), CByte(192), CByte(228))
         resources.ApplyResources(Guna2Button2, "Guna2Button2")
         Guna2Button2.ForeColor = Color.Black
         Guna2Button2.HoverState.FillColor = Color.FromArgb(CByte(30), CByte(71), CByte(125))
@@ -168,8 +168,8 @@ Partial Class Form2
         ' Guna2Button3
         ' 
         Guna2Button3.Animated = True
-        Guna2Button3.BorderColor = Color.FromArgb(CByte(30), CByte(71), CByte(125))
-        Guna2Button3.BorderRadius = 6
+        Guna2Button3.BorderColor = Color.FromArgb(CByte(155), CByte(192), CByte(228))
+        Guna2Button3.BorderRadius = 5
         Guna2Button3.CheckedState.FillColor = Color.FromArgb(CByte(30), CByte(71), CByte(125))
         Guna2Button3.CheckedState.ForeColor = Color.White
         Guna2Button3.CustomImages.CheckedImage = My.Resources.Resources.icons8_google_forms_301
@@ -179,7 +179,7 @@ Partial Class Form2
         Guna2Button3.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
         Guna2Button3.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
         Guna2Button3.FillColor = Color.Transparent
-        Guna2Button3.FocusedColor = Color.FromArgb(CByte(30), CByte(71), CByte(125))
+        Guna2Button3.FocusedColor = Color.FromArgb(CByte(155), CByte(192), CByte(228))
         resources.ApplyResources(Guna2Button3, "Guna2Button3")
         Guna2Button3.ForeColor = Color.Black
         Guna2Button3.HoverState.FillColor = Color.FromArgb(CByte(30), CByte(71), CByte(125))
@@ -199,8 +199,8 @@ Partial Class Form2
         ' Guna2Button4
         ' 
         Guna2Button4.Animated = True
-        Guna2Button4.BorderColor = Color.FromArgb(CByte(30), CByte(71), CByte(125))
-        Guna2Button4.BorderRadius = 6
+        Guna2Button4.BorderColor = Color.FromArgb(CByte(155), CByte(192), CByte(228))
+        Guna2Button4.BorderRadius = 5
         Guna2Button4.CheckedState.FillColor = Color.FromArgb(CByte(30), CByte(71), CByte(125))
         Guna2Button4.CheckedState.ForeColor = Color.White
         Guna2Button4.CustomImages.CheckedImage = My.Resources.Resources.icons8_notification_301
@@ -210,7 +210,7 @@ Partial Class Form2
         Guna2Button4.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
         Guna2Button4.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
         Guna2Button4.FillColor = Color.Transparent
-        Guna2Button4.FocusedColor = Color.FromArgb(CByte(30), CByte(71), CByte(125))
+        Guna2Button4.FocusedColor = Color.FromArgb(CByte(155), CByte(192), CByte(228))
         resources.ApplyResources(Guna2Button4, "Guna2Button4")
         Guna2Button4.ForeColor = Color.Black
         Guna2Button4.HoverState.FillColor = Color.FromArgb(CByte(30), CByte(71), CByte(125))
@@ -236,8 +236,8 @@ Partial Class Form2
         ' Guna2Button5
         ' 
         Guna2Button5.Animated = True
-        Guna2Button5.BorderColor = Color.FromArgb(CByte(30), CByte(71), CByte(125))
-        Guna2Button5.BorderRadius = 6
+        Guna2Button5.BorderColor = Color.FromArgb(CByte(155), CByte(192), CByte(228))
+        Guna2Button5.BorderRadius = 5
         Guna2Button5.CheckedState.FillColor = Color.FromArgb(CByte(30), CByte(71), CByte(125))
         Guna2Button5.CheckedState.ForeColor = Color.White
         Guna2Button5.CustomImages.CheckedImage = My.Resources.Resources.icons8_logout_24
@@ -247,7 +247,7 @@ Partial Class Form2
         Guna2Button5.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
         Guna2Button5.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
         Guna2Button5.FillColor = Color.Transparent
-        Guna2Button5.FocusedColor = Color.FromArgb(CByte(30), CByte(71), CByte(125))
+        Guna2Button5.FocusedColor = Color.FromArgb(CByte(155), CByte(192), CByte(228))
         resources.ApplyResources(Guna2Button5, "Guna2Button5")
         Guna2Button5.ForeColor = Color.Black
         Guna2Button5.HoverState.FillColor = Color.FromArgb(CByte(30), CByte(71), CByte(125))

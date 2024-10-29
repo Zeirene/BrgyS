@@ -142,11 +142,12 @@ Partial Class Form1
         Guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray
         Guna2Button1.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
         Guna2Button1.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
-        Guna2Button1.FillColor = Color.Black
+        Guna2Button1.FillColor = Color.FromArgb(CByte(155), CByte(192), CByte(228))
         Guna2Button1.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
         Guna2Button1.ForeColor = Color.White
         Guna2Button1.Location = New Point(768, 359)
         Guna2Button1.Name = "Guna2Button1"
+        Guna2Button1.PressedColor = Color.FromArgb(CByte(155), CByte(192), CByte(228))
         Guna2Button1.ShadowDecoration.CustomizableEdges = CustomizableEdges8
         Guna2Button1.Size = New Size(119, 41)
         Guna2Button1.TabIndex = 5
@@ -155,9 +156,10 @@ Partial Class Form1
         ' Guna2Button2
         ' 
         Guna2Button2.Animated = True
+        Guna2Button2.BorderColor = Color.FromArgb(CByte(240), CByte(174), CByte(189))
         Guna2Button2.BorderRadius = 6
         Guna2Button2.BorderThickness = 2
-        Guna2Button2.CustomBorderColor = Color.Black
+        Guna2Button2.CustomBorderColor = Color.FromArgb(CByte(240), CByte(174), CByte(189))
         Guna2Button2.CustomBorderThickness = New Padding(2)
         Guna2Button2.CustomizableEdges = CustomizableEdges9
         Guna2Button2.DisabledState.BorderColor = Color.DarkGray
@@ -166,9 +168,10 @@ Partial Class Form1
         Guna2Button2.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
         Guna2Button2.FillColor = Color.Transparent
         Guna2Button2.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
-        Guna2Button2.ForeColor = Color.Black
+        Guna2Button2.ForeColor = Color.FromArgb(CByte(240), CByte(174), CByte(189))
         Guna2Button2.Location = New Point(903, 359)
         Guna2Button2.Name = "Guna2Button2"
+        Guna2Button2.PressedColor = Color.FromArgb(CByte(240), CByte(174), CByte(189))
         Guna2Button2.ShadowDecoration.CustomizableEdges = CustomizableEdges10
         Guna2Button2.Size = New Size(119, 41)
         Guna2Button2.TabIndex = 6

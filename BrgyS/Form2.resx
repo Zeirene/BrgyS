@@ -117,4 +117,382 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="Guna2vSeparator1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>227, 12</value>
+  </data>
+  <data name="Guna2vSeparator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>10, 654</value>
+  </data>
+  <assembly alias="mscorlib" name="mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Guna2vSeparator1.TabIndex" type="System.Int32, mscorlib">
+    <value>1</value>
+  </data>
+  <data name="&gt;&gt;Guna2vSeparator1.Name" xml:space="preserve">
+    <value>Guna2vSeparator1</value>
+  </data>
+  <data name="&gt;&gt;Guna2vSeparator1.Type" xml:space="preserve">
+    <value>Guna.UI2.WinForms.Guna2VSeparator, Guna.UI2, Culture=neutral, PublicKeyToken=8b9d14aa5142e261</value>
+  </data>
+  <data name="&gt;&gt;Guna2vSeparator1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Guna2vSeparator1.ZOrder" xml:space="preserve">
+    <value>5</value>
+  </data>
+  <data name="Guna2HtmlLabel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>44, 143</value>
+  </data>
+  <data name="Guna2HtmlLabel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>3, 2</value>
+  </data>
+  <data name="Guna2HtmlLabel1.TabIndex" type="System.Int32, mscorlib">
+    <value>3</value>
+  </data>
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <data name="Guna2HtmlLabel1.Text" type="System.Resources.ResXNullRef, System.Windows.Forms">
+    <value />
+  </data>
+  <data name="&gt;&gt;Guna2HtmlLabel1.Name" xml:space="preserve">
+    <value>Guna2HtmlLabel1</value>
+  </data>
+  <data name="&gt;&gt;Guna2HtmlLabel1.Type" xml:space="preserve">
+    <value>Guna.UI2.WinForms.Guna2HtmlLabel, Guna.UI2, Culture=neutral, PublicKeyToken=8b9d14aa5142e261</value>
+  </data>
+  <data name="&gt;&gt;Guna2HtmlLabel1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Guna2HtmlLabel1.ZOrder" xml:space="preserve">
+    <value>13</value>
+  </data>
+  <data name="Guna2HtmlLabel2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Bahnschrift, 12pt, style=Bold</value>
+  </data>
+  <data name="Guna2HtmlLabel2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>59, 26</value>
+  </data>
+  <data name="Guna2HtmlLabel2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>124, 21</value>
+  </data>
+  <data name="Guna2HtmlLabel2.TabIndex" type="System.Int32, mscorlib">
+    <value>4</value>
+  </data>
+  <data name="Guna2HtmlLabel2.Text" xml:space="preserve">
+    <value>BRGY. STA LUCIA</value>
+  </data>
+  <data name="&gt;&gt;Guna2HtmlLabel2.Name" xml:space="preserve">
+    <value>Guna2HtmlLabel2</value>
+  </data>
+  <data name="&gt;&gt;Guna2HtmlLabel2.Type" xml:space="preserve">
+    <value>Guna.UI2.WinForms.Guna2HtmlLabel, Guna.UI2, Culture=neutral, PublicKeyToken=8b9d14aa5142e261</value>
+  </data>
+  <data name="&gt;&gt;Guna2HtmlLabel2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Guna2HtmlLabel2.ZOrder" xml:space="preserve">
+    <value>12</value>
+  </data>
+  <data name="Guna2HtmlLabel3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Bahnschrift, 8.25pt</value>
+  </data>
+  <data name="Guna2HtmlLabel3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>59, 44</value>
+  </data>
+  <data name="Guna2HtmlLabel3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>151, 15</value>
+  </data>
+  <data name="Guna2HtmlLabel3.TabIndex" type="System.Int32, mscorlib">
+    <value>5</value>
+  </data>
+  <data name="Guna2HtmlLabel3.Text" xml:space="preserve">
+    <value>BRGY MANAGEMENT SYSTEM</value>
+  </data>
+  <data name="&gt;&gt;Guna2HtmlLabel3.Name" xml:space="preserve">
+    <value>Guna2HtmlLabel3</value>
+  </data>
+  <data name="&gt;&gt;Guna2HtmlLabel3.Type" xml:space="preserve">
+    <value>Guna.UI2.WinForms.Guna2HtmlLabel, Guna.UI2, Culture=neutral, PublicKeyToken=8b9d14aa5142e261</value>
+  </data>
+  <data name="&gt;&gt;Guna2HtmlLabel3.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Guna2HtmlLabel3.ZOrder" xml:space="preserve">
+    <value>11</value>
+  </data>
+  <data name="Guna2CirclePictureBox1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 29</value>
+  </data>
+  <data name="Guna2CirclePictureBox1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>30, 30</value>
+  </data>
+  <data name="Guna2CirclePictureBox1.SizeMode" type="System.Windows.Forms.PictureBoxSizeMode, System.Windows.Forms">
+    <value>StretchImage</value>
+  </data>
+  <data name="Guna2CirclePictureBox1.TabIndex" type="System.Int32, mscorlib">
+    <value>6</value>
+  </data>
+  <data name="&gt;&gt;Guna2CirclePictureBox1.Name" xml:space="preserve">
+    <value>Guna2CirclePictureBox1</value>
+  </data>
+  <data name="&gt;&gt;Guna2CirclePictureBox1.Type" xml:space="preserve">
+    <value>Guna.UI2.WinForms.Guna2CirclePictureBox, Guna.UI2, Culture=neutral, PublicKeyToken=8b9d14aa5142e261</value>
+  </data>
+  <data name="&gt;&gt;Guna2CirclePictureBox1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Guna2CirclePictureBox1.ZOrder" xml:space="preserve">
+    <value>10</value>
+  </data>
+  <data name="Guna2Button1.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Bahnschrift, 9pt</value>
+  </data>
+  <data name="Guna2Button1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 93</value>
+  </data>
+  <data name="Guna2Button1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 38</value>
+  </data>
+  <data name="Guna2Button1.TabIndex" type="System.Int32, mscorlib">
+    <value>10</value>
+  </data>
+  <data name="Guna2Button1.Text" xml:space="preserve">
+    <value>HOME PAGE</value>
+  </data>
+  <data name="&gt;&gt;Guna2Button1.Name" xml:space="preserve">
+    <value>Guna2Button1</value>
+  </data>
+  <data name="&gt;&gt;Guna2Button1.Type" xml:space="preserve">
+    <value>Guna.UI2.WinForms.Guna2Button, Guna.UI2, Culture=neutral, PublicKeyToken=8b9d14aa5142e261</value>
+  </data>
+  <data name="&gt;&gt;Guna2Button1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Guna2Button1.ZOrder" xml:space="preserve">
+    <value>9</value>
+  </data>
+  <data name="Guna2Button2.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Bahnschrift, 9pt</value>
+  </data>
+  <data name="Guna2Button2.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 137</value>
+  </data>
+  <data name="Guna2Button2.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 38</value>
+  </data>
+  <data name="Guna2Button2.TabIndex" type="System.Int32, mscorlib">
+    <value>11</value>
+  </data>
+  <data name="Guna2Button2.Text" xml:space="preserve">
+    <value>RECORDS</value>
+  </data>
+  <data name="&gt;&gt;Guna2Button2.Name" xml:space="preserve">
+    <value>Guna2Button2</value>
+  </data>
+  <data name="&gt;&gt;Guna2Button2.Type" xml:space="preserve">
+    <value>Guna.UI2.WinForms.Guna2Button, Guna.UI2, Culture=neutral, PublicKeyToken=8b9d14aa5142e261</value>
+  </data>
+  <data name="&gt;&gt;Guna2Button2.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Guna2Button2.ZOrder" xml:space="preserve">
+    <value>8</value>
+  </data>
+  <data name="Guna2Panel1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>243, 90</value>
+  </data>
+  <data name="Guna2Panel1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>825, 576</value>
+  </data>
+  <data name="Guna2Panel1.TabIndex" type="System.Int32, mscorlib">
+    <value>14</value>
+  </data>
+  <data name="&gt;&gt;Guna2Panel1.Name" xml:space="preserve">
+    <value>Guna2Panel1</value>
+  </data>
+  <data name="&gt;&gt;Guna2Panel1.Type" xml:space="preserve">
+    <value>Guna.UI2.WinForms.Guna2Panel, Guna.UI2, Culture=neutral, PublicKeyToken=8b9d14aa5142e261</value>
+  </data>
+  <data name="&gt;&gt;Guna2Panel1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Guna2Panel1.ZOrder" xml:space="preserve">
+    <value>7</value>
+  </data>
+  <data name="Guna2Separator1.Location" type="System.Drawing.Point, System.Drawing">
+    <value>12, 74</value>
+  </data>
+  <data name="Guna2Separator1.Size" type="System.Drawing.Size, System.Drawing">
+    <value>1056, 10</value>
+  </data>
+  <data name="Guna2Separator1.TabIndex" type="System.Int32, mscorlib">
+    <value>16</value>
+  </data>
+  <data name="&gt;&gt;Guna2Separator1.Name" xml:space="preserve">
+    <value>Guna2Separator1</value>
+  </data>
+  <data name="&gt;&gt;Guna2Separator1.Type" xml:space="preserve">
+    <value>Guna.UI2.WinForms.Guna2Separator, Guna.UI2, Culture=neutral, PublicKeyToken=8b9d14aa5142e261</value>
+  </data>
+  <data name="&gt;&gt;Guna2Separator1.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Guna2Separator1.ZOrder" xml:space="preserve">
+    <value>6</value>
+  </data>
+  <data name="Guna2Button3.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Bahnschrift, 9pt</value>
+  </data>
+  <data name="Guna2Button3.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 181</value>
+  </data>
+  <data name="Guna2Button3.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 38</value>
+  </data>
+  <data name="Guna2Button3.TabIndex" type="System.Int32, mscorlib">
+    <value>17</value>
+  </data>
+  <data name="Guna2Button3.Text" xml:space="preserve">
+    <value>TEMPLATES</value>
+  </data>
+  <data name="&gt;&gt;Guna2Button3.Name" xml:space="preserve">
+    <value>Guna2Button3</value>
+  </data>
+  <data name="&gt;&gt;Guna2Button3.Type" xml:space="preserve">
+    <value>Guna.UI2.WinForms.Guna2Button, Guna.UI2, Culture=neutral, PublicKeyToken=8b9d14aa5142e261</value>
+  </data>
+  <data name="&gt;&gt;Guna2Button3.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Guna2Button3.ZOrder" xml:space="preserve">
+    <value>4</value>
+  </data>
+  <data name="Guna2Button4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Bahnschrift, 9pt</value>
+  </data>
+  <data name="Guna2Button4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 225</value>
+  </data>
+  <data name="Guna2Button4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 38</value>
+  </data>
+  <data name="Guna2Button4.TabIndex" type="System.Int32, mscorlib">
+    <value>18</value>
+  </data>
+  <data name="Guna2Button4.Text" xml:space="preserve">
+    <value>NOTIFY RESIDENTS</value>
+  </data>
+  <data name="&gt;&gt;Guna2Button4.Name" xml:space="preserve">
+    <value>Guna2Button4</value>
+  </data>
+  <data name="&gt;&gt;Guna2Button4.Type" xml:space="preserve">
+    <value>Guna.UI2.WinForms.Guna2Button, Guna.UI2, Culture=neutral, PublicKeyToken=8b9d14aa5142e261</value>
+  </data>
+  <data name="&gt;&gt;Guna2Button4.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Guna2Button4.ZOrder" xml:space="preserve">
+    <value>3</value>
+  </data>
+  <data name="Guna2HtmlLabel4.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Bahnschrift, 8.25pt</value>
+  </data>
+  <data name="Guna2HtmlLabel4.Location" type="System.Drawing.Point, System.Drawing">
+    <value>243, 51</value>
+  </data>
+  <data name="Guna2HtmlLabel4.Size" type="System.Drawing.Size, System.Drawing">
+    <value>71, 15</value>
+  </data>
+  <data name="Guna2HtmlLabel4.TabIndex" type="System.Int32, mscorlib">
+    <value>19</value>
+  </data>
+  <data name="Guna2HtmlLabel4.Text" xml:space="preserve">
+    <value>CLERK NAME</value>
+  </data>
+  <data name="&gt;&gt;Guna2HtmlLabel4.Name" xml:space="preserve">
+    <value>Guna2HtmlLabel4</value>
+  </data>
+  <data name="&gt;&gt;Guna2HtmlLabel4.Type" xml:space="preserve">
+    <value>Guna.UI2.WinForms.Guna2HtmlLabel, Guna.UI2, Culture=neutral, PublicKeyToken=8b9d14aa5142e261</value>
+  </data>
+  <data name="&gt;&gt;Guna2HtmlLabel4.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Guna2HtmlLabel4.ZOrder" xml:space="preserve">
+    <value>2</value>
+  </data>
+  <data name="Guna2Button5.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Bahnschrift, 9pt</value>
+  </data>
+  <data name="Guna2Button5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>23, 624</value>
+  </data>
+  <data name="Guna2Button5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>187, 38</value>
+  </data>
+  <data name="Guna2Button5.TabIndex" type="System.Int32, mscorlib">
+    <value>21</value>
+  </data>
+  <data name="Guna2Button5.Text" xml:space="preserve">
+    <value>LOG OUT</value>
+  </data>
+  <data name="&gt;&gt;Guna2Button5.Name" xml:space="preserve">
+    <value>Guna2Button5</value>
+  </data>
+  <data name="&gt;&gt;Guna2Button5.Type" xml:space="preserve">
+    <value>Guna.UI2.WinForms.Guna2Button, Guna.UI2, Culture=neutral, PublicKeyToken=8b9d14aa5142e261</value>
+  </data>
+  <data name="&gt;&gt;Guna2Button5.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Guna2Button5.ZOrder" xml:space="preserve">
+    <value>0</value>
+  </data>
+  <data name="Guna2HtmlLabel5.Font" type="System.Drawing.Font, System.Drawing">
+    <value>Bahnschrift, 8.25pt</value>
+  </data>
+  <data name="Guna2HtmlLabel5.Location" type="System.Drawing.Point, System.Drawing">
+    <value>1023, 53</value>
+  </data>
+  <data name="Guna2HtmlLabel5.Size" type="System.Drawing.Size, System.Drawing">
+    <value>27, 15</value>
+  </data>
+  <data name="Guna2HtmlLabel5.TabIndex" type="System.Int32, mscorlib">
+    <value>20</value>
+  </data>
+  <data name="Guna2HtmlLabel5.Text" xml:space="preserve">
+    <value>TIME</value>
+  </data>
+  <data name="&gt;&gt;Guna2HtmlLabel5.Name" xml:space="preserve">
+    <value>Guna2HtmlLabel5</value>
+  </data>
+  <data name="&gt;&gt;Guna2HtmlLabel5.Type" xml:space="preserve">
+    <value>Guna.UI2.WinForms.Guna2HtmlLabel, Guna.UI2, Culture=neutral, PublicKeyToken=8b9d14aa5142e261</value>
+  </data>
+  <data name="&gt;&gt;Guna2HtmlLabel5.Parent" xml:space="preserve">
+    <value>$this</value>
+  </data>
+  <data name="&gt;&gt;Guna2HtmlLabel5.ZOrder" xml:space="preserve">
+    <value>1</value>
+  </data>
+  <metadata name="$this.Localizable" type="System.Boolean, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089">
+    <value>True</value>
+  </metadata>
+  <data name="$this.AutoScaleDimensions" type="System.Drawing.SizeF, System.Drawing">
+    <value>7, 15</value>
+  </data>
+  <data name="$this.ClientSize" type="System.Drawing.Size, System.Drawing">
+    <value>1080, 678</value>
+  </data>
+  <data name="$this.StartPosition" type="System.Windows.Forms.FormStartPosition, System.Windows.Forms">
+    <value>CenterScreen</value>
+  </data>
+  <data name="$this.Text" xml:space="preserve">
+    <value>Dashboard Page</value>
+  </data>
+  <data name="&gt;&gt;$this.Name" xml:space="preserve">
+    <value>Form2</value>
+  </data>
+  <data name="&gt;&gt;$this.Type" xml:space="preserve">
+    <value>System.Windows.Forms.Form, System.Windows.Forms, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

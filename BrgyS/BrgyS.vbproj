@@ -9,6 +9,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <AvaloniaXaml Remove="DOCUMENTS\**" />
+    <Compile Remove="DOCUMENTS\**" />
+    <EmbeddedResource Remove="DOCUMENTS\**" />
+    <None Remove="DOCUMENTS\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Import Include="System.Data" />
     <Import Include="System.Drawing" />
     <Import Include="System.Windows.Forms" />
@@ -49,8 +56,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="DOCUMENTS\GENERATED DOCU\" />
-    <Folder Include="DOCUMENTS\TEMPLATES\" />
+    <Folder Include="docu\" />
   </ItemGroup>
 
 </Project>

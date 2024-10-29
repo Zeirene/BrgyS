@@ -61,8 +61,8 @@ Public Class Form2
         Guna2Button5.FillColor = Color.White
         Guna2Button5.ForeColor = Color.Black
     End Sub
-    Private Sub Guna2TextBox1_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Guna2TextBox1.KeyPress
-        SearchonPress()
+    Private Sub Guna2TextBox1_KeyPress(sender As Object, e As KeyPressEventArgs)
+        SearchonPress
     End Sub
 
     Private Sub Guna2CirclePictureBox1_Click(sender As Object, e As EventArgs) Handles Guna2CirclePictureBox1.Click
@@ -173,7 +173,7 @@ Public Class Form2
         Guna2Button4.ForeColor = Color.Black
     End Sub
 
-    Private Sub Guna2CircleButton2_Click(sender As Object, e As EventArgs) Handles Guna2CircleButton2.Click
+    Private Sub Guna2CircleButton2_Click(sender As Object, e As EventArgs)
 
     End Sub
 End Class

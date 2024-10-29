@@ -40,16 +40,14 @@ Partial Class Form3
         Dim CustomizableEdges16 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges17 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges18 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges25 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges26 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges19 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges20 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges27 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges28 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges21 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges22 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges23 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges24 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges25 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges26 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim DataGridViewCellStyle1 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle2 As DataGridViewCellStyle = New DataGridViewCellStyle()
         Dim DataGridViewCellStyle3 As DataGridViewCellStyle = New DataGridViewCellStyle()
@@ -67,7 +65,6 @@ Partial Class Form3
         Guna2Button1 = New Guna.UI2.WinForms.Guna2Button()
         Guna2Button2 = New Guna.UI2.WinForms.Guna2Button()
         Guna2Button3 = New Guna.UI2.WinForms.Guna2Button()
-        Guna2Button4 = New Guna.UI2.WinForms.Guna2Button()
         Guna2HtmlLabel9 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Guna2HtmlLabel8 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Guna2HtmlLabel7 = New Guna.UI2.WinForms.Guna2HtmlLabel()
@@ -299,7 +296,7 @@ Partial Class Form3
         Guna2Button1.FillColor = Color.Black
         Guna2Button1.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
         Guna2Button1.ForeColor = Color.White
-        Guna2Button1.Location = New Point(475, 387)
+        Guna2Button1.Location = New Point(426, 485)
         Guna2Button1.Name = "Guna2Button1"
         Guna2Button1.ShadowDecoration.CustomizableEdges = CustomizableEdges14
         Guna2Button1.Size = New Size(124, 41)
@@ -317,7 +314,7 @@ Partial Class Form3
         Guna2Button2.FillColor = Color.Black
         Guna2Button2.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
         Guna2Button2.ForeColor = Color.White
-        Guna2Button2.Location = New Point(653, 387)
+        Guna2Button2.Location = New Point(559, 485)
         Guna2Button2.Name = "Guna2Button2"
         Guna2Button2.ShadowDecoration.CustomizableEdges = CustomizableEdges16
         Guna2Button2.Size = New Size(124, 41)
@@ -335,30 +332,12 @@ Partial Class Form3
         Guna2Button3.FillColor = Color.Black
         Guna2Button3.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
         Guna2Button3.ForeColor = Color.White
-        Guna2Button3.Location = New Point(653, 468)
+        Guna2Button3.Location = New Point(689, 485)
         Guna2Button3.Name = "Guna2Button3"
         Guna2Button3.ShadowDecoration.CustomizableEdges = CustomizableEdges18
         Guna2Button3.Size = New Size(124, 41)
         Guna2Button3.TabIndex = 22
         Guna2Button3.Text = "LOG OUT"
-        ' 
-        ' Guna2Button4
-        ' 
-        Guna2Button4.BorderRadius = 2
-        Guna2Button4.CustomizableEdges = CustomizableEdges19
-        Guna2Button4.DisabledState.BorderColor = Color.DarkGray
-        Guna2Button4.DisabledState.CustomBorderColor = Color.DarkGray
-        Guna2Button4.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
-        Guna2Button4.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
-        Guna2Button4.FillColor = Color.Black
-        Guna2Button4.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
-        Guna2Button4.ForeColor = Color.White
-        Guna2Button4.Location = New Point(475, 468)
-        Guna2Button4.Name = "Guna2Button4"
-        Guna2Button4.ShadowDecoration.CustomizableEdges = CustomizableEdges20
-        Guna2Button4.Size = New Size(124, 41)
-        Guna2Button4.TabIndex = 21
-        Guna2Button4.Text = "ADD RESIDENT"
         ' 
         ' Guna2HtmlLabel9
         ' 
@@ -437,12 +416,12 @@ Partial Class Form3
         Guna2GroupBox3.Controls.Add(Guna2HtmlLabel18)
         Guna2GroupBox3.Controls.Add(Guna2TextBox16)
         Guna2GroupBox3.CustomBorderColor = Color.Black
-        Guna2GroupBox3.CustomizableEdges = CustomizableEdges27
+        Guna2GroupBox3.CustomizableEdges = CustomizableEdges25
         Guna2GroupBox3.Font = New Font("Segoe UI", 9F)
         Guna2GroupBox3.ForeColor = Color.White
         Guna2GroupBox3.Location = New Point(3, 345)
         Guna2GroupBox3.Name = "Guna2GroupBox3"
-        Guna2GroupBox3.ShadowDecoration.CustomizableEdges = CustomizableEdges28
+        Guna2GroupBox3.ShadowDecoration.CustomizableEdges = CustomizableEdges26
         Guna2GroupBox3.Size = New Size(389, 204)
         Guna2GroupBox3.TabIndex = 30
         Guna2GroupBox3.Text = "Groupbox 1"
@@ -451,7 +430,7 @@ Partial Class Form3
         ' 
         Guna2ComboBox2.BackColor = Color.Transparent
         Guna2ComboBox2.BorderColor = Color.Black
-        Guna2ComboBox2.CustomizableEdges = CustomizableEdges21
+        Guna2ComboBox2.CustomizableEdges = CustomizableEdges19
         Guna2ComboBox2.DrawMode = DrawMode.OwnerDrawFixed
         Guna2ComboBox2.DropDownStyle = ComboBoxStyle.DropDownList
         Guna2ComboBox2.FocusedColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
@@ -462,7 +441,7 @@ Partial Class Form3
         Guna2ComboBox2.Items.AddRange(New Object() {"ID", "CLEARANCE", "PERMITS"})
         Guna2ComboBox2.Location = New Point(181, 140)
         Guna2ComboBox2.Name = "Guna2ComboBox2"
-        Guna2ComboBox2.ShadowDecoration.CustomizableEdges = CustomizableEdges22
+        Guna2ComboBox2.ShadowDecoration.CustomizableEdges = CustomizableEdges20
         Guna2ComboBox2.Size = New Size(173, 36)
         Guna2ComboBox2.TabIndex = 21
         ' 
@@ -470,7 +449,7 @@ Partial Class Form3
         ' 
         Guna2ComboBox1.BackColor = Color.Transparent
         Guna2ComboBox1.BorderColor = Color.Black
-        Guna2ComboBox1.CustomizableEdges = CustomizableEdges23
+        Guna2ComboBox1.CustomizableEdges = CustomizableEdges21
         Guna2ComboBox1.DrawMode = DrawMode.OwnerDrawFixed
         Guna2ComboBox1.DropDownStyle = ComboBoxStyle.DropDownList
         Guna2ComboBox1.FocusedColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
@@ -481,7 +460,7 @@ Partial Class Form3
         Guna2ComboBox1.Items.AddRange(New Object() {"BRGY ID", "NATIONAL ID", "NBI", "TIN", "PHILHEALTH", "POLICE CLEARANCE", "POSTAL", "LTAP (license to operate and posses fire armed) ", "BUILDING PERMIT ", "BUSINESS PERMIT", "TODA PERMIT", "MERACLO", "MWSI"})
         Guna2ComboBox1.Location = New Point(181, 62)
         Guna2ComboBox1.Name = "Guna2ComboBox1"
-        Guna2ComboBox1.ShadowDecoration.CustomizableEdges = CustomizableEdges24
+        Guna2ComboBox1.ShadowDecoration.CustomizableEdges = CustomizableEdges22
         Guna2ComboBox1.Size = New Size(173, 36)
         Guna2ComboBox1.TabIndex = 20
         ' 
@@ -522,7 +501,7 @@ Partial Class Form3
         ' 
         Guna2TextBox16.BorderColor = Color.Black
         Guna2TextBox16.BorderRadius = 2
-        Guna2TextBox16.CustomizableEdges = CustomizableEdges25
+        Guna2TextBox16.CustomizableEdges = CustomizableEdges23
         Guna2TextBox16.DefaultText = ""
         Guna2TextBox16.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
         Guna2TextBox16.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
@@ -537,7 +516,7 @@ Partial Class Form3
         Guna2TextBox16.PasswordChar = ChrW(0)
         Guna2TextBox16.PlaceholderText = "Info"
         Guna2TextBox16.SelectedText = ""
-        Guna2TextBox16.ShadowDecoration.CustomizableEdges = CustomizableEdges26
+        Guna2TextBox16.ShadowDecoration.CustomizableEdges = CustomizableEdges24
         Guna2TextBox16.Size = New Size(173, 30)
         Guna2TextBox16.TabIndex = 15
         ' 
@@ -569,7 +548,7 @@ Partial Class Form3
         Guna2DataGridView1.Location = New Point(398, 12)
         Guna2DataGridView1.Name = "Guna2DataGridView1"
         Guna2DataGridView1.RowHeadersVisible = False
-        Guna2DataGridView1.Size = New Size(424, 292)
+        Guna2DataGridView1.Size = New Size(424, 449)
         Guna2DataGridView1.TabIndex = 22
         Guna2DataGridView1.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Dark
         Guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = Color.FromArgb(CByte(44), CByte(48), CByte(52))
@@ -633,7 +612,6 @@ Partial Class Form3
         Controls.Add(Guna2DataGridView1)
         Controls.Add(Guna2GroupBox3)
         Controls.Add(Guna2Button3)
-        Controls.Add(Guna2Button4)
         Controls.Add(Guna2Button2)
         Controls.Add(Guna2Button1)
         Controls.Add(Guna2GroupBox1)
@@ -651,7 +629,6 @@ Partial Class Form3
     Friend WithEvents Guna2Button1 As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2Button2 As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2Button3 As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents Guna2Button4 As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2TextBox8 As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2TextBox7 As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2TextBox6 As Guna.UI2.WinForms.Guna2TextBox

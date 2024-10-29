@@ -35,7 +35,7 @@ Public Class Form1
 
     ' Logic for logging in when Guna2Button1 is clicked
     Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
-        If Guna2TextBox1.Text = "user" AndAlso Guna2TextBox2.Text = "passw" Then
+        If Guna2TextBox1.Text = "admin" AndAlso Guna2TextBox2.Text = "123" Then
             ' Open Form2 if the credentials are correct
             Dim form2 As New Form2()
             form2.Show()

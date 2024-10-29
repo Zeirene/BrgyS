@@ -13,40 +13,26 @@ Public Class Form3
     End Sub
 
     Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
+        Select Case Guna2ComboBox1.SelectedItem.ToString()
+            Case "ID"
+                ' Show the ID form
+                Me.Close()
+                brgyID.Show()
+
+            Case "CLEARANCE"
+                ' Show the Clearance form
+                Me.Close()
+                clearanceQCID.Show()
+                'Case "PERMITS"
+                '    Me.Close()
+                '???.Show()
+        End Select
 
         'generate docu
-        ' Path to the template document
-        Dim templatePath As String = "C:\Users\John Roi\source\repos\BrgyS\BrgyS\DOCUMENTS\TEMPLATES\"
-
-        ' Input values from the textboxes
-        Dim lastname As String = Guna2TextBox6.Text
-        Dim givenname As String = Guna2TextBox7.Text
-        Dim middlename As String = Guna2TextBox8.Text
-
-        'Dim studentSection As String = TextBox2.Text
-        'Dim studentYear As String = TextBox3.Text
-
-        ' Generate a customized file name based on student's name and current date/time
-        Dim sanitizedStudentName As String = lastname + "," + givenname + " " + middlename
-        Dim dateTimeStamp As String = DateTime.Now.ToString("yyyyMMdd") ' Add a timestamp to the file name
-
-        Dim newFileName As String = sanitizedStudentName & "_" & dateTimeStamp & ".docx"
-        Dim newFilePath As String = Path.Combine("C:\Users\John Roi\source\repos\BrgyS\BrgyS\DOCUMENTS\GENERATED DOCU\", newFileName)
-
-        ' Copy the template file to a new file with the customized name
-        File.Copy(templatePath, newFilePath, True) ' The True flag will overwrite if the file already exists
-
-        ' Replace placeholders in the new document
-        'ReplaceTextInWordDocument(newFilePath, "{Name}", studentName)
-        'ReplaceTextInWordDocument(newFilePath, "{Section}", studentSection)
-        'ReplaceTextInWordDocument(newFilePath, "{Year}", studentYear)
-
-        ' Inform the user that the document has been saved
-        MessageBox.Show("Document created and saved successfully as " & newFilePath, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-
+        'generatedocfile()
     End Sub
 
-    Private Sub Guna2Button4_Click(sender As Object, e As EventArgs) Handles Guna2Button4.Click
+    Private Sub Guna2Button4_Click(sender As Object, e As EventArgs)
         'add new resident
     End Sub
 
@@ -82,6 +68,36 @@ Public Class Form3
 
 
     'function
+    Private Sub generatedocfile()
+        ' Path to the template document
+        Dim templatePath As String = "C:\Users\John Roi\source\repos\BrgyS\BrgyS\DOCUMENTS\TEMPLATES\"
+
+        ' Input values from the textboxes
+        Dim lastname As String = Guna2TextBox6.Text
+        Dim givenname As String = Guna2TextBox7.Text
+        Dim middlename As String = Guna2TextBox8.Text
+
+        'Dim studentSection As String = TextBox2.Text
+        'Dim studentYear As String = TextBox3.Text
+
+        ' Generate a customized file name based on student's name and current date/time
+        Dim sanitizedStudentName As String = lastname + "," + givenname + " " + middlename
+        Dim dateTimeStamp As String = DateTime.Now.ToString("yyyyMMdd") ' Add a timestamp to the file name
+
+        Dim newFileName As String = sanitizedStudentName & "_" & dateTimeStamp & ".docx"
+        Dim newFilePath As String = Path.Combine("C:\Users\John Roi\source\repos\BrgyS\BrgyS\DOCUMENTS\GENERATED DOCU\", newFileName)
+
+        ' Copy the template file to a new file with the customized name
+        File.Copy(templatePath, newFilePath, True) ' The True flag will overwrite if the file already exists
+
+        ' Replace placeholders in the new document
+        'ReplaceTextInWordDocument(newFilePath, "{Name}", studentName)
+        'ReplaceTextInWordDocument(newFilePath, "{Section}", studentSection)
+        'ReplaceTextInWordDocument(newFilePath, "{Year}", studentYear)
+
+        ' Inform the user that the document has been saved
+        MessageBox.Show("Document created and saved successfully as " & newFilePath, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
 
     Private Sub ReplaceTextInWordDocument(filePath As String, placeholder As String, replacementText As String)
         ' Open the existing Word document as read/write
@@ -102,5 +118,9 @@ Public Class Form3
             ' Save changes to the document
             mainPart.Document.Save()
         End Using
+    End Sub
+
+    Private Sub Guna2TextBox1_TextChanged(sender As Object, e As EventArgs) Handles Guna2TextBox1.TextChanged
+        ' search
     End Sub
 End Class

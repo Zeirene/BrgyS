@@ -218,6 +218,7 @@ Partial Class Form1
         ' 
         ' Form1
         ' 
+        AcceptButton = Guna2Button1
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White

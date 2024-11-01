@@ -4,16 +4,15 @@ Imports DocumentFormat.OpenXml.Wordprocessing
 Imports Guna.UI2.WinForms
 
 Public Class Form3
-    Private Sub Form3_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+    Private Sub Guna2TextBox1_TextChanged(sender As Object, e As EventArgs) Handles Guna2TextBox1.TextChanged
+        ' search
     End Sub
-
-    Private Sub Label1_Click(sender As Object, e As EventArgs)
-
-    End Sub
-
     Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
-        'search only then fill the textbox
+
+        'Dim formToShow As New Form7()      ' Create an instance of Form7
+        Form2.switchPanel(Form7)      ' Call switchPanel method on Form2 to load Form7
+        'Form2.Show()
+
 
 
         'Select Case Guna2ComboBox1.SelectedItem.ToString()
@@ -30,43 +29,22 @@ Public Class Form3
         '        'Me.Close()
         '        Form7.Show()
         'End Select
-        switchPanel(Form7)
+        'switchPanel(Form7)
         'Form7.Show()
 
 
         'generate docu
         'generatedocfile()
     End Sub
-    Sub switchPanel(ByVal panel As Form)
-        Form2.Guna2Panel1.Controls.Clear()
-        panel.TopLevel = False
-        Form2.Guna2Panel1.Controls.Add(panel)
-        panel.Show()
-    End Sub
 
-    Private Sub Guna2Button4_Click(sender As Object, e As EventArgs)
-        'add new resident
-    End Sub
-
-    Private Sub Guna2Button3_Click(sender As Object, e As EventArgs)
-        'log out
-    End Sub
 
     Private Sub Guna2Button2_Click(sender As Object, e As EventArgs) Handles Guna2Button2.Click
         'clear
-        Guna2TextBox1.Clear()
-        'Guna2TextBox2.Clear()
-        'Guna2TextBox3.Clear()
-        'Guna2TextBox4.Clear()
-        'Guna2TextBox5.Clear()
+        Guna2TextBox1.Text = ""
         Guna2TextBox6.Clear()
         Guna2TextBox7.Clear()
         Guna2TextBox8.Clear()
         Guna2TextBox9.Clear()
-        'Guna2TextBox10.Clear()
-        'Guna2TextBox11.Clear()
-        'Guna2TextBox12.Clear()
-        'Guna2TextBox13.Clear()
         Guna2TextBox16.Clear()
     End Sub
 
@@ -133,19 +111,7 @@ Public Class Form3
         End Using
     End Sub
 
-    Private Sub Guna2TextBox1_TextChanged(sender As Object, e As EventArgs) Handles Guna2TextBox1.TextChanged
-        ' search
-    End Sub
 
-    Private Sub Guna2TextBox6_TextChanged(sender As Object, e As EventArgs) Handles Guna2TextBox6.TextChanged
 
-    End Sub
 
-    Private Sub Guna2TextBox8_TextChanged(sender As Object, e As EventArgs) Handles Guna2TextBox8.TextChanged
-
-    End Sub
-
-    Private Sub Guna2TextBox9_TextChanged(sender As Object, e As EventArgs) Handles Guna2TextBox9.TextChanged
-
-    End Sub
 End Class

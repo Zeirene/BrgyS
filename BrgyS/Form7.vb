@@ -69,7 +69,7 @@ Public Class Form7
 
     Private Sub Form7_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-        Guna2TextBox7.Text = Form3.Guna2TextBox6.Text + Form3.Guna2TextBox7.Text + Form3.Guna2TextBox8.Text
+        Guna2TextBox7.Text = Form3.Guna2TextBox6.Text + "," + Form3.Guna2TextBox7.Text + " " + Form3.Guna2TextBox8.Text
         Guna2TextBox4.Text = Form3.Guna2TextBox9.Text
 
     End Sub

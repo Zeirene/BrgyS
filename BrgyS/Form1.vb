@@ -13,15 +13,15 @@ Public Class Form1
     Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
         mylogin()
 
-        If Guna2TextBox1.Text = "admin" AndAlso Guna2TextBox2.Text = "123" Then
-            ' Open Form2 if the credentials are correct
-            Dim form2 As New Form2()
-            form2.Show()
-            Me.Hide() ' Hide Form1
-        Else
-            ' Show error message if the credentials are incorrect
-            MessageBox.Show("Incorrect username or password!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End If
+        'If Guna2TextBox1.Text = "admin" AndAlso Guna2TextBox2.Text = "123" Then
+        '    ' Open Form2 if the credentials are correct
+        '    Dim form2 As New Form2()
+        '    form2.Show()
+        '    Me.Hide() ' Hide Form1
+        'Else
+        '    ' Show error message if the credentials are incorrect
+        '    MessageBox.Show("Incorrect username or password!", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        'End If
     End Sub
 
     Private Sub Guna2Button3_Click(sender As Object, e As EventArgs) Handles Guna2Button3.Click
@@ -40,7 +40,7 @@ Public Class Form1
         Try
             openCon()
 
-            Using command As New MySqlCommand("SELECT * FROM staff_info WHERE username = @username  AND password = @password", con)
+            Using command As New MySqlCommand("SELECT * FROM staff_info WHERE user = @username  AND pass = @password", con)
                 command.Parameters.Add("@username", MySqlDbType.VarChar).Value = Guna2TextBox1.Text
                 command.Parameters.Add("@password", MySqlDbType.VarChar).Value = Guna2TextBox2.Text
 
@@ -55,7 +55,9 @@ Public Class Form1
                     MsgBox("Invalid username or password. Please try again.", MsgBoxStyle.Exclamation, "Login Error")
                 Else
                     ' MsgBox("Login successful!", MsgBoxStyle.Information, "Success")
-                    Hide()
+                    Me.Hide()
+                    con.Close()
+                    Form2.staffID = table.Rows(0)("staff_id").ToString
                     Form2.Show()
 
                 End If
@@ -65,5 +67,9 @@ Public Class Form1
         Finally
             con.Close()
         End Try
+    End Sub
+
+    Private Sub Guna2Button4_Click(sender As Object, e As EventArgs) Handles Guna2Button4.Click
+        Me.Dispose()
     End Sub
 End Class

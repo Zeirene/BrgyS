@@ -8,33 +8,29 @@ Public Class Form3
         ' search
     End Sub
     Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
+        If Guna2ComboBox2.SelectedItem IsNot Nothing Then
+            Select Case Guna2ComboBox2.SelectedItem.ToString()
+                Case "ID"
+                    ' Show the ID form
+                    Me.Hide() ' Optional: hides the current form instead of closing
+                    brgyID.Show()
 
-        'Dim formToShow As New Form7()      ' Create an instance of Form7
-        Form2.switchPanel(Form7)      ' Call switchPanel method on Form2 to load Form7
-        'Form2.Show()
+                Case "CLEARANCE"
+                    ' Show the Clearance form
+                    Me.Hide() ' Optional: hides the current form instead of closing
+                    clearanceQCID.Show()
 
+                Case "PERMITS"
+                    ' Show the Permits form
+                    Me.Hide() ' Optional: hides the current form instead of closing
+                    Form7.Show()
 
-
-        'Select Case Guna2ComboBox1.SelectedItem.ToString()
-        '    Case "ID"
-        '        ' Show the ID form
-        '        'Me.Close()
-        '        brgyID.Show()
-
-        '    Case "CLEARANCE"
-        '        ' Show the Clearance form
-        '        'Me.Close()
-        '        clearanceQCID.Show()
-        '    Case "PERMITS"
-        '        'Me.Close()
-        '        Form7.Show()
-        'End Select
-        'switchPanel(Form7)
-        'Form7.Show()
-
-
-        'generate docu
-        'generatedocfile()
+                Case Else
+                    MessageBox.Show("Please select a valid option.")
+            End Select
+        Else
+            MessageBox.Show("Please select an option from the dropdown.")
+        End If
     End Sub
 
 
@@ -47,15 +43,6 @@ Public Class Form3
         Guna2TextBox9.Clear()
         Guna2TextBox16.Clear()
     End Sub
-
-
-
-
-
-
-
-
-
 
     'function
 
@@ -110,8 +97,5 @@ Public Class Form3
             mainPart.Document.Save()
         End Using
     End Sub
-
-
-
 
 End Class

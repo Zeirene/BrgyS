@@ -36,6 +36,8 @@ Partial Class Form1
         Dim CustomizableEdges12 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges13 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges14 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges15 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges16 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Guna2PictureBox1 = New Guna.UI2.WinForms.Guna2PictureBox()
         Guna2TextBox1 = New Guna.UI2.WinForms.Guna2TextBox()
         Guna2TextBox2 = New Guna.UI2.WinForms.Guna2TextBox()
@@ -45,6 +47,7 @@ Partial Class Form1
         Guna2Button2 = New Guna.UI2.WinForms.Guna2Button()
         Guna2TextBox3 = New Guna.UI2.WinForms.Guna2TextBox()
         Guna2Button3 = New Guna.UI2.WinForms.Guna2Button()
+        Guna2Button4 = New Guna.UI2.WinForms.Guna2Button()
         CType(Guna2PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -216,6 +219,30 @@ Partial Class Form1
         Guna2Button3.Size = New Size(27, 16)
         Guna2Button3.TabIndex = 10
         ' 
+        ' Guna2Button4
+        ' 
+        Guna2Button4.Animated = True
+        Guna2Button4.BorderColor = Color.FromArgb(CByte(240), CByte(174), CByte(189))
+        Guna2Button4.BorderRadius = 6
+        Guna2Button4.BorderThickness = 2
+        Guna2Button4.CustomBorderColor = Color.FromArgb(CByte(240), CByte(174), CByte(189))
+        Guna2Button4.CustomBorderThickness = New Padding(2)
+        Guna2Button4.CustomizableEdges = CustomizableEdges15
+        Guna2Button4.DisabledState.BorderColor = Color.DarkGray
+        Guna2Button4.DisabledState.CustomBorderColor = Color.DarkGray
+        Guna2Button4.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        Guna2Button4.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
+        Guna2Button4.FillColor = Color.Transparent
+        Guna2Button4.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
+        Guna2Button4.ForeColor = Color.FromArgb(CByte(240), CByte(174), CByte(189))
+        Guna2Button4.Location = New Point(834, 403)
+        Guna2Button4.Name = "Guna2Button4"
+        Guna2Button4.PressedColor = Color.FromArgb(CByte(240), CByte(174), CByte(189))
+        Guna2Button4.ShadowDecoration.CustomizableEdges = CustomizableEdges16
+        Guna2Button4.Size = New Size(119, 41)
+        Guna2Button4.TabIndex = 11
+        Guna2Button4.Text = "Close"
+        ' 
         ' Form1
         ' 
         AcceptButton = Guna2Button1
@@ -223,6 +250,7 @@ Partial Class Form1
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         ClientSize = New Size(1076, 456)
+        Controls.Add(Guna2Button4)
         Controls.Add(Guna2Button3)
         Controls.Add(Guna2TextBox3)
         Controls.Add(Guna2Button2)
@@ -253,5 +281,6 @@ Partial Class Form1
     Friend WithEvents Guna2Button2 As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2TextBox3 As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2Button3 As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents Guna2Button4 As Guna.UI2.WinForms.Guna2Button
 
 End Class

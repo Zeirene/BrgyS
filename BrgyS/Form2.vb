@@ -1,43 +1,43 @@
 ﻿Imports Avalonia.Controls.Documents
 Imports Avalonia.Styling
+Imports MySql.Data.MySqlClient
 
 Public Class Form2
-    Private _memID As String
-    Private user = Form1.Guna2TextBox1.Text
+    Private _staffID As String
+    Public Property staffID() As String
+        Get
+            Return _staffID
+        End Get
+        Set(value As String)
+            _staffID = value
+            Try
+                openCon()
+                Using cmd As New MySqlCommand("SELECT * FROM staff_info WHERE staff_id = @user", con)
+                    cmd.Parameters.AddWithValue("@user", value)
 
-
-    'Public Property memID() As String
-    '    Get
-    '        Return _memID
-    '    End Get
-    '    Set(value As String)
-    '        _memID = value
-    '        Try
-    '            openCon()
-    '            Using cmd As New MySqlCommand("SELECT lname FROM user WHERE uid = @id", con)
-    '                cmd.Parameters.AddWithValue("@id", value)
-
-    '                Using reader As MySqlDataReader = cmd.ExecuteReader()
-    '                    If reader.Read() Then
-    '                        Guna2HtmlLabel4.Text = reader("lname").ToString()
-    '                    Else
-    '                        Guna2HtmlLabel4.Text = "?"
-    '                    End If
-    '                End Using
-    '            End Using
-    '        Catch ex As Exception
-    '            MsgBox(ex.Message)
-    '        Finally
-    '            con.Close()
-    '        End Try
-    '    End Set
-    'End Property
+                    Using reader As MySqlDataReader = cmd.ExecuteReader()
+                        If reader.Read() Then
+                            Dim lname = reader("last_name").ToString()
+                            Dim gname = reader("given_name").ToString()
+                            Dim mname = reader("middle_name").ToString()
+                            Guna2HtmlLabel4.Text = lname + "," + gname + " " + mname
+                        Else
+                            Guna2HtmlLabel4.Text = "?"
+                        End If
+                    End Using
+                End Using
+            Catch ex As Exception
+                MsgBox(ex.Message)
+            Finally
+                con.Close()
+            End Try
+        End Set
+    End Property
 
 
     Private Sub Form2_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'Set time and name for clerk after login
         switchPanel(Form3)
-        Guna2HtmlLabel4.Text = user
         Timer1.Interval = 1000     ' Set the interval to 1 second (1000 milliseconds)
         Timer1.Start()
 
@@ -100,7 +100,7 @@ Public Class Form2
         If result = DialogResult.Yes Then
             Dim form1 As New Form1()
             form1.Show() ' Show the login form (Form1) again
-            Me.Close() ' Close the current form (Form2) to log out
+            Me.Dispose() ' Close the current form (Form2) to log out
         End If
 
         Guna2Button5.FillColor = Color.FromArgb(30, 71, 125)

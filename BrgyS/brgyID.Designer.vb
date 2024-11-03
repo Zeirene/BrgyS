@@ -72,6 +72,7 @@ Partial Class brgyID
         Guna2Button4 = New Guna.UI2.WinForms.Guna2Button()
         Guna2TextBox9 = New Guna.UI2.WinForms.Guna2TextBox()
         Guna2HtmlLabel9 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Label1 = New Label()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -487,12 +488,22 @@ Partial Class brgyID
         Guna2HtmlLabel9.TabIndex = 46
         Guna2HtmlLabel9.Text = "ADDRESS:"
         ' 
+        ' Label1
+        ' 
+        Label1.AutoSize = True
+        Label1.Location = New Point(610, 229)
+        Label1.Name = "Label1"
+        Label1.Size = New Size(41, 15)
+        Label1.TabIndex = 48
+        Label1.Text = "Label1"
+        ' 
         ' brgyID
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         ClientSize = New Size(800, 450)
+        Controls.Add(Label1)
         Controls.Add(Guna2TextBox9)
         Controls.Add(Guna2HtmlLabel9)
         Controls.Add(Guna2Button4)
@@ -548,4 +559,5 @@ Partial Class brgyID
     Friend WithEvents Guna2Button4 As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2TextBox9 As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2HtmlLabel9 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Label1 As Label
 End Class

@@ -4,16 +4,22 @@ Imports DocumentFormat.OpenXml.Wordprocessing
 Imports Guna.UI2.WinForms
 
 Public Class Form3
+
     Private Sub Guna2TextBox1_TextChanged(sender As Object, e As EventArgs) Handles Guna2TextBox1.TextChanged
-        ' search
+        ' search then save the resident id to a dim
+
     End Sub
     Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
         If Guna2ComboBox2.SelectedItem IsNot Nothing Then
             Select Case Guna2ComboBox2.SelectedItem.ToString()
                 Case "ID"
+                    'save resident id to call out in another form
+                    'brgyID.resID = Table.Rows(0)("resident_id").ToString
+
                     ' Show the ID form
                     Me.Hide() ' Optional: hides the current form instead of closing
                     brgyID.Show()
+
 
                 Case "CLEARANCE"
                     ' Show the Clearance form

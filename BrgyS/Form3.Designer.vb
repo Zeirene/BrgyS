@@ -45,8 +45,6 @@ Partial Class Form3
         Dim CustomizableEdges18 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges19 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges20 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges21 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges22 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Guna2Button2 = New Guna.UI2.WinForms.Guna2Button()
         Guna2HtmlLabel9 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Guna2HtmlLabel8 = New Guna.UI2.WinForms.Guna2HtmlLabel()
@@ -81,7 +79,6 @@ Partial Class Form3
         Guna2HtmlLabel12 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Guna2HtmlLabel13 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Guna2HtmlLabel14 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Guna2ComboBox3 = New Guna.UI2.WinForms.Guna2ComboBox()
         CType(Guna2DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -601,35 +598,12 @@ Partial Class Form3
         Guna2HtmlLabel14.TabIndex = 30
         Guna2HtmlLabel14.Text = "Type of Document"
         ' 
-        ' Guna2ComboBox3
-        ' 
-        Guna2ComboBox3.BackColor = Color.Transparent
-        Guna2ComboBox3.BorderColor = Color.Transparent
-        Guna2ComboBox3.BorderThickness = 0
-        Guna2ComboBox3.CustomizableEdges = CustomizableEdges21
-        Guna2ComboBox3.DrawMode = DrawMode.OwnerDrawFixed
-        Guna2ComboBox3.DropDownStyle = ComboBoxStyle.DropDownList
-        Guna2ComboBox3.FillColor = Color.WhiteSmoke
-        Guna2ComboBox3.FocusedColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2ComboBox3.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2ComboBox3.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
-        Guna2ComboBox3.ForeColor = Color.Black
-        Guna2ComboBox3.IntegralHeight = False
-        Guna2ComboBox3.ItemHeight = 38
-        Guna2ComboBox3.Items.AddRange(New Object() {"ID", "CLEARANCE", "PERMITS"})
-        Guna2ComboBox3.Location = New Point(188, 55)
-        Guna2ComboBox3.Name = "Guna2ComboBox3"
-        Guna2ComboBox3.ShadowDecoration.CustomizableEdges = CustomizableEdges22
-        Guna2ComboBox3.Size = New Size(157, 44)
-        Guna2ComboBox3.TabIndex = 31
-        ' 
         ' Form3
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         ClientSize = New Size(825, 613)
-        Controls.Add(Guna2ComboBox3)
         Controls.Add(Guna2HtmlLabel14)
         Controls.Add(Guna2HtmlLabel13)
         Controls.Add(Guna2HtmlLabel12)
@@ -690,5 +664,4 @@ Partial Class Form3
     Friend WithEvents Guna2HtmlLabel12 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2HtmlLabel13 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2HtmlLabel14 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents Guna2ComboBox3 As Guna.UI2.WinForms.Guna2ComboBox
 End Class

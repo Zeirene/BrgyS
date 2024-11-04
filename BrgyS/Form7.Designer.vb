@@ -44,6 +44,8 @@ Partial Class Form7
         Dim CustomizableEdges20 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges21 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges22 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges23 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges24 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Guna2TextBox8 = New Guna.UI2.WinForms.Guna2TextBox()
         Guna2TextBox6 = New Guna.UI2.WinForms.Guna2TextBox()
         Guna2TextBox5 = New Guna.UI2.WinForms.Guna2TextBox()
@@ -70,6 +72,7 @@ Partial Class Form7
         Guna2TextBox7 = New Guna.UI2.WinForms.Guna2TextBox()
         Guna2HtmlLabel14 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Guna2TextBox9 = New Guna.UI2.WinForms.Guna2TextBox()
+        Guna2ComboBox3 = New Guna.UI2.WinForms.Guna2ComboBox()
         SuspendLayout()
         ' 
         ' Guna2TextBox8
@@ -479,12 +482,30 @@ Partial Class Form7
         Guna2TextBox9.Size = New Size(222, 61)
         Guna2TextBox9.TabIndex = 67
         ' 
+        ' Guna2ComboBox3
+        ' 
+        Guna2ComboBox3.BackColor = Color.Transparent
+        Guna2ComboBox3.CustomizableEdges = CustomizableEdges23
+        Guna2ComboBox3.DrawMode = DrawMode.OwnerDrawFixed
+        Guna2ComboBox3.DropDownStyle = ComboBoxStyle.DropDownList
+        Guna2ComboBox3.FocusedColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        Guna2ComboBox3.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        Guna2ComboBox3.Font = New Font("Segoe UI", 10F)
+        Guna2ComboBox3.ForeColor = Color.FromArgb(CByte(68), CByte(88), CByte(112))
+        Guna2ComboBox3.ItemHeight = 30
+        Guna2ComboBox3.Location = New Point(372, 224)
+        Guna2ComboBox3.Name = "Guna2ComboBox3"
+        Guna2ComboBox3.ShadowDecoration.CustomizableEdges = CustomizableEdges24
+        Guna2ComboBox3.Size = New Size(136, 36)
+        Guna2ComboBox3.TabIndex = 68
+        ' 
         ' Form7
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         ClientSize = New Size(800, 450)
+        Controls.Add(Guna2ComboBox3)
         Controls.Add(Guna2TextBox9)
         Controls.Add(Guna2TextBox7)
         Controls.Add(Guna2HtmlLabel14)
@@ -545,4 +566,5 @@ Partial Class Form7
     Friend WithEvents Guna2TextBox7 As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2HtmlLabel14 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2TextBox9 As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents Guna2ComboBox3 As Guna.UI2.WinForms.Guna2ComboBox
 End Class

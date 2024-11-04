@@ -493,9 +493,9 @@ Partial Class brgyID
         Label1.AutoSize = True
         Label1.Location = New Point(610, 229)
         Label1.Name = "Label1"
-        Label1.Size = New Size(41, 15)
+        Label1.Size = New Size(93, 15)
         Label1.TabIndex = 48
-        Label1.Text = "Label1"
+        Label1.Text = "INVISIBLE LABLE"
         ' 
         ' brgyID
         ' 

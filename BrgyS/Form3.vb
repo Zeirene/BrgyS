@@ -36,11 +36,13 @@ Public Class Form3
                         Guna2TextBox7.Text = reader("given_name").ToString()
                         Guna2TextBox8.Text = reader("middle_name").ToString()
                         Guna2TextBox9.Text = reader("address").ToString()
+                        Guna2HtmlLabel15.Text = reader("resident_id").ToString()
                     Else
                         Guna2TextBox6.Clear()
                         Guna2TextBox7.Clear()
                         Guna2TextBox8.Clear()
                         Guna2TextBox9.Clear()
+                        Guna2HtmlLabel15.Text = ""
                     End If
                 End Using
             End Using

@@ -79,6 +79,7 @@ Partial Class Form3
         Guna2HtmlLabel12 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Guna2HtmlLabel13 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Guna2HtmlLabel14 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Guna2HtmlLabel15 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         CType(Guna2DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -598,12 +599,23 @@ Partial Class Form3
         Guna2HtmlLabel14.TabIndex = 30
         Guna2HtmlLabel14.Text = "Type of Document"
         ' 
+        ' Guna2HtmlLabel15
+        ' 
+        Guna2HtmlLabel15.BackColor = Color.Transparent
+        Guna2HtmlLabel15.Font = New Font("Bahnschrift", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Guna2HtmlLabel15.ForeColor = SystemColors.ActiveCaptionText
+        Guna2HtmlLabel15.Location = New Point(400, 31)
+        Guna2HtmlLabel15.Name = "Guna2HtmlLabel15"
+        Guna2HtmlLabel15.Size = New Size(3, 2)
+        Guna2HtmlLabel15.TabIndex = 31
+        ' 
         ' Form3
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         ClientSize = New Size(825, 613)
+        Controls.Add(Guna2HtmlLabel15)
         Controls.Add(Guna2HtmlLabel14)
         Controls.Add(Guna2HtmlLabel13)
         Controls.Add(Guna2HtmlLabel12)
@@ -664,4 +676,5 @@ Partial Class Form3
     Friend WithEvents Guna2HtmlLabel12 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2HtmlLabel13 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2HtmlLabel14 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2HtmlLabel15 As Guna.UI2.WinForms.Guna2HtmlLabel
 End Class

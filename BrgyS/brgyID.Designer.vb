@@ -75,6 +75,8 @@ Partial Class brgyID
         Guna2DateTimePicker1 = New Guna.UI2.WinForms.Guna2DateTimePicker()
         Guna2ComboBox1 = New Guna.UI2.WinForms.Guna2ComboBox()
         Guna2Separator1 = New Guna.UI2.WinForms.Guna2Separator()
+        Label2 = New Label()
+        Label3 = New Label()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -378,6 +380,8 @@ Partial Class brgyID
         ' 
         ' PictureBox1
         ' 
+        PictureBox1.Image = My.Resources.Resources._2dv8cshvdod51
+        PictureBox1.InitialImage = My.Resources.Resources._2dv8cshvdod51
         PictureBox1.Location = New Point(534, 68)
         PictureBox1.Name = "PictureBox1"
         PictureBox1.Size = New Size(242, 199)
@@ -495,12 +499,32 @@ Partial Class brgyID
         Guna2Separator1.Size = New Size(457, 10)
         Guna2Separator1.TabIndex = 51
         ' 
+        ' Label2
+        ' 
+        Label2.AutoSize = True
+        Label2.Location = New Point(484, 26)
+        Label2.Name = "Label2"
+        Label2.Size = New Size(41, 15)
+        Label2.TabIndex = 52
+        Label2.Text = "Label2"
+        ' 
+        ' Label3
+        ' 
+        Label3.AutoSize = True
+        Label3.Location = New Point(609, 26)
+        Label3.Name = "Label3"
+        Label3.Size = New Size(41, 15)
+        Label3.TabIndex = 53
+        Label3.Text = "Label3"
+        ' 
         ' brgyID
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         ClientSize = New Size(842, 598)
+        Controls.Add(Label3)
+        Controls.Add(Label2)
         Controls.Add(Guna2Separator1)
         Controls.Add(Guna2ComboBox1)
         Controls.Add(Guna2DateTimePicker1)
@@ -563,4 +587,6 @@ Partial Class brgyID
     Friend WithEvents Guna2DateTimePicker1 As Guna.UI2.WinForms.Guna2DateTimePicker
     Friend WithEvents Guna2ComboBox1 As Guna.UI2.WinForms.Guna2ComboBox
     Friend WithEvents Guna2Separator1 As Guna.UI2.WinForms.Guna2Separator
+    Friend WithEvents Label2 As Label
+    Friend WithEvents Label3 As Label
 End Class

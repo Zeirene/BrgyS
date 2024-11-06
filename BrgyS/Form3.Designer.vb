@@ -61,12 +61,6 @@ Partial Class Form3
         Guna2HtmlLabel17 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Guna2HtmlLabel16 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Guna2TextBox7 = New Guna.UI2.WinForms.Guna2TextBox()
-        Column6 = New DataGridViewTextBoxColumn()
-        Column5 = New DataGridViewTextBoxColumn()
-        Column4 = New DataGridViewTextBoxColumn()
-        Column3 = New DataGridViewTextBoxColumn()
-        Column2 = New DataGridViewTextBoxColumn()
-        Names = New DataGridViewTextBoxColumn()
         Guna2DataGridView1 = New Guna.UI2.WinForms.Guna2DataGridView()
         Guna2TextBox1 = New Guna.UI2.WinForms.Guna2TextBox()
         Guna2TextBox8 = New Guna.UI2.WinForms.Guna2TextBox()
@@ -80,6 +74,11 @@ Partial Class Form3
         Guna2HtmlLabel13 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Guna2HtmlLabel14 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Guna2HtmlLabel15 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Names = New DataGridViewTextBoxColumn()
+        Column2 = New DataGridViewTextBoxColumn()
+        Column3 = New DataGridViewTextBoxColumn()
+        Column4 = New DataGridViewTextBoxColumn()
+        Column5 = New DataGridViewTextBoxColumn()
         CType(Guna2DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -340,36 +339,6 @@ Partial Class Form3
         Guna2TextBox7.Size = New Size(157, 44)
         Guna2TextBox7.TabIndex = 15
         ' 
-        ' Column6
-        ' 
-        Column6.HeaderText = "6"
-        Column6.Name = "Column6"
-        ' 
-        ' Column5
-        ' 
-        Column5.HeaderText = "5"
-        Column5.Name = "Column5"
-        ' 
-        ' Column4
-        ' 
-        Column4.HeaderText = "4"
-        Column4.Name = "Column4"
-        ' 
-        ' Column3
-        ' 
-        Column3.HeaderText = "3"
-        Column3.Name = "Column3"
-        ' 
-        ' Column2
-        ' 
-        Column2.HeaderText = "2"
-        Column2.Name = "Column2"
-        ' 
-        ' Names
-        ' 
-        Names.HeaderText = "Names"
-        Names.Name = "Names"
-        ' 
         ' Guna2DataGridView1
         ' 
         DataGridViewCellStyle1.BackColor = Color.White
@@ -385,7 +354,7 @@ Partial Class Form3
         Guna2DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Guna2DataGridView1.ColumnHeadersHeight = 17
         Guna2DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
-        Guna2DataGridView1.Columns.AddRange(New DataGridViewColumn() {Names, Column2, Column3, Column4, Column5, Column6})
+        Guna2DataGridView1.Columns.AddRange(New DataGridViewColumn() {Names, Column2, Column3, Column4, Column5})
         DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = Color.FromArgb(CByte(247), CByte(248), CByte(249))
         DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F)
@@ -597,6 +566,31 @@ Partial Class Form3
         Guna2HtmlLabel15.TabIndex = 31
         Guna2HtmlLabel15.Text = Nothing
         ' 
+        ' Names
+        ' 
+        Names.HeaderText = "Resident Number"
+        Names.Name = "Names"
+        ' 
+        ' Column2
+        ' 
+        Column2.HeaderText = "Last Name"
+        Column2.Name = "Column2"
+        ' 
+        ' Column3
+        ' 
+        Column3.HeaderText = "Given Name"
+        Column3.Name = "Column3"
+        ' 
+        ' Column4
+        ' 
+        Column4.HeaderText = "Middle Name"
+        Column4.Name = "Column4"
+        ' 
+        ' Column5
+        ' 
+        Column5.HeaderText = "Address"
+        Column5.Name = "Column5"
+        ' 
         ' Form3
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
@@ -646,12 +640,6 @@ Partial Class Form3
     Friend WithEvents Guna2HtmlLabel17 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2HtmlLabel16 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2TextBox7 As Guna.UI2.WinForms.Guna2TextBox
-    Friend WithEvents Column6 As DataGridViewTextBoxColumn
-    Friend WithEvents Column5 As DataGridViewTextBoxColumn
-    Friend WithEvents Column4 As DataGridViewTextBoxColumn
-    Friend WithEvents Column3 As DataGridViewTextBoxColumn
-    Friend WithEvents Column2 As DataGridViewTextBoxColumn
-    Friend WithEvents Names As DataGridViewTextBoxColumn
     Friend WithEvents Guna2DataGridView1 As Guna.UI2.WinForms.Guna2DataGridView
     Friend WithEvents Guna2TextBox1 As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2TextBox8 As Guna.UI2.WinForms.Guna2TextBox
@@ -665,4 +653,9 @@ Partial Class Form3
     Friend WithEvents Guna2HtmlLabel13 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2HtmlLabel14 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2HtmlLabel15 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Names As DataGridViewTextBoxColumn
+    Friend WithEvents Column2 As DataGridViewTextBoxColumn
+    Friend WithEvents Column3 As DataGridViewTextBoxColumn
+    Friend WithEvents Column4 As DataGridViewTextBoxColumn
+    Friend WithEvents Column5 As DataGridViewTextBoxColumn
 End Class

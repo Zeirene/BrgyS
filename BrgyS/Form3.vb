@@ -5,11 +5,82 @@ Imports Guna.UI2.WinForms
 Imports MySql.Data.MySqlClient
 
 Public Class Form3
+    Private Sub Form3_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        loadform()
+    End Sub
 
     Private Sub Guna2TextBox1_TextChanged(sender As Object, e As EventArgs) Handles Guna2TextBox1.TextChanged
         LoadResidentInformation(Guna2TextBox1.Text)
     End Sub
 
+    Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
+        If Guna2ComboBox2.SelectedItem IsNot Nothing Then
+            Select Case Guna2ComboBox2.SelectedItem.ToString()
+                Case "ID"
+
+                    Try
+                        openCon()
+
+                        Using command As New MySqlCommand("SELECT * FROM resident_info WHERE resident_id = @resident_id", con)
+                            command.Parameters.Add("@resident_id", MySqlDbType.VarChar).Value = Guna2TextBox1.Text ' search
+
+                            Dim adapter As New MySqlDataAdapter(command)
+                            Dim table As New DataTable
+                            adapter.Fill(table)
+
+
+                            If table.Rows.Count = 0 Then
+                                MsgBox("Invalid username or password. Please try again.", MsgBoxStyle.Exclamation, "Login Error")
+                            Else
+                                con.Close()
+                                
+                                brgyID.resID = table.Rows(0)("resident_id").ToString
+                                Dim anotherForm As New brgyID()
+                                Form2.switchPanel(anotherForm)
+
+                            End If
+                        End Using
+                    Catch ex As Exception
+                        MsgBox("An error occurred: " & ex.Message, MsgBoxStyle.Critical, "Error")
+                    Finally
+                        con.Close()
+                    End Try
+
+
+
+                Case "CLEARANCE"
+                    ' Show the Clearance form
+                    Dim anotherForm As New clearanceQCID()
+                    Form2.switchPanel(anotherForm)
+
+                Case "PERMITS"
+                    ' Show the Permits form
+                    Dim anotherForm As New Form7()
+                    Form2.switchPanel(anotherForm)
+
+                Case Else
+                    MessageBox.Show("Please select a valid option.")
+            End Select
+        Else
+            MessageBox.Show("Please select an option from the dropdown.")
+        End If
+    End Sub
+
+
+    Private Sub Guna2Button2_Click(sender As Object, e As EventArgs) Handles Guna2Button2.Click
+        'clear
+        loadform()
+        Guna2TextBox1.Text = ""
+        Guna2TextBox6.Clear()
+        Guna2TextBox7.Clear()
+        Guna2TextBox8.Clear()
+        Guna2TextBox9.Clear()
+        Guna2TextBox16.Clear()
+        Guna2HtmlLabel15.Text = ""
+
+    End Sub
+
+    'function
     Private Sub LoadResidentInformation(searchTerm As String)
 
         Dim query As String = "SELECT * FROM resident_info WHERE resident_id LIKE @searchTerm"
@@ -30,6 +101,8 @@ Public Class Form3
                 command.Parameters.AddWithValue("@searchTerm", "%" & searchTerm & "%")
 
                 Using reader As MySqlDataReader = command.ExecuteReader()
+                    Guna2DataGridView1.Rows.Clear()
+
                     '
                     If reader.Read() Then
                         Guna2TextBox6.Text = reader("last_name").ToString()
@@ -37,119 +110,59 @@ Public Class Form3
                         Guna2TextBox8.Text = reader("middle_name").ToString()
                         Guna2TextBox9.Text = reader("address").ToString()
                         Guna2HtmlLabel15.Text = reader("resident_id").ToString()
+
+                        'insert to table
+                        While reader.Read()
+                            ' Add a new row to the DataGridView
+                            Guna2DataGridView1.Rows.Add(reader("resident_id"), reader("last_Name"), reader("given_Name"), reader("middle_Name"), reader("address"))
+                        End While
                     Else
                         Guna2TextBox6.Clear()
                         Guna2TextBox7.Clear()
                         Guna2TextBox8.Clear()
                         Guna2TextBox9.Clear()
                         Guna2HtmlLabel15.Text = ""
+                        'loadform()
                     End If
                 End Using
             End Using
 
         Catch ex As Exception
             ' Handle any errors that may have occurred
-            MessageBox.Show("An error occurred: " & ex.Message)
+            'MessageBox.Show("An error occurred: " & ex.Message)
         Finally
             con.Close()
         End Try
 
     End Sub
+    Private Sub loadform()
+        Guna2DataGridView1.Rows.Clear()
 
+        openCon()
 
-    Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
-        If Guna2ComboBox2.SelectedItem IsNot Nothing Then
-            Select Case Guna2ComboBox2.SelectedItem.ToString()
-                Case "ID"
-                    'save resident id to call out in another form
-                    'brgyID.resID = Table.Rows(0)("resident_id").ToString
+        Try
 
-                    ' Show the ID form
-                    Me.Hide() ' Optional: hides the current form instead of closing
-                    brgyID.Show()
+            Dim query As String = "SELECT * FROM resident_info"
 
+            ' Create a MySqlCommand
+            Dim command As New MySqlCommand(query, con)
 
-                Case "CLEARANCE"
-                    ' Show the Clearance form
-                    Me.Hide() ' Optional: hides the current form instead of closing
-                    clearanceQCID.Show()
+            ' Execute the command and obtain a reader
+            Dim reader As MySqlDataReader = command.ExecuteReader()
 
-                Case "PERMITS"
-                    ' Show the Permits form
-                    Me.Hide() ' Optional: hides the current form instead of closing
-                    Form7.Show()
+            ' Loop through the rows in the SqlDataReader
+            While reader.Read()
+                ' Add a new row to the DataGridView
+                Guna2DataGridView1.Rows.Add(reader("resident_id"), reader("last_Name"), reader("given_Name"), reader("middle_Name"), reader("address"))
+            End While
 
-                Case Else
-                    MessageBox.Show("Please select a valid option.")
-            End Select
-        Else
-            MessageBox.Show("Please select an option from the dropdown.")
-        End If
-    End Sub
-
-
-    Private Sub Guna2Button2_Click(sender As Object, e As EventArgs) Handles Guna2Button2.Click
-        'clear
-        Guna2TextBox1.Text = ""
-        Guna2TextBox6.Clear()
-        Guna2TextBox7.Clear()
-        Guna2TextBox8.Clear()
-        Guna2TextBox9.Clear()
-        Guna2TextBox16.Clear()
-    End Sub
-
-    'function
-
-    Private Sub generatedocfile()
-        ' Path to the template document
-        Dim templatePath As String = "C:\Users\John Roi\source\repos\BrgyS\BrgyS\DOCUMENTS\TEMPLATES\"
-
-        ' Input values from the textboxes
-        Dim lastname As String = Guna2TextBox6.Text
-        Dim givenname As String = Guna2TextBox7.Text
-        Dim middlename As String = Guna2TextBox8.Text
-
-        'Dim studentSection As String = TextBox2.Text
-        'Dim studentYear As String = TextBox3.Text
-
-        ' Generate a customized file name based on student's name and current date/time
-        Dim sanitizedStudentName As String = lastname + "," + givenname + " " + middlename
-        Dim dateTimeStamp As String = DateTime.Now.ToString("yyyyMMdd") ' Add a timestamp to the file name
-
-        Dim newFileName As String = sanitizedStudentName & "_" & dateTimeStamp & ".docx"
-        Dim newFilePath As String = Path.Combine("C:\Users\John Roi\source\repos\BrgyS\BrgyS\DOCUMENTS\GENERATED DOCU\", newFileName)
-
-        ' Copy the template file to a new file with the customized name
-        File.Copy(templatePath, newFilePath, True) ' The True flag will overwrite if the file already exists
-
-        ' Replace placeholders in the new document
-        'ReplaceTextInWordDocument(newFilePath, "{Name}", studentName)
-        'ReplaceTextInWordDocument(newFilePath, "{Section}", studentSection)
-        'ReplaceTextInWordDocument(newFilePath, "{Year}", studentYear)
-
-        ' Inform the user that the document has been saved
-        MessageBox.Show("Document created and saved successfully as " & newFilePath, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-    End Sub
-
-    Private Sub ReplaceTextInWordDocument(filePath As String, placeholder As String, replacementText As String)
-        ' Open the existing Word document as read/write
-        Using wordDoc As WordprocessingDocument = WordprocessingDocument.Open(filePath, True)
-            ' Get the main document part
-            Dim mainPart As MainDocumentPart = wordDoc.MainDocumentPart
-            Dim documentBody As Body = mainPart.Document.Body
-
-            ' Loop through all text elements in the document
-            For Each textElement As Text In documentBody.Descendants(Of Text)()
-                ' Check if the text contains the placeholder
-                If textElement.Text.Contains(placeholder) Then
-                    ' Replace the placeholder with the actual value
-                    textElement.Text = textElement.Text.Replace(placeholder, replacementText)
-                End If
-            Next
-
-            ' Save changes to the document
-            mainPart.Document.Save()
-        End Using
+            ' Close the SqlDataReader
+            reader.Close()
+        Catch ex As Exception
+            MessageBox.Show("Error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            con.Close()
+        End Try
     End Sub
 
 End Class

@@ -355,7 +355,7 @@
     <value>Bahnschrift, 8.25pt</value>
   </data>
   <data name="Guna2HtmlLabel4.Location" type="System.Drawing.Point, System.Drawing">
-    <value>997, 29</value>
+    <value>235, 44</value>
   </data>
   <data name="Guna2HtmlLabel4.Size" type="System.Drawing.Size, System.Drawing">
     <value>71, 15</value>
@@ -409,7 +409,7 @@
     <value>Bahnschrift, 8.25pt</value>
   </data>
   <data name="Guna2HtmlLabel5.Location" type="System.Drawing.Point, System.Drawing">
-    <value>243, 29</value>
+    <value>1019, 44</value>
   </data>
   <data name="Guna2HtmlLabel5.Size" type="System.Drawing.Size, System.Drawing">
     <value>27, 15</value>

@@ -2,19 +2,24 @@
 Imports AForge.Video.DirectShow
 Imports DocumentFormat.OpenXml.Packaging
 Imports DocumentFormat.OpenXml.Wordprocessing
-Imports Guna.UI2.WinForms
 Imports MySql.Data.MySqlClient
 Imports System.Drawing.Imaging
+Imports Syncfusion.DocIO.DLS
+Imports Syncfusion.DocToPDFConverter
+Imports Syncfusion.Pdf
 Imports System.IO
 
 Public Class brgyID
     Private _resID As String
+    'Private _staffID As String
+
+
     Public Property resID() As String
         Get
-            Return resID
+            Return _resID
         End Get
         Set(value As String)
-            resID = value
+            _resID = value
             Try
                 openCon()
                 Using cmd As New MySqlCommand("SELECT * FROM resident_info WHERE resident_id = @user", con)
@@ -22,7 +27,7 @@ Public Class brgyID
 
                     Using reader As MySqlDataReader = cmd.ExecuteReader()
                         If reader.Read() Then
-                            Dim resid = reader("resident_id").ToString()
+                            Label2.Text = reader("resident_id").ToString()
                         End If
                     End Using
                 End Using
@@ -37,10 +42,14 @@ Public Class brgyID
 
     Dim CAMERA As VideoCaptureDevice
     Dim bmp As Bitmap
+
     Private Sub brgyID_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Camstart() 'load camera
-        Guna2TextBox1.Text = Form3.Guna2TextBox6.Text + "," + Form3.Guna2TextBox7.Text + " " + Form3.Guna2TextBox8.Text
-        Guna2TextBox3.Text = Form3.Guna2TextBox9.Text
+        Guna2TextBox1.Text = Form3.Guna2TextBox6.Text + "," + Form3.Guna2TextBox7.Text + " " + Form3.Guna2TextBox8.Text 'fullname
+        Guna2TextBox3.Text = Form3.Guna2TextBox9.Text 'address
+
+        Label2.Text = Form3.Guna2HtmlLabel15.Text
+        Label3.Text = Form2.staffID
         'load other info by query
 
     End Sub
@@ -68,19 +77,7 @@ Public Class brgyID
     Private Sub Guna2Button3_Click(sender As Object, e As EventArgs) Handles Guna2Button3.Click
         'save and print docu
         generatedocfile()
-
-        'Dim logDate As Date = Date.Today
-        'Dim logTime As TimeSpan = TimeSpan.Parse("14:30:00")
-        'Dim logType As String = "Transaction Type"
-        'Dim logStatus As String = "Completed"
-        'Dim fileName As String = "transaction_receipt.pdf"
-        'Dim filePath As String = "C:\path\to\file\transaction_receipt.pdf" ' Provide actual file path here
-        'Dim payment As Decimal = 150.75D
-        'Dim residentId As Integer = 1 ' This should correspond to an existing resident_id in resident_info
-        'Dim staffId As Integer = 123 ' This should correspond to an existing staff_id in staff_info
-
-        '' Call the insert function
-        'InsertTransactionLog(logDate, logTime, logType, logStatus, fileName, filePath, payment, residentId, staffId)
+        InsertTransactionLog()
     End Sub
 
     'functions and sub
@@ -94,48 +91,73 @@ Public Class brgyID
         Dim RESADDRESS As String = Guna2TextBox3.Text
         Dim PHOTO As String = Label1.Text
         Dim TIN As String = Guna2TextBox4.Text
-        Dim BDAY As String = Guna2DateTimePicker1.Value
+        Dim BDAY As String = Guna2DateTimePicker1.Value.ToString("MM/dd/yyyy")
         Dim BTYPE As String = Guna2ComboBox1.Text
         Dim PRECINTNO As String = Guna2TextBox6.Text
         Dim EMERNAME As String = Guna2TextBox8.Text
         Dim EMERNO As String = Guna2TextBox7.Text
         Dim EMERADD As String = Guna2TextBox9.Text
 
-
-
-
-        'Dim studentSection As String = TextBox2.Text
-        'Dim studentYear As String = TextBox3.Text
-
-        ' Generate a customized file name based on student's name and current date/time
+        ' Generate a new .docx file path
         Dim sanitizedStudentName As String = NAMEOFAPPLICANT
-        Dim dateTimeStamp As String = DateTime.Now.ToString("yyyyMMdd") ' Add a timestamp to the file name
+        Dim dateTimeStamp As String = DateTime.Now.ToString("yyyyMMdd")
+        Dim newDocxFileName As String = sanitizedStudentName & "_" & dateTimeStamp & ".docx"
+        Dim newDocxFilePath As String = Path.Combine("C:\Users\John Roi\source\repos\BrgyS\BrgyS\docu\generated docu\", newDocxFileName)
 
-        Dim newFileName As String = sanitizedStudentName & "_" & dateTimeStamp & ".pdf"
-        Dim newFilePath As String = Path.Combine("C:\Users\John Roi\source\repos\BrgyS\BrgyS\docu\generated docu\", newFileName)
+        ' Copy the template file and replace placeholders
+        File.Copy(templatePath, newDocxFilePath, True)
+        ReplaceTextInWordDocument(newDocxFilePath, "{Name}", NAMEOFAPPLICANT)
+        ReplaceTextInWordDocument(newDocxFilePath, "{IDNumber}", BRGYID)
+        ReplaceTextInWordDocument(newDocxFilePath, "{Address}", RESADDRESS)
+        InsertImageInWordDocument(newDocxFilePath, "{Photo}", PHOTO)
+        ReplaceTextInWordDocument(newDocxFilePath, "{TIN}", TIN)
+        ReplaceTextInWordDocument(newDocxFilePath, "{BDay}", BDAY)
+        ReplaceTextInWordDocument(newDocxFilePath, "{BloodType}", BTYPE)
+        ReplaceTextInWordDocument(newDocxFilePath, "{Precinct}", PRECINTNO)
+        ReplaceTextInWordDocument(newDocxFilePath, "{NameOfEmerContact}", EMERNAME)
+        ReplaceTextInWordDocument(newDocxFilePath, "{NumberOfEmerContact}", EMERNO)
+        ReplaceTextInWordDocument(newDocxFilePath, "{AddressOfEmerContact}", EMERADD)
 
-        ' Copy the template file to a new file with the customized name
-        File.Copy(templatePath, newFilePath, True) ' The True flag will overwrite if the file already exists
+        ' Convert to PDF using Syncfusion
+        Dim pdfDocPath As String = Path.Combine("C:\Users\John Roi\source\repos\BrgyS\BrgyS\docu\generated docu\", sanitizedStudentName & "_" & dateTimeStamp & ".pdf")
+        ConvertDocxToPdf(newDocxFilePath, pdfDocPath)
 
-        ' Replace placeholders in the new document
-        ReplaceTextInWordDocument(newFilePath, "{Name}", NAMEOFAPPLICANT)
-        ReplaceTextInWordDocument(newFilePath, "{IDNumber}", BRGYID)
-        ReplaceTextInWordDocument(newFilePath, "{Address}", RESADDRESS)
-        InsertImageInWordDocument(newFilePath, "{Photo}", PHOTO)
-        ReplaceTextInWordDocument(newFilePath, "{TIN}", TIN)
-        ReplaceTextInWordDocument(newFilePath, "{BDay}", BDAY)
-        ReplaceTextInWordDocument(newFilePath, "{BloodType}", BTYPE)
-        ReplaceTextInWordDocument(newFilePath, "{Precinct}", PRECINTNO)
-        ReplaceTextInWordDocument(newFilePath, "{NameOfEmerContact}", EMERNAME)
-        ReplaceTextInWordDocument(newFilePath, "{NumberOfEmerContact}", EMERNO)
-        ReplaceTextInWordDocument(newFilePath, "{AddressOfEmerContact}", EMERADD)
+        ' Print the PDF
+        PrintPdf(pdfDocPath)
 
 
-        ' Inform the user that the document has been saved
-        'MessageBox.Show("Document created and saved successfully as " & newFilePath, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        MessageBox.Show("Document created and ready to print ", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-
+        MessageBox.Show("Document created, saved as PDF, and sent to printer.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub
+    'Private Sub ConvertDocxToPdf(docxFilePath As String, pdfFilePath As String)
+    '    ' Open a FileStream for the .docx file
+    '    Using fileStream As New FileStream(docxFilePath, FileMode.Open, FileAccess.Read)
+    '        ' Load the Word document from the stream with the correct FormatType
+    '        Using wordDoc As New WordDocument(fileStream, Syncfusion.DocIO.FormatType.Docx)
+    '            ' Initialize DocToPDFConverter
+    '            Dim converter As New Syncfusion.DocToPDFConverter.DocToPDFConverter()
+
+    '            ' Convert the Word document to PDF
+    '            Dim pdfDoc As Syncfusion.Pdf.PdfDocument = converter.ConvertToPDF(wordDoc)
+
+    '            ' Save the PDF document to the specified file path
+    '            pdfDoc.Save(pdfFilePath)
+
+    '            ' Close the PDF document
+    '            pdfDoc.Close(True)
+    '        End Using
+    '    End Using
+    'End Sub
+
+    '' Print the PDF document
+    'Private Sub PrintPdf(pdfFilePath As String)
+    '    Using pdfDoc As New Syncfusion.Pdf.Parsing.PdfLoadedDocument(pdfFilePath)
+    '        ' Create a printer instance for the PDF
+    '        Dim pdfPrinter As New Syncfusion.Pdf.Parsing.PdfDocumentPrinter(pdfDoc)
+    '        ' Print the PDF document
+    '        pdfPrinter.Print()
+    '    End Using
+    'End Sub
+
     Private Sub InsertImageInWordDocument(filePath As String, imagePlaceholder As String, imagePath As String)
         Using wordDoc As WordprocessingDocument = WordprocessingDocument.Open(filePath, True)
             Dim mainPart As MainDocumentPart = wordDoc.MainDocumentPart
@@ -224,6 +246,30 @@ Public Class brgyID
             mainPart.Document.Save()
         End Using
     End Sub
+    Private Sub ConvertDocxToPdfAndPrint(docxFilePath As String, pdfFilePath As String)
+        Dim wordApp As New Microsoft.Office.Interop.Word.Application()
+        Dim wordDoc As Microsoft.Office.Interop.Word.Document = Nothing
+
+        Try
+            ' Open the DOCX file
+            wordDoc = wordApp.Documents.Open(docxFilePath)
+
+            ' Export as PDF
+            wordDoc.ExportAsFixedFormat(pdfFilePath, Microsoft.Office.Interop.Word.WdExportFormat.wdExportFormatPDF)
+
+            ' Print the PDF
+            wordDoc.PrintOut()
+
+        Catch ex As Exception
+            MessageBox.Show("Error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        Finally
+            ' Close Word application and document
+            If wordDoc IsNot Nothing Then wordDoc.Close(False)
+            wordApp.Quit(False)
+        End Try
+    End Sub
+
+
     'camera//////////////////////////////////////////////////////////////////////////////////////
     Private Sub Camstart()
         Dim cameras As VideoCaptureDeviceForm = New VideoCaptureDeviceForm
@@ -257,106 +303,54 @@ Public Class brgyID
         Return System.DateTime.Now.ToString("yyyyMMdd") + "_" + Guna2TextBox1.Text
     End Function
 
-    Private Sub formatforID()
-        'fetch resident id from db
-        Try
-            openCon()
-            Dim query As String = "SELECT * FROM resident_info WHERE emp_id LIKE @searchText"
-        Catch ex As Exception
+    Public Sub InsertTransactionLog()
+        Dim logDate As Date = Date.Today
+        Dim logTime As Date = DateTime.Now.ToString("HH:mm:ss")
+        Dim logType As String = Form3.Guna2ComboBox2.Text
+        Dim logStatus As String = "Completed"
+        Dim payment As Decimal = Decimal.Parse(Form3.Guna2TextBox16.Text)
+        Dim residentId As String = Label2.Text
+        Dim staffId As String = Form2.staffID ' staffId is treated as a String
 
+        Try
+            ' Open the connection to the database
+            con.Open()
+
+            'Prepare the SQL query to insert the transaction log data
+            Dim insertQuery As String = "INSERT INTO transaction_log (log_date, log_time, type, status, payment, resident_id, staff_id) 
+                                     VALUES (@log_date, @log_time, @type, @status, @payment, @resident_id, @staff_id)"
+
+            'Dim insertQuery As String = "INSERT INTO transaction_log (log_date, log_time, type, status, payment) 
+            '                         VALUES (@log_date, @log_time, @type, @status, @payment)"
+
+            ' Create a MySQL command object with the query and connection
+            Using cmd As New MySqlCommand(insertQuery, con)
+                ' Add parameters to the command
+                cmd.Parameters.AddWithValue("@log_date", logDate)
+                cmd.Parameters.AddWithValue("@log_time", logTime)
+                cmd.Parameters.AddWithValue("@type", logType)
+                cmd.Parameters.AddWithValue("@status", logStatus)
+                cmd.Parameters.AddWithValue("@payment", payment)
+                cmd.Parameters.AddWithValue("@resident_id", residentId)
+                cmd.Parameters.AddWithValue("@staff_id", staffId)
+
+                ' Execute the command to insert data into the transaction_log table
+                cmd.ExecuteNonQuery()
+
+                ' Optional: Show a success message after insertion
+                MessageBox.Show("Transaction log inserted successfully!")
+            End Using
+
+        Catch ex As Exception
+            ' Handle any errors that may have occurred
+            MessageBox.Show("Error: " & ex.Message)
+        Finally
+            ' Ensure the connection is closed
+            If con IsNot Nothing AndAlso con.State = ConnectionState.Open Then
+                con.Close()
+            End If
         End Try
     End Sub
-
-    'Public Sub InsertTransactionLog(logDate As Date, logTime As TimeSpan, logType As String, logStatus As String, fileName As String, filePath As String, payment As Decimal, residentId As Integer, staffId As Integer)
-    '    ' Create a new MySQL connection using the connection string
-    '    Dim NAMEOFAPPLICANT As String = Guna2TextBox1.Text
-    '    Dim BRGYID As String = resID
-    '    Dim RESADDRESS As String = Guna2TextBox3.Text
-    '    Dim PHOTO As String = Label1.Text
-    '    Dim TIN As String = Guna2TextBox4.Text
-    '    Dim log_date As String = Guna2DateTimePicker1.Value
-    '    Dim type As String = Guna2ComboBox1.Text
-    '    Dim PRECINTNO As String = Guna2TextBox6.Text
-    '    Dim EMERNAME As String = Guna2TextBox8.Text
-    '    Dim EMERNO As String = Guna2TextBox7.Text
-    '    Dim EMERADD As String = Guna2TextBox9.Text
-    '    Try
-    '        ' Open the connection to the database
-    '        con.Open()
-
-    '        ' Check if the resident_id and staff_id exist in the respective tables
-    '        Dim checkQuery As String = "SELECT 1 FROM resident_info r 
-    '                                        JOIN staff_info s ON r.resident_id = @resident_id 
-    '                                        AND s.staff_id = @staff_id 
-    '                                        LIMIT 1"
-
-    '        Using checkCmd As New MySqlCommand(checkQuery, con)
-    '            checkCmd.Parameters.AddWithValue("@resident_id", residentId)
-    '            checkCmd.Parameters.AddWithValue("@staff_id", staffId)
-
-    '            ' Execute the query and check if the row exists
-    '            Dim result = checkCmd.ExecuteScalar()
-
-    '            ' If result is nothing, it means the foreign key values do not exist in both tables
-    '            If result Is Nothing Then
-    '                MessageBox.Show("The specified resident_id or staff_id does not exist in the database.")
-    '                Return
-    '            End If
-    '        End Using
-
-    '        ' Prepare the SQL query to insert the transaction log data
-    '        Dim insertQuery As String = "INSERT INTO transaction_log (log_date, log_time, type, status, file_name, file_data, payment, resident_id, staff_id) 
-    '                                         VALUES (@log_date, @log_time, @type, @status, @file_name, @file_data, @payment, @resident_id, @staff_id)"
-
-    '        ' Create a MySQL command object with the query and connection
-    '        Using cmd As New MySqlCommand(insertQuery, con)
-    '            ' Add parameters to the command
-    '            cmd.Parameters.AddWithValue("@log_date", logDate)
-    '            cmd.Parameters.AddWithValue("@log_time", logTime)
-    '            cmd.Parameters.AddWithValue("@type", logType)
-    '            cmd.Parameters.AddWithValue("@status", logStatus)
-    '            cmd.Parameters.AddWithValue("@file_name", fileName)
-
-    '            ' Check if file exists and add its data as a byte array
-    '            If File.Exists(filePath) Then
-    '                Dim fileData As Byte() = File.ReadAllBytes(filePath)
-    '                cmd.Parameters.AddWithValue("@file_data", fileData)
-    '            Else
-    '                cmd.Parameters.AddWithValue("@file_data", DBNull.Value)
-    '            End If
-
-    '            cmd.Parameters.AddWithValue("@payment", payment)
-    '            cmd.Parameters.AddWithValue("@resident_id", residentId)
-    '            cmd.Parameters.AddWithValue("@staff_id", staffId)
-
-    '            ' Execute the command to insert data into the transaction_log table
-    '            cmd.ExecuteNonQuery()
-
-    '            ' Optional: Show a success message after insertion
-    '            MessageBox.Show("Transaction log inserted successfully!")
-    '        End Using
-    '    Catch ex As Exception
-    '        ' Handle any errors that may have occurred
-    '        MessageBox.Show("Error: " & ex.Message)
-    '    End Try
-    'End Sub
-
-    ' Button click event for testing the insert function
-    'Private Sub btnInsert_Click(sender As Object, e As EventArgs) Handles btnInsert.Click
-    '    ' Example values to insert
-    '    Dim logDate As Date = Date.Today
-    '    Dim logTime As TimeSpan = TimeSpan.Parse("14:30:00")
-    '    Dim logType As String = "Transaction Type"
-    '    Dim logStatus As String = "Completed"
-    '    Dim fileName As String = "transaction_receipt.pdf"
-    '    Dim filePath As String = "C:\path\to\file\transaction_receipt.pdf" ' Provide actual file path here
-    '    Dim payment As Decimal = 150.75D
-    '    Dim residentId As Integer = 1 ' This should correspond to an existing resident_id in resident_info
-    '    Dim staffId As Integer = 123 ' This should correspond to an existing staff_id in staff_info
-
-    '    ' Call the insert function
-    '    InsertTransactionLog(logDate, logTime, logType, logStatus, fileName, filePath, payment, residentId, staffId)
-    'End Sub
 
 
 End Class

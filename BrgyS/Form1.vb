@@ -58,6 +58,8 @@ Public Class Form1
                     Me.Hide()
                     con.Close()
                     Form2.staffID = table.Rows(0)("staff_id").ToString
+                    'brgyID.staffID = table.Rows(0)("staff_id").ToString
+
                     Form2.Show()
 
                 End If

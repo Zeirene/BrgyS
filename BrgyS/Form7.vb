@@ -73,4 +73,8 @@ Public Class Form7
         Guna2TextBox4.Text = Form3.Guna2TextBox9.Text
 
     End Sub
+
+    Private Sub Guna2ComboBox3_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Guna2ComboBox3.SelectedIndexChanged
+
+    End Sub
 End Class

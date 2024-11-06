@@ -174,17 +174,15 @@ Partial Class Form3
         ' Guna2TextBox9
         ' 
         Guna2TextBox9.Animated = True
-        Guna2TextBox9.BackColor = Color.WhiteSmoke
-        Guna2TextBox9.BorderColor = Color.Black
+        Guna2TextBox9.BackColor = Color.Transparent
+        Guna2TextBox9.BorderColor = Color.FromArgb(CByte(183), CByte(185), CByte(204))
         Guna2TextBox9.BorderRadius = 10
-        Guna2TextBox9.BorderThickness = 0
         Guna2TextBox9.CustomizableEdges = CustomizableEdges3
         Guna2TextBox9.DefaultText = ""
         Guna2TextBox9.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
         Guna2TextBox9.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
         Guna2TextBox9.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
         Guna2TextBox9.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        Guna2TextBox9.FillColor = Color.WhiteSmoke
         Guna2TextBox9.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         Guna2TextBox9.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
         Guna2TextBox9.ForeColor = Color.Black
@@ -222,15 +220,15 @@ Partial Class Form3
         ' Guna2TextBox16
         ' 
         Guna2TextBox16.Animated = True
-        Guna2TextBox16.BorderColor = Color.Black
-        Guna2TextBox16.BorderThickness = 0
+        Guna2TextBox16.BackColor = Color.Transparent
+        Guna2TextBox16.BorderColor = Color.FromArgb(CByte(183), CByte(185), CByte(204))
+        Guna2TextBox16.BorderRadius = 10
         Guna2TextBox16.CustomizableEdges = CustomizableEdges7
         Guna2TextBox16.DefaultText = ""
         Guna2TextBox16.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
         Guna2TextBox16.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
         Guna2TextBox16.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
         Guna2TextBox16.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        Guna2TextBox16.FillColor = Color.WhiteSmoke
         Guna2TextBox16.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         Guna2TextBox16.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
         Guna2TextBox16.ForeColor = Color.Black
@@ -247,12 +245,11 @@ Partial Class Form3
         ' Guna2ComboBox1
         ' 
         Guna2ComboBox1.BackColor = Color.Transparent
-        Guna2ComboBox1.BorderColor = Color.Black
-        Guna2ComboBox1.BorderThickness = 0
+        Guna2ComboBox1.BorderColor = Color.FromArgb(CByte(183), CByte(185), CByte(204))
+        Guna2ComboBox1.BorderRadius = 10
         Guna2ComboBox1.CustomizableEdges = CustomizableEdges9
         Guna2ComboBox1.DrawMode = DrawMode.OwnerDrawFixed
         Guna2ComboBox1.DropDownStyle = ComboBoxStyle.DropDownList
-        Guna2ComboBox1.FillColor = Color.WhiteSmoke
         Guna2ComboBox1.FocusedColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         Guna2ComboBox1.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         Guna2ComboBox1.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
@@ -268,12 +265,11 @@ Partial Class Form3
         ' Guna2ComboBox2
         ' 
         Guna2ComboBox2.BackColor = Color.Transparent
-        Guna2ComboBox2.BorderColor = Color.Transparent
-        Guna2ComboBox2.BorderThickness = 0
+        Guna2ComboBox2.BorderColor = Color.FromArgb(CByte(183), CByte(185), CByte(204))
+        Guna2ComboBox2.BorderRadius = 10
         Guna2ComboBox2.CustomizableEdges = CustomizableEdges11
         Guna2ComboBox2.DrawMode = DrawMode.OwnerDrawFixed
         Guna2ComboBox2.DropDownStyle = ComboBoxStyle.DropDownList
-        Guna2ComboBox2.FillColor = Color.WhiteSmoke
         Guna2ComboBox2.FocusedColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         Guna2ComboBox2.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         Guna2ComboBox2.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
@@ -323,17 +319,15 @@ Partial Class Form3
         ' Guna2TextBox7
         ' 
         Guna2TextBox7.Animated = True
-        Guna2TextBox7.BackColor = Color.WhiteSmoke
-        Guna2TextBox7.BorderColor = Color.Black
+        Guna2TextBox7.BackColor = Color.Transparent
+        Guna2TextBox7.BorderColor = Color.FromArgb(CByte(183), CByte(185), CByte(204))
         Guna2TextBox7.BorderRadius = 10
-        Guna2TextBox7.BorderThickness = 0
         Guna2TextBox7.CustomizableEdges = CustomizableEdges13
         Guna2TextBox7.DefaultText = ""
         Guna2TextBox7.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
         Guna2TextBox7.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
         Guna2TextBox7.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
         Guna2TextBox7.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        Guna2TextBox7.FillColor = Color.WhiteSmoke
         Guna2TextBox7.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         Guna2TextBox7.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
         Guna2TextBox7.ForeColor = Color.Black
@@ -405,7 +399,7 @@ Partial Class Form3
         Guna2DataGridView1.Location = New Point(517, 12)
         Guna2DataGridView1.Name = "Guna2DataGridView1"
         Guna2DataGridView1.RowHeadersVisible = False
-        Guna2DataGridView1.Size = New Size(305, 589)
+        Guna2DataGridView1.Size = New Size(320, 580)
         Guna2DataGridView1.TabIndex = 22
         Guna2DataGridView1.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.White
         Guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White
@@ -433,17 +427,15 @@ Partial Class Form3
         ' Guna2TextBox1
         ' 
         Guna2TextBox1.Animated = True
-        Guna2TextBox1.BackColor = Color.WhiteSmoke
-        Guna2TextBox1.BorderColor = Color.Black
+        Guna2TextBox1.BackColor = Color.Transparent
+        Guna2TextBox1.BorderColor = Color.FromArgb(CByte(183), CByte(185), CByte(204))
         Guna2TextBox1.BorderRadius = 10
-        Guna2TextBox1.BorderThickness = 0
         Guna2TextBox1.CustomizableEdges = CustomizableEdges15
         Guna2TextBox1.DefaultText = ""
         Guna2TextBox1.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
         Guna2TextBox1.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
         Guna2TextBox1.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
         Guna2TextBox1.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        Guna2TextBox1.FillColor = Color.WhiteSmoke
         Guna2TextBox1.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         Guna2TextBox1.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
         Guna2TextBox1.ForeColor = Color.Black
@@ -460,17 +452,15 @@ Partial Class Form3
         ' Guna2TextBox8
         ' 
         Guna2TextBox8.Animated = True
-        Guna2TextBox8.BackColor = Color.WhiteSmoke
-        Guna2TextBox8.BorderColor = Color.Black
+        Guna2TextBox8.BackColor = Color.Transparent
+        Guna2TextBox8.BorderColor = Color.FromArgb(CByte(183), CByte(185), CByte(204))
         Guna2TextBox8.BorderRadius = 10
-        Guna2TextBox8.BorderThickness = 0
         Guna2TextBox8.CustomizableEdges = CustomizableEdges17
         Guna2TextBox8.DefaultText = ""
         Guna2TextBox8.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
         Guna2TextBox8.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
         Guna2TextBox8.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
         Guna2TextBox8.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        Guna2TextBox8.FillColor = Color.WhiteSmoke
         Guna2TextBox8.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         Guna2TextBox8.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
         Guna2TextBox8.ForeColor = Color.Black
@@ -487,17 +477,15 @@ Partial Class Form3
         ' Guna2TextBox6
         ' 
         Guna2TextBox6.Animated = True
-        Guna2TextBox6.BackColor = Color.WhiteSmoke
-        Guna2TextBox6.BorderColor = Color.Black
+        Guna2TextBox6.BackColor = Color.Transparent
+        Guna2TextBox6.BorderColor = Color.FromArgb(CByte(183), CByte(185), CByte(204))
         Guna2TextBox6.BorderRadius = 10
-        Guna2TextBox6.BorderThickness = 0
         Guna2TextBox6.CustomizableEdges = CustomizableEdges19
         Guna2TextBox6.DefaultText = ""
         Guna2TextBox6.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
         Guna2TextBox6.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
         Guna2TextBox6.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
         Guna2TextBox6.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        Guna2TextBox6.FillColor = Color.WhiteSmoke
         Guna2TextBox6.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         Guna2TextBox6.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
         Guna2TextBox6.ForeColor = Color.Black
@@ -608,13 +596,14 @@ Partial Class Form3
         Guna2HtmlLabel15.Name = "Guna2HtmlLabel15"
         Guna2HtmlLabel15.Size = New Size(3, 2)
         Guna2HtmlLabel15.TabIndex = 31
+        Guna2HtmlLabel15.Text = Nothing
         ' 
         ' Form3
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
-        ClientSize = New Size(825, 613)
+        ClientSize = New Size(842, 598)
         Controls.Add(Guna2HtmlLabel15)
         Controls.Add(Guna2HtmlLabel14)
         Controls.Add(Guna2HtmlLabel13)

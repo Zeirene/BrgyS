@@ -504,7 +504,7 @@ Partial Class Form7
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
-        ClientSize = New Size(800, 450)
+        ClientSize = New Size(842, 598)
         Controls.Add(Guna2ComboBox3)
         Controls.Add(Guna2TextBox9)
         Controls.Add(Guna2TextBox7)

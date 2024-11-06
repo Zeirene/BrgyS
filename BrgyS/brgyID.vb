@@ -118,12 +118,12 @@ Public Class brgyID
         ReplaceTextInWordDocument(newDocxFilePath, "{NumberOfEmerContact}", EMERNO)
         ReplaceTextInWordDocument(newDocxFilePath, "{AddressOfEmerContact}", EMERADD)
 
-        ' Convert to PDF using Syncfusion
-        Dim pdfDocPath As String = Path.Combine("C:\Users\John Roi\source\repos\BrgyS\BrgyS\docu\generated docu\", sanitizedStudentName & "_" & dateTimeStamp & ".pdf")
-        ConvertDocxToPdf(newDocxFilePath, pdfDocPath)
+        '' Convert to PDF using Syncfusion
+        'Dim pdfDocPath As String = Path.Combine("C:\Users\John Roi\source\repos\BrgyS\BrgyS\docu\generated docu\", sanitizedStudentName & "_" & dateTimeStamp & ".pdf")
+        'ConvertDocxToPdf(newDocxFilePath, pdfDocPath)
 
-        ' Print the PDF
-        PrintPdf(pdfDocPath)
+        '' Print the PDF
+        'PrintPdf(pdfDocPath)
 
 
         MessageBox.Show("Document created, saved as PDF, and sent to printer.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)

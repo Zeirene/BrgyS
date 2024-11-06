@@ -350,12 +350,12 @@ Partial Class brgyID
         Guna2Button1.FillColor = Color.Black
         Guna2Button1.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
         Guna2Button1.ForeColor = Color.White
-        Guna2Button1.Location = New Point(534, 368)
+        Guna2Button1.Location = New Point(534, 415)
         Guna2Button1.Name = "Guna2Button1"
         Guna2Button1.ShadowDecoration.CustomizableEdges = CustomizableEdges16
         Guna2Button1.Size = New Size(242, 41)
         Guna2Button1.TabIndex = 41
-        Guna2Button1.Text = "RESTART"
+        Guna2Button1.Text = "RESTART CAMERA"
         ' 
         ' Guna2Button3
         ' 
@@ -369,12 +369,12 @@ Partial Class brgyID
         Guna2Button3.FillColor = Color.Black
         Guna2Button3.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
         Guna2Button3.ForeColor = Color.White
-        Guna2Button3.Location = New Point(534, 415)
+        Guna2Button3.Location = New Point(534, 462)
         Guna2Button3.Name = "Guna2Button3"
         Guna2Button3.ShadowDecoration.CustomizableEdges = CustomizableEdges18
         Guna2Button3.Size = New Size(242, 41)
         Guna2Button3.TabIndex = 43
-        Guna2Button3.Text = "CONFIRM"
+        Guna2Button3.Text = "PRINT"
         ' 
         ' PictureBox1
         ' 
@@ -397,12 +397,12 @@ Partial Class brgyID
         Guna2Button4.FillColor = Color.Black
         Guna2Button4.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
         Guna2Button4.ForeColor = Color.White
-        Guna2Button4.Location = New Point(534, 462)
+        Guna2Button4.Location = New Point(534, 368)
         Guna2Button4.Name = "Guna2Button4"
         Guna2Button4.ShadowDecoration.CustomizableEdges = CustomizableEdges20
         Guna2Button4.Size = New Size(242, 41)
         Guna2Button4.TabIndex = 45
-        Guna2Button4.Text = "SAVE"
+        Guna2Button4.Text = "CAPTURE"
         ' 
         ' Guna2TextBox9
         ' 
@@ -445,7 +445,7 @@ Partial Class brgyID
         Label1.Name = "Label1"
         Label1.Size = New Size(242, 15)
         Label1.TabIndex = 48
-        Label1.Text = "INVISIBLE LABLE"
+        Label1.Text = "INVISIBLE LABEL"
         Label1.TextAlign = ContentAlignment.MiddleCenter
         ' 
         ' Guna2DateTimePicker1

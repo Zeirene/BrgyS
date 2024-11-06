@@ -6,7 +6,7 @@ Imports System.IO
 Public Class clearanceQCID
     Private Sub clearanceQCID_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Guna2TextBox1.Text = Form3.Guna2TextBox6.Text + "," + Form3.Guna2TextBox7.Text + " " + Form3.Guna2TextBox8.Text
-        Guna2TextBox3.Text = Form3.Guna2TextBox9.Text
+        Guna2ComboBox1.Text = Form3.Guna2TextBox9.Text
     End Sub
 
     Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
@@ -20,12 +20,12 @@ Public Class clearanceQCID
 
         ' Input values from the textboxes
         Dim NAMEOFRESIDENT As String = Guna2TextBox1.Text
-        Dim BDAY As String = Guna2TextBox2.Text
-        Dim CIVITSTAT As String = Guna2TextBox3.Text
+        Dim BDAY As String = Guna2DateTimePicker1.Value
+        Dim CIVITSTAT As String = Guna2ComboBox1.Text
 
         Dim RESADDRESS As String = Guna2TextBox4.Text
-        Dim YEARSOFSTAY As String = Guna2TextBox5.Text
-        Dim PURPOSE As String = Guna2TextBox6.Text
+        Dim YEARSOFSTAY As String = Guna2ComboBox2.Text
+        Dim PURPOSE As String = Guna2ComboBox3.Text
 
         'Dim studentSection As String = TextBox2.Text
         'Dim studentYear As String = TextBox3.Text
@@ -34,7 +34,7 @@ Public Class clearanceQCID
         Dim sanitizedStudentName As String = NAMEOFRESIDENT
         Dim dateTimeStamp As String = DateTime.Now.ToString("yyyyMMdd") ' Add a timestamp to the file name
 
-        Dim newFileName As String = sanitizedStudentName & "_" & dateTimeStamp & ".docx"
+        Dim newFileName As String = sanitizedStudentName & "_" & dateTimeStamp & ".pdf"
         Dim newFilePath As String = Path.Combine("C:\Users\John Roi\source\repos\BrgyS\BrgyS\docu\generated docu\", newFileName)
 
         ' Copy the template file to a new file with the customized name

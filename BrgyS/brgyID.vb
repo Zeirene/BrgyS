@@ -51,23 +51,36 @@ Public Class brgyID
 
     End Sub
 
-    Private Sub Guna2Button4_Click(sender As Object, e As EventArgs) Handles Guna2Button4.Click, Guna2Button6.Click
+    Private Sub Guna2Button4_Click(sender As Object, e As EventArgs) Handles Guna2Button4.Click
         'capture pic
         If PictureBox1.Image IsNot Nothing Then
             Dim newBitmap As Bitmap = PictureBox1.Image
         End If
-        CAMERA.SignalToStop
+        CAMERA.SignalToStop()
         PictureBox1.Image = PictureBox1.Image
-        Savepic
+        Savepic()
 
     End Sub
     Private Sub Guna2Button2_Click(sender As Object, e As EventArgs) Handles Guna2Button2.Click
         'clear
         PictureBox1.Image = Nothing
     End Sub
-    Private Sub Guna2Button3_Click(sender As Object, e As EventArgs) Handles Guna2Button3.Click, Guna2Button5.Click
+    Private Sub Guna2Button3_Click(sender As Object, e As EventArgs) Handles Guna2Button3.Click
         'save and print docu
-        generatedocfile
+        generatedocfile()
+
+        'Dim logDate As Date = Date.Today
+        'Dim logTime As TimeSpan = TimeSpan.Parse("14:30:00")
+        'Dim logType As String = "Transaction Type"
+        'Dim logStatus As String = "Completed"
+        'Dim fileName As String = "transaction_receipt.pdf"
+        'Dim filePath As String = "C:\path\to\file\transaction_receipt.pdf" ' Provide actual file path here
+        'Dim payment As Decimal = 150.75D
+        'Dim residentId As Integer = 1 ' This should correspond to an existing resident_id in resident_info
+        'Dim staffId As Integer = 123 ' This should correspond to an existing staff_id in staff_info
+
+        '' Call the insert function
+        'InsertTransactionLog(logDate, logTime, logType, logStatus, fileName, filePath, payment, residentId, staffId)
     End Sub
 
     'functions and sub
@@ -81,8 +94,8 @@ Public Class brgyID
         Dim RESADDRESS As String = Guna2TextBox3.Text
         Dim PHOTO As String = Label1.Text
         Dim TIN As String = Guna2TextBox4.Text
-        Dim BDAY As String = Guna2TextBox2.Text
-        Dim BTYPE As String = Guna2TextBox5.Text
+        Dim BDAY As String = Guna2DateTimePicker1.Value
+        Dim BTYPE As String = Guna2ComboBox1.Text
         Dim PRECINTNO As String = Guna2TextBox6.Text
         Dim EMERNAME As String = Guna2TextBox8.Text
         Dim EMERNO As String = Guna2TextBox7.Text
@@ -98,7 +111,7 @@ Public Class brgyID
         Dim sanitizedStudentName As String = NAMEOFAPPLICANT
         Dim dateTimeStamp As String = DateTime.Now.ToString("yyyyMMdd") ' Add a timestamp to the file name
 
-        Dim newFileName As String = sanitizedStudentName & "_" & dateTimeStamp & ".docx"
+        Dim newFileName As String = sanitizedStudentName & "_" & dateTimeStamp & ".pdf"
         Dim newFilePath As String = Path.Combine("C:\Users\John Roi\source\repos\BrgyS\BrgyS\docu\generated docu\", newFileName)
 
         ' Copy the template file to a new file with the customized name
@@ -253,5 +266,97 @@ Public Class brgyID
 
         End Try
     End Sub
+
+    'Public Sub InsertTransactionLog(logDate As Date, logTime As TimeSpan, logType As String, logStatus As String, fileName As String, filePath As String, payment As Decimal, residentId As Integer, staffId As Integer)
+    '    ' Create a new MySQL connection using the connection string
+    '    Dim NAMEOFAPPLICANT As String = Guna2TextBox1.Text
+    '    Dim BRGYID As String = resID
+    '    Dim RESADDRESS As String = Guna2TextBox3.Text
+    '    Dim PHOTO As String = Label1.Text
+    '    Dim TIN As String = Guna2TextBox4.Text
+    '    Dim log_date As String = Guna2DateTimePicker1.Value
+    '    Dim type As String = Guna2ComboBox1.Text
+    '    Dim PRECINTNO As String = Guna2TextBox6.Text
+    '    Dim EMERNAME As String = Guna2TextBox8.Text
+    '    Dim EMERNO As String = Guna2TextBox7.Text
+    '    Dim EMERADD As String = Guna2TextBox9.Text
+    '    Try
+    '        ' Open the connection to the database
+    '        con.Open()
+
+    '        ' Check if the resident_id and staff_id exist in the respective tables
+    '        Dim checkQuery As String = "SELECT 1 FROM resident_info r 
+    '                                        JOIN staff_info s ON r.resident_id = @resident_id 
+    '                                        AND s.staff_id = @staff_id 
+    '                                        LIMIT 1"
+
+    '        Using checkCmd As New MySqlCommand(checkQuery, con)
+    '            checkCmd.Parameters.AddWithValue("@resident_id", residentId)
+    '            checkCmd.Parameters.AddWithValue("@staff_id", staffId)
+
+    '            ' Execute the query and check if the row exists
+    '            Dim result = checkCmd.ExecuteScalar()
+
+    '            ' If result is nothing, it means the foreign key values do not exist in both tables
+    '            If result Is Nothing Then
+    '                MessageBox.Show("The specified resident_id or staff_id does not exist in the database.")
+    '                Return
+    '            End If
+    '        End Using
+
+    '        ' Prepare the SQL query to insert the transaction log data
+    '        Dim insertQuery As String = "INSERT INTO transaction_log (log_date, log_time, type, status, file_name, file_data, payment, resident_id, staff_id) 
+    '                                         VALUES (@log_date, @log_time, @type, @status, @file_name, @file_data, @payment, @resident_id, @staff_id)"
+
+    '        ' Create a MySQL command object with the query and connection
+    '        Using cmd As New MySqlCommand(insertQuery, con)
+    '            ' Add parameters to the command
+    '            cmd.Parameters.AddWithValue("@log_date", logDate)
+    '            cmd.Parameters.AddWithValue("@log_time", logTime)
+    '            cmd.Parameters.AddWithValue("@type", logType)
+    '            cmd.Parameters.AddWithValue("@status", logStatus)
+    '            cmd.Parameters.AddWithValue("@file_name", fileName)
+
+    '            ' Check if file exists and add its data as a byte array
+    '            If File.Exists(filePath) Then
+    '                Dim fileData As Byte() = File.ReadAllBytes(filePath)
+    '                cmd.Parameters.AddWithValue("@file_data", fileData)
+    '            Else
+    '                cmd.Parameters.AddWithValue("@file_data", DBNull.Value)
+    '            End If
+
+    '            cmd.Parameters.AddWithValue("@payment", payment)
+    '            cmd.Parameters.AddWithValue("@resident_id", residentId)
+    '            cmd.Parameters.AddWithValue("@staff_id", staffId)
+
+    '            ' Execute the command to insert data into the transaction_log table
+    '            cmd.ExecuteNonQuery()
+
+    '            ' Optional: Show a success message after insertion
+    '            MessageBox.Show("Transaction log inserted successfully!")
+    '        End Using
+    '    Catch ex As Exception
+    '        ' Handle any errors that may have occurred
+    '        MessageBox.Show("Error: " & ex.Message)
+    '    End Try
+    'End Sub
+
+    ' Button click event for testing the insert function
+    'Private Sub btnInsert_Click(sender As Object, e As EventArgs) Handles btnInsert.Click
+    '    ' Example values to insert
+    '    Dim logDate As Date = Date.Today
+    '    Dim logTime As TimeSpan = TimeSpan.Parse("14:30:00")
+    '    Dim logType As String = "Transaction Type"
+    '    Dim logStatus As String = "Completed"
+    '    Dim fileName As String = "transaction_receipt.pdf"
+    '    Dim filePath As String = "C:\path\to\file\transaction_receipt.pdf" ' Provide actual file path here
+    '    Dim payment As Decimal = 150.75D
+    '    Dim residentId As Integer = 1 ' This should correspond to an existing resident_id in resident_info
+    '    Dim staffId As Integer = 123 ' This should correspond to an existing staff_id in staff_info
+
+    '    ' Call the insert function
+    '    InsertTransactionLog(logDate, logTime, logType, logStatus, fileName, filePath, payment, residentId, staffId)
+    'End Sub
+
 
 End Class

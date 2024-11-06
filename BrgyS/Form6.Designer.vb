@@ -79,7 +79,7 @@ Partial Class Form6
         Guna2PictureBox1.CustomizableEdges = CustomizableEdges1
         Guna2PictureBox1.Image = My.Resources.Resources.Screenshot_2024_10_28_214254
         Guna2PictureBox1.ImageRotate = 0F
-        Guna2PictureBox1.Location = New Point(29, 24)
+        Guna2PictureBox1.Location = New Point(37, 30)
         Guna2PictureBox1.Name = "Guna2PictureBox1"
         Guna2PictureBox1.ShadowDecoration.CustomizableEdges = CustomizableEdges2
         Guna2PictureBox1.Size = New Size(147, 197)
@@ -92,7 +92,7 @@ Partial Class Form6
         Guna2HtmlLabel1.BackColor = Color.Transparent
         Guna2HtmlLabel1.Font = New Font("Bahnschrift", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Guna2HtmlLabel1.ForeColor = Color.Black
-        Guna2HtmlLabel1.Location = New Point(29, 227)
+        Guna2HtmlLabel1.Location = New Point(37, 233)
         Guna2HtmlLabel1.Name = "Guna2HtmlLabel1"
         Guna2HtmlLabel1.Size = New Size(86, 21)
         Guna2HtmlLabel1.TabIndex = 26
@@ -102,7 +102,7 @@ Partial Class Form6
         ' 
         Guna2HtmlLabel2.BackColor = Color.Transparent
         Guna2HtmlLabel2.Font = New Font("Bahnschrift", 9F)
-        Guna2HtmlLabel2.Location = New Point(29, 254)
+        Guna2HtmlLabel2.Location = New Point(37, 260)
         Guna2HtmlLabel2.Name = "Guna2HtmlLabel2"
         Guna2HtmlLabel2.Size = New Size(65, 16)
         Guna2HtmlLabel2.TabIndex = 27
@@ -112,7 +112,7 @@ Partial Class Form6
         ' 
         Guna2HtmlLabel3.BackColor = Color.Transparent
         Guna2HtmlLabel3.Font = New Font("Bahnschrift", 9F)
-        Guna2HtmlLabel3.Location = New Point(236, 254)
+        Guna2HtmlLabel3.Location = New Point(244, 260)
         Guna2HtmlLabel3.Name = "Guna2HtmlLabel3"
         Guna2HtmlLabel3.Size = New Size(65, 16)
         Guna2HtmlLabel3.TabIndex = 30
@@ -123,7 +123,7 @@ Partial Class Form6
         Guna2HtmlLabel4.BackColor = Color.Transparent
         Guna2HtmlLabel4.Font = New Font("Bahnschrift", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Guna2HtmlLabel4.ForeColor = Color.Black
-        Guna2HtmlLabel4.Location = New Point(236, 227)
+        Guna2HtmlLabel4.Location = New Point(244, 233)
         Guna2HtmlLabel4.Name = "Guna2HtmlLabel4"
         Guna2HtmlLabel4.Size = New Size(89, 21)
         Guna2HtmlLabel4.TabIndex = 29
@@ -133,7 +133,7 @@ Partial Class Form6
         ' 
         Guna2HtmlLabel5.BackColor = Color.Transparent
         Guna2HtmlLabel5.Font = New Font("Bahnschrift", 9F)
-        Guna2HtmlLabel5.Location = New Point(444, 254)
+        Guna2HtmlLabel5.Location = New Point(452, 260)
         Guna2HtmlLabel5.Name = "Guna2HtmlLabel5"
         Guna2HtmlLabel5.Size = New Size(65, 16)
         Guna2HtmlLabel5.TabIndex = 33
@@ -144,7 +144,7 @@ Partial Class Form6
         Guna2HtmlLabel6.BackColor = Color.Transparent
         Guna2HtmlLabel6.Font = New Font("Bahnschrift", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Guna2HtmlLabel6.ForeColor = Color.Black
-        Guna2HtmlLabel6.Location = New Point(444, 227)
+        Guna2HtmlLabel6.Location = New Point(452, 233)
         Guna2HtmlLabel6.Name = "Guna2HtmlLabel6"
         Guna2HtmlLabel6.Size = New Size(89, 21)
         Guna2HtmlLabel6.TabIndex = 32
@@ -154,7 +154,7 @@ Partial Class Form6
         ' 
         Guna2HtmlLabel7.BackColor = Color.Transparent
         Guna2HtmlLabel7.Font = New Font("Bahnschrift", 9F)
-        Guna2HtmlLabel7.Location = New Point(649, 254)
+        Guna2HtmlLabel7.Location = New Point(657, 260)
         Guna2HtmlLabel7.Name = "Guna2HtmlLabel7"
         Guna2HtmlLabel7.Size = New Size(65, 16)
         Guna2HtmlLabel7.TabIndex = 36
@@ -165,7 +165,7 @@ Partial Class Form6
         Guna2HtmlLabel8.BackColor = Color.Transparent
         Guna2HtmlLabel8.Font = New Font("Bahnschrift", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Guna2HtmlLabel8.ForeColor = Color.Black
-        Guna2HtmlLabel8.Location = New Point(649, 227)
+        Guna2HtmlLabel8.Location = New Point(657, 233)
         Guna2HtmlLabel8.Name = "Guna2HtmlLabel8"
         Guna2HtmlLabel8.Size = New Size(90, 21)
         Guna2HtmlLabel8.TabIndex = 35
@@ -175,7 +175,7 @@ Partial Class Form6
         ' 
         Guna2HtmlLabel9.BackColor = Color.Transparent
         Guna2HtmlLabel9.Font = New Font("Bahnschrift", 9F)
-        Guna2HtmlLabel9.Location = New Point(649, 536)
+        Guna2HtmlLabel9.Location = New Point(657, 542)
         Guna2HtmlLabel9.Name = "Guna2HtmlLabel9"
         Guna2HtmlLabel9.Size = New Size(65, 16)
         Guna2HtmlLabel9.TabIndex = 39
@@ -186,7 +186,7 @@ Partial Class Form6
         Guna2HtmlLabel10.BackColor = Color.Transparent
         Guna2HtmlLabel10.Font = New Font("Bahnschrift", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Guna2HtmlLabel10.ForeColor = Color.Black
-        Guna2HtmlLabel10.Location = New Point(649, 509)
+        Guna2HtmlLabel10.Location = New Point(657, 515)
         Guna2HtmlLabel10.Name = "Guna2HtmlLabel10"
         Guna2HtmlLabel10.Size = New Size(90, 21)
         Guna2HtmlLabel10.TabIndex = 38
@@ -196,7 +196,7 @@ Partial Class Form6
         ' 
         Guna2HtmlLabel11.BackColor = Color.Transparent
         Guna2HtmlLabel11.Font = New Font("Bahnschrift", 9F)
-        Guna2HtmlLabel11.Location = New Point(29, 536)
+        Guna2HtmlLabel11.Location = New Point(37, 542)
         Guna2HtmlLabel11.Name = "Guna2HtmlLabel11"
         Guna2HtmlLabel11.Size = New Size(65, 16)
         Guna2HtmlLabel11.TabIndex = 42
@@ -207,7 +207,7 @@ Partial Class Form6
         Guna2HtmlLabel12.BackColor = Color.Transparent
         Guna2HtmlLabel12.Font = New Font("Bahnschrift", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Guna2HtmlLabel12.ForeColor = Color.Black
-        Guna2HtmlLabel12.Location = New Point(29, 509)
+        Guna2HtmlLabel12.Location = New Point(37, 515)
         Guna2HtmlLabel12.Name = "Guna2HtmlLabel12"
         Guna2HtmlLabel12.Size = New Size(90, 21)
         Guna2HtmlLabel12.TabIndex = 41
@@ -217,7 +217,7 @@ Partial Class Form6
         ' 
         Guna2HtmlLabel13.BackColor = Color.Transparent
         Guna2HtmlLabel13.Font = New Font("Bahnschrift", 9F)
-        Guna2HtmlLabel13.Location = New Point(444, 536)
+        Guna2HtmlLabel13.Location = New Point(452, 542)
         Guna2HtmlLabel13.Name = "Guna2HtmlLabel13"
         Guna2HtmlLabel13.Size = New Size(65, 16)
         Guna2HtmlLabel13.TabIndex = 48
@@ -228,7 +228,7 @@ Partial Class Form6
         Guna2HtmlLabel14.BackColor = Color.Transparent
         Guna2HtmlLabel14.Font = New Font("Bahnschrift", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Guna2HtmlLabel14.ForeColor = Color.Black
-        Guna2HtmlLabel14.Location = New Point(444, 509)
+        Guna2HtmlLabel14.Location = New Point(452, 515)
         Guna2HtmlLabel14.Name = "Guna2HtmlLabel14"
         Guna2HtmlLabel14.Size = New Size(89, 21)
         Guna2HtmlLabel14.TabIndex = 47
@@ -238,7 +238,7 @@ Partial Class Form6
         ' 
         Guna2HtmlLabel15.BackColor = Color.Transparent
         Guna2HtmlLabel15.Font = New Font("Bahnschrift", 9F)
-        Guna2HtmlLabel15.Location = New Point(236, 536)
+        Guna2HtmlLabel15.Location = New Point(244, 542)
         Guna2HtmlLabel15.Name = "Guna2HtmlLabel15"
         Guna2HtmlLabel15.Size = New Size(65, 16)
         Guna2HtmlLabel15.TabIndex = 45
@@ -249,7 +249,7 @@ Partial Class Form6
         Guna2HtmlLabel16.BackColor = Color.Transparent
         Guna2HtmlLabel16.Font = New Font("Bahnschrift", 12F, FontStyle.Bold, GraphicsUnit.Point, CByte(0))
         Guna2HtmlLabel16.ForeColor = Color.Black
-        Guna2HtmlLabel16.Location = New Point(236, 509)
+        Guna2HtmlLabel16.Location = New Point(244, 515)
         Guna2HtmlLabel16.Name = "Guna2HtmlLabel16"
         Guna2HtmlLabel16.Size = New Size(89, 21)
         Guna2HtmlLabel16.TabIndex = 44
@@ -262,7 +262,7 @@ Partial Class Form6
         Guna2PictureBox2.CustomizableEdges = CustomizableEdges3
         Guna2PictureBox2.Image = My.Resources.Resources.Screenshot_2024_10_28_214254
         Guna2PictureBox2.ImageRotate = 0F
-        Guna2PictureBox2.Location = New Point(236, 24)
+        Guna2PictureBox2.Location = New Point(244, 30)
         Guna2PictureBox2.Name = "Guna2PictureBox2"
         Guna2PictureBox2.ShadowDecoration.CustomizableEdges = CustomizableEdges4
         Guna2PictureBox2.Size = New Size(147, 197)
@@ -277,7 +277,7 @@ Partial Class Form6
         Guna2PictureBox3.CustomizableEdges = CustomizableEdges5
         Guna2PictureBox3.Image = My.Resources.Resources.Screenshot_2024_10_28_214254
         Guna2PictureBox3.ImageRotate = 0F
-        Guna2PictureBox3.Location = New Point(444, 24)
+        Guna2PictureBox3.Location = New Point(452, 30)
         Guna2PictureBox3.Name = "Guna2PictureBox3"
         Guna2PictureBox3.ShadowDecoration.CustomizableEdges = CustomizableEdges6
         Guna2PictureBox3.Size = New Size(147, 197)
@@ -292,7 +292,7 @@ Partial Class Form6
         Guna2PictureBox4.CustomizableEdges = CustomizableEdges7
         Guna2PictureBox4.Image = My.Resources.Resources.Screenshot_2024_10_28_214254
         Guna2PictureBox4.ImageRotate = 0F
-        Guna2PictureBox4.Location = New Point(649, 24)
+        Guna2PictureBox4.Location = New Point(657, 30)
         Guna2PictureBox4.Name = "Guna2PictureBox4"
         Guna2PictureBox4.ShadowDecoration.CustomizableEdges = CustomizableEdges8
         Guna2PictureBox4.Size = New Size(147, 197)
@@ -307,7 +307,7 @@ Partial Class Form6
         Guna2PictureBox5.CustomizableEdges = CustomizableEdges9
         Guna2PictureBox5.Image = My.Resources.Resources.Screenshot_2024_10_28_214254
         Guna2PictureBox5.ImageRotate = 0F
-        Guna2PictureBox5.Location = New Point(29, 306)
+        Guna2PictureBox5.Location = New Point(37, 312)
         Guna2PictureBox5.Name = "Guna2PictureBox5"
         Guna2PictureBox5.ShadowDecoration.CustomizableEdges = CustomizableEdges10
         Guna2PictureBox5.Size = New Size(147, 197)
@@ -322,7 +322,7 @@ Partial Class Form6
         Guna2PictureBox6.CustomizableEdges = CustomizableEdges11
         Guna2PictureBox6.Image = My.Resources.Resources.Screenshot_2024_10_28_214254
         Guna2PictureBox6.ImageRotate = 0F
-        Guna2PictureBox6.Location = New Point(236, 306)
+        Guna2PictureBox6.Location = New Point(244, 312)
         Guna2PictureBox6.Name = "Guna2PictureBox6"
         Guna2PictureBox6.ShadowDecoration.CustomizableEdges = CustomizableEdges12
         Guna2PictureBox6.Size = New Size(147, 197)
@@ -337,7 +337,7 @@ Partial Class Form6
         Guna2PictureBox7.CustomizableEdges = CustomizableEdges13
         Guna2PictureBox7.Image = My.Resources.Resources.Screenshot_2024_10_28_214254
         Guna2PictureBox7.ImageRotate = 0F
-        Guna2PictureBox7.Location = New Point(444, 306)
+        Guna2PictureBox7.Location = New Point(452, 312)
         Guna2PictureBox7.Name = "Guna2PictureBox7"
         Guna2PictureBox7.ShadowDecoration.CustomizableEdges = CustomizableEdges14
         Guna2PictureBox7.Size = New Size(147, 197)
@@ -352,7 +352,7 @@ Partial Class Form6
         Guna2PictureBox8.CustomizableEdges = CustomizableEdges15
         Guna2PictureBox8.Image = My.Resources.Resources.Screenshot_2024_10_28_214254
         Guna2PictureBox8.ImageRotate = 0F
-        Guna2PictureBox8.Location = New Point(649, 306)
+        Guna2PictureBox8.Location = New Point(657, 312)
         Guna2PictureBox8.Name = "Guna2PictureBox8"
         Guna2PictureBox8.ShadowDecoration.CustomizableEdges = CustomizableEdges16
         Guna2PictureBox8.Size = New Size(147, 197)
@@ -365,7 +365,7 @@ Partial Class Form6
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
-        ClientSize = New Size(825, 576)
+        ClientSize = New Size(842, 598)
         ControlBox = False
         Controls.Add(Guna2PictureBox8)
         Controls.Add(Guna2PictureBox7)

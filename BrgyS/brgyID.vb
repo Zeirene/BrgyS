@@ -51,23 +51,23 @@ Public Class brgyID
 
     End Sub
 
-    Private Sub Guna2Button4_Click(sender As Object, e As EventArgs) Handles Guna2Button4.Click
+    Private Sub Guna2Button4_Click(sender As Object, e As EventArgs) Handles Guna2Button4.Click, Guna2Button6.Click
         'capture pic
         If PictureBox1.Image IsNot Nothing Then
             Dim newBitmap As Bitmap = PictureBox1.Image
         End If
-        CAMERA.SignalToStop()
+        CAMERA.SignalToStop
         PictureBox1.Image = PictureBox1.Image
-        Savepic()
+        Savepic
 
     End Sub
     Private Sub Guna2Button2_Click(sender As Object, e As EventArgs) Handles Guna2Button2.Click
         'clear
         PictureBox1.Image = Nothing
     End Sub
-    Private Sub Guna2Button3_Click(sender As Object, e As EventArgs) Handles Guna2Button3.Click
+    Private Sub Guna2Button3_Click(sender As Object, e As EventArgs) Handles Guna2Button3.Click, Guna2Button5.Click
         'save and print docu
-        generatedocfile()
+        generatedocfile
     End Sub
 
     'functions and sub

@@ -86,22 +86,22 @@ Partial Class Form3
         ' Guna2Button2
         ' 
         Guna2Button2.Animated = True
-        Guna2Button2.BorderColor = Color.FromArgb(CByte(240), CByte(174), CByte(189))
+        Guna2Button2.BorderColor = Color.Firebrick
         Guna2Button2.BorderRadius = 5
-        Guna2Button2.BorderThickness = 2
+        Guna2Button2.BorderThickness = 1
         Guna2Button2.CustomizableEdges = CustomizableEdges1
         Guna2Button2.DisabledState.BorderColor = Color.DarkGray
         Guna2Button2.DisabledState.CustomBorderColor = Color.DarkGray
         Guna2Button2.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
         Guna2Button2.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
-        Guna2Button2.FillColor = Color.Transparent
-        Guna2Button2.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
-        Guna2Button2.ForeColor = Color.FromArgb(CByte(240), CByte(174), CByte(189))
-        Guna2Button2.Location = New Point(371, 508)
+        Guna2Button2.FillColor = Color.Firebrick
+        Guna2Button2.Font = New Font("Bahnschrift", 9.75F, FontStyle.Bold)
+        Guna2Button2.ForeColor = Color.White
+        Guna2Button2.Location = New Point(134, 530)
         Guna2Button2.Name = "Guna2Button2"
-        Guna2Button2.PressedColor = Color.FromArgb(CByte(240), CByte(174), CByte(189))
+        Guna2Button2.PressedColor = Color.Firebrick
         Guna2Button2.ShadowDecoration.CustomizableEdges = CustomizableEdges2
-        Guna2Button2.Size = New Size(124, 41)
+        Guna2Button2.Size = New Size(242, 41)
         Guna2Button2.TabIndex = 20
         Guna2Button2.Text = "CLEAR"
         ' 
@@ -199,21 +199,20 @@ Partial Class Form3
         ' Guna2Button1
         ' 
         Guna2Button1.Animated = True
-        Guna2Button1.BorderColor = Color.FromArgb(CByte(155), CByte(192), CByte(228))
         Guna2Button1.BorderRadius = 5
+        Guna2Button1.BorderThickness = 1
         Guna2Button1.CustomizableEdges = CustomizableEdges5
         Guna2Button1.DisabledState.BorderColor = Color.DarkGray
         Guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray
         Guna2Button1.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
         Guna2Button1.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
-        Guna2Button1.FillColor = Color.FromArgb(CByte(155), CByte(192), CByte(228))
-        Guna2Button1.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
+        Guna2Button1.FillColor = Color.Black
+        Guna2Button1.Font = New Font("Bahnschrift", 9.75F, FontStyle.Bold)
         Guna2Button1.ForeColor = Color.White
-        Guna2Button1.Location = New Point(208, 508)
+        Guna2Button1.Location = New Point(134, 483)
         Guna2Button1.Name = "Guna2Button1"
-        Guna2Button1.PressedColor = Color.FromArgb(CByte(155), CByte(192), CByte(228))
         Guna2Button1.ShadowDecoration.CustomizableEdges = CustomizableEdges6
-        Guna2Button1.Size = New Size(124, 41)
+        Guna2Button1.Size = New Size(242, 41)
         Guna2Button1.TabIndex = 19
         Guna2Button1.Text = "CONFIRM"
         ' 
@@ -396,10 +395,10 @@ Partial Class Form3
         DataGridViewCellStyle3.WrapMode = DataGridViewTriState.False
         Guna2DataGridView1.DefaultCellStyle = DataGridViewCellStyle3
         Guna2DataGridView1.GridColor = Color.FromArgb(CByte(247), CByte(248), CByte(249))
-        Guna2DataGridView1.Location = New Point(517, 12)
+        Guna2DataGridView1.Location = New Point(501, 12)
         Guna2DataGridView1.Name = "Guna2DataGridView1"
         Guna2DataGridView1.RowHeadersVisible = False
-        Guna2DataGridView1.Size = New Size(320, 580)
+        Guna2DataGridView1.Size = New Size(336, 580)
         Guna2DataGridView1.TabIndex = 22
         Guna2DataGridView1.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.White
         Guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = Color.White

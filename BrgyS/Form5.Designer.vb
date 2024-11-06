@@ -63,7 +63,7 @@ Partial Class Form5
         Guna2DataGridView1.Location = New Point(3, 3)
         Guna2DataGridView1.Name = "Guna2DataGridView1"
         Guna2DataGridView1.RowHeadersVisible = False
-        Guna2DataGridView1.Size = New Size(819, 570)
+        Guna2DataGridView1.Size = New Size(836, 592)
         Guna2DataGridView1.TabIndex = 11
         Guna2DataGridView1.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Dark
         Guna2DataGridView1.ThemeStyle.AlternatingRowsStyle.BackColor = Color.FromArgb(CByte(44), CByte(48), CByte(52))
@@ -123,7 +123,7 @@ Partial Class Form5
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
-        ClientSize = New Size(825, 576)
+        ClientSize = New Size(842, 598)
         Controls.Add(Guna2DataGridView1)
         FormBorderStyle = FormBorderStyle.None
         Name = "Form5"

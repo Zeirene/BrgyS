@@ -183,43 +183,42 @@ Partial Class clearanceQCID
         ' Guna2Button1
         ' 
         Guna2Button1.Animated = True
-        Guna2Button1.BorderColor = Color.FromArgb(CByte(155), CByte(192), CByte(228))
         Guna2Button1.BorderRadius = 5
+        Guna2Button1.BorderThickness = 1
         Guna2Button1.CustomizableEdges = CustomizableEdges5
         Guna2Button1.DisabledState.BorderColor = Color.DarkGray
         Guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray
         Guna2Button1.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
         Guna2Button1.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
-        Guna2Button1.FillColor = Color.FromArgb(CByte(155), CByte(192), CByte(228))
+        Guna2Button1.FillColor = Color.Black
         Guna2Button1.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
         Guna2Button1.ForeColor = Color.White
-        Guna2Button1.Location = New Point(519, 468)
+        Guna2Button1.Location = New Point(538, 428)
         Guna2Button1.Name = "Guna2Button1"
-        Guna2Button1.PressedColor = Color.FromArgb(CByte(155), CByte(192), CByte(228))
         Guna2Button1.ShadowDecoration.CustomizableEdges = CustomizableEdges6
-        Guna2Button1.Size = New Size(124, 41)
+        Guna2Button1.Size = New Size(242, 41)
         Guna2Button1.TabIndex = 55
         Guna2Button1.Text = "CONFIRM"
         ' 
         ' Guna2Button2
         ' 
         Guna2Button2.Animated = True
-        Guna2Button2.BorderColor = Color.FromArgb(CByte(240), CByte(174), CByte(189))
+        Guna2Button2.BorderColor = Color.Firebrick
         Guna2Button2.BorderRadius = 5
-        Guna2Button2.BorderThickness = 2
+        Guna2Button2.BorderThickness = 1
         Guna2Button2.CustomizableEdges = CustomizableEdges7
         Guna2Button2.DisabledState.BorderColor = Color.DarkGray
         Guna2Button2.DisabledState.CustomBorderColor = Color.DarkGray
         Guna2Button2.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
         Guna2Button2.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
-        Guna2Button2.FillColor = Color.Transparent
+        Guna2Button2.FillColor = Color.Firebrick
         Guna2Button2.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
-        Guna2Button2.ForeColor = Color.FromArgb(CByte(240), CByte(174), CByte(189))
-        Guna2Button2.Location = New Point(662, 468)
+        Guna2Button2.ForeColor = Color.White
+        Guna2Button2.Location = New Point(538, 475)
         Guna2Button2.Name = "Guna2Button2"
-        Guna2Button2.PressedColor = Color.FromArgb(CByte(240), CByte(174), CByte(189))
+        Guna2Button2.PressedColor = Color.Firebrick
         Guna2Button2.ShadowDecoration.CustomizableEdges = CustomizableEdges8
-        Guna2Button2.Size = New Size(124, 41)
+        Guna2Button2.Size = New Size(242, 41)
         Guna2Button2.TabIndex = 56
         Guna2Button2.Text = "CLEAR"
         ' 

@@ -45,6 +45,10 @@ Partial Class Form3
         Dim CustomizableEdges18 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges19 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges20 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges21 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges22 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges23 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges24 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Guna2Button2 = New Guna.UI2.WinForms.Guna2Button()
         Guna2HtmlLabel9 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Guna2HtmlLabel8 = New Guna.UI2.WinForms.Guna2HtmlLabel()
@@ -62,6 +66,11 @@ Partial Class Form3
         Guna2HtmlLabel16 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Guna2TextBox7 = New Guna.UI2.WinForms.Guna2TextBox()
         Guna2DataGridView1 = New Guna.UI2.WinForms.Guna2DataGridView()
+        Names = New DataGridViewTextBoxColumn()
+        Column2 = New DataGridViewTextBoxColumn()
+        Column3 = New DataGridViewTextBoxColumn()
+        Column4 = New DataGridViewTextBoxColumn()
+        Column5 = New DataGridViewTextBoxColumn()
         Guna2TextBox1 = New Guna.UI2.WinForms.Guna2TextBox()
         Guna2TextBox8 = New Guna.UI2.WinForms.Guna2TextBox()
         Guna2TextBox6 = New Guna.UI2.WinForms.Guna2TextBox()
@@ -74,11 +83,8 @@ Partial Class Form3
         Guna2HtmlLabel13 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Guna2HtmlLabel14 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Guna2HtmlLabel15 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Names = New DataGridViewTextBoxColumn()
-        Column2 = New DataGridViewTextBoxColumn()
-        Column3 = New DataGridViewTextBoxColumn()
-        Column4 = New DataGridViewTextBoxColumn()
-        Column5 = New DataGridViewTextBoxColumn()
+        Guna2ComboBox3 = New Guna.UI2.WinForms.Guna2ComboBox()
+        Guna2ComboBox4 = New Guna.UI2.WinForms.Guna2ComboBox()
         CType(Guna2DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -182,6 +188,7 @@ Partial Class Form3
         Guna2TextBox9.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
         Guna2TextBox9.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
         Guna2TextBox9.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        Guna2TextBox9.Enabled = False
         Guna2TextBox9.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         Guna2TextBox9.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
         Guna2TextBox9.ForeColor = Color.Black
@@ -189,10 +196,10 @@ Partial Class Form3
         Guna2TextBox9.Location = New Point(12, 287)
         Guna2TextBox9.Name = "Guna2TextBox9"
         Guna2TextBox9.PasswordChar = ChrW(0)
-        Guna2TextBox9.PlaceholderText = "Address"
+        Guna2TextBox9.PlaceholderText = "House #"
         Guna2TextBox9.SelectedText = ""
         Guna2TextBox9.ShadowDecoration.CustomizableEdges = CustomizableEdges4
-        Guna2TextBox9.Size = New Size(483, 44)
+        Guna2TextBox9.Size = New Size(76, 44)
         Guna2TextBox9.TabIndex = 20
         ' 
         ' Guna2Button1
@@ -326,6 +333,7 @@ Partial Class Form3
         Guna2TextBox7.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
         Guna2TextBox7.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
         Guna2TextBox7.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        Guna2TextBox7.Enabled = False
         Guna2TextBox7.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         Guna2TextBox7.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
         Guna2TextBox7.ForeColor = Color.Black
@@ -392,6 +400,31 @@ Partial Class Form3
         Guna2DataGridView1.ThemeStyle.RowsStyle.SelectionBackColor = Color.FromArgb(CByte(239), CByte(241), CByte(243))
         Guna2DataGridView1.ThemeStyle.RowsStyle.SelectionForeColor = Color.Black
         ' 
+        ' Names
+        ' 
+        Names.HeaderText = "Resident Number"
+        Names.Name = "Names"
+        ' 
+        ' Column2
+        ' 
+        Column2.HeaderText = "Last Name"
+        Column2.Name = "Column2"
+        ' 
+        ' Column3
+        ' 
+        Column3.HeaderText = "Given Name"
+        Column3.Name = "Column3"
+        ' 
+        ' Column4
+        ' 
+        Column4.HeaderText = "Middle Name"
+        Column4.Name = "Column4"
+        ' 
+        ' Column5
+        ' 
+        Column5.HeaderText = "Address"
+        Column5.Name = "Column5"
+        ' 
         ' Guna2TextBox1
         ' 
         Guna2TextBox1.Animated = True
@@ -429,6 +462,7 @@ Partial Class Form3
         Guna2TextBox8.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
         Guna2TextBox8.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
         Guna2TextBox8.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        Guna2TextBox8.Enabled = False
         Guna2TextBox8.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         Guna2TextBox8.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
         Guna2TextBox8.ForeColor = Color.Black
@@ -454,6 +488,7 @@ Partial Class Form3
         Guna2TextBox6.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
         Guna2TextBox6.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
         Guna2TextBox6.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        Guna2TextBox6.Enabled = False
         Guna2TextBox6.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         Guna2TextBox6.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
         Guna2TextBox6.ForeColor = Color.Black
@@ -566,30 +601,43 @@ Partial Class Form3
         Guna2HtmlLabel15.TabIndex = 31
         Guna2HtmlLabel15.Text = Nothing
         ' 
-        ' Names
+        ' Guna2ComboBox3
         ' 
-        Names.HeaderText = "Resident Number"
-        Names.Name = "Names"
+        Guna2ComboBox3.BackColor = Color.Transparent
+        Guna2ComboBox3.CustomizableEdges = CustomizableEdges21
+        Guna2ComboBox3.DrawMode = DrawMode.OwnerDrawFixed
+        Guna2ComboBox3.DropDownStyle = ComboBoxStyle.DropDownList
+        Guna2ComboBox3.Enabled = False
+        Guna2ComboBox3.FocusedColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        Guna2ComboBox3.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        Guna2ComboBox3.Font = New Font("Segoe UI", 10F)
+        Guna2ComboBox3.ForeColor = Color.FromArgb(CByte(68), CByte(88), CByte(112))
+        Guna2ComboBox3.ItemHeight = 30
+        Guna2ComboBox3.Items.AddRange(New Object() {"Sitio 1", "Sitio 2", "Sitio 3", "Sitio 4", "Sitio 5", "Sitio 6", "Sitio 7"})
+        Guna2ComboBox3.Location = New Point(102, 295)
+        Guna2ComboBox3.Name = "Guna2ComboBox3"
+        Guna2ComboBox3.ShadowDecoration.CustomizableEdges = CustomizableEdges22
+        Guna2ComboBox3.Size = New Size(140, 36)
+        Guna2ComboBox3.TabIndex = 32
         ' 
-        ' Column2
+        ' Guna2ComboBox4
         ' 
-        Column2.HeaderText = "Last Name"
-        Column2.Name = "Column2"
-        ' 
-        ' Column3
-        ' 
-        Column3.HeaderText = "Given Name"
-        Column3.Name = "Column3"
-        ' 
-        ' Column4
-        ' 
-        Column4.HeaderText = "Middle Name"
-        Column4.Name = "Column4"
-        ' 
-        ' Column5
-        ' 
-        Column5.HeaderText = "Address"
-        Column5.Name = "Column5"
+        Guna2ComboBox4.BackColor = Color.Transparent
+        Guna2ComboBox4.CustomizableEdges = CustomizableEdges23
+        Guna2ComboBox4.DrawMode = DrawMode.OwnerDrawFixed
+        Guna2ComboBox4.DropDownStyle = ComboBoxStyle.DropDownList
+        Guna2ComboBox4.Enabled = False
+        Guna2ComboBox4.FocusedColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        Guna2ComboBox4.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        Guna2ComboBox4.Font = New Font("Segoe UI", 10F)
+        Guna2ComboBox4.ForeColor = Color.FromArgb(CByte(68), CByte(88), CByte(112))
+        Guna2ComboBox4.ItemHeight = 30
+        Guna2ComboBox4.Items.AddRange(New Object() {"Sitio 1", "Sitio 2", "Sitio 3", "Sitio 4", "Sitio 5", "Sitio 6", "Sitio 7"})
+        Guna2ComboBox4.Location = New Point(263, 295)
+        Guna2ComboBox4.Name = "Guna2ComboBox4"
+        Guna2ComboBox4.ShadowDecoration.CustomizableEdges = CustomizableEdges24
+        Guna2ComboBox4.Size = New Size(140, 36)
+        Guna2ComboBox4.TabIndex = 33
         ' 
         ' Form3
         ' 
@@ -597,6 +645,8 @@ Partial Class Form3
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         ClientSize = New Size(842, 598)
+        Controls.Add(Guna2ComboBox4)
+        Controls.Add(Guna2ComboBox3)
         Controls.Add(Guna2HtmlLabel15)
         Controls.Add(Guna2HtmlLabel14)
         Controls.Add(Guna2HtmlLabel13)
@@ -658,4 +708,6 @@ Partial Class Form3
     Friend WithEvents Column3 As DataGridViewTextBoxColumn
     Friend WithEvents Column4 As DataGridViewTextBoxColumn
     Friend WithEvents Column5 As DataGridViewTextBoxColumn
+    Friend WithEvents Guna2ComboBox3 As Guna.UI2.WinForms.Guna2ComboBox
+    Friend WithEvents Guna2ComboBox4 As Guna.UI2.WinForms.Guna2ComboBox
 End Class

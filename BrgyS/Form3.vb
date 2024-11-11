@@ -18,33 +18,37 @@ Public Class Form3
             Select Case Guna2ComboBox2.SelectedItem.ToString()
                 Case "ID"
 
-                    Try
-                        openCon()
+                    'Try
+                    '    openCon()
 
-                        Using command As New MySqlCommand("SELECT * FROM resident_info WHERE resident_id = @resident_id", con)
-                            command.Parameters.Add("@resident_id", MySqlDbType.VarChar).Value = Guna2TextBox1.Text ' search
+                    '    Using command As New MySqlCommand("SELECT * FROM resident_info WHERE resident_id = @resident_id", con)
+                    '        command.Parameters.Add("@resident_id", MySqlDbType.VarChar).Value = Guna2TextBox1.Text ' search
 
-                            Dim adapter As New MySqlDataAdapter(command)
-                            Dim table As New DataTable
-                            adapter.Fill(table)
+                    '        Dim adapter As New MySqlDataAdapter(command)
+                    '        Dim table As New DataTable
+                    '        adapter.Fill(table)
 
 
-                            If table.Rows.Count = 0 Then
-                                MsgBox("Invalid username or password. Please try again.", MsgBoxStyle.Exclamation, "Login Error")
-                            Else
-                                con.Close()
+                    '        If table.Rows.Count = 0 Then
+                    '            MsgBox("Invalid username or password. Please try again.", MsgBoxStyle.Exclamation, "Login Error")
+                    '        Else
+                    '            con.Close()
 
-                                brgyID.resID = table.Rows(0)("resident_id").ToString
-                                Dim anotherForm As New brgyID()
-                                Form2.switchPanel(anotherForm)
+                    '            brgyID.resID = table.Rows(0)("resident_id").ToString
+                    '            Dim anotherForm As New brgyID()
+                    '            Form2.switchPanel(anotherForm)
 
-                            End If
-                        End Using
-                    Catch ex As Exception
-                        MsgBox("An error occurred: " & ex.Message, MsgBoxStyle.Critical, "Error")
-                    Finally
-                        con.Close()
-                    End Try
+                    '        End If
+                    '    End Using
+                    'Catch ex As Exception
+                    '    MsgBox("may An error occurred: " & ex.Message, MsgBoxStyle.Critical, "Error")
+                    'Finally
+                    '    con.Close()
+                    'End Try
+
+                    'brgyID.resID = Table.Rows(0)("resident_id").ToString
+                    Dim anotherForm As New brgyID()
+                    Form2.switchPanel(anotherForm)
 
 
 
@@ -110,6 +114,9 @@ Public Class Form3
                         Guna2TextBox8.Text = reader("middle_name").ToString()
                         Guna2TextBox9.Text = reader("address").ToString()
                         Guna2HtmlLabel15.Text = reader("resident_id").ToString()
+                        Guna2ComboBox3.Text = GetStringValue(reader, "sitio")
+                        Guna2ComboBox4.Text = GetStringValue(reader, "street")
+
 
                         'insert to table
                         While reader.Read()
@@ -135,6 +142,11 @@ Public Class Form3
         End Try
 
     End Sub
+
+    Private Function GetStringValue(reader As MySqlDataReader, v As String) As String
+        Throw New NotImplementedException()
+    End Function
+
     Private Sub loadform()
         Guna2DataGridView1.Rows.Clear()
 

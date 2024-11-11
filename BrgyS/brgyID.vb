@@ -1,13 +1,16 @@
 ﻿Imports AForge.Video
 Imports AForge.Video.DirectShow
+
 Imports DocumentFormat.OpenXml.Packaging
 Imports DocumentFormat.OpenXml.Wordprocessing
+
 Imports MySql.Data.MySqlClient
+
 Imports System.Drawing.Imaging
-Imports Syncfusion.DocIO.DLS
-Imports Syncfusion.DocToPDFConverter
-Imports Syncfusion.Pdf
+Imports System.Drawing.Printing
 Imports System.IO
+Imports Spire.Doc
+Imports Document = Spire.Doc.Document
 
 Public Class brgyID
     Private _resID As String
@@ -77,13 +80,19 @@ Public Class brgyID
     Private Sub Guna2Button3_Click(sender As Object, e As EventArgs) Handles Guna2Button3.Click
         'save and print docu
         generatedocfile()
-        InsertTransactionLog()
+        'InsertTransactionLog()
     End Sub
 
     'functions and sub
     Private Sub generatedocfile()
         ' Path to the template document
         Dim templatePath As String = "C:\Users\John Roi\source\repos\BrgyS\BrgyS\docu\BRGYidTEMP.docx"
+
+        ' Check if the template file exists
+        If Not File.Exists(templatePath) Then
+            MessageBox.Show("Template file not found at: " & templatePath, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return
+        End If
 
         ' Input values from the textboxes
         Dim NAMEOFAPPLICANT As String = Guna2TextBox1.Text
@@ -104,68 +113,157 @@ Public Class brgyID
         Dim newDocxFileName As String = sanitizedStudentName & "_" & dateTimeStamp & ".docx"
         Dim newDocxFilePath As String = Path.Combine("C:\Users\John Roi\source\repos\BrgyS\BrgyS\docu\generated docu\", newDocxFileName)
 
-        ' Copy the template file and replace placeholders
-        File.Copy(templatePath, newDocxFilePath, True)
-        ReplaceTextInWordDocument(newDocxFilePath, "{Name}", NAMEOFAPPLICANT)
-        ReplaceTextInWordDocument(newDocxFilePath, "{IDNumber}", BRGYID)
-        ReplaceTextInWordDocument(newDocxFilePath, "{Address}", RESADDRESS)
-        InsertImageInWordDocument(newDocxFilePath, "{Photo}", PHOTO)
-        ReplaceTextInWordDocument(newDocxFilePath, "{TIN}", TIN)
-        ReplaceTextInWordDocument(newDocxFilePath, "{BDay}", BDAY)
-        ReplaceTextInWordDocument(newDocxFilePath, "{BloodType}", BTYPE)
-        ReplaceTextInWordDocument(newDocxFilePath, "{Precinct}", PRECINTNO)
-        ReplaceTextInWordDocument(newDocxFilePath, "{NameOfEmerContact}", EMERNAME)
-        ReplaceTextInWordDocument(newDocxFilePath, "{NumberOfEmerContact}", EMERNO)
-        ReplaceTextInWordDocument(newDocxFilePath, "{AddressOfEmerContact}", EMERADD)
+        Try
+            ' Copy the template file and replace placeholders
+            File.Copy(templatePath, newDocxFilePath, True)
+            ReplaceTextInWordDocument(newDocxFilePath, "{Name}", NAMEOFAPPLICANT)
+            ReplaceTextInWordDocument(newDocxFilePath, "{IDNumber}", BRGYID)
+            ReplaceTextInWordDocument(newDocxFilePath, "{Address}", RESADDRESS)
+            InsertImageInWordDocument(newDocxFilePath, "{Photo}", PHOTO)
+            ReplaceTextInWordDocument(newDocxFilePath, "{TIN}", TIN)
+            ReplaceTextInWordDocument(newDocxFilePath, "{BDay}", BDAY)
+            ReplaceTextInWordDocument(newDocxFilePath, "{BloodType}", BTYPE)
+            ReplaceTextInWordDocument(newDocxFilePath, "{Precinct}", PRECINTNO)
+            ReplaceTextInWordDocument(newDocxFilePath, "{NameOfEmerContact}", EMERNAME)
+            ReplaceTextInWordDocument(newDocxFilePath, "{NumberOfEmerContact}", EMERNO)
+            ReplaceTextInWordDocument(newDocxFilePath, "{AddressOfEmerContact}", EMERADD)
 
-        '' Convert to PDF using Syncfusion
-        'Dim pdfDocPath As String = Path.Combine("C:\Users\John Roi\source\repos\BrgyS\BrgyS\docu\generated docu\", sanitizedStudentName & "_" & dateTimeStamp & ".pdf")
-        'ConvertDocxToPdf(newDocxFilePath, pdfDocPath)
+            PrintDocxFile(newDocxFilePath, newDocxFileName)
 
-        '' Print the PDF
-        'PrintPdf(pdfDocPath)
-
-
-        MessageBox.Show("Document created, saved as PDF, and sent to printer.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Catch ex As Exception
+            MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
-    'Private Sub ConvertDocxToPdf(docxFilePath As String, pdfFilePath As String)
-    '    ' Open a FileStream for the .docx file
-    '    Using fileStream As New FileStream(docxFilePath, FileMode.Open, FileAccess.Read)
-    '        ' Load the Word document from the stream with the correct FormatType
-    '        Using wordDoc As New WordDocument(fileStream, Syncfusion.DocIO.FormatType.Docx)
-    '            ' Initialize DocToPDFConverter
-    '            Dim converter As New Syncfusion.DocToPDFConverter.DocToPDFConverter()
+    Public Sub PrintDocxFile(docxFilePath As String, filename As String)
+        'Create a Document object
 
-    '            ' Convert the Word document to PDF
-    '            Dim pdfDoc As Syncfusion.Pdf.PdfDocument = converter.ConvertToPDF(wordDoc)
+        ' Create a Document object
+        Try
+            ' Load the Word document using Spire.Doc
+            Dim doc As New Document()
+            doc.LoadFromFile(docxFilePath)
 
-    '            ' Save the PDF document to the specified file path
-    '            pdfDoc.Save(pdfFilePath)
+            ' Generate a uniformed file name with timestamp
+            Dim folderPath As String = "C:\Users\John Roi\source\repos\BrgyS\BrgyS\docu\printeddocs\" ' Specify your folder path
+            If Not Directory.Exists(folderPath) Then
+                Directory.CreateDirectory(folderPath) ' Create folder if it doesn't exist
+            End If
 
-    '            ' Close the PDF document
-    '            pdfDoc.Close(True)
-    '        End Using
-    '    End Using
+            ' Create a uniformed name for the file
+            Dim newFilePath As String = Path.Combine(folderPath, filename)
+
+            ' Save the document with the uniformed file name
+            doc.SaveToFile(newFilePath)
+
+            ' Optional: Show message confirming the file has been saved
+            MessageBox.Show("Document saved as: " & filename, "Save Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+            ' Get the PrintDocument object from Spire.Doc document
+            Dim printDoc As PrintDocument = doc.PrintDocument
+
+            ' Optional: Specify the printer name
+            ' printDoc.PrinterSettings.PrinterName = "Your Printer Name"
+
+            ' Optional: Specify the range of pages to print
+            ' printDoc.PrinterSettings.FromPage = 1
+            ' printDoc.PrinterSettings.ToPage = 1
+
+            ' Optional: Specify the number of copies to print
+            ' printDoc.PrinterSettings.Copies = 1
+
+            ' Print the document
+            printDoc.Print()
+
+            ' Show success message for printing
+            MessageBox.Show("Document sent to printer successfully.", "Print Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+        Catch ex As Exception
+            ' Handle any errors
+            MessageBox.Show("Error printing or saving document: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+    'Public Sub PrintDocxFile(filePath As String)
+    '    Try
+    '        ' Create a new instance of the Word application
+    '        Dim wordApp As New Word.Application()
+    '        wordApp.Visible = False ' Set to false so Word does not show up to the user
+
+    '        ' Open the document
+    '        Dim wordDoc As Word.Document = wordApp.Documents.Open(filePath)
+
+    '        ' Print the document
+    '        wordDoc.PrintOut()
+
+    '        ' Close the document without saving any changes
+    '        wordDoc.Close(SaveChanges:=False)
+
+    '        ' Quit Word application
+    '        wordApp.Quit()
+
+    '        ' Optionally show a success message
+    '        MessageBox.Show("Document sent to printer successfully.", "Print Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+    '    Catch ex As Exception
+    '        ' Handle errors
+    '        MessageBox.Show("Error printing document: " & ex.Message, "Print Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+
+    '    Finally
+    '        '' Release COM objects to prevent memory leaks
+    '        'If Not wordApp Is Nothing Then Marshal.ReleaseComObject(wordApp)
+    '        'If Not wordDoc Is Nothing Then Marshal.ReleaseComObject(wordDoc)
+    '    End Try
     'End Sub
 
-    '' Print the PDF document
-    'Private Sub PrintPdf(pdfFilePath As String)
-    '    Using pdfDoc As New Syncfusion.Pdf.Parsing.PdfLoadedDocument(pdfFilePath)
-    '        ' Create a printer instance for the PDF
-    '        Dim pdfPrinter As New Syncfusion.Pdf.Parsing.PdfDocumentPrinter(pdfDoc)
-    '        ' Print the PDF document
-    '        pdfPrinter.Print()
-    '    End Using
+    'Public Sub PrintDocxFile(docxFilePath As String)
+    '    Try
+    '        ' Set the GemBox license (ensure you replace with your actual license key)
+    '        ComponentInfo.SetLicense("FREE-LIMITED-KEY")
+
+    '        ' Load the document using GemBox.Document
+    '        Dim document As New DocumentModel()
+    '        document.Load(docxFilePath)
+
+    '        ' Print the document
+    '        document.Print()
+
+    '        ' Show success message
+    '        MessageBox.Show("Document sent to printer successfully.", "Print Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+    '    Catch ex As Exception
+    '        ' Handle any errors
+    '        MessageBox.Show("Error printing document: " & ex.Message, "Print Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+    '    End Try
+    'End Sub
+
+    'Public Sub PrintDocxFile(docxFilePath As String)
+    '    Try
+    '        ' Load the document using Aspose.Words
+    '        Dim doc As New Document(docxFilePath)
+
+    '        ' Create PrinterSettings (Optional: You can specify your printer name here)
+    '        Dim printerSettings As New PrinterSettings()
+    '        printerSettings.PrinterName = "Your Printer Name" ' Optional: specify your printer name if needed
+
+    '        ' Print the document
+    '        doc.Print(printerSettings)
+
+    '        ' Optionally, show a success message
+    '        MessageBox.Show("Document sent to printer successfully.", "Print Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+    '    Catch ex As Exception
+    '        ' Handle any errors
+    '        MessageBox.Show("Error printing document: " & ex.Message, "Print Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+    '    End Try
     'End Sub
 
     Private Sub InsertImageInWordDocument(filePath As String, imagePlaceholder As String, imagePath As String)
         Using wordDoc As WordprocessingDocument = WordprocessingDocument.Open(filePath, True)
             Dim mainPart As MainDocumentPart = wordDoc.MainDocumentPart
-            Dim documentBody As Body = mainPart.Document.Body
+            Dim documentBody As DocumentFormat.OpenXml.Wordprocessing.Body = mainPart.Document.Body
 
             ' Find the paragraph containing the image placeholder
-            For Each paragraph As Paragraph In documentBody.Descendants(Of Paragraph)()
-                For Each run As Run In paragraph.Descendants(Of Run)()
+            For Each paragraph As DocumentFormat.OpenXml.Drawing.Paragraph In documentBody.Descendants(Of DocumentFormat.OpenXml.Drawing.Paragraph)()
+                For Each run As DocumentFormat.OpenXml.Drawing.Run In paragraph.Descendants(Of DocumentFormat.OpenXml.Drawing.Run)()
                     For Each textElement As Text In run.Descendants(Of Text)()
                         If textElement.Text.Contains(imagePlaceholder) Then
                             ' Replace the placeholder text with an empty string (removing the placeholder)
@@ -215,7 +313,7 @@ Public Class brgyID
                             )
 
                             ' Append the drawing to the Run
-                            run.AppendChild(New Run(element))
+                            run.AppendChild(New DocumentFormat.OpenXml.Drawing.Run(element))
                         End If
                     Next
                 Next
@@ -231,7 +329,7 @@ Public Class brgyID
         Using wordDoc As WordprocessingDocument = WordprocessingDocument.Open(filePath, True)
             ' Get the main document part
             Dim mainPart As MainDocumentPart = wordDoc.MainDocumentPart
-            Dim documentBody As Body = mainPart.Document.Body
+            Dim documentBody As DocumentFormat.OpenXml.Wordprocessing.Body = mainPart.Document.Body
 
             ' Loop through all text elements in the document
             For Each textElement As Text In documentBody.Descendants(Of Text)()
@@ -246,28 +344,8 @@ Public Class brgyID
             mainPart.Document.Save()
         End Using
     End Sub
-    Private Sub ConvertDocxToPdfAndPrint(docxFilePath As String, pdfFilePath As String)
-        Dim wordApp As New Microsoft.Office.Interop.Word.Application()
-        Dim wordDoc As Microsoft.Office.Interop.Word.Document = Nothing
 
-        Try
-            ' Open the DOCX file
-            wordDoc = wordApp.Documents.Open(docxFilePath)
 
-            ' Export as PDF
-            wordDoc.ExportAsFixedFormat(pdfFilePath, Microsoft.Office.Interop.Word.WdExportFormat.wdExportFormatPDF)
-
-            ' Print the PDF
-            wordDoc.PrintOut()
-
-        Catch ex As Exception
-            MessageBox.Show("Error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        Finally
-            ' Close Word application and document
-            If wordDoc IsNot Nothing Then wordDoc.Close(False)
-            wordApp.Quit(False)
-        End Try
-    End Sub
 
 
     'camera//////////////////////////////////////////////////////////////////////////////////////

@@ -4,11 +4,6 @@ Public Class Form1
     ' Variable to track whether the password is shown or hidden
     Private isPasswordVisible As Boolean = False
 
-    Private Sub Guna2Button2_Click(sender As Object, e As EventArgs) Handles Guna2Button2.Click
-        Guna2TextBox1.Clear()
-        Guna2TextBox2.Clear()
-    End Sub
-
     ' Logic for logging in when Guna2Button1 is clicked
     Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
         mylogin()
@@ -76,6 +71,14 @@ Public Class Form1
     End Sub
 
     Private Sub Guna2TextBox1_TextChanged(sender As Object, e As EventArgs) Handles Guna2TextBox1.TextChanged
+
+    End Sub
+
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+    End Sub
+
+    Private Sub Guna2HtmlLabel1_Click(sender As Object, e As EventArgs) Handles Guna2HtmlLabel1.Click
 
     End Sub
 End Class

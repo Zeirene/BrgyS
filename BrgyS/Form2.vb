@@ -51,9 +51,7 @@ Public Class Form2
         Guna2Button2.Font = New Font(Guna2Button2.Font, FontStyle.Regular)
         Guna2Button2.FillColor = Color.White
         Guna2Button2.ForeColor = Color.Black
-        Guna2Button3.Font = New Font(Guna2Button2.Font, FontStyle.Regular)
-        Guna2Button3.FillColor = Color.White
-        Guna2Button3.ForeColor = Color.Black
+
         Guna2Button5.Font = New Font(Guna2Button2.Font, FontStyle.Regular)
         Guna2Button5.FillColor = Color.White
         Guna2Button5.ForeColor = Color.Black
@@ -63,9 +61,7 @@ Public Class Form2
         Guna2Button1.FillColor = Color.White
         Guna2Button1.ForeColor = Color.Black
         Guna2Button1.Font = New Font(Guna2Button1.Font, FontStyle.Regular)
-        Guna2Button3.FillColor = Color.White
-        Guna2Button3.ForeColor = Color.Black
-        Guna2Button3.Font = New Font(Guna2Button1.Font, FontStyle.Regular)
+
         Guna2Button2.Font = New Font(Guna2Button2.Font, FontStyle.Bold)
         Guna2Button2.FillColor = Color.FromArgb(30, 71, 125)
         Guna2Button2.ForeColor = Color.White
@@ -73,11 +69,9 @@ Public Class Form2
         Guna2Button5.FillColor = Color.White
         Guna2Button5.ForeColor = Color.Black
     End Sub
-    Private Sub Guna2Button3_Click(sender As Object, e As EventArgs) Handles Guna2Button3.Click
+    Private Sub Guna2Button3_Click(sender As Object, e As EventArgs)
         switchPanel(Form6)
-        Guna2Button3.FillColor = Color.FromArgb(30, 71, 125)
-        Guna2Button3.ForeColor = Color.White
-        Guna2Button3.Font = New Font(Guna2Button1.Font, FontStyle.Bold)
+
         Guna2Button1.Font = New Font(Guna2Button2.Font, FontStyle.Regular)
         Guna2Button1.FillColor = Color.White
         Guna2Button1.ForeColor = Color.Black
@@ -106,9 +100,7 @@ Public Class Form2
         Guna2Button2.Font = New Font(Guna2Button2.Font, FontStyle.Regular)
         Guna2Button2.FillColor = Color.White
         Guna2Button2.ForeColor = Color.Black
-        Guna2Button3.Font = New Font(Guna2Button2.Font, FontStyle.Regular)
-        Guna2Button3.FillColor = Color.White
-        Guna2Button3.ForeColor = Color.Black
+
         Guna2Button4.Font = New Font(Guna2Button2.Font, FontStyle.Regular)
         Guna2Button4.FillColor = Color.White
         Guna2Button4.ForeColor = Color.Black
@@ -126,4 +118,7 @@ Public Class Form2
         panel.Show()
     End Sub
 
+    Private Sub Guna2Button4_Click(sender As Object, e As EventArgs) Handles Guna2Button4.Click
+
+    End Sub
 End Class

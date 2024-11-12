@@ -80,7 +80,7 @@ Public Class brgyID
     Private Sub Guna2Button3_Click(sender As Object, e As EventArgs) Handles Guna2Button3.Click
         'save and print docu
         generatedocfile()
-        'InsertTransactionLog()
+        InsertTransactionLog()
     End Sub
 
     'functions and sub
@@ -144,19 +144,19 @@ Public Class brgyID
             doc.LoadFromFile(docxFilePath)
 
             ' Generate a uniformed file name with timestamp
-            Dim folderPath As String = "C:\Users\John Roi\source\repos\BrgyS\BrgyS\docu\printeddocs\" ' Specify your folder path
-            If Not Directory.Exists(folderPath) Then
-                Directory.CreateDirectory(folderPath) ' Create folder if it doesn't exist
-            End If
+            'Dim folderPath As String = "C:\Users\John Roi\source\repos\BrgyS\BrgyS\docu\printeddocs\" ' Specify your folder path
+            'If Not Directory.Exists(folderPath) Then
+            '    Directory.CreateDirectory(folderPath) ' Create folder if it doesn't exist
+            'End If
 
-            ' Create a uniformed name for the file
-            Dim newFilePath As String = Path.Combine(folderPath, filename)
+            '' Create a uniformed name for the file
+            'Dim newFilePath As String = Path.Combine(folderPath, filename)
 
-            ' Save the document with the uniformed file name
-            doc.SaveToFile(newFilePath)
+            '' Save the document with the uniformed file name
+            'doc.SaveToFile(newFilePath)
 
-            ' Optional: Show message confirming the file has been saved
-            MessageBox.Show("Document saved as: " & filename, "Save Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            '' Optional: Show message confirming the file has been saved
+            'MessageBox.Show("Document saved as: " & filename, "Save Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
             ' Get the PrintDocument object from Spire.Doc document
             Dim printDoc As PrintDocument = doc.PrintDocument

@@ -185,9 +185,9 @@ Partial Class Form3
         Guna2TextBox9.CustomizableEdges = CustomizableEdges3
         Guna2TextBox9.DefaultText = ""
         Guna2TextBox9.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
-        Guna2TextBox9.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
+        Guna2TextBox9.DisabledState.FillColor = Color.White
         Guna2TextBox9.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        Guna2TextBox9.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        Guna2TextBox9.DisabledState.PlaceholderForeColor = Color.White
         Guna2TextBox9.Enabled = False
         Guna2TextBox9.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         Guna2TextBox9.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
@@ -199,7 +199,7 @@ Partial Class Form3
         Guna2TextBox9.PlaceholderText = "House #"
         Guna2TextBox9.SelectedText = ""
         Guna2TextBox9.ShadowDecoration.CustomizableEdges = CustomizableEdges4
-        Guna2TextBox9.Size = New Size(76, 44)
+        Guna2TextBox9.Size = New Size(157, 44)
         Guna2TextBox9.TabIndex = 20
         ' 
         ' Guna2Button1
@@ -330,9 +330,9 @@ Partial Class Form3
         Guna2TextBox7.CustomizableEdges = CustomizableEdges13
         Guna2TextBox7.DefaultText = ""
         Guna2TextBox7.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
-        Guna2TextBox7.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
+        Guna2TextBox7.DisabledState.FillColor = Color.White
         Guna2TextBox7.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        Guna2TextBox7.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        Guna2TextBox7.DisabledState.PlaceholderForeColor = Color.White
         Guna2TextBox7.Enabled = False
         Guna2TextBox7.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         Guna2TextBox7.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
@@ -459,9 +459,9 @@ Partial Class Form3
         Guna2TextBox8.CustomizableEdges = CustomizableEdges17
         Guna2TextBox8.DefaultText = ""
         Guna2TextBox8.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
-        Guna2TextBox8.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
+        Guna2TextBox8.DisabledState.FillColor = Color.White
         Guna2TextBox8.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        Guna2TextBox8.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        Guna2TextBox8.DisabledState.PlaceholderForeColor = Color.White
         Guna2TextBox8.Enabled = False
         Guna2TextBox8.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         Guna2TextBox8.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
@@ -485,9 +485,9 @@ Partial Class Form3
         Guna2TextBox6.CustomizableEdges = CustomizableEdges19
         Guna2TextBox6.DefaultText = ""
         Guna2TextBox6.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
-        Guna2TextBox6.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
+        Guna2TextBox6.DisabledState.FillColor = Color.White
         Guna2TextBox6.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        Guna2TextBox6.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        Guna2TextBox6.DisabledState.PlaceholderForeColor = Color.White
         Guna2TextBox6.Enabled = False
         Guna2TextBox6.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         Guna2TextBox6.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
@@ -604,7 +604,10 @@ Partial Class Form3
         ' Guna2ComboBox3
         ' 
         Guna2ComboBox3.BackColor = Color.Transparent
+        Guna2ComboBox3.BorderRadius = 10
         Guna2ComboBox3.CustomizableEdges = CustomizableEdges21
+        Guna2ComboBox3.DisabledState.FillColor = Color.White
+        Guna2ComboBox3.DisabledState.ForeColor = Color.White
         Guna2ComboBox3.DrawMode = DrawMode.OwnerDrawFixed
         Guna2ComboBox3.DropDownStyle = ComboBoxStyle.DropDownList
         Guna2ComboBox3.Enabled = False
@@ -612,18 +615,21 @@ Partial Class Form3
         Guna2ComboBox3.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         Guna2ComboBox3.Font = New Font("Segoe UI", 10F)
         Guna2ComboBox3.ForeColor = Color.FromArgb(CByte(68), CByte(88), CByte(112))
-        Guna2ComboBox3.ItemHeight = 30
+        Guna2ComboBox3.ItemHeight = 38
         Guna2ComboBox3.Items.AddRange(New Object() {"Sitio 1", "Sitio 2", "Sitio 3", "Sitio 4", "Sitio 5", "Sitio 6", "Sitio 7"})
-        Guna2ComboBox3.Location = New Point(102, 295)
+        Guna2ComboBox3.Location = New Point(175, 287)
         Guna2ComboBox3.Name = "Guna2ComboBox3"
         Guna2ComboBox3.ShadowDecoration.CustomizableEdges = CustomizableEdges22
-        Guna2ComboBox3.Size = New Size(140, 36)
+        Guna2ComboBox3.Size = New Size(157, 44)
         Guna2ComboBox3.TabIndex = 32
         ' 
         ' Guna2ComboBox4
         ' 
         Guna2ComboBox4.BackColor = Color.Transparent
+        Guna2ComboBox4.BorderRadius = 10
         Guna2ComboBox4.CustomizableEdges = CustomizableEdges23
+        Guna2ComboBox4.DisabledState.FillColor = Color.White
+        Guna2ComboBox4.DisabledState.ForeColor = Color.White
         Guna2ComboBox4.DrawMode = DrawMode.OwnerDrawFixed
         Guna2ComboBox4.DropDownStyle = ComboBoxStyle.DropDownList
         Guna2ComboBox4.Enabled = False
@@ -631,12 +637,12 @@ Partial Class Form3
         Guna2ComboBox4.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         Guna2ComboBox4.Font = New Font("Segoe UI", 10F)
         Guna2ComboBox4.ForeColor = Color.FromArgb(CByte(68), CByte(88), CByte(112))
-        Guna2ComboBox4.ItemHeight = 30
+        Guna2ComboBox4.ItemHeight = 38
         Guna2ComboBox4.Items.AddRange(New Object() {"Sitio 1", "Sitio 2", "Sitio 3", "Sitio 4", "Sitio 5", "Sitio 6", "Sitio 7"})
-        Guna2ComboBox4.Location = New Point(263, 295)
+        Guna2ComboBox4.Location = New Point(338, 287)
         Guna2ComboBox4.Name = "Guna2ComboBox4"
         Guna2ComboBox4.ShadowDecoration.CustomizableEdges = CustomizableEdges24
-        Guna2ComboBox4.Size = New Size(140, 36)
+        Guna2ComboBox4.Size = New Size(157, 44)
         Guna2ComboBox4.TabIndex = 33
         ' 
         ' Form3

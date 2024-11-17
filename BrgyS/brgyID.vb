@@ -83,7 +83,26 @@ Public Class brgyID
         InsertTransactionLog()
     End Sub
 
-    'functions and sub
+
+    'validations//////////////////////////////////////////////////////////////////////////////////////////////
+    Private Sub Guna2TextBox6_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Guna2TextBox6.KeyPress
+        'validations
+        onlyacceptnum(e)
+    End Sub
+    Private Sub Guna2TextBox7_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Guna2TextBox7.KeyPress
+        onlyacceptnum(e)
+    End Sub
+    Private Sub Guna2TextBox4_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Guna2TextBox4.KeyPress
+        onlyacceptnum(e)
+    End Sub
+
+
+
+
+
+
+
+    'functions and sub/////////////////////////////////////////////////////////////
     Private Sub generatedocfile()
         ' Path to the template document
         Dim templatePath As String = "C:\Users\John Roi\source\repos\BrgyS\BrgyS\docu\BRGYidTEMP.docx"
@@ -182,80 +201,6 @@ Public Class brgyID
             MessageBox.Show("Error printing or saving document: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
-    'Public Sub PrintDocxFile(filePath As String)
-    '    Try
-    '        ' Create a new instance of the Word application
-    '        Dim wordApp As New Word.Application()
-    '        wordApp.Visible = False ' Set to false so Word does not show up to the user
-
-    '        ' Open the document
-    '        Dim wordDoc As Word.Document = wordApp.Documents.Open(filePath)
-
-    '        ' Print the document
-    '        wordDoc.PrintOut()
-
-    '        ' Close the document without saving any changes
-    '        wordDoc.Close(SaveChanges:=False)
-
-    '        ' Quit Word application
-    '        wordApp.Quit()
-
-    '        ' Optionally show a success message
-    '        MessageBox.Show("Document sent to printer successfully.", "Print Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-
-    '    Catch ex As Exception
-    '        ' Handle errors
-    '        MessageBox.Show("Error printing document: " & ex.Message, "Print Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-
-    '    Finally
-    '        '' Release COM objects to prevent memory leaks
-    '        'If Not wordApp Is Nothing Then Marshal.ReleaseComObject(wordApp)
-    '        'If Not wordDoc Is Nothing Then Marshal.ReleaseComObject(wordDoc)
-    '    End Try
-    'End Sub
-
-    'Public Sub PrintDocxFile(docxFilePath As String)
-    '    Try
-    '        ' Set the GemBox license (ensure you replace with your actual license key)
-    '        ComponentInfo.SetLicense("FREE-LIMITED-KEY")
-
-    '        ' Load the document using GemBox.Document
-    '        Dim document As New DocumentModel()
-    '        document.Load(docxFilePath)
-
-    '        ' Print the document
-    '        document.Print()
-
-    '        ' Show success message
-    '        MessageBox.Show("Document sent to printer successfully.", "Print Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-
-    '    Catch ex As Exception
-    '        ' Handle any errors
-    '        MessageBox.Show("Error printing document: " & ex.Message, "Print Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-    '    End Try
-    'End Sub
-
-    'Public Sub PrintDocxFile(docxFilePath As String)
-    '    Try
-    '        ' Load the document using Aspose.Words
-    '        Dim doc As New Document(docxFilePath)
-
-    '        ' Create PrinterSettings (Optional: You can specify your printer name here)
-    '        Dim printerSettings As New PrinterSettings()
-    '        printerSettings.PrinterName = "Your Printer Name" ' Optional: specify your printer name if needed
-
-    '        ' Print the document
-    '        doc.Print(printerSettings)
-
-    '        ' Optionally, show a success message
-    '        MessageBox.Show("Document sent to printer successfully.", "Print Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-
-    '    Catch ex As Exception
-    '        ' Handle any errors
-    '        MessageBox.Show("Error printing document: " & ex.Message, "Print Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-    '    End Try
-    'End Sub
-
     Private Sub InsertImageInWordDocument(filePath As String, imagePlaceholder As String, imagePath As String)
         Using wordDoc As WordprocessingDocument = WordprocessingDocument.Open(filePath, True)
             Dim mainPart As MainDocumentPart = wordDoc.MainDocumentPart
@@ -428,6 +373,11 @@ Public Class brgyID
                 con.Close()
             End If
         End Try
+    End Sub
+    Public Sub onlyacceptnum(e As KeyPressEventArgs)
+        If Not Char.IsControl(e.KeyChar) AndAlso Not Char.IsDigit(e.KeyChar) Then
+            e.Handled = True
+        End If
     End Sub
 
 

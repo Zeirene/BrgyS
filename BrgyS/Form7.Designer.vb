@@ -77,6 +77,8 @@ Partial Class Form7
         Guna2Button1 = New Guna.UI2.WinForms.Guna2Button()
         Guna2Separator1 = New Guna.UI2.WinForms.Guna2Separator()
         Guna2TextBox4 = New Guna.UI2.WinForms.Guna2TextBox()
+        Label3 = New Label()
+        Label2 = New Label()
         SuspendLayout()
         ' 
         ' Guna2TextBox8
@@ -529,12 +531,32 @@ Partial Class Form7
         Guna2TextBox4.Size = New Size(457, 44)
         Guna2TextBox4.TabIndex = 53
         ' 
+        ' Label3
+        ' 
+        Label3.AutoSize = True
+        Label3.Location = New Point(346, 18)
+        Label3.Name = "Label3"
+        Label3.Size = New Size(41, 15)
+        Label3.TabIndex = 74
+        Label3.Text = "Label3"
+        ' 
+        ' Label2
+        ' 
+        Label2.AutoSize = True
+        Label2.Location = New Point(221, 18)
+        Label2.Name = "Label2"
+        Label2.Size = New Size(41, 15)
+        Label2.TabIndex = 73
+        Label2.Text = "Label2"
+        ' 
         ' Form7
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         ClientSize = New Size(842, 598)
+        Controls.Add(Label3)
+        Controls.Add(Label2)
         Controls.Add(Guna2Separator1)
         Controls.Add(Guna2Button2)
         Controls.Add(Guna2Button1)
@@ -597,4 +619,6 @@ Partial Class Form7
     Friend WithEvents Guna2Button1 As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2Separator1 As Guna.UI2.WinForms.Guna2Separator
     Friend WithEvents Guna2TextBox4 As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Label2 As Label
 End Class

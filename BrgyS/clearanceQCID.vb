@@ -3,17 +3,30 @@ Imports DocumentFormat.OpenXml.Wordprocessing
 Imports Guna.UI2.WinForms
 Imports MySql.Data.MySqlClient
 Imports System.IO
+Imports System.Reflection.Emit
 Public Class clearanceQCID
     Private Sub clearanceQCID_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Guna2TextBox1.Text = Form3.Guna2TextBox6.Text + "," + Form3.Guna2TextBox7.Text + " " + Form3.Guna2TextBox8.Text
         Guna2ComboBox1.Text = Form3.Guna2TextBox9.Text
+
+
+        Label2.Text = Form3.Guna2HtmlLabel15.Text
+        Label3.Text = Form2.staffID
     End Sub
 
     Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
         generatedocfile()
-
+        InsertTransactionLog()
     End Sub
 
+
+
+
+
+
+
+
+    'functions and sub/////////////////////////////////////////////////////////////
     Private Sub generatedocfile()
         ' Path to the template document
         Dim templatePath As String = "C:\Users\John Roi\source\repos\BrgyS\BrgyS\docu\BRGYidTEMP.docx"
@@ -79,8 +92,53 @@ Public Class clearanceQCID
             mainPart.Document.Save()
         End Using
     End Sub
+    Public Sub InsertTransactionLog()
+        Dim logDate As Date = Date.Today
+        Dim logTime As Date = DateTime.Now.ToString("HH:mm:ss")
+        Dim logType As String = Form3.Guna2ComboBox2.Text
+        Dim logStatus As String = "Completed"
+        Dim payment As Decimal = Decimal.Parse(Form3.Guna2TextBox16.Text)
+        Dim residentId As String = Label2.Text
+        Dim staffId As String = Form2.staffID ' staffId is treated as a String
 
-    Private Sub Guna2Button2_Click(sender As Object, e As EventArgs) Handles Guna2Button2.Click
+        Try
+            ' Open the connection to the database
+            con.Open()
 
+            'Prepare the SQL query to insert the transaction log data
+            Dim insertQuery As String = "INSERT INTO transaction_log (log_date, log_time, type, status, payment, resident_id, staff_id) 
+                                     VALUES (@log_date, @log_time, @type, @status, @payment, @resident_id, @staff_id)"
+
+            'Dim insertQuery As String = "INSERT INTO transaction_log (log_date, log_time, type, status, payment) 
+            '                         VALUES (@log_date, @log_time, @type, @status, @payment)"
+
+            ' Create a MySQL command object with the query and connection
+            Using cmd As New MySqlCommand(insertQuery, con)
+                ' Add parameters to the command
+                cmd.Parameters.AddWithValue("@log_date", logDate)
+                cmd.Parameters.AddWithValue("@log_time", logTime)
+                cmd.Parameters.AddWithValue("@type", logType)
+                cmd.Parameters.AddWithValue("@status", logStatus)
+                cmd.Parameters.AddWithValue("@payment", payment)
+                cmd.Parameters.AddWithValue("@resident_id", residentId)
+                cmd.Parameters.AddWithValue("@staff_id", staffId)
+
+                ' Execute the command to insert data into the transaction_log table
+                cmd.ExecuteNonQuery()
+
+                ' Optional: Show a success message after insertion
+                MessageBox.Show("Transaction log inserted successfully!")
+            End Using
+
+        Catch ex As Exception
+            ' Handle any errors that may have occurred
+            MessageBox.Show("Error: " & ex.Message)
+        Finally
+            ' Ensure the connection is closed
+            If con IsNot Nothing AndAlso con.State = ConnectionState.Open Then
+                con.Close()
+            End If
+        End Try
     End Sub
+
 End Class

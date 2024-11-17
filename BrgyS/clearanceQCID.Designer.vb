@@ -53,6 +53,8 @@ Partial Class clearanceQCID
         Guna2ComboBox1 = New Guna.UI2.WinForms.Guna2ComboBox()
         Guna2ComboBox2 = New Guna.UI2.WinForms.Guna2ComboBox()
         Guna2ComboBox3 = New Guna.UI2.WinForms.Guna2ComboBox()
+        Label3 = New Label()
+        Label2 = New Label()
         SuspendLayout()
         ' 
         ' Guna2TextBox4
@@ -300,12 +302,32 @@ Partial Class clearanceQCID
         Guna2ComboBox3.Size = New Size(214, 36)
         Guna2ComboBox3.TabIndex = 60
         ' 
+        ' Label3
+        ' 
+        Label3.AutoSize = True
+        Label3.Location = New Point(602, 18)
+        Label3.Name = "Label3"
+        Label3.Size = New Size(41, 15)
+        Label3.TabIndex = 62
+        Label3.Text = "Label3"
+        ' 
+        ' Label2
+        ' 
+        Label2.AutoSize = True
+        Label2.Location = New Point(477, 18)
+        Label2.Name = "Label2"
+        Label2.Size = New Size(41, 15)
+        Label2.TabIndex = 61
+        Label2.Text = "Label2"
+        ' 
         ' clearanceQCID
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         ClientSize = New Size(842, 598)
+        Controls.Add(Label3)
+        Controls.Add(Label2)
         Controls.Add(Guna2ComboBox3)
         Controls.Add(Guna2ComboBox2)
         Controls.Add(Guna2ComboBox1)
@@ -343,4 +365,6 @@ Partial Class clearanceQCID
     Friend WithEvents Guna2ComboBox1 As Guna.UI2.WinForms.Guna2ComboBox
     Friend WithEvents Guna2ComboBox2 As Guna.UI2.WinForms.Guna2ComboBox
     Friend WithEvents Guna2ComboBox3 As Guna.UI2.WinForms.Guna2ComboBox
+    Friend WithEvents Label3 As Label
+    Friend WithEvents Label2 As Label
 End Class

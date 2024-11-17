@@ -85,6 +85,8 @@ Partial Class Form3
         Guna2HtmlLabel15 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Guna2ComboBox3 = New Guna.UI2.WinForms.Guna2ComboBox()
         Guna2ComboBox4 = New Guna.UI2.WinForms.Guna2ComboBox()
+        Guna2HtmlLabel19 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Guna2HtmlLabel20 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         CType(Guna2DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -645,12 +647,36 @@ Partial Class Form3
         Guna2ComboBox4.Size = New Size(157, 44)
         Guna2ComboBox4.TabIndex = 33
         ' 
+        ' Guna2HtmlLabel19
+        ' 
+        Guna2HtmlLabel19.BackColor = Color.Transparent
+        Guna2HtmlLabel19.Font = New Font("Bahnschrift", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Guna2HtmlLabel19.ForeColor = SystemColors.ActiveCaptionText
+        Guna2HtmlLabel19.Location = New Point(175, 263)
+        Guna2HtmlLabel19.Name = "Guna2HtmlLabel19"
+        Guna2HtmlLabel19.Size = New Size(28, 18)
+        Guna2HtmlLabel19.TabIndex = 34
+        Guna2HtmlLabel19.Text = "Sitio"
+        ' 
+        ' Guna2HtmlLabel20
+        ' 
+        Guna2HtmlLabel20.BackColor = Color.Transparent
+        Guna2HtmlLabel20.Font = New Font("Bahnschrift", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
+        Guna2HtmlLabel20.ForeColor = SystemColors.ActiveCaptionText
+        Guna2HtmlLabel20.Location = New Point(338, 263)
+        Guna2HtmlLabel20.Name = "Guna2HtmlLabel20"
+        Guna2HtmlLabel20.Size = New Size(39, 18)
+        Guna2HtmlLabel20.TabIndex = 35
+        Guna2HtmlLabel20.Text = "Street"
+        ' 
         ' Form3
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         ClientSize = New Size(842, 598)
+        Controls.Add(Guna2HtmlLabel20)
+        Controls.Add(Guna2HtmlLabel19)
         Controls.Add(Guna2ComboBox4)
         Controls.Add(Guna2ComboBox3)
         Controls.Add(Guna2HtmlLabel15)
@@ -716,4 +742,6 @@ Partial Class Form3
     Friend WithEvents Column5 As DataGridViewTextBoxColumn
     Friend WithEvents Guna2ComboBox3 As Guna.UI2.WinForms.Guna2ComboBox
     Friend WithEvents Guna2ComboBox4 As Guna.UI2.WinForms.Guna2ComboBox
+    Friend WithEvents Guna2HtmlLabel19 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2HtmlLabel20 As Guna.UI2.WinForms.Guna2HtmlLabel
 End Class

@@ -4,6 +4,11 @@ Imports System.IO
 Imports Microsoft.Office.Interop.Word
 Imports MySql.Data.MySqlClient
 Imports System.Reflection.Emit
+Imports Spire.Doc
+
+Imports Document = Spire.Doc.Document
+Imports System.Drawing.Printing
+
 
 
 
@@ -103,18 +108,69 @@ Public Class Form7
         ReplaceTextInWordDocument(newDocxFilePath, "{BAddress}", BADDRESS)
         ReplaceTextInWordDocument(newDocxFilePath, "{NatureB}", NATUREB)
 
-        ' Convert the .docx to a .pdf file
-        Dim newPdfFileName As String = sanitizedStudentName & "_" & dateTimeStamp & ".pdf"
-        Dim newPdfFilePath As String = Path.Combine("C:\Users\John Roi\source\repos\BrgyS\BrgyS\docu\generated docu\", newPdfFileName)
-        ConvertDocxToPdf(newDocxFilePath, newPdfFilePath)
+        '' Convert the .docx to a .pdf file
+        'Dim newPdfFileName As String = sanitizedStudentName & "_" & dateTimeStamp & ".pdf"
+        'Dim newPdfFilePath As String = Path.Combine("C:\Users\John Roi\source\repos\BrgyS\BrgyS\docu\generated docu\", newPdfFileName)
+        'ConvertDocxToPdf(newDocxFilePath, newPdfFilePath)
 
-        MessageBox.Show("Document created and saved as PDF: " & newPdfFilePath, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        PrintDocxFile(newDocxFilePath, newDocxFileName)
+
+        'MessageBox.Show("Document created and saved as PDF: " & newPdfFilePath, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+    End Sub
+
+    Public Sub PrintDocxFile(docxFilePath As String, filename As String)
+        'Create a Document object
+
+        ' Create a Document object
+        Try
+            ' Load the Word document using Spire.Doc
+            Dim doc As New Document()
+            doc.LoadFromFile(docxFilePath)
+
+            ' Generate a uniformed file name with timestamp
+            'Dim folderPath As String = "C:\Users\John Roi\source\repos\BrgyS\BrgyS\docu\printeddocs\" ' Specify your folder path
+            'If Not Directory.Exists(folderPath) Then
+            '    Directory.CreateDirectory(folderPath) ' Create folder if it doesn't exist
+            'End If
+
+            '' Create a uniformed name for the file
+            'Dim newFilePath As String = Path.Combine(folderPath, filename)
+
+            '' Save the document with the uniformed file name
+            'doc.SaveToFile(newFilePath)
+
+            '' Optional: Show message confirming the file has been saved
+            'MessageBox.Show("Document saved as: " & filename, "Save Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+            ' Get the PrintDocument object from Spire.Doc document
+            Dim printDoc As PrintDocument = doc.PrintDocument
+
+            ' Optional: Specify the printer name
+            ' printDoc.PrinterSettings.PrinterName = "Your Printer Name"
+
+            ' Optional: Specify the range of pages to print
+            ' printDoc.PrinterSettings.FromPage = 1
+            ' printDoc.PrinterSettings.ToPage = 1
+
+            ' Optional: Specify the number of copies to print
+            ' printDoc.PrinterSettings.Copies = 1
+
+            ' Print the document
+            printDoc.Print()
+
+            ' Show success message for printing
+            MessageBox.Show("Document sent to printer successfully.", "Print Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+        Catch ex As Exception
+            ' Handle any errors
+            MessageBox.Show("Error printing or saving document: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
     End Sub
 
     Private Sub ReplaceTextInWordDocument(filePath As String, placeholder As String, replacementText As String)
         Using wordDoc As WordprocessingDocument = WordprocessingDocument.Open(filePath, True)
             Dim mainPart As MainDocumentPart = wordDoc.MainDocumentPart
-            Dim documentBody As Body = mainPart.Document.Body
+            Dim documentBody As DocumentFormat.OpenXml.Wordprocessing.Body = mainPart.Document.Body
 
             For Each textElement As Text In documentBody.Descendants(Of Text)()
                 If textElement.Text.Contains(placeholder) Then

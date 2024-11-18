@@ -71,7 +71,6 @@ Partial Class brgyID
         Guna2TextBox9 = New Guna.UI2.WinForms.Guna2TextBox()
         Guna2HtmlLabel9 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Label1 = New Label()
-        BackgroundWorker1 = New ComponentModel.BackgroundWorker()
         Guna2DateTimePicker1 = New Guna.UI2.WinForms.Guna2DateTimePicker()
         Guna2ComboBox1 = New Guna.UI2.WinForms.Guna2ComboBox()
         Guna2Separator1 = New Guna.UI2.WinForms.Guna2Separator()
@@ -584,7 +583,6 @@ Partial Class brgyID
     Friend WithEvents Guna2TextBox9 As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2HtmlLabel9 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Label1 As Label
-    Friend WithEvents BackgroundWorker1 As System.ComponentModel.BackgroundWorker
     Friend WithEvents Guna2DateTimePicker1 As Guna.UI2.WinForms.Guna2DateTimePicker
     Friend WithEvents Guna2ComboBox1 As Guna.UI2.WinForms.Guna2ComboBox
     Friend WithEvents Guna2Separator1 As Guna.UI2.WinForms.Guna2Separator

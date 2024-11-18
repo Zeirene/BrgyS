@@ -68,10 +68,9 @@ Public Class brgyID
         If PictureBox1.Image IsNot Nothing Then
             Dim newBitmap As Bitmap = PictureBox1.Image
         End If
-        CAMERA.SignalToStop()
-        PictureBox1.Image = PictureBox1.Image
         Savepic()
-
+        PictureBox1.Image = PictureBox1.Image
+        CAMERA.SignalToStop()
     End Sub
     Private Sub Guna2Button2_Click(sender As Object, e As EventArgs) Handles Guna2Button2.Click
         'clear
@@ -115,7 +114,7 @@ Public Class brgyID
 
         ' Input values from the textboxes
         Dim NAMEOFAPPLICANT As String = Guna2TextBox1.Text
-        Dim BRGYID As String = resID
+        Dim BRGYID As String = Label2.Text
         Dim RESADDRESS As String = Guna2TextBox3.Text
         Dim PHOTO As String = Label1.Text
         Dim TIN As String = Guna2TextBox4.Text

@@ -14,13 +14,26 @@ Public Class Form3
         Dim cursorPosition As Integer = Guna2TextBox1.SelectionStart
         Guna2TextBox1.Text = Guna2TextBox1.Text.ToUpper()
         Guna2TextBox1.SelectionStart = cursorPosition
+
+
         LoadResidentInformation(Guna2TextBox1.Text)
     End Sub
 
     Private Sub Guna2TextBox1_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Guna2TextBox1.KeyPress
         LoadResidentInformation(Guna2TextBox1.Text)
     End Sub
+    Private Sub Guna2TextBox16_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Guna2TextBox16.KeyPress
+        If Not Char.IsControl(e.KeyChar) AndAlso Not Char.IsDigit(e.KeyChar) Then
+            e.Handled = True ' Ignore the key if it is not a number or backspace
+        End If
+    End Sub
+
+
     Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
+        'validations
+
+
+
         If Guna2ComboBox2.SelectedItem IsNot Nothing Then
             Select Case Guna2ComboBox2.SelectedItem.ToString()
                 Case "ID"

@@ -29,9 +29,9 @@ Partial Class Form5
         Names = New DataGridViewTextBoxColumn()
         Column2 = New DataGridViewTextBoxColumn()
         Column3 = New DataGridViewTextBoxColumn()
-        Column4 = New DataGridViewTextBoxColumn()
         Column5 = New DataGridViewTextBoxColumn()
         Column6 = New DataGridViewTextBoxColumn()
+        Column1 = New DataGridViewTextBoxColumn()
         CType(Guna2DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -50,7 +50,7 @@ Partial Class Form5
         Guna2DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Guna2DataGridView1.ColumnHeadersHeight = 17
         Guna2DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
-        Guna2DataGridView1.Columns.AddRange(New DataGridViewColumn() {Names, Column2, Column3, Column4, Column5, Column6})
+        Guna2DataGridView1.Columns.AddRange(New DataGridViewColumn() {Names, Column2, Column3, Column5, Column6, Column1})
         DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = Color.FromArgb(CByte(33), CByte(37), CByte(41))
         DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F)
@@ -90,33 +90,33 @@ Partial Class Form5
         ' 
         ' Names
         ' 
-        Names.HeaderText = "Names"
+        Names.HeaderText = "Resident Name"
         Names.Name = "Names"
         ' 
         ' Column2
         ' 
-        Column2.HeaderText = "2"
+        Column2.HeaderText = "Staff Name"
         Column2.Name = "Column2"
         ' 
         ' Column3
         ' 
-        Column3.HeaderText = "3"
+        Column3.HeaderText = "Date Time"
         Column3.Name = "Column3"
-        ' 
-        ' Column4
-        ' 
-        Column4.HeaderText = "4"
-        Column4.Name = "Column4"
         ' 
         ' Column5
         ' 
-        Column5.HeaderText = "5"
+        Column5.HeaderText = "Payment"
         Column5.Name = "Column5"
         ' 
         ' Column6
         ' 
-        Column6.HeaderText = "6"
+        Column6.HeaderText = "Document Type"
         Column6.Name = "Column6"
+        ' 
+        ' Column1
+        ' 
+        Column1.HeaderText = "Status"
+        Column1.Name = "Column1"
         ' 
         ' Form5
         ' 
@@ -137,7 +137,7 @@ Partial Class Form5
     Friend WithEvents Names As DataGridViewTextBoxColumn
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
     Friend WithEvents Column3 As DataGridViewTextBoxColumn
-    Friend WithEvents Column4 As DataGridViewTextBoxColumn
     Friend WithEvents Column5 As DataGridViewTextBoxColumn
     Friend WithEvents Column6 As DataGridViewTextBoxColumn
+    Friend WithEvents Column1 As DataGridViewTextBoxColumn
 End Class

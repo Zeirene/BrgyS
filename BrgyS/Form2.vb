@@ -69,7 +69,7 @@ Public Class Form2
         Guna2Button5.FillColor = Color.White
         Guna2Button5.ForeColor = Color.Black
     End Sub
-    Private Sub Guna2Button3_Click(sender As Object, e As EventArgs)
+    Private Sub Guna2Button4_Click(sender As Object, e As EventArgs) Handles Guna2Button4.Click
         switchPanel(Form6)
 
         Guna2Button1.Font = New Font(Guna2Button2.Font, FontStyle.Regular)
@@ -82,6 +82,7 @@ Public Class Form2
         Guna2Button5.FillColor = Color.White
         Guna2Button5.ForeColor = Color.Black
     End Sub
+
     Private Sub Guna2Button5_Click(sender As Object, e As EventArgs) Handles Guna2Button5.Click
         Dim result As DialogResult = MessageBox.Show("Are you sure you want to log out?", "Confirm Logout", MessageBoxButtons.YesNo, MessageBoxIcon.Question)
 
@@ -118,7 +119,5 @@ Public Class Form2
         panel.Show()
     End Sub
 
-    Private Sub Guna2Button4_Click(sender As Object, e As EventArgs) Handles Guna2Button4.Click
 
-    End Sub
 End Class

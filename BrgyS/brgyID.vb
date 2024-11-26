@@ -115,7 +115,7 @@ Public Class brgyID
         ' Input values from the textboxes
         Dim NAMEOFAPPLICANT As String = Guna2TextBox1.Text
         Dim BRGYID As String = Label2.Text
-        Dim RESADDRESS As String = Guna2TextBox3.Text
+        Dim RESADDRESS As String = Guna2TextBox3.Text + " Brgy Sta Lucia, QUEZON CITY"
         Dim PHOTO As String = Label1.Text
         Dim TIN As String = Guna2TextBox4.Text
         Dim BDAY As String = Guna2DateTimePicker1.Value.ToString("MM/dd/yyyy")

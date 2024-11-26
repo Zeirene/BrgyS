@@ -2,7 +2,7 @@
 
 Public Class Form6
     Private Sub Form6_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
+        updateMessage()
     End Sub
 
     Public Sub updateMessage()
@@ -83,11 +83,11 @@ Public Class Form6
         messagePanel.Controls.Add(mesTitle)
         messagePanel.Controls.Add(mesDate)
 
-        'AddHandler messagePanel.Click, Sub()
-        '                                   updateInboxStatus(iid)
-        '                                   Dim formInfo As New messageDetails(iid, title, idate, itime, content, istatus, uid, grid)
-        '                                   formInfo.Show()
-        '                               End Sub
+        AddHandler messagePanel.Click, Sub()
+                                           updateInboxStatus(iid)
+                                           'Dim formInfo As New messageDetails(iid, title, idate, itime, content, istatus, uid, grid) 'open new form
+                                           'formInfo.Show()
+                                       End Sub
 
     End Sub
     Private Sub updateInboxStatus(ByVal iid As Integer)

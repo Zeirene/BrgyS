@@ -498,7 +498,7 @@ Partial Class Form7
         Guna2Button1.ShadowDecoration.CustomizableEdges = CustomizableEdges26
         Guna2Button1.Size = New Size(242, 41)
         Guna2Button1.TabIndex = 70
-        Guna2Button1.Text = "PRINT"
+        Guna2Button1.Text = "SUBMIT FOR APPROVAL"
         ' 
         ' Guna2Separator1
         ' 

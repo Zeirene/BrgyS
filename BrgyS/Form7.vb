@@ -8,6 +8,8 @@ Imports Spire.Doc
 
 Imports Document = Spire.Doc.Document
 Imports System.Drawing.Printing
+Imports DocumentFormat.OpenXml.Drawing.Charts
+Imports System.Transactions
 
 
 
@@ -23,6 +25,7 @@ Public Class Form7
     Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
         generatedocfile()
         InsertTransactionLog()
+
     End Sub
 
     'validations//////////////////////////////////////////////////////////////////////////////////////////////
@@ -33,6 +36,48 @@ Public Class Form7
 
 
     'functions and sub/////////////////////////////////////////////////////////////
+
+    'Public Sub InsertPermitLog()
+    '    Try
+    '        ' Open the connection to the database
+    '        con.Open()
+
+    '        'Prepare the SQL query to insert the transaction log data
+    '        Dim insertQuery As String = "INSERT INTO transaction_log (log_date, log_time, type, status, payment, resident_id, staff_id) 
+    '                                 VALUES (@log_date, @log_time, @type, @status, @payment, @resident_id, @staff_id)"
+
+    '        'Dim insertQuery As String = "INSERT INTO transaction_log (log_date, log_time, type, status, payment) 
+    '        '                         VALUES (@log_date, @log_time, @type, @status, @payment)"
+
+    '        ' Create a MySQL command object with the query and connection
+    '        Using cmd As New MySqlCommand(insertQuery, con)
+    '            ' Add parameters to the command
+    '            cmd.Parameters.AddWithValue("@log_date", logDate)
+    '            cmd.Parameters.AddWithValue("@log_time", logTime)
+    '            cmd.Parameters.AddWithValue("@type", logType)
+    '            cmd.Parameters.AddWithValue("@status", logStatus)
+    '            cmd.Parameters.AddWithValue("@payment", payment)
+    '            cmd.Parameters.AddWithValue("@resident_id", residentId)
+    '            cmd.Parameters.AddWithValue("@staff_id", staffId)
+
+    '            ' Execute the command to insert data into the transaction_log table
+    '            cmd.ExecuteNonQuery()
+
+    '            ' Optional: Show a success message after insertion
+    '            MessageBox.Show("Transaction log inserted successfully!")
+    '        End Using
+
+    '    Catch ex As Exception
+    '        ' Handle any errors that may have occurred
+    '        MessageBox.Show("Error: " & ex.Message)
+    '    Finally
+    '        ' Ensure the connection is closed
+    '        If con IsNot Nothing AndAlso con.State = ConnectionState.Open Then
+    '            con.Close()
+    '        End If
+    '    End Try
+    'End Sub
+
     Public Sub InsertTransactionLog()
         Dim logDate As Date = Date.Today
         Dim logTime As Date = DateTime.Now.ToString("HH:mm:ss")
@@ -42,20 +87,58 @@ Public Class Form7
         Dim residentId As String = Label2.Text
         Dim staffId As String = Form2.staffID ' staffId is treated as a String
 
+
+        ' Input values from the textboxes
+        Dim NAMEOFAPPLICANT As String = Guna2TextBox7.Text
+        Dim resaddress As String = Guna2TextBox4.Text + " Brgy Sta Lucia, QUEZON CITY"
+        Dim BNAME As String = Guna2TextBox2.Text
+        Dim BADDRESS As String = Guna2TextBox5.Text + " Brgy Sta Lucia, QUEZON CITY"
+        Dim NATUREB As String = Guna2TextBox9.Text
+
+        'Try
+        '    ' Open the connection to the database
+        '    con.Open()
+
+        '    'Prepare the SQL query to insert the transaction log data
+        '    Dim insertQuery As String = "INSERT INTO transaction_log (log_date, log_time, type, status, payment, resident_id, staff_id) 
+        '                             VALUES (@log_date, @log_time, @type, @status, @payment, @resident_id, @staff_id)"
+
+        '    'Dim insertQuery As String = "INSERT INTO transaction_log (log_date, log_time, type, status, payment) 
+        '    '                         VALUES (@log_date, @log_time, @type, @status, @payment)"
+
+        '    ' Create a MySQL command object with the query and connection
+        '    Using cmd As New MySqlCommand(insertQuery, con)
+        '        ' Add parameters to the command
+        '        cmd.Parameters.AddWithValue("@log_date", logDate)
+        '        cmd.Parameters.AddWithValue("@log_time", logTime)
+        '        cmd.Parameters.AddWithValue("@type", logType)
+        '        cmd.Parameters.AddWithValue("@status", logStatus)
+        '        cmd.Parameters.AddWithValue("@payment", payment)
+        '        cmd.Parameters.AddWithValue("@resident_id", residentId)
+        '        cmd.Parameters.AddWithValue("@staff_id", staffId)
+
+        '        ' Execute the command to insert data into the transaction_log table
+        '        cmd.ExecuteNonQuery()
+
+        '        ' Optional: Show a success message after insertion
+        '        MessageBox.Show("Transaction log inserted successfully!")
+        '    End Using
+
+        'Catch ex As Exception
+        '    ' Handle any errors that may have occurred
+        '    MessageBox.Show("Error: " & ex.Message)
+        'Finally
+        '    ' Ensure the connection is closed
+        '    If con IsNot Nothing AndAlso con.State = ConnectionState.Open Then
+        '        con.Close()
+        '    End If
+        'End Try
+
         Try
-            ' Open the connection to the database
-            con.Open()
-
-            'Prepare the SQL query to insert the transaction log data
-            Dim insertQuery As String = "INSERT INTO transaction_log (log_date, log_time, type, status, payment, resident_id, staff_id) 
-                                     VALUES (@log_date, @log_time, @type, @status, @payment, @resident_id, @staff_id)"
-
-            'Dim insertQuery As String = "INSERT INTO transaction_log (log_date, log_time, type, status, payment) 
-            '                         VALUES (@log_date, @log_time, @type, @status, @payment)"
-
-            ' Create a MySQL command object with the query and connection
-            Using cmd As New MySqlCommand(insertQuery, con)
-                ' Add parameters to the command
+            ' Insert into transaction_log table
+            Dim insertTransactionLog As String = "INSERT INTO transaction_log (log_date, log_time, type, status, payment, resident_id, staff_id) VALUES (@log_date, @log_time, @type, @status, @payment, @resident_id, @staff_id); SELECT LAST_INSERT_ID();"
+            Dim logId As Integer
+            Using cmd As New MySqlCommand(insertTransactionLog, con)
                 cmd.Parameters.AddWithValue("@log_date", logDate)
                 cmd.Parameters.AddWithValue("@log_time", logTime)
                 cmd.Parameters.AddWithValue("@type", logType)
@@ -64,21 +147,32 @@ Public Class Form7
                 cmd.Parameters.AddWithValue("@resident_id", residentId)
                 cmd.Parameters.AddWithValue("@staff_id", staffId)
 
-                ' Execute the command to insert data into the transaction_log table
-                cmd.ExecuteNonQuery()
-
-                ' Optional: Show a success message after insertion
-                MessageBox.Show("Transaction log inserted successfully!")
+                ' Execute the query and retrieve the last inserted log_id
+                logId = Convert.ToInt32(cmd.ExecuteScalar())
             End Using
 
+            ' Insert into permit_log table
+            Dim insertPermitLog As String = "INSERT INTO permit_log (log_id, loc_type, b_name, b_address, stay_duration, m_rental, b_details) VALUES (@log_id, @loc_type, @b_name, @b_address, @stay_duration, @m_rental, @b_details);"
+
+            Using cmd As New MySqlCommand(insertPermitLog, con)
+                cmd.Parameters.AddWithValue("@log_id", logId)
+                cmd.Parameters.AddWithValue("@loc_type", Guna2ComboBox2.Text) ' Replace with actual location type
+                cmd.Parameters.AddWithValue("@b_name", BNAME) ' Replace with actual building name
+                cmd.Parameters.AddWithValue("@b_address", BADDRESS) ' Replace with actual address
+                cmd.Parameters.AddWithValue("@stay_duration", Guna2TextBox6.Text) ' Replace with actual duration in months
+                cmd.Parameters.AddWithValue("@m_rental", Guna2TextBox8.Text) ' Replace with actual rental amount
+                cmd.Parameters.AddWithValue("@b_details", NATUREB) ' Replace with actual details
+
+                cmd.ExecuteNonQuery()
+            End Using
+
+            ' Commit transaction
+            'Transaction.Commit()
+            Console.WriteLine("Transaction completed successfully.")
         Catch ex As Exception
-            ' Handle any errors that may have occurred
-            MessageBox.Show("Error: " & ex.Message)
-        Finally
-            ' Ensure the connection is closed
-            If con IsNot Nothing AndAlso con.State = ConnectionState.Open Then
-                con.Close()
-            End If
+            ' Rollback transaction in case of error
+            'Transaction.Rollback()
+            Console.WriteLine("Error: " & ex.Message)
         End Try
     End Sub
     Private Sub generatedocfile()
@@ -87,9 +181,9 @@ Public Class Form7
 
         ' Input values from the textboxes
         Dim NAMEOFAPPLICANT As String = Guna2TextBox7.Text
-        Dim resaddress As String = Guna2TextBox4.Text
+        Dim resaddress As String = Guna2TextBox4.Text + " Brgy Sta Lucia, QUEZON CITY"
         Dim BNAME As String = Guna2TextBox2.Text
-        Dim BADDRESS As String = Guna2TextBox5.Text
+        Dim BADDRESS As String = Guna2TextBox5.Text + " Brgy Sta Lucia, QUEZON CITY"
         Dim NATUREB As String = Guna2TextBox9.Text
 
         ' Generate a new file path for the modified .docx file
@@ -113,7 +207,7 @@ Public Class Form7
         'Dim newPdfFilePath As String = Path.Combine("C:\Users\John Roi\source\repos\BrgyS\BrgyS\docu\generated docu\", newPdfFileName)
         'ConvertDocxToPdf(newDocxFilePath, newPdfFilePath)
 
-        PrintDocxFile(newDocxFilePath, newDocxFileName)
+        'PrintDocxFile(newDocxFilePath, newDocxFileName)
 
         'MessageBox.Show("Document created and saved as PDF: " & newPdfFilePath, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
     End Sub

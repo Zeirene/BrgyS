@@ -36,7 +36,8 @@ Public Class clearanceQCID
         Dim BDAY As String = Guna2DateTimePicker1.Value
         Dim CIVITSTAT As String = Guna2ComboBox1.Text
 
-        Dim RESADDRESS As String = Guna2TextBox4.Text
+
+        Dim RESADDRESS As String = Guna2TextBox4.Text + " Brgy Sta Lucia, QUEZON CITY"
         Dim YEARSOFSTAY As String = Guna2ComboBox2.Text
         Dim PURPOSE As String = Guna2ComboBox3.Text
 

@@ -37,7 +37,6 @@ Public Class Form5
                     WHEN tl.status = 'R' THEN 'Rejected'
                     WHEN tl.status = 'P' THEN 'Pending'
                     WHEN tl.status = 'C' THEN 'Completed'
-                    WHEN tl.status = 'E' THEN 'Expired'
                     ELSE 'Unknown'
                 END AS Status
             FROM 

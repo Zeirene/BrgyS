@@ -81,8 +81,6 @@ Partial Class Form3
         Guna2HtmlLabel13 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Guna2HtmlLabel14 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Guna2HtmlLabel15 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Guna2HtmlLabel19 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Guna2HtmlLabel20 = New Guna.UI2.WinForms.Guna2HtmlLabel()
         Guna2TextBox2 = New Guna.UI2.WinForms.Guna2TextBox()
         Guna2TextBox3 = New Guna.UI2.WinForms.Guna2TextBox()
         CType(Guna2DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
@@ -238,7 +236,7 @@ Partial Class Form3
         Guna2TextBox16.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
         Guna2TextBox16.ForeColor = Color.Black
         Guna2TextBox16.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2TextBox16.Location = New Point(175, 403)
+        Guna2TextBox16.Location = New Point(338, 403)
         Guna2TextBox16.Name = "Guna2TextBox16"
         Guna2TextBox16.PasswordChar = ChrW(0)
         Guna2TextBox16.PlaceholderText = "Payment"
@@ -261,7 +259,7 @@ Partial Class Form3
         Guna2ComboBox1.ForeColor = Color.Black
         Guna2ComboBox1.ItemHeight = 38
         Guna2ComboBox1.Items.AddRange(New Object() {"BRGY ID", "NBI", "TIN", "PHILHEALTH", "POLICE CLEARANCE", "POSTAL", "LTAP (license to operate and posses fire armed) ", "BUILDING PERMIT ", "BUSINESS PERMIT", "TODA PERMIT", "MERACLO", "MWSI"})
-        Guna2ComboBox1.Location = New Point(12, 403)
+        Guna2ComboBox1.Location = New Point(175, 403)
         Guna2ComboBox1.Name = "Guna2ComboBox1"
         Guna2ComboBox1.ShadowDecoration.CustomizableEdges = CustomizableEdges10
         Guna2ComboBox1.Size = New Size(157, 44)
@@ -282,7 +280,7 @@ Partial Class Form3
         Guna2ComboBox2.IntegralHeight = False
         Guna2ComboBox2.ItemHeight = 38
         Guna2ComboBox2.Items.AddRange(New Object() {"ID", "CLEARANCE", "PERMITS"})
-        Guna2ComboBox2.Location = New Point(338, 403)
+        Guna2ComboBox2.Location = New Point(12, 403)
         Guna2ComboBox2.Name = "Guna2ComboBox2"
         Guna2ComboBox2.ShadowDecoration.CustomizableEdges = CustomizableEdges12
         Guna2ComboBox2.Size = New Size(157, 44)
@@ -349,6 +347,8 @@ Partial Class Form3
         ' 
         ' Guna2DataGridView1
         ' 
+        Guna2DataGridView1.AllowUserToAddRows = False
+        Guna2DataGridView1.AllowUserToDeleteRows = False
         DataGridViewCellStyle1.BackColor = Color.White
         Guna2DataGridView1.AlternatingRowsDefaultCellStyle = DataGridViewCellStyle1
         Guna2DataGridView1.BackgroundColor = Color.WhiteSmoke
@@ -374,6 +374,7 @@ Partial Class Form3
         Guna2DataGridView1.GridColor = Color.FromArgb(CByte(247), CByte(248), CByte(249))
         Guna2DataGridView1.Location = New Point(501, 12)
         Guna2DataGridView1.Name = "Guna2DataGridView1"
+        Guna2DataGridView1.ReadOnly = True
         Guna2DataGridView1.RowHeadersVisible = False
         Guna2DataGridView1.Size = New Size(336, 580)
         Guna2DataGridView1.TabIndex = 22
@@ -391,7 +392,7 @@ Partial Class Form3
         Guna2DataGridView1.ThemeStyle.HeaderStyle.ForeColor = Color.Black
         Guna2DataGridView1.ThemeStyle.HeaderStyle.HeaightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
         Guna2DataGridView1.ThemeStyle.HeaderStyle.Height = 17
-        Guna2DataGridView1.ThemeStyle.ReadOnly = False
+        Guna2DataGridView1.ThemeStyle.ReadOnly = True
         Guna2DataGridView1.ThemeStyle.RowsStyle.BackColor = Color.FromArgb(CByte(247), CByte(248), CByte(249))
         Guna2DataGridView1.ThemeStyle.RowsStyle.BorderStyle = DataGridViewCellBorderStyle.SingleHorizontal
         Guna2DataGridView1.ThemeStyle.RowsStyle.Font = New Font("Segoe UI", 9F)
@@ -404,16 +405,19 @@ Partial Class Form3
         ' 
         Names.HeaderText = "Resident Number"
         Names.Name = "Names"
+        Names.ReadOnly = True
         ' 
         ' Column2
         ' 
         Column2.HeaderText = "Resident Name"
         Column2.Name = "Column2"
+        Column2.ReadOnly = True
         ' 
         ' Column5
         ' 
         Column5.HeaderText = "Address"
         Column5.Name = "Column5"
+        Column5.ReadOnly = True
         ' 
         ' Guna2TextBox1
         ' 
@@ -552,7 +556,7 @@ Partial Class Form3
         Guna2HtmlLabel12.BackColor = Color.Transparent
         Guna2HtmlLabel12.Font = New Font("Bahnschrift", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Guna2HtmlLabel12.ForeColor = SystemColors.ActiveCaptionText
-        Guna2HtmlLabel12.Location = New Point(175, 379)
+        Guna2HtmlLabel12.Location = New Point(338, 379)
         Guna2HtmlLabel12.Name = "Guna2HtmlLabel12"
         Guna2HtmlLabel12.Size = New Size(53, 18)
         Guna2HtmlLabel12.TabIndex = 28
@@ -565,20 +569,20 @@ Partial Class Form3
         Guna2HtmlLabel13.ForeColor = SystemColors.ActiveCaptionText
         Guna2HtmlLabel13.Location = New Point(12, 379)
         Guna2HtmlLabel13.Name = "Guna2HtmlLabel13"
-        Guna2HtmlLabel13.Size = New Size(52, 18)
+        Guna2HtmlLabel13.Size = New Size(105, 18)
         Guna2HtmlLabel13.TabIndex = 29
-        Guna2HtmlLabel13.Text = "Purpose"
+        Guna2HtmlLabel13.Text = "Type Of Document"
         ' 
         ' Guna2HtmlLabel14
         ' 
         Guna2HtmlLabel14.BackColor = Color.Transparent
         Guna2HtmlLabel14.Font = New Font("Bahnschrift", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
         Guna2HtmlLabel14.ForeColor = SystemColors.ActiveCaptionText
-        Guna2HtmlLabel14.Location = New Point(338, 379)
+        Guna2HtmlLabel14.Location = New Point(175, 379)
         Guna2HtmlLabel14.Name = "Guna2HtmlLabel14"
-        Guna2HtmlLabel14.Size = New Size(104, 18)
+        Guna2HtmlLabel14.Size = New Size(52, 18)
         Guna2HtmlLabel14.TabIndex = 30
-        Guna2HtmlLabel14.Text = "Type of Document"
+        Guna2HtmlLabel14.Text = "Purpose"
         ' 
         ' Guna2HtmlLabel15
         ' 
@@ -590,28 +594,6 @@ Partial Class Form3
         Guna2HtmlLabel15.Size = New Size(3, 2)
         Guna2HtmlLabel15.TabIndex = 31
         Guna2HtmlLabel15.Text = Nothing
-        ' 
-        ' Guna2HtmlLabel19
-        ' 
-        Guna2HtmlLabel19.BackColor = Color.Transparent
-        Guna2HtmlLabel19.Font = New Font("Bahnschrift", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Guna2HtmlLabel19.ForeColor = SystemColors.ActiveCaptionText
-        Guna2HtmlLabel19.Location = New Point(175, 263)
-        Guna2HtmlLabel19.Name = "Guna2HtmlLabel19"
-        Guna2HtmlLabel19.Size = New Size(28, 18)
-        Guna2HtmlLabel19.TabIndex = 34
-        Guna2HtmlLabel19.Text = "Sitio"
-        ' 
-        ' Guna2HtmlLabel20
-        ' 
-        Guna2HtmlLabel20.BackColor = Color.Transparent
-        Guna2HtmlLabel20.Font = New Font("Bahnschrift", 9.75F, FontStyle.Regular, GraphicsUnit.Point, CByte(0))
-        Guna2HtmlLabel20.ForeColor = SystemColors.ActiveCaptionText
-        Guna2HtmlLabel20.Location = New Point(338, 263)
-        Guna2HtmlLabel20.Name = "Guna2HtmlLabel20"
-        Guna2HtmlLabel20.Size = New Size(39, 18)
-        Guna2HtmlLabel20.TabIndex = 35
-        Guna2HtmlLabel20.Text = "Street"
         ' 
         ' Guna2TextBox2
         ' 
@@ -673,8 +655,6 @@ Partial Class Form3
         ClientSize = New Size(842, 598)
         Controls.Add(Guna2TextBox3)
         Controls.Add(Guna2TextBox2)
-        Controls.Add(Guna2HtmlLabel20)
-        Controls.Add(Guna2HtmlLabel19)
         Controls.Add(Guna2HtmlLabel15)
         Controls.Add(Guna2HtmlLabel14)
         Controls.Add(Guna2HtmlLabel13)
@@ -731,8 +711,6 @@ Partial Class Form3
     Friend WithEvents Guna2HtmlLabel13 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2HtmlLabel14 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Guna2HtmlLabel15 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents Guna2HtmlLabel19 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents Guna2HtmlLabel20 As Guna.UI2.WinForms.Guna2HtmlLabel
     Friend WithEvents Names As DataGridViewTextBoxColumn
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
     Friend WithEvents Column5 As DataGridViewTextBoxColumn

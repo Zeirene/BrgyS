@@ -16,8 +16,8 @@ Imports System.Transactions
 
 Public Class Form7
     Private Sub Form7_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Guna2TextBox7.Text = Form3.Guna2TextBox6.Text + "," + Form3.Guna2TextBox7.Text + " " + Form3.Guna2TextBox8.Text
-        Guna2TextBox4.Text = Form3.Guna2TextBox9.Text
+        Guna2TextBox7.Text = Form3.Guna2TextBox6.Text + "," + Form3.Guna2TextBox7.Text + " " + Form3.Guna2TextBox8.Text 'name
+        Guna2TextBox4.Text = Form3.Guna2TextBox9.Text + " " + Form3.Guna2TextBox2.Text + " " + Form3.Guna2TextBox3.Text 'address
 
         Label2.Text = Form3.Guna2HtmlLabel15.Text
         Label3.Text = Form2.staffID
@@ -25,6 +25,7 @@ Public Class Form7
     Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
         generatedocfile()
         InsertTransactionLog()
+        'sendtoadmin2()
 
     End Sub
 

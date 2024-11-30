@@ -10,7 +10,9 @@ Public Class Form6
 
         Try
             con.Open()
-            Using cmd As New MySqlCommand("SELECT iid, title, idate, itime, content, istatus, uid, grid FROM inbox WHERE uid = @id;", con)
+            Using cmd As New MySqlCommand("SELECT iid, title, idate, itime, content, istatus, uid, grid FROM permits_log WHERE uid = @id;", con)
+                'Using cmd As New MySqlCommand("SELECT * FROM p_log_id WHERE uid = @id;", con)
+
                 'cmd.Parameters.AddWithValue("@id", orgID)
                 Dim reader As MySqlDataReader = cmd.ExecuteReader
                 While reader.Read

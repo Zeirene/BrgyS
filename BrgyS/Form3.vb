@@ -229,6 +229,10 @@ Public Class Form3
 
     End Sub
 
+    Private Sub Guna2DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles Guna2DataGridView1.CellContentClick
+        Guna2TextBox1.Text = Guna2DataGridView1.Rows(e.RowIndex).Cells(0).Value
+    End Sub
+
 
 
     'Public Sub sitiodata()

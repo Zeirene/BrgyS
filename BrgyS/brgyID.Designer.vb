@@ -70,12 +70,12 @@ Partial Class brgyID
         Guna2Button4 = New Guna.UI2.WinForms.Guna2Button()
         Guna2TextBox9 = New Guna.UI2.WinForms.Guna2TextBox()
         Guna2HtmlLabel9 = New Guna.UI2.WinForms.Guna2HtmlLabel()
-        Label1 = New Label()
         Guna2DateTimePicker1 = New Guna.UI2.WinForms.Guna2DateTimePicker()
         Guna2ComboBox1 = New Guna.UI2.WinForms.Guna2ComboBox()
         Guna2Separator1 = New Guna.UI2.WinForms.Guna2Separator()
         Label2 = New Label()
         Label3 = New Label()
+        Label5 = New Label()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -188,6 +188,7 @@ Partial Class brgyID
         Guna2TextBox1.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
         Guna2TextBox1.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
         Guna2TextBox1.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        Guna2TextBox1.Enabled = False
         Guna2TextBox1.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         Guna2TextBox1.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
         Guna2TextBox1.ForeColor = Color.Black
@@ -212,6 +213,7 @@ Partial Class brgyID
         Guna2TextBox3.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
         Guna2TextBox3.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
         Guna2TextBox3.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        Guna2TextBox3.Enabled = False
         Guna2TextBox3.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         Guna2TextBox3.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
         Guna2TextBox3.ForeColor = Color.Black
@@ -441,16 +443,6 @@ Partial Class brgyID
         Guna2HtmlLabel9.TabIndex = 46
         Guna2HtmlLabel9.Text = "Address:"
         ' 
-        ' Label1
-        ' 
-        Label1.Font = New Font("Bahnschrift", 9.75F)
-        Label1.Location = New Point(534, 270)
-        Label1.Name = "Label1"
-        Label1.Size = New Size(242, 15)
-        Label1.TabIndex = 48
-        Label1.Text = "INVISIBLE LABEL"
-        Label1.TextAlign = ContentAlignment.MiddleCenter
-        ' 
         ' Guna2DateTimePicker1
         ' 
         Guna2DateTimePicker1.Animated = True
@@ -517,18 +509,27 @@ Partial Class brgyID
         Label3.TabIndex = 53
         Label3.Text = "Label3"
         ' 
+        ' Label5
+        ' 
+        Label5.AutoSize = True
+        Label5.Location = New Point(190, 9)
+        Label5.Name = "Label5"
+        Label5.Size = New Size(41, 15)
+        Label5.TabIndex = 55
+        Label5.Text = "Label5"
+        ' 
         ' brgyID
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         ClientSize = New Size(842, 598)
+        Controls.Add(Label5)
         Controls.Add(Label3)
         Controls.Add(Label2)
         Controls.Add(Guna2Separator1)
         Controls.Add(Guna2ComboBox1)
         Controls.Add(Guna2DateTimePicker1)
-        Controls.Add(Label1)
         Controls.Add(Guna2TextBox9)
         Controls.Add(Guna2HtmlLabel9)
         Controls.Add(Guna2Button4)
@@ -582,10 +583,10 @@ Partial Class brgyID
     Friend WithEvents Guna2Button4 As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2TextBox9 As Guna.UI2.WinForms.Guna2TextBox
     Friend WithEvents Guna2HtmlLabel9 As Guna.UI2.WinForms.Guna2HtmlLabel
-    Friend WithEvents Label1 As Label
     Friend WithEvents Guna2DateTimePicker1 As Guna.UI2.WinForms.Guna2DateTimePicker
     Friend WithEvents Guna2ComboBox1 As Guna.UI2.WinForms.Guna2ComboBox
     Friend WithEvents Guna2Separator1 As Guna.UI2.WinForms.Guna2Separator
     Friend WithEvents Label2 As Label
     Friend WithEvents Label3 As Label
+    Friend WithEvents Label5 As Label
 End Class

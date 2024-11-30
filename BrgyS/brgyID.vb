@@ -9,8 +9,8 @@ Imports MySql.Data.MySqlClient
 Imports System.Drawing.Imaging
 Imports System.Drawing.Printing
 Imports System.IO
-Imports Spire.Doc
-Imports Document = Spire.Doc.Document
+'Imports Spire.Doc
+Imports Documentss = Spire.Doc.Document
 
 Public Class brgyID
     Private _resID As String
@@ -49,7 +49,7 @@ Public Class brgyID
     Private Sub brgyID_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Camstart() 'load camera
         Guna2TextBox1.Text = Form3.Guna2TextBox6.Text + "," + Form3.Guna2TextBox7.Text + " " + Form3.Guna2TextBox8.Text 'fullname
-        Guna2TextBox3.Text = Form3.Guna2TextBox9.Text 'address
+        Guna2TextBox3.Text = Form3.Guna2TextBox9.Text + " " + Form3.Guna2TextBox2.Text + " " + Form3.Guna2TextBox3.Text 'address
 
         Label2.Text = Form3.Guna2HtmlLabel15.Text
         Label3.Text = Form2.staffID
@@ -70,7 +70,7 @@ Public Class brgyID
         End If
         Savepic()
         PictureBox1.Image = PictureBox1.Image
-        CAMERA.SignalToStop()
+        'CAMERA.SignalToStop()
     End Sub
     Private Sub Guna2Button2_Click(sender As Object, e As EventArgs) Handles Guna2Button2.Click
         'clear
@@ -79,7 +79,7 @@ Public Class brgyID
     Private Sub Guna2Button3_Click(sender As Object, e As EventArgs) Handles Guna2Button3.Click
         'save and print docu
         generatedocfile()
-        InsertTransactionLog()
+        'InsertTransactionLog()
     End Sub
 
 
@@ -116,9 +116,9 @@ Public Class brgyID
         Dim NAMEOFAPPLICANT As String = Guna2TextBox1.Text
         Dim BRGYID As String = Label2.Text
         Dim RESADDRESS As String = Guna2TextBox3.Text + " Brgy Sta Lucia, QUEZON CITY"
-        Dim PHOTO As String = Label1.Text
+        Dim PHOTO As String = Label5.Text
         Dim TIN As String = Guna2TextBox4.Text
-        Dim BDAY As String = Guna2DateTimePicker1.Value.ToString("MM/dd/yyyy")
+        Dim BDAY As String = Guna2DateTimePicker1.Value.ToString("MM:dd:yy")
         Dim BTYPE As String = Guna2ComboBox1.Text
         Dim PRECINTNO As String = Guna2TextBox6.Text
         Dim EMERNAME As String = Guna2TextBox8.Text
@@ -127,29 +127,37 @@ Public Class brgyID
 
         ' Generate a new .docx file path
         Dim sanitizedStudentName As String = NAMEOFAPPLICANT
+        Dim typeofpaper As String = Form3.Guna2ComboBox1.Text
         Dim dateTimeStamp As String = DateTime.Now.ToString("yyyyMMdd")
-        Dim newDocxFileName As String = sanitizedStudentName & "_" & dateTimeStamp & ".docx"
+        Dim newDocxFileName As String = typeofpaper & "_" & sanitizedStudentName & "_" & dateTimeStamp & ".docx"
         Dim newDocxFilePath As String = Path.Combine("C:\Users\John Roi\source\repos\BrgyS\BrgyS\docu\generated docu\", newDocxFileName)
 
         Try
             ' Copy the template file and replace placeholders
             File.Copy(templatePath, newDocxFilePath, True)
-            ReplaceTextInWordDocument(newDocxFilePath, "{Name}", NAMEOFAPPLICANT)
-            ReplaceTextInWordDocument(newDocxFilePath, "{IDNumber}", BRGYID)
-            ReplaceTextInWordDocument(newDocxFilePath, "{Address}", RESADDRESS)
-            InsertImageInWordDocument(newDocxFilePath, "{Photo}", PHOTO)
-            ReplaceTextInWordDocument(newDocxFilePath, "{TIN}", TIN)
             ReplaceTextInWordDocument(newDocxFilePath, "{BDay}", BDAY)
-            ReplaceTextInWordDocument(newDocxFilePath, "{BloodType}", BTYPE)
+
+
+            ReplaceTextInWordDocument(newDocxFilePath, "{IDNumber}", BRGYID)
+            ReplaceTextInWordDocument(newDocxFilePath, "{TIN}", TIN)
             ReplaceTextInWordDocument(newDocxFilePath, "{Precinct}", PRECINTNO)
+            ReplaceTextInWordDocument(newDocxFilePath, "{numcon}", EMERNO)
+
+
+
+            ReplaceTextInWordDocument(newDocxFilePath, "{Name}", NAMEOFAPPLICANT)
+            ReplaceTextInWordDocument(newDocxFilePath, "{Address}", RESADDRESS)
+            ReplaceTextInWordDocument(newDocxFilePath, "{BloodType}", BTYPE)
             ReplaceTextInWordDocument(newDocxFilePath, "{NameOfEmerContact}", EMERNAME)
-            ReplaceTextInWordDocument(newDocxFilePath, "{NumberOfEmerContact}", EMERNO)
-            ReplaceTextInWordDocument(newDocxFilePath, "{AddressOfEmerContact}", EMERADD)
+            ReplaceTextInWordDocument(newDocxFilePath, "{addcon}", EMERADD)
+
+            InsertImageInWordDocument(newDocxFilePath, "{image}", PHOTO)
+
 
             PrintDocxFile(newDocxFilePath, newDocxFileName)
 
         Catch ex As Exception
-            MessageBox.Show("An error occurred: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            MessageBox.Show("An error occurred on insert: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
     Public Sub PrintDocxFile(docxFilePath As String, filename As String)
@@ -158,7 +166,7 @@ Public Class brgyID
         ' Create a Document object
         Try
             ' Load the Word document using Spire.Doc
-            Dim doc As New Document()
+            Dim doc As New Documentss()
             doc.LoadFromFile(docxFilePath)
 
             ' Generate a uniformed file name with timestamp
@@ -203,11 +211,11 @@ Public Class brgyID
     Private Sub InsertImageInWordDocument(filePath As String, imagePlaceholder As String, imagePath As String)
         Using wordDoc As WordprocessingDocument = WordprocessingDocument.Open(filePath, True)
             Dim mainPart As MainDocumentPart = wordDoc.MainDocumentPart
-            Dim documentBody As DocumentFormat.OpenXml.Wordprocessing.Body = mainPart.Document.Body
+            Dim picbody As Body = mainPart.Document.Body
 
             ' Find the paragraph containing the image placeholder
-            For Each paragraph As DocumentFormat.OpenXml.Drawing.Paragraph In documentBody.Descendants(Of DocumentFormat.OpenXml.Drawing.Paragraph)()
-                For Each run As DocumentFormat.OpenXml.Drawing.Run In paragraph.Descendants(Of DocumentFormat.OpenXml.Drawing.Run)()
+            For Each paragraph As Paragraph In picbody.Descendants(Of Paragraph)()
+                For Each run As Run In paragraph.Descendants(Of Run)()
                     For Each textElement As Text In run.Descendants(Of Text)()
                         If textElement.Text.Contains(imagePlaceholder) Then
                             ' Replace the placeholder text with an empty string (removing the placeholder)
@@ -227,7 +235,7 @@ Public Class brgyID
                             ' Insert the image at the location of the placeholder
                             Dim element As New Drawing(
                                 New DocumentFormat.OpenXml.Drawing.Wordprocessing.Inline(
-                                    New DocumentFormat.OpenXml.Drawing.Wordprocessing.Extent() With {.Cx = 990000L, .Cy = 792000L}, ' Image size in EMU
+                                    New DocumentFormat.OpenXml.Drawing.Wordprocessing.Extent() With {.Cx = 2116800L, .Cy = 2116800L}, ' Image size in EMU
                                     New DocumentFormat.OpenXml.Drawing.Wordprocessing.EffectExtent() With {.LeftEdge = 0L, .TopEdge = 0L, .RightEdge = 0L, .BottomEdge = 0L},
                                     New DocumentFormat.OpenXml.Drawing.Wordprocessing.DocProperties() With {.Id = 1UI, .Name = "Image 1"},
                                     New DocumentFormat.OpenXml.Drawing.Wordprocessing.NonVisualGraphicFrameDrawingProperties(
@@ -246,7 +254,7 @@ Public Class brgyID
                                                 New DocumentFormat.OpenXml.Drawing.Pictures.ShapeProperties(
                                                     New DocumentFormat.OpenXml.Drawing.Transform2D(
                                                         New DocumentFormat.OpenXml.Drawing.Offset() With {.X = 0L, .Y = 0L},
-                                                        New DocumentFormat.OpenXml.Drawing.Extents() With {.Cx = 990000L, .Cy = 792000L}
+                                                        New DocumentFormat.OpenXml.Drawing.Extents() With {.Cx = 2116800L, .Cy = 1944000L}
                                                     ),
                                                     New DocumentFormat.OpenXml.Drawing.PresetGeometry(New DocumentFormat.OpenXml.Drawing.AdjustValueList()) With {.Preset = DocumentFormat.OpenXml.Drawing.ShapeTypeValues.Rectangle}
                                                 )
@@ -257,7 +265,7 @@ Public Class brgyID
                             )
 
                             ' Append the drawing to the Run
-                            run.AppendChild(New DocumentFormat.OpenXml.Drawing.Run(element))
+                            run.AppendChild(New Run(element))
                         End If
                     Next
                 Next
@@ -273,7 +281,7 @@ Public Class brgyID
         Using wordDoc As WordprocessingDocument = WordprocessingDocument.Open(filePath, True)
             ' Get the main document part
             Dim mainPart As MainDocumentPart = wordDoc.MainDocumentPart
-            Dim documentBody As DocumentFormat.OpenXml.Wordprocessing.Body = mainPart.Document.Body
+            Dim documentBody As Body = mainPart.Document.Body
 
             ' Loop through all text elements in the document
             For Each textElement As Text In documentBody.Descendants(Of Text)()
@@ -288,6 +296,9 @@ Public Class brgyID
             mainPart.Document.Save()
         End Using
     End Sub
+
+
+
 
 
 
@@ -315,12 +326,13 @@ Public Class brgyID
         If PictureBox1.Image IsNot Nothing Then
             Dim newBitmap As Bitmap = PictureBox1.Image
             newBitmap.Save(filepath, ImageFormat.Png)
-            Label1.Text = filepath
+            Label5.Text = filepath
         End If
-
-        MsgBox("picture saved")
         CAMERA.SignalToStop()
+        'MsgBox("picture saved")
     End Sub
+
+
     Private Function generatefilename() As String
         Return System.DateTime.Now.ToString("yyyyMMdd") + "_" + Guna2TextBox1.Text
     End Function
@@ -365,7 +377,7 @@ Public Class brgyID
 
         Catch ex As Exception
             ' Handle any errors that may have occurred
-            MessageBox.Show("Error: " & ex.Message)
+            MessageBox.Show("Error in transaction: " & ex.Message)
         Finally
             ' Ensure the connection is closed
             If con IsNot Nothing AndAlso con.State = ConnectionState.Open Then

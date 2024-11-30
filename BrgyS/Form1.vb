@@ -74,8 +74,24 @@ Public Class Form1
 
     End Sub
 
-    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Public Async Sub FetchResidents()
+        Dim client As New ApiClient()
 
+        Try
+            Dim residents As List(Of ApiResponse.ResidentRecord) = Await client.GetResidentRecordsAsync()
+
+            ' Testing if it's working 
+            For Each resident In residents
+                Guna2TextBox1.AppendText($"Name: {resident.ResidentFirstName} {resident.ResidentLastName}, Email: {resident.ResidentEmail}{Environment.NewLine}")
+
+            Next
+        Catch ex As Exception
+            Console.WriteLine("Error: " & ex.Message)
+        End Try
+    End Sub
+
+    Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        FetchResidents()
     End Sub
 
     Private Sub Guna2HtmlLabel1_Click(sender As Object, e As EventArgs) Handles Guna2HtmlLabel1.Click

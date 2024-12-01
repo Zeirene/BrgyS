@@ -22,7 +22,7 @@ Public Class ApiClient
 
                     ' Parse the JSON response into a .NET object
                     Dim apiResponse As ApiResponse.ResidentApiResponse = JsonConvert.DeserializeObject(Of ApiResponse.ResidentApiResponse)(jsonResponse)
-                    Return apiResponse.bms_resident_records
+                    Return apiResponse.BmsResidentRecords
                 Else
                     ' Handle non-successful response
                     Throw New Exception($"API Request failed with status code: {response.StatusCode}")

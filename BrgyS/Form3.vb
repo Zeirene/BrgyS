@@ -1,27 +1,24 @@
 ﻿Imports System.IO
+Imports System.Net.Http
 Imports DocumentFormat.OpenXml.Packaging
 Imports DocumentFormat.OpenXml.Wordprocessing
 Imports Guna.UI2.WinForms
 Imports MySql.Data.MySqlClient
+Imports Newtonsoft.Json
 
 Public Class Form3
-    Private Sub Form3_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        loadform()
+    Private WithEvents debounceTimer As New Timer() ' Timer to debounce the TextChanged event
+    Private debounceDelay As Integer = 300 ' Delay in milliseconds
+
+    Private Async Sub Form3_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ' Load all resident data when the form loads
+        debounceTimer.Interval = debounceDelay
+
     End Sub
 
-    Private Sub Guna2TextBox1_TextChanged(sender As Object, e As EventArgs) Handles Guna2TextBox1.TextChanged
-        ' Convert the text to uppercase
-        Dim cursorPosition As Integer = Guna2TextBox1.SelectionStart
-        Guna2TextBox1.Text = Guna2TextBox1.Text.ToUpper()
-        Guna2TextBox1.SelectionStart = cursorPosition
 
 
-        LoadResidentInformation(Guna2TextBox1.Text)
-    End Sub
 
-    Private Sub Guna2TextBox1_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Guna2TextBox1.KeyPress
-        LoadResidentInformation(Guna2TextBox1.Text)
-    End Sub
     Private Sub Guna2TextBox16_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Guna2TextBox16.KeyPress
         If Not Char.IsControl(e.KeyChar) AndAlso Not Char.IsDigit(e.KeyChar) Then
             e.Handled = True ' Ignore the key if it is not a number or backspace
@@ -91,9 +88,8 @@ Public Class Form3
     End Sub
 
 
-    Private Sub Guna2Button2_Click(sender As Object, e As EventArgs) Handles Guna2Button2.Click
-        'clear
-        loadform()
+    Private Async Sub Guna2Button2_Click(sender As Object, e As EventArgs) Handles Guna2Button2.Click
+        ' Clear input fields
         Guna2TextBox1.Text = ""
         Guna2TextBox2.Text = ""
         Guna2TextBox3.Text = ""
@@ -106,130 +102,130 @@ Public Class Form3
 
     End Sub
 
+
     'function
-    Private Sub LoadResidentInformation(searchTerm As String)
+    Private Async Sub LoadResidentInformation(searchTerm As String)
+        Guna2DataGridView1.Rows.Clear()
 
-        Dim query As String = "SELECT * FROM resident_info WHERE resident_id LIKE @searchTerm"
-
+        ' Check if the search term is empty or whitespace
         If String.IsNullOrWhiteSpace(searchTerm) Then
-            Guna2TextBox1.Text = ""
-            Guna2TextBox2.Text = ""
-            Guna2TextBox3.Text = ""
-            Guna2TextBox6.Text = ""
-            Guna2TextBox7.Text = ""
-            Guna2TextBox8.Text = ""
-            Guna2TextBox9.Text = ""
-            Guna2HtmlLabel15.Text = ""
-            loadform()
+            Guna2DataGridView1.Rows.Clear()
+
+            ' Clear fields if no record is found
+            ClearFields()
+            Await loadform()
             Return
         End If
 
         Try
-            openCon()
+            ' Create an instance of ApiClient
+            Dim apiClient As New ApiClient()
 
-            Using command As New MySqlCommand(query, con)
+            ' Fetch resident records from the API
+            Dim residentRecords As List(Of ApiResponse.ResidentRecord) = Await apiClient.GetResidentRecordsAsync()
 
-                command.Parameters.AddWithValue("@searchTerm", "%" & searchTerm & "%")
+            ' Filter the records based on the search term (case-insensitive search)
+            Dim filteredRecords = residentRecords.Where(Function(record) record.ResidentId.ToString().Contains(searchTerm, StringComparison.OrdinalIgnoreCase)).ToList()
 
-                Using reader As MySqlDataReader = command.ExecuteReader()
-                    Guna2DataGridView1.Rows.Clear()
+            ' Clear the DataGridView
+            Guna2DataGridView1.Rows.Clear()
 
-                    '
-                    If reader.Read() Then
-                        ' Set the values in TextBoxes and Labels
-                        Guna2TextBox6.Text = reader("last_name").ToString()
-                        Guna2TextBox7.Text = reader("given_name").ToString()
-                        Guna2TextBox8.Text = reader("middle_name").ToString()
-                        Guna2TextBox9.Text = reader("address").ToString()
-                        Guna2TextBox2.Text = reader("sitio").ToString()
-                        Guna2TextBox3.Text = reader("street").ToString()
-                        Guna2HtmlLabel15.Text = reader("resident_id").ToString()
+            If filteredRecords.Any() Then
+                ' Display the filtered record(s)
+                For Each record In filteredRecords
+                    Dim fullname As String = $"{record.ResidentLastName}, {record.ResidentFirstName} {record.ResidentMiddleName}"
+                    Dim fulladdress As String = $"{record.Address} {record.Sitio} {record.Street}"
+                    Guna2DataGridView1.Rows.Add(record.ResidentId, fullname, fulladdress)
+                Next
 
-                        ' Generate full name and full address
-                        Dim lname As String = reader("last_name").ToString()
-                        Dim gname As String = reader("given_name").ToString()
-                        Dim mname As String = reader("middle_name").ToString()
-                        Dim fullname As String = lname & ", " & gname & " " & mname
+                ' Populate the first record's details in the TextBoxes and Labels
+                Dim firstRecord = filteredRecords.First()
+                Guna2TextBox6.Text = firstRecord.ResidentLastName
+                Guna2TextBox7.Text = firstRecord.ResidentFirstName
+                Guna2TextBox8.Text = firstRecord.ResidentMiddleName
+                Guna2TextBox9.Text = firstRecord.Address
+                Guna2TextBox2.Text = firstRecord.Sitio
+                Guna2TextBox3.Text = firstRecord.Street
+                Guna2HtmlLabel15.Text = firstRecord.ResidentId.ToString()
+            Else
 
-                        Dim address As String = reader("address").ToString()
-                        Dim sitio As String = reader("sitio").ToString()
-                        Dim street As String = reader("street").ToString()
-                        Dim fulladdress As String = address & " " & sitio & " " & street
+                ' Clear the DataGridView
+                Guna2DataGridView1.Rows.Clear()
 
-                        ' Insert the row into the DataGridView
-                        Guna2DataGridView1.Rows.Add(reader("resident_id"), fullname, fulladdress)
+                ' Clear fields if no record is found
+                ClearFields()
 
-                    Else
-                        ' Clear fields if no record is found
-                        Guna2TextBox1.Text = ""
-                        Guna2TextBox2.Text = ""
-                        Guna2TextBox3.Text = ""
-                        Guna2TextBox6.Text = ""
-                        Guna2TextBox7.Text = ""
-                        Guna2TextBox8.Text = ""
-                        Guna2TextBox9.Text = ""
-                        Guna2HtmlLabel15.Text = ""
-                        loadform()
-
-                    End If
-
-                End Using
-            End Using
-
+            End If
         Catch ex As Exception
-            ' Handle any errors that may have occurred
-            'MessageBox.Show("An error occurred: " & ex.Message)
-        Finally
-            con.Close()
+            MessageBox.Show("An error occurred while fetching data: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
-
     End Sub
+    Private Sub ClearFields()
+        ' Clear all TextBoxes and Labels
+        Guna2TextBox1.Text = ""
+        Guna2TextBox2.Text = ""
+        Guna2TextBox3.Text = ""
+        Guna2TextBox6.Text = ""
+        Guna2TextBox7.Text = ""
+        Guna2TextBox8.Text = ""
+        Guna2TextBox9.Text = ""
+        Guna2HtmlLabel15.Text = ""
+    End Sub
+
+    Private Sub Guna2TextBox1_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Guna2TextBox1.KeyPress
+
+        If Not Char.IsControl(e.KeyChar) AndAlso Not Char.IsDigit(e.KeyChar) Then
+            e.Handled = True ' Ignore the key if it is not a number or backspace
+
+        End If
+    End Sub
+
+    Private Sub Guna2TextBox1_TextChanged(sender As Object, e As EventArgs) Handles Guna2TextBox1.TextChanged
+        ' Stop the previous timer if there was one
+        debounceTimer.Stop()
+
+        ' Start a new timer when the text is changed
+        debounceTimer.Start()
+    End Sub
+
+    Private Sub debounceTimer_Tick(sender As Object, e As EventArgs) Handles debounceTimer.Tick
+        ' Stop the timer to prevent it from firing again
+        debounceTimer.Stop()
+
+        ' Now load the resident information
+        LoadResidentInformation(Guna2TextBox1.Text)
+    End Sub
+
 
     'Private Function GetStringValue(reader As MySqlDataReader, v As String) As String
     '    Throw New NotImplementedException()
     'End Function
 
-    Private Sub loadform()
-        Guna2DataGridView1.Rows.Clear()
-
-        openCon()
-
+    Private Async Function loadform() As Task
         Try
-            Dim query As String = "SELECT * FROM resident_info"
+            ' Clear the DataGridView
+            Guna2DataGridView1.Rows.Clear()
 
-            ' Create a MySqlCommand
-            Dim command As New MySqlCommand(query, con)
+            ' Create an instance of ApiClient
+            Dim apiClient As New ApiClient()
 
-            ' Execute the command and obtain a reader
-            Dim reader As MySqlDataReader = command.ExecuteReader()
+            ' Fetch resident records using the ApiClient
+            Dim residentRecords As List(Of ApiResponse.ResidentRecord) = Await apiClient.GetResidentRecordsAsync()
 
-            ' Loop through the rows in the SqlDataReader
-            While reader.Read()
-                Dim lname As String = reader("last_Name").ToString()
-                Dim gname As String = reader("given_Name").ToString()
-                Dim mname As String = reader("middle_Name").ToString()
-                Dim fullname As String = lname & ", " & gname & " " & mname
-
-                Dim address As String = reader("address").ToString()
-                Dim sitio As String = reader("sitio").ToString()
-                Dim street As String = reader("street").ToString()
-                Dim fulladdress As String = address & " " & sitio & " " & street
-
-                ' Add a new row to the DataGridView
-                Guna2DataGridView1.Rows.Add(reader("resident_id"), fullname, fulladdress)
-            End While
-
-            ' Close the SqlDataReader
-            reader.Close()
+            ' Loop through the resident records and populate the DataGridView
+            For Each record In residentRecords
+                Dim fullname As String = $"{record.ResidentLastName}, {record.ResidentFirstName} {record.ResidentMiddleName}"
+                Dim fulladdress As String = $"{record.Address} {record.Sitio} {record.Street}"
+                Guna2DataGridView1.Rows.Add(record.ResidentId, fullname, fulladdress)
+            Next
         Catch ex As Exception
-            MessageBox.Show("Error table: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        Finally
-            con.Close()
+            MessageBox.Show("Error loading data: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
+    End Function
 
-    End Sub
 
     Private Sub Guna2DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles Guna2DataGridView1.CellContentClick
+
         Guna2TextBox1.Text = Guna2DataGridView1.Rows(e.RowIndex).Cells(0).Value
     End Sub
 

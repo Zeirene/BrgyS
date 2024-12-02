@@ -512,7 +512,7 @@ Partial Class brgyID
         ' Label5
         ' 
         Label5.AutoSize = True
-        Label5.Location = New Point(190, 9)
+        Label5.Location = New Point(190, 18)
         Label5.Name = "Label5"
         Label5.Size = New Size(41, 15)
         Label5.TabIndex = 55

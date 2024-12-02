@@ -49,7 +49,7 @@ Public Class brgyID
     Private Sub brgyID_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Camstart() 'load camera
         Guna2TextBox1.Text = Form3.Guna2TextBox6.Text + "," + Form3.Guna2TextBox7.Text + " " + Form3.Guna2TextBox8.Text 'fullname
-        Guna2TextBox3.Text = Form3.Guna2TextBox9.Text + " " + Form3.Guna2TextBox2.Text + " " + Form3.Guna2TextBox3.Text 'address
+        Guna2TextBox3.Text = Form3.Guna2TextBox9.Text + " " + Form3.Guna2ComboBox2.Text + " " + Form3.Guna2ComboBox3.SelectedIndex 'address
 
         Label2.Text = Form3.Guna2HtmlLabel15.Text
         Label3.Text = Form2.staffID

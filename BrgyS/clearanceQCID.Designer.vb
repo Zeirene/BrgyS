@@ -55,7 +55,6 @@ Partial Class clearanceQCID
         Label3 = New Label()
         Label2 = New Label()
         Guna2TextBox2 = New Guna.UI2.WinForms.Guna2TextBox()
-        TextBox1 = New TextBox()
         SuspendLayout()
         ' 
         ' Guna2TextBox4
@@ -330,20 +329,12 @@ Partial Class clearanceQCID
         Guna2TextBox2.Size = New Size(214, 44)
         Guna2TextBox2.TabIndex = 63
         ' 
-        ' TextBox1
-        ' 
-        TextBox1.Location = New Point(179, 43)
-        TextBox1.Name = "TextBox1"
-        TextBox1.Size = New Size(152, 23)
-        TextBox1.TabIndex = 64
-        ' 
         ' clearanceQCID
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         ClientSize = New Size(842, 598)
-        Controls.Add(TextBox1)
         Controls.Add(Guna2TextBox2)
         Controls.Add(Label3)
         Controls.Add(Label2)
@@ -385,5 +376,4 @@ Partial Class clearanceQCID
     Friend WithEvents Label3 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Guna2TextBox2 As Guna.UI2.WinForms.Guna2TextBox
-    Friend WithEvents TextBox1 As TextBox
 End Class

@@ -40,6 +40,10 @@ Public Class Form2
         Timer1.Start()
 
     End Sub
+    Private Sub Form2_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
+        ' Close all open forms
+        Application.Exit()
+    End Sub
     Private Sub Guna2CircleButton3_Click(sender As Object, e As EventArgs)
         WindowState = FormWindowState.Minimized
     End Sub

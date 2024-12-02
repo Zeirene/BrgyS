@@ -7,7 +7,9 @@ Imports System.Reflection.Emit
 Public Class clearanceQCID
     Private Sub clearanceQCID_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Guna2TextBox1.Text = Form3.Guna2TextBox6.Text + "," + Form3.Guna2TextBox7.Text + " " + Form3.Guna2TextBox8.Text
-        Guna2ComboBox1.Text = Form3.Guna2TextBox9.Text + " " + Form3.Guna2TextBox2.Text + " " + Form3.Guna2TextBox3.Text 'address
+        Guna2TextBox4.Text = Form3.Guna2TextBox9.Text + " " + Form3.Guna2ComboBox3.Text + " " + Form3.Guna2ComboBox4.Text 'address
+        Guna2ComboBox3.Text = Form3.Guna2ComboBox1.Text
+
 
 
 
@@ -49,10 +51,10 @@ Public Class clearanceQCID
 
         ' Generate a customized file name based on student's name and current date/time
         Dim sanitizedStudentName As String = NAMEOFRESIDENT
-        Dim dateTimeStamp As String = DateTime.Now.ToString("yyyyMMdd hh:mm") ' Add a timestamp to the file name
+        Dim dateTimeStamp As String = DateTime.Now.ToString("yyyyMMdd hh mm") ' Add a timestamp to the file name
         Dim typeofpaper As String = Form3.Guna2ComboBox1.Text
 
-        Dim newFileName As String = typeofpaper & " " & sanitizedStudentName & "_" & dateTimeStamp & ".docx"
+        Dim newFileName As String = dateTimeStamp & " " & sanitizedStudentName & "_" & typeofpaper & ".docx"
         Dim newFilePath As String = Path.Combine("C:\Users\John Roi\source\repos\BrgyS\BrgyS\docu\generated docu\", newFileName)
 
         ' Copy the template file to a new file with the customized name
@@ -61,14 +63,14 @@ Public Class clearanceQCID
         Try
             ' Replace placeholders in the new document
             ReplaceTextInWordDocument(newFilePath, "{name}", NAMEOFRESIDENT)
-            'ReplaceTextInWordDocument(newFilePath, "{BDAY}", BDAY)
+            ReplaceTextInWordDocument(newFilePath, "{BDAY}", BDAY)
             ReplaceTextInWordDocument(newFilePath, "{stat}", CIVITSTAT)
 
             ReplaceTextInWordDocument(newFilePath, "{add}", RESADDRESS)
             ReplaceTextInWordDocument(newFilePath, "{stay}", YEARSOFSTAY)
             ReplaceTextInWordDocument(newFilePath, "{purp}", PURPOSE)
-            ReplaceTextInWordDocument(newFilePath, "{day}", day)
-            ReplaceTextInWordDocument(newFilePath, "{monthyear}", monthyear)
+            ReplaceTextInWordDocument2(newFilePath, "{day}", day)
+            ReplaceTextInWordDocument2(newFilePath, "{monthyear}", monthyear)
 
             ' Inform the user that the document has been saved
             'MessageBox.Show("Document created And saved successfully as " & newFilePath, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -83,7 +85,7 @@ Public Class clearanceQCID
 
 
     'function
-    Private Sub ReplaceTextInWordDocument(filePath As String, placeholder As String, replacementText As String)
+    Private Sub ReplaceTextInWordDocument2(filePath As String, placeholder As String, replacementText As String)
         ' Open the existing Word document as read/write
         Using wordDoc As WordprocessingDocument = WordprocessingDocument.Open(filePath, True)
             ' Get the main document part
@@ -102,6 +104,40 @@ Public Class clearanceQCID
             ' Save changes to the document
             mainPart.Document.Save()
         End Using
+    End Sub
+
+
+    Private Sub ReplaceTextInWordDocument(filePath As String, placeholder As String, replacementText As String)
+        ' Open the existing Word document as read/write
+        Using wordDoc As WordprocessingDocument = WordprocessingDocument.Open(filePath, True)
+            ' Get the main document part
+            Dim mainPart As MainDocumentPart = wordDoc.MainDocumentPart
+            Dim documentBody As Body = mainPart.Document.Body
+
+            ' Combine all text elements into a single string for easy replacement
+            Dim fullText As String = String.Join("", documentBody.Descendants(Of Text)().Select(Function(t) t.Text))
+
+            ' Replace the placeholder in the combined string
+            If fullText.Contains(placeholder) Then
+                fullText = fullText.Replace(placeholder, replacementText)
+
+                ' Split the combined string back into text elements
+                Dim textElements = documentBody.Descendants(Of Text)().ToArray()
+                Dim index As Integer = 0
+                For Each textElement As Text In textElements
+                    If index < fullText.Length Then
+                        textElement.Text = fullText.Substring(index, textElement.Text.Length)
+                        index += textElement.Text.Length
+                    Else
+                        textElement.Text = ""
+                    End If
+                Next
+            End If
+
+            ' Save changes to the document
+            mainPart.Document.Save()
+        End Using
+
     End Sub
     Public Sub InsertTransactionLog()
         Dim logDate As Date = Date.Today

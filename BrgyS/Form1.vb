@@ -50,12 +50,13 @@ Public Class Form1
                     MsgBox("Invalid username or password. Please try again.", MsgBoxStyle.Exclamation, "Login Error")
                 Else
                     ' MsgBox("Login successful!", MsgBoxStyle.Information, "Success")
-                    Me.Hide()
                     con.Close()
                     Form2.staffID = table.Rows(0)("staff_id").ToString
                     'brgyID.staffID = table.Rows(0)("staff_id").ToString
 
                     Form2.Show()
+                    Me.Hide()
+
 
                 End If
             End Using

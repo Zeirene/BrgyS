@@ -258,7 +258,6 @@ Partial Class Form3
         Guna2ComboBox1.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
         Guna2ComboBox1.ForeColor = Color.Black
         Guna2ComboBox1.ItemHeight = 38
-        Guna2ComboBox1.Items.AddRange(New Object() {"BRGY ID", "NBI", "TIN", "PHILHEALTH", "POLICE CLEARANCE", "POSTAL", "LTAP (license to operate and posses fire armed) ", "BUILDING PERMIT ", "BUSINESS PERMIT", "TODA PERMIT", "MERACLO", "MWSI"})
         Guna2ComboBox1.Location = New Point(175, 403)
         Guna2ComboBox1.Name = "Guna2ComboBox1"
         Guna2ComboBox1.ShadowDecoration.CustomizableEdges = CustomizableEdges10
@@ -279,7 +278,6 @@ Partial Class Form3
         Guna2ComboBox2.ForeColor = Color.Black
         Guna2ComboBox2.IntegralHeight = False
         Guna2ComboBox2.ItemHeight = 38
-        Guna2ComboBox2.Items.AddRange(New Object() {"ID", "CLEARANCE", "PERMITS"})
         Guna2ComboBox2.Location = New Point(12, 403)
         Guna2ComboBox2.Name = "Guna2ComboBox2"
         Guna2ComboBox2.ShadowDecoration.CustomizableEdges = CustomizableEdges12
@@ -591,9 +589,10 @@ Partial Class Form3
         Guna2HtmlLabel15.ForeColor = SystemColors.ActiveCaptionText
         Guna2HtmlLabel15.Location = New Point(400, 31)
         Guna2HtmlLabel15.Name = "Guna2HtmlLabel15"
-        Guna2HtmlLabel15.Size = New Size(3, 2)
+        Guna2HtmlLabel15.Size = New Size(19, 18)
         Guna2HtmlLabel15.TabIndex = 31
-        Guna2HtmlLabel15.Text = Nothing
+        Guna2HtmlLabel15.Text = "AA"
+        Guna2HtmlLabel15.Visible = False
         ' 
         ' Guna2TextBox2
         ' 

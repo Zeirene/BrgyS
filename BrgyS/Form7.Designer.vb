@@ -541,6 +541,7 @@ Partial Class Form7
         Label3.Size = New Size(41, 15)
         Label3.TabIndex = 74
         Label3.Text = "Label3"
+        Label3.Visible = False
         ' 
         ' Label2
         ' 
@@ -550,6 +551,7 @@ Partial Class Form7
         Label2.Size = New Size(41, 15)
         Label2.TabIndex = 73
         Label2.Text = "Label2"
+        Label2.Visible = False
         ' 
         ' Form7
         ' 

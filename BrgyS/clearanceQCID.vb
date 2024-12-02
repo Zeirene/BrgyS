@@ -6,8 +6,10 @@ Imports System.IO
 Imports System.Reflection.Emit
 Public Class clearanceQCID
     Private Sub clearanceQCID_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Guna2TextBox1.Text = Form3.Guna2TextBox6.Text + "," + Form3.Guna2TextBox7.Text + " " + Form3.Guna2TextBox8.Text
-        Guna2ComboBox1.Text = Form3.Guna2TextBox9.Text + " " + Form3.Guna2TextBox2.Text + " " + Form3.Guna2TextBox3.Text 'address
+        Guna2TextBox1.Text = Form3.Guna2TextBox6.Text + "," + Form3.Guna2TextBox7.Text + " " + Form3.Guna2TextBox8.Text 'name
+        TextBox1.Text = Form3.Guna2TextBox6.Text + "," + Form3.Guna2TextBox7.Text + " " + Form3.Guna2TextBox8.Text 'name
+        Guna2TextBox4.Text = Form3.Guna2TextBox9.Text + " " + Form3.Guna2TextBox2.Text + " " + Form3.Guna2TextBox3.Text 'address
+        Guna2ComboBox3.Text = Form3.Guna2ComboBox1.Text
 
 
 
@@ -30,46 +32,55 @@ Public Class clearanceQCID
     'functions and sub/////////////////////////////////////////////////////////////
     Private Sub generatedocfile()
         ' Path to the template document
-        Dim templatePath As String = "C:\Users\John Roi\source\repos\BrgyS\BrgyS\docu\BRGYidTEMP.docx"
+        Dim templatePath As String = "C:\Users\John Roi\source\repos\BrgyS\BrgyS\docu\clearancetemplate.docx"
 
         ' Input values from the textboxes
         Dim NAMEOFRESIDENT As String = Guna2TextBox1.Text
-        Dim BDAY As String = Guna2DateTimePicker1.Value
+        Dim BDAY As String = Guna2DateTimePicker1.Value.ToString("MMM,d yyyy")
         Dim CIVITSTAT As String = Guna2ComboBox1.Text
 
 
         Dim RESADDRESS As String = Guna2TextBox4.Text + " Brgy Sta Lucia, QUEZON CITY"
-        Dim YEARSOFSTAY As String = Guna2ComboBox2.Text
+        Dim YEARSOFSTAY As String = Guna2TextBox2.Text
         Dim PURPOSE As String = Guna2ComboBox3.Text
+        Dim day As String = DateTime.Now.ToString("dd")
+        Dim monthyear As String = DateTime.Now.ToString("MM,yyyy")
 
         'Dim studentSection As String = TextBox2.Text
         'Dim studentYear As String = TextBox3.Text
 
         ' Generate a customized file name based on student's name and current date/time
         Dim sanitizedStudentName As String = NAMEOFRESIDENT
-        Dim dateTimeStamp As String = DateTime.Now.ToString("yyyyMMdd") ' Add a timestamp to the file name
+        Dim dateTimeStamp As String = DateTime.Now.ToString("yyyyMMdd hh:mm") ' Add a timestamp to the file name
+        Dim typeofpaper As String = Form3.Guna2ComboBox1.Text
 
-        Dim newFileName As String = sanitizedStudentName & "_" & dateTimeStamp & ".pdf"
+        Dim newFileName As String = typeofpaper & " " & sanitizedStudentName & "_" & dateTimeStamp & ".docx"
         Dim newFilePath As String = Path.Combine("C:\Users\John Roi\source\repos\BrgyS\BrgyS\docu\generated docu\", newFileName)
 
         ' Copy the template file to a new file with the customized name
         File.Copy(templatePath, newFilePath, True) ' The True flag will overwrite if the file already exists
 
-        ' Replace placeholders in the new document
-        ReplaceTextInWordDocument(newFilePath, "{Name}", NAMEOFRESIDENT)
-        ReplaceTextInWordDocument(newFilePath, "{BDay}", BDAY)
-        ReplaceTextInWordDocument(newFilePath, "{BDay}", BDAY)
+        Try
+            ' Replace placeholders in the new document
+            ReplaceTextInWordDocument(newFilePath, "{name}", NAMEOFRESIDENT)
+            'ReplaceTextInWordDocument(newFilePath, "{BDAY}", BDAY)
+            ReplaceTextInWordDocument(newFilePath, "{stat}", CIVITSTAT)
 
-        ReplaceTextInWordDocument(newFilePath, "{Address}", RESADDRESS)
-        ReplaceTextInWordDocument(newFilePath, "{BDay}", BDAY)
-        ReplaceTextInWordDocument(newFilePath, "{BDay}", BDAY)
+            ReplaceTextInWordDocument(newFilePath, "{add}", RESADDRESS)
+            ReplaceTextInWordDocument(newFilePath, "{stay}", YEARSOFSTAY)
+            ReplaceTextInWordDocument(newFilePath, "{purp}", PURPOSE)
+            ReplaceTextInWordDocument(newFilePath, "{day}", day)
+            ReplaceTextInWordDocument(newFilePath, "{monthyear}", monthyear)
 
-
-
-        ' Inform the user that the document has been saved
-        'MessageBox.Show("Document created and saved successfully as " & newFilePath, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-        MessageBox.Show("Document created and ready to print ", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-
+            ' Inform the user that the document has been saved
+            'MessageBox.Show("Document created And saved successfully as " & newFilePath, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("Document created And ready to print ", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Catch ex As Exception
+            MessageBox.Show("An error occurred on insert: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+    Private Sub Guna2TextBox2_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Guna2TextBox2.KeyPress
+        onlyacceptnum(e)
     End Sub
 
 
@@ -96,7 +107,7 @@ Public Class clearanceQCID
     End Sub
     Public Sub InsertTransactionLog()
         Dim logDate As Date = Date.Today
-        Dim logTime As Date = DateTime.Now.ToString("HH:mm:ss")
+        Dim logTime As Date = DateTime.Now.ToString("HH: mm:ss")
         Dim logType As String = Form3.Guna2ComboBox2.Text
         Dim logStatus As String = "Completed"
         Dim payment As Decimal = Decimal.Parse(Form3.Guna2TextBox16.Text)
@@ -143,4 +154,11 @@ Public Class clearanceQCID
         End Try
     End Sub
 
+
+
+    Public Sub onlyacceptnum(e As KeyPressEventArgs)
+        If Not Char.IsControl(e.KeyChar) AndAlso Not Char.IsDigit(e.KeyChar) Then
+            e.Handled = True
+        End If
+    End Sub
 End Class

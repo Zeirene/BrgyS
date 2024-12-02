@@ -7,11 +7,27 @@ Imports MySql.Data.MySqlClient
 Imports Newtonsoft.Json
 
 Public Class Form3
+
     Private WithEvents debounceTimer As New Timer() ' Timer to debounce the TextChanged event
     Private debounceDelay As Integer = 300 ' Delay in milliseconds
 
+    'BRGY ID
+    'NBI
+    'TIN
+    'PHILHEALTH
+    'POLICE CLEARANCE
+    'POSTAL
+    'LTAP (license to operate And posses fire armed) 
+    'BUILDING PERMIT 
+    'BUSINESS PERMIT
+    'TODA PERMIT
+    'MERACLO
+    'MWSI
+
+
     Private Async Sub Form3_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Load all resident data when the form loads
+        Guna2ComboBox2.Items.AddRange(TypeToIds.Keys.ToArray())
         debounceTimer.Interval = debounceDelay
 
     End Sub
@@ -229,6 +245,40 @@ Public Class Form3
         Guna2TextBox1.Text = Guna2DataGridView1.Rows(e.RowIndex).Cells(0).Value
     End Sub
 
+    Private TypeToIds As New Dictionary(Of String, List(Of String)) From {
+        {"ID", New List(Of String) From {"BRGY ID"}},
+        {"CLEARANCE", New List(Of String) From {"NBI", "TIN", "PHILHEALTH", "POLICE CLEARANCE", "POSTAL", "LTAP (license to operate And possess firearms)"}},
+        {"PERMITS", New List(Of String) From {"BUILDING PERMIT", "BUSINESS PERMIT"}}
+    }
+    Private Sub Guna2ComboBox2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Guna2ComboBox2.SelectedIndexChanged
+        ' Clear Guna2ComboBox2 before adding new items
+        Guna2ComboBox1.Items.Clear()
+
+        ' Get the selected type from Guna2ComboBox1
+        If Guna2ComboBox2.SelectedItem IsNot Nothing Then
+            Dim selectedType As String = Guna2ComboBox2.SelectedItem.ToString()
+
+            ' Populate Guna2ComboBox2 with IDs related to the selected type
+            If TypeToIds.ContainsKey(selectedType) Then
+                Guna2ComboBox1.Items.AddRange(TypeToIds(selectedType).ToArray())
+            End If
+        End If
+    End Sub
+
+    'Public Sub docutype()
+    '    Guna2ComboBox2.Items.Clear()
+
+    '    ' Check which sitio is selected in Guna2ComboBox3 and add corresponding streets to Guna2ComboBox4
+    '    Select Case Guna2ComboBox1.SelectedItem.ToString
+    '        Case "ID"
+    '            Guna2ComboBox2.Items.Add("J.P Rizal")
+    '        Case "CLEARANCE"
+    '            Guna2ComboBox2.Items.Add("J.P Rizal")
+    '        Case "PERMITS"
+    '            Guna2ComboBox2.Items.Add("J.P Rizal")
+
+    '    End Select
+    'End Sub
 
 
     'Public Sub sitiodata()

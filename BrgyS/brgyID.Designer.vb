@@ -499,6 +499,7 @@ Partial Class brgyID
         Label2.Size = New Size(41, 15)
         Label2.TabIndex = 52
         Label2.Text = "Label2"
+        Label2.Visible = False
         ' 
         ' Label3
         ' 
@@ -508,6 +509,7 @@ Partial Class brgyID
         Label3.Size = New Size(41, 15)
         Label3.TabIndex = 53
         Label3.Text = "Label3"
+        Label3.Visible = False
         ' 
         ' Label5
         ' 
@@ -517,6 +519,7 @@ Partial Class brgyID
         Label5.Size = New Size(41, 15)
         Label5.TabIndex = 55
         Label5.Text = "Label5"
+        Label5.Visible = False
         ' 
         ' brgyID
         ' 

@@ -96,45 +96,6 @@ Public Class Form7
         Dim BADDRESS As String = Guna2TextBox5.Text + " Brgy Sta Lucia, QUEZON CITY"
         Dim NATUREB As String = Guna2TextBox9.Text
 
-        'Try
-        '    ' Open the connection to the database
-        '    con.Open()
-
-        '    'Prepare the SQL query to insert the transaction log data
-        '    Dim insertQuery As String = "INSERT INTO transaction_log (log_date, log_time, type, status, payment, resident_id, staff_id) 
-        '                             VALUES (@log_date, @log_time, @type, @status, @payment, @resident_id, @staff_id)"
-
-        '    'Dim insertQuery As String = "INSERT INTO transaction_log (log_date, log_time, type, status, payment) 
-        '    '                         VALUES (@log_date, @log_time, @type, @status, @payment)"
-
-        '    ' Create a MySQL command object with the query and connection
-        '    Using cmd As New MySqlCommand(insertQuery, con)
-        '        ' Add parameters to the command
-        '        cmd.Parameters.AddWithValue("@log_date", logDate)
-        '        cmd.Parameters.AddWithValue("@log_time", logTime)
-        '        cmd.Parameters.AddWithValue("@type", logType)
-        '        cmd.Parameters.AddWithValue("@status", logStatus)
-        '        cmd.Parameters.AddWithValue("@payment", payment)
-        '        cmd.Parameters.AddWithValue("@resident_id", residentId)
-        '        cmd.Parameters.AddWithValue("@staff_id", staffId)
-
-        '        ' Execute the command to insert data into the transaction_log table
-        '        cmd.ExecuteNonQuery()
-
-        '        ' Optional: Show a success message after insertion
-        '        MessageBox.Show("Transaction log inserted successfully!")
-        '    End Using
-
-        'Catch ex As Exception
-        '    ' Handle any errors that may have occurred
-        '    MessageBox.Show("Error: " & ex.Message)
-        'Finally
-        '    ' Ensure the connection is closed
-        '    If con IsNot Nothing AndAlso con.State = ConnectionState.Open Then
-        '        con.Close()
-        '    End If
-        'End Try
-
         Try
             ' Insert into transaction_log table
             Dim insertTransactionLog As String = "INSERT INTO transaction_log (log_date, log_time, type, status, payment, resident_id, staff_id) VALUES (@log_date, @log_time, @type, @status, @payment, @resident_id, @staff_id); SELECT LAST_INSERT_ID();"
@@ -178,13 +139,13 @@ Public Class Form7
     End Sub
     Private Sub generatedocfile()
         ' Path to the template document
-        Dim templatePath As String = "C:\Users\John Roi\source\repos\BrgyS\BrgyS\docu\clearancetemplate.docx"
+        Dim templatePath As String = "C:\Users\John Roi\source\repos\BrgyS\BrgyS\docu\permits.docx"
 
         ' Input values from the textboxes
         Dim NAMEOFAPPLICANT As String = Guna2TextBox7.Text
-        Dim resaddress As String = Guna2TextBox4.Text + " Brgy Sta Lucia, QUEZON CITY"
+        Dim resaddress As String = Guna2TextBox4.Text + " Brgy Sta Lucia, Quezon City"
         Dim BNAME As String = Guna2TextBox2.Text
-        Dim BADDRESS As String = Guna2TextBox5.Text + " Brgy Sta Lucia, QUEZON CITY"
+        Dim BADDRESS As String = Guna2TextBox5.Text + " Brgy Sta Lucia, Quezon City"
         Dim NATUREB As String = Guna2TextBox9.Text
 
         ' Generate a new file path for the modified .docx file

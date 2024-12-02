@@ -67,11 +67,8 @@ Public Class Form1
     End Sub
 
     Private Sub Guna2Button4_Click(sender As Object, e As EventArgs) Handles Guna2Button4.Click
+        Form2.Close()
         Me.Dispose()
-    End Sub
-
-    Private Sub Guna2TextBox1_TextChanged(sender As Object, e As EventArgs) Handles Guna2TextBox1.TextChanged
-
     End Sub
 
     Public Async Sub FetchResidents()
@@ -91,7 +88,7 @@ Public Class Form1
     End Sub
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        FetchResidents()
+        'FetchResidents()
     End Sub
 
     Private Sub Guna2HtmlLabel1_Click(sender As Object, e As EventArgs) Handles Guna2HtmlLabel1.Click

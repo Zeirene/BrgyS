@@ -51,10 +51,11 @@ Partial Class clearanceQCID
         Guna2Button2 = New Guna.UI2.WinForms.Guna2Button()
         Guna2DateTimePicker1 = New Guna.UI2.WinForms.Guna2DateTimePicker()
         Guna2ComboBox1 = New Guna.UI2.WinForms.Guna2ComboBox()
-        Guna2ComboBox2 = New Guna.UI2.WinForms.Guna2ComboBox()
         Guna2ComboBox3 = New Guna.UI2.WinForms.Guna2ComboBox()
         Label3 = New Label()
         Label2 = New Label()
+        Guna2TextBox2 = New Guna.UI2.WinForms.Guna2TextBox()
+        TextBox1 = New TextBox()
         SuspendLayout()
         ' 
         ' Guna2TextBox4
@@ -68,7 +69,6 @@ Partial Class clearanceQCID
         Guna2TextBox4.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
         Guna2TextBox4.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
         Guna2TextBox4.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        Guna2TextBox4.Enabled = False
         Guna2TextBox4.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         Guna2TextBox4.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
         Guna2TextBox4.ForeColor = Color.Black
@@ -93,7 +93,6 @@ Partial Class clearanceQCID
         Guna2TextBox1.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
         Guna2TextBox1.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
         Guna2TextBox1.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
-        Guna2TextBox1.Enabled = False
         Guna2TextBox1.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
         Guna2TextBox1.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
         Guna2TextBox1.ForeColor = Color.Black
@@ -267,31 +266,12 @@ Partial Class clearanceQCID
         Guna2ComboBox1.Size = New Size(214, 36)
         Guna2ComboBox1.TabIndex = 58
         ' 
-        ' Guna2ComboBox2
-        ' 
-        Guna2ComboBox2.BackColor = Color.Transparent
-        Guna2ComboBox2.BorderColor = Color.FromArgb(CByte(183), CByte(185), CByte(204))
-        Guna2ComboBox2.BorderRadius = 10
-        Guna2ComboBox2.CustomizableEdges = CustomizableEdges13
-        Guna2ComboBox2.DrawMode = DrawMode.OwnerDrawFixed
-        Guna2ComboBox2.DropDownStyle = ComboBoxStyle.DropDownList
-        Guna2ComboBox2.FocusedColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2ComboBox2.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2ComboBox2.Font = New Font("Segoe UI", 10F)
-        Guna2ComboBox2.ForeColor = Color.FromArgb(CByte(68), CByte(88), CByte(112))
-        Guna2ComboBox2.ItemHeight = 30
-        Guna2ComboBox2.Location = New Point(12, 334)
-        Guna2ComboBox2.Name = "Guna2ComboBox2"
-        Guna2ComboBox2.ShadowDecoration.CustomizableEdges = CustomizableEdges14
-        Guna2ComboBox2.Size = New Size(214, 36)
-        Guna2ComboBox2.TabIndex = 59
-        ' 
         ' Guna2ComboBox3
         ' 
         Guna2ComboBox3.BackColor = Color.Transparent
         Guna2ComboBox3.BorderColor = Color.FromArgb(CByte(183), CByte(185), CByte(204))
         Guna2ComboBox3.BorderRadius = 10
-        Guna2ComboBox3.CustomizableEdges = CustomizableEdges15
+        Guna2ComboBox3.CustomizableEdges = CustomizableEdges13
         Guna2ComboBox3.DrawMode = DrawMode.OwnerDrawFixed
         Guna2ComboBox3.DropDownStyle = ComboBoxStyle.DropDownList
         Guna2ComboBox3.FocusedColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
@@ -299,9 +279,10 @@ Partial Class clearanceQCID
         Guna2ComboBox3.Font = New Font("Segoe UI", 10F)
         Guna2ComboBox3.ForeColor = Color.FromArgb(CByte(68), CByte(88), CByte(112))
         Guna2ComboBox3.ItemHeight = 30
+        Guna2ComboBox3.Items.AddRange(New Object() {"NBI", "TIN", "PHILHEALTH", "POLICE CLEARANCE", "POSTAL", "LTAP (license to operate and posses fire armed) ", "MERACLO", "MWSI"})
         Guna2ComboBox3.Location = New Point(255, 334)
         Guna2ComboBox3.Name = "Guna2ComboBox3"
-        Guna2ComboBox3.ShadowDecoration.CustomizableEdges = CustomizableEdges16
+        Guna2ComboBox3.ShadowDecoration.CustomizableEdges = CustomizableEdges14
         Guna2ComboBox3.Size = New Size(214, 36)
         Guna2ComboBox3.TabIndex = 60
         ' 
@@ -313,6 +294,7 @@ Partial Class clearanceQCID
         Label3.Size = New Size(41, 15)
         Label3.TabIndex = 62
         Label3.Text = "Label3"
+        Label3.Visible = False
         ' 
         ' Label2
         ' 
@@ -322,6 +304,38 @@ Partial Class clearanceQCID
         Label2.Size = New Size(41, 15)
         Label2.TabIndex = 61
         Label2.Text = "Label2"
+        Label2.Visible = False
+        ' 
+        ' Guna2TextBox2
+        ' 
+        Guna2TextBox2.Animated = True
+        Guna2TextBox2.BorderColor = Color.FromArgb(CByte(183), CByte(185), CByte(204))
+        Guna2TextBox2.BorderRadius = 10
+        Guna2TextBox2.CustomizableEdges = CustomizableEdges15
+        Guna2TextBox2.DefaultText = ""
+        Guna2TextBox2.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
+        Guna2TextBox2.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
+        Guna2TextBox2.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        Guna2TextBox2.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        Guna2TextBox2.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        Guna2TextBox2.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
+        Guna2TextBox2.ForeColor = Color.Black
+        Guna2TextBox2.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        Guna2TextBox2.Location = New Point(12, 334)
+        Guna2TextBox2.Name = "Guna2TextBox2"
+        Guna2TextBox2.PasswordChar = ChrW(0)
+        Guna2TextBox2.PlaceholderText = "Resident's Years of Stay"
+        Guna2TextBox2.SelectedText = ""
+        Guna2TextBox2.ShadowDecoration.CustomizableEdges = CustomizableEdges16
+        Guna2TextBox2.Size = New Size(214, 44)
+        Guna2TextBox2.TabIndex = 63
+        ' 
+        ' TextBox1
+        ' 
+        TextBox1.Location = New Point(179, 43)
+        TextBox1.Name = "TextBox1"
+        TextBox1.Size = New Size(152, 23)
+        TextBox1.TabIndex = 64
         ' 
         ' clearanceQCID
         ' 
@@ -329,10 +343,11 @@ Partial Class clearanceQCID
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         ClientSize = New Size(842, 598)
+        Controls.Add(TextBox1)
+        Controls.Add(Guna2TextBox2)
         Controls.Add(Label3)
         Controls.Add(Label2)
         Controls.Add(Guna2ComboBox3)
-        Controls.Add(Guna2ComboBox2)
         Controls.Add(Guna2ComboBox1)
         Controls.Add(Guna2DateTimePicker1)
         Controls.Add(Guna2Button2)
@@ -349,7 +364,7 @@ Partial Class clearanceQCID
         FormBorderStyle = FormBorderStyle.None
         Name = "clearanceQCID"
         StartPosition = FormStartPosition.CenterScreen
-        Text = "clearanceQCID"
+        Text = "q"
         ResumeLayout(False)
         PerformLayout()
     End Sub
@@ -366,8 +381,9 @@ Partial Class clearanceQCID
     Friend WithEvents Guna2Button2 As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents Guna2DateTimePicker1 As Guna.UI2.WinForms.Guna2DateTimePicker
     Friend WithEvents Guna2ComboBox1 As Guna.UI2.WinForms.Guna2ComboBox
-    Friend WithEvents Guna2ComboBox2 As Guna.UI2.WinForms.Guna2ComboBox
     Friend WithEvents Guna2ComboBox3 As Guna.UI2.WinForms.Guna2ComboBox
     Friend WithEvents Label3 As Label
     Friend WithEvents Label2 As Label
+    Friend WithEvents Guna2TextBox2 As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents TextBox1 As TextBox
 End Class

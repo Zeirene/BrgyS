@@ -6,10 +6,8 @@ Imports System.IO
 Imports System.Reflection.Emit
 Public Class clearanceQCID
     Private Sub clearanceQCID_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        Guna2TextBox1.Text = Form3.Guna2TextBox6.Text + "," + Form3.Guna2TextBox7.Text + " " + Form3.Guna2TextBox8.Text 'name
-        TextBox1.Text = Form3.Guna2TextBox6.Text + "," + Form3.Guna2TextBox7.Text + " " + Form3.Guna2TextBox8.Text 'name
-        Guna2TextBox4.Text = Form3.Guna2TextBox9.Text + " " + Form3.Guna2TextBox2.Text + " " + Form3.Guna2TextBox3.Text 'address
-        Guna2ComboBox3.Text = Form3.Guna2ComboBox1.Text
+        Guna2TextBox1.Text = Form3.Guna2TextBox6.Text + "," + Form3.Guna2TextBox7.Text + " " + Form3.Guna2TextBox8.Text
+        Guna2ComboBox1.Text = Form3.Guna2TextBox9.Text + " " + Form3.Guna2TextBox2.Text + " " + Form3.Guna2TextBox3.Text 'address
 
 
 

@@ -11,20 +11,6 @@ Public Class Form3
     Private WithEvents debounceTimer As New Timer() ' Timer to debounce the TextChanged event
     Private debounceDelay As Integer = 300 ' Delay in milliseconds
 
-    'BRGY ID
-    'NBI
-    'TIN
-    'PHILHEALTH
-    'POLICE CLEARANCE
-    'POSTAL
-    'LTAP (license to operate And posses fire armed) 
-    'BUILDING PERMIT 
-    'BUSINESS PERMIT
-    'TODA PERMIT
-    'MERACLO
-    'MWSI
-
-
     Private Async Sub Form3_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         ' Load all resident data when the form loads
         Guna2ComboBox2.Items.AddRange(TypeToIds.Keys.ToArray())
@@ -104,15 +90,13 @@ Public Class Form3
     End Sub
 
 
-    Private Async Sub Guna2Button2_Click(sender As Object, e As EventArgs) Handles Guna2Button2.Click
+    Private Sub Guna2Button2_Click(sender As Object, e As EventArgs) Handles Guna2Button2.Click
         ' Clear input fields
-        Guna2TextBox1.Text = ""
-        Guna2TextBox2.Text = ""
-        Guna2TextBox3.Text = ""
-        Guna2TextBox6.Text = ""
-        Guna2TextBox7.Text = ""
-        Guna2TextBox8.Text = ""
-        Guna2TextBox9.Text = ""
+        Guna2TextBox1.Clear()
+        Guna2TextBox6.Clear()
+        Guna2TextBox7.Clear()
+        Guna2TextBox8.Clear()
+        Guna2TextBox9.Clear()
         Guna2HtmlLabel15.Text = ""
 
 
@@ -160,8 +144,65 @@ Public Class Form3
                 Guna2TextBox7.Text = firstRecord.ResidentFirstName
                 Guna2TextBox8.Text = firstRecord.ResidentMiddleName
                 Guna2TextBox9.Text = firstRecord.Address
-                Guna2TextBox2.Text = firstRecord.Sitio
-                Guna2TextBox3.Text = firstRecord.Street
+                Guna2ComboBox3.Text = firstRecord.Sitio
+                Guna2ComboBox4.Text = firstRecord.Street
+                Guna2HtmlLabel15.Text = firstRecord.ResidentId.ToString()
+            Else
+
+                ' Clear the DataGridView
+                Guna2DataGridView1.Rows.Clear()
+
+                ' Clear fields if no record is found
+                ClearFields()
+
+            End If
+        Catch ex As Exception
+            MessageBox.Show("An error occurred while fetching data: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+
+    Private Async Sub LoadResidentInformation2(searchTerm As String)
+        Guna2DataGridView1.Rows.Clear()
+
+        ' Check if the search term is empty or whitespace
+        If String.IsNullOrWhiteSpace(searchTerm) Then
+            Guna2DataGridView1.Rows.Clear()
+
+            ' Clear fields if no record is found
+            ClearFields()
+            Await loadform()
+            Return
+        End If
+
+        Try
+            ' Create an instance of ApiClient
+            Dim apiClient As New ApiClient()
+
+            ' Fetch resident records from the API
+            Dim residentRecords As List(Of ApiResponse.ResidentRecord) = Await apiClient.GetResidentRecordsAsync()
+
+            ' Filter the records based on the search term (case-insensitive search)
+            Dim filteredRecords = residentRecords.Where(Function(record) record.ResidentId.ToString().Contains(searchTerm, StringComparison.OrdinalIgnoreCase)).ToList()
+
+            ' Clear the DataGridView
+            Guna2DataGridView1.Rows.Clear()
+
+            If filteredRecords.Any() Then
+                ' Display the filtered record(s)
+                For Each record In filteredRecords
+                    Dim fullname As String = $"{record.ResidentLastName}, {record.ResidentFirstName} {record.ResidentMiddleName}"
+                    Dim fulladdress As String = $"{record.Address} {record.Sitio} {record.Street}"
+                    Guna2DataGridView1.Rows.Add(record.ResidentId, fullname, fulladdress)
+                Next
+
+                ' Populate the first record's details in the TextBoxes and Labels
+                Dim firstRecord = filteredRecords.First()
+                Guna2TextBox6.Text = firstRecord.ResidentLastName
+                Guna2TextBox7.Text = firstRecord.ResidentFirstName
+                Guna2TextBox8.Text = firstRecord.ResidentMiddleName
+                Guna2TextBox9.Text = firstRecord.Address
+                Guna2ComboBox3.Text = firstRecord.Sitio
+                Guna2ComboBox4.Text = firstRecord.Street
                 Guna2HtmlLabel15.Text = firstRecord.ResidentId.ToString()
             Else
 
@@ -179,13 +220,13 @@ Public Class Form3
     Private Sub ClearFields()
         ' Clear all TextBoxes and Labels
         Guna2TextBox1.Text = ""
-        Guna2TextBox2.Text = ""
-        Guna2TextBox3.Text = ""
+        Guna2ComboBox2.Text = ""
         Guna2TextBox6.Text = ""
         Guna2TextBox7.Text = ""
         Guna2TextBox8.Text = ""
         Guna2TextBox9.Text = ""
         Guna2HtmlLabel15.Text = ""
+
     End Sub
 
     Private Sub Guna2TextBox1_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Guna2TextBox1.KeyPress
@@ -204,13 +245,16 @@ Public Class Form3
         debounceTimer.Start()
     End Sub
 
+
     Private Sub debounceTimer_Tick(sender As Object, e As EventArgs) Handles debounceTimer.Tick
         ' Stop the timer to prevent it from firing again
         debounceTimer.Stop()
 
         ' Now load the resident information
         LoadResidentInformation(Guna2TextBox1.Text)
+
     End Sub
+
 
 
     'Private Function GetStringValue(reader As MySqlDataReader, v As String) As String
@@ -245,127 +289,160 @@ Public Class Form3
         Guna2TextBox1.Text = Guna2DataGridView1.Rows(e.RowIndex).Cells(0).Value
     End Sub
 
-    Private TypeToIds As New Dictionary(Of String, List(Of String)) From {
-        {"ID", New List(Of String) From {"BRGY ID"}},
-        {"CLEARANCE", New List(Of String) From {"NBI", "TIN", "PHILHEALTH", "POLICE CLEARANCE", "POSTAL", "LTAP (license to operate And possess firearms)"}},
-        {"PERMITS", New List(Of String) From {"BUILDING PERMIT", "BUSINESS PERMIT"}}
-    }
-    Private Sub Guna2ComboBox2_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Guna2ComboBox2.SelectedIndexChanged
-        ' Clear Guna2ComboBox2 before adding new items
-        Guna2ComboBox1.Items.Clear()
 
-        ' Get the selected type from Guna2ComboBox1
-        If Guna2ComboBox2.SelectedItem IsNot Nothing Then
-            Dim selectedType As String = Guna2ComboBox2.SelectedItem.ToString()
+    Case "Sitio 2"
+                Guna2ComboBox3.Items.Add("Juan Luna")
+                Guna2ComboBox3.Items.Add("J.P. Rizal")
+                Guna2ComboBox3.Items.Add("M. H Del Pilar")
+                Guna2ComboBox3.Items.Add("Jacinto")
+                Guna2ComboBox3.Items.Add("Diego Silang")
+                Guna2ComboBox3.Items.Add("Malvar")
+                Guna2ComboBox3.Items.Add("Panganiban")
+                Guna2ComboBox3.Items.Add("A. Dela Cruz")
+                Guna2ComboBox3.Items.Add("F. Balagtas")
 
-            ' Populate Guna2ComboBox2 with IDs related to the selected type
-            If TypeToIds.ContainsKey(selectedType) Then
-                Guna2ComboBox1.Items.AddRange(TypeToIds(selectedType).ToArray())
-            End If
-        End If
+            Case "Sitio 3"
+                Guna2ComboBox3.Items.Add("J.P. Rizal")
+                Guna2ComboBox3.Items.Add("Visayas Avenue")
+                Guna2ComboBox3.Items.Add("Francisco Park")
+                Guna2ComboBox3.Items.Add("Bukaneg")
+                Guna2ComboBox3.Items.Add("Balagtas")
+                Guna2ComboBox3.Items.Add("Aguinaldo")
+                Guna2ComboBox3.Items.Add("Panday Pira")
+                Guna2ComboBox3.Items.Add("Lakandula")
+                Guna2ComboBox3.Items.Add("M. Aquino")
+                Guna2ComboBox3.Items.Add("Lopez Jaena")
+
+            Case "Sitio 4"
+                Guna2ComboBox3.Items.Add("Jose Abad Santos")
+                Guna2ComboBox3.Items.Add("Mabini")
+                Guna2ComboBox3.Items.Add("Humabon")
+                Guna2ComboBox3.Items.Add("Gomez")
+                Guna2ComboBox3.Items.Add("Burgos")
+                Guna2ComboBox3.Items.Add("Zamora")
+                Guna2ComboBox3.Items.Add("Bonifacio")
+                Guna2ComboBox3.Items.Add("J. Basa")
+                Guna2ComboBox3.Items.Add("Naning Ponce")
+
+            Case "Sitio 5"
+                Guna2ComboBox3.Items.Add("J.P. Rizal")
+                Guna2ComboBox3.Items.Add("Jose Abad Santos")
+                Guna2ComboBox3.Items.Add("Mabini")
+                Guna2ComboBox3.Items.Add("Bonifacio")
+                Guna2ComboBox3.Items.Add("T. Alonzo")
+                Guna2ComboBox3.Items.Add("Paterno")
+
+            Case "Sitio 6"
+                Guna2ComboBox3.Items.Add("Jose Abad Santos")
+                Guna2ComboBox3.Items.Add("T. Alonzo")
+                Guna2ComboBox3.Items.Add("Paterno")
+                Guna2ComboBox3.Items.Add("Veronica")
+                Guna2ComboBox3.Items.Add("Agoncillo")
+                Guna2ComboBox3.Items.Add("Natividad")
+                Guna2ComboBox3.Items.Add("Rajah Soliman")
+
+            Case "Sitio 7"
+                Guna2ComboBox3.Items.Add("F. Calderon")
+                Guna2ComboBox3.Items.Add("J. Palma")
+                Guna2ComboBox3.Items.Add("Lapu-Lapu")
+                Guna2ComboBox3.Items.Add("Gumamela")
+                Guna2ComboBox3.Items.Add("Dahlia")
+                Guna2ComboBox3.Items.Add("Rosas")
+                Guna2ComboBox3.Items.Add("Camia")
+                Guna2ComboBox3.Items.Add("Rosal")
+                Guna2ComboBox3.Items.Add("Sampaguita")
+                Guna2ComboBox3.Items.Add("Tarhaville Ave.")
+
+            Case Else
+                ' Optional: If an unrecognized item is selected, you could show a message or keep Guna2ComboBox3 empty
+                Guna2ComboBox3.Items.Add("No streets available")
+        End Select
     End Sub
 
-    'Public Sub docutype()
-    '    Guna2ComboBox2.Items.Clear()
+    Private Sub Guna2ComboBox3_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Guna2ComboBox3.SelectedIndexChanged
+        Guna2ComboBox4.Items.Clear()
 
-    '    ' Check which sitio is selected in Guna2ComboBox3 and add corresponding streets to Guna2ComboBox4
-    '    Select Case Guna2ComboBox1.SelectedItem.ToString
-    '        Case "ID"
-    '            Guna2ComboBox2.Items.Add("J.P Rizal")
-    '        Case "CLEARANCE"
-    '            Guna2ComboBox2.Items.Add("J.P Rizal")
-    '        Case "PERMITS"
-    '            Guna2ComboBox2.Items.Add("J.P Rizal")
+        ' Check which sitio is selected in Guna2ComboBox3 and add corresponding streets to Guna2ComboBox3
+        Select Case Guna2ComboBox3.SelectedItem.ToString
+            Case "Sitio 1"
+                Guna2ComboBox4.Items.Add("J.P Rizal")
+                Guna2ComboBox4.Items.Add("Paguio")
+                Guna2ComboBox4.Items.Add("Endraca Compound")
+                Guna2ComboBox4.Items.Add("Cursilista")
+                Guna2ComboBox4.Items.Add("Pamana")
+                Guna2ComboBox4.Items.Add("Castro Compound")
+                Guna2ComboBox4.Items.Add("Sta. Marcela")
+                Guna2ComboBox4.Items.Add("Galvez Compound")
+                Guna2ComboBox4.Items.Add("Rivera Compound")
+                Guna2ComboBox4.Items.Add("Amity Ville")
+                Guna2ComboBox4.Items.Add("Plain Ville")
 
-    '    End Select
-    'End Sub
+            Case "Sitio 2"
+                Guna2ComboBox4.Items.Add("Juan Luna")
+                Guna2ComboBox4.Items.Add("J.P. Rizal")
+                Guna2ComboBox4.Items.Add("M. H Del Pilar")
+                Guna2ComboBox4.Items.Add("Jacinto")
+                Guna2ComboBox4.Items.Add("Diego Silang")
+                Guna2ComboBox4.Items.Add("Malvar")
+                Guna2ComboBox4.Items.Add("Panganiban")
+                Guna2ComboBox4.Items.Add("A. Dela Cruz")
+                Guna2ComboBox4.Items.Add("F. Balagtas")
 
+            Case "Sitio 3"
+                Guna2ComboBox4.Items.Add("J.P. Rizal")
+                Guna2ComboBox4.Items.Add("Visayas Avenue")
+                Guna2ComboBox4.Items.Add("Francisco Park")
+                Guna2ComboBox4.Items.Add("Bukaneg")
+                Guna2ComboBox4.Items.Add("Balagtas")
+                Guna2ComboBox4.Items.Add("Aguinaldo")
+                Guna2ComboBox4.Items.Add("Panday Pira")
+                Guna2ComboBox4.Items.Add("Lakandula")
+                Guna2ComboBox4.Items.Add("M. Aquino")
+                Guna2ComboBox4.Items.Add("Lopez Jaena")
 
-    'Public Sub sitiodata()
+            Case "Sitio 4"
+                Guna2ComboBox4.Items.Add("Jose Abad Santos")
+                Guna2ComboBox4.Items.Add("Mabini")
+                Guna2ComboBox4.Items.Add("Humabon")
+                Guna2ComboBox4.Items.Add("Gomez")
+                Guna2ComboBox4.Items.Add("Burgos")
+                Guna2ComboBox4.Items.Add("Zamora")
+                Guna2ComboBox4.Items.Add("Bonifacio")
+                Guna2ComboBox4.Items.Add("J. Basa")
+                Guna2ComboBox4.Items.Add("Naning Ponce")
 
-    '    Guna2ComboBox4.Items.Clear()
+            Case "Sitio 5"
+                Guna2ComboBox4.Items.Add("J.P. Rizal")
+                Guna2ComboBox4.Items.Add("Jose Abad Santos")
+                Guna2ComboBox4.Items.Add("Mabini")
+                Guna2ComboBox4.Items.Add("Bonifacio")
+                Guna2ComboBox4.Items.Add("T. Alonzo")
+                Guna2ComboBox4.Items.Add("Paterno")
 
-    '    ' Check which sitio is selected in Guna2ComboBox3 and add corresponding streets to Guna2ComboBox4
-    '    Select Case Guna2ComboBox3.SelectedItem.ToString
-    '        Case "Sitio 1"
-    '            Guna2ComboBox4.Items.Add("J.P Rizal")
-    '            Guna2ComboBox4.Items.Add("Paguio")
-    '            Guna2ComboBox4.Items.Add("Endraca Compound")
-    '            Guna2ComboBox4.Items.Add("Cursilista")
-    '            Guna2ComboBox4.Items.Add("Pamana")
-    '            Guna2ComboBox4.Items.Add("Castro Compound")
-    '            Guna2ComboBox4.Items.Add("Sta. Marcela")
-    '            Guna2ComboBox4.Items.Add("Galvez Compound")
-    '            Guna2ComboBox4.Items.Add("Rivera Compound")
-    '            Guna2ComboBox4.Items.Add("Amity Ville")
-    '            Guna2ComboBox4.Items.Add("Plain Ville")
+            Case "Sitio 6"
+                Guna2ComboBox4.Items.Add("Jose Abad Santos")
+                Guna2ComboBox4.Items.Add("T. Alonzo")
+                Guna2ComboBox4.Items.Add("Paterno")
+                Guna2ComboBox4.Items.Add("Veronica")
+                Guna2ComboBox4.Items.Add("Agoncillo")
+                Guna2ComboBox4.Items.Add("Natividad")
+                Guna2ComboBox4.Items.Add("Rajah Soliman")
 
-    '        Case "Sitio 2"
-    '            Guna2ComboBox4.Items.Add("Juan Luna")
-    '            Guna2ComboBox4.Items.Add("J.P. Rizal")
-    '            Guna2ComboBox4.Items.Add("M. H Del Pilar")
-    '            Guna2ComboBox4.Items.Add("Jacinto")
-    '            Guna2ComboBox4.Items.Add("Diego Silang")
-    '            Guna2ComboBox4.Items.Add("Malvar")
-    '            Guna2ComboBox4.Items.Add("Panganiban")
-    '            Guna2ComboBox4.Items.Add("A. Dela Cruz")
-    '            Guna2ComboBox4.Items.Add("F. Balagtas")
+            Case "Sitio 7"
+                Guna2ComboBox4.Items.Add("F. Calderon")
+                Guna2ComboBox4.Items.Add("J. Palma")
+                Guna2ComboBox4.Items.Add("Lapu-Lapu")
+                Guna2ComboBox4.Items.Add("Gumamela")
+                Guna2ComboBox4.Items.Add("Dahlia")
+                Guna2ComboBox4.Items.Add("Rosas")
+                Guna2ComboBox4.Items.Add("Camia")
+                Guna2ComboBox4.Items.Add("Rosal")
+                Guna2ComboBox4.Items.Add("Sampaguita")
+                Guna2ComboBox4.Items.Add("Tarhaville Ave.")
 
-    '        Case "Sitio 3"
-    '            Guna2ComboBox4.Items.Add("J.P. Rizal")
-    '            Guna2ComboBox4.Items.Add("Visayas Avenue")
-    '            Guna2ComboBox4.Items.Add("Francisco Park")
-    '            Guna2ComboBox4.Items.Add("Bukaneg")
-    '            Guna2ComboBox4.Items.Add("Balagtas")
-    '            Guna2ComboBox4.Items.Add("Aguinaldo")
-    '            Guna2ComboBox4.Items.Add("Panday Pira")
-    '            Guna2ComboBox4.Items.Add("Lakandula")
-    '            Guna2ComboBox4.Items.Add("M. Aquino")
-    '            Guna2ComboBox4.Items.Add("Lopez Jaena")
-
-    '        Case "Sitio 4"
-    '            Guna2ComboBox4.Items.Add("Jose Abad Santos")
-    '            Guna2ComboBox4.Items.Add("Mabini")
-    '            Guna2ComboBox4.Items.Add("Humabon")
-    '            Guna2ComboBox4.Items.Add("Gomez")
-    '            Guna2ComboBox4.Items.Add("Burgos")
-    '            Guna2ComboBox4.Items.Add("Zamora")
-    '            Guna2ComboBox4.Items.Add("Bonifacio")
-    '            Guna2ComboBox4.Items.Add("J. Basa")
-    '            Guna2ComboBox4.Items.Add("Naning Ponce")
-
-    '        Case "Sitio 5"
-    '            Guna2ComboBox4.Items.Add("J.P. Rizal")
-    '            Guna2ComboBox4.Items.Add("Jose Abad Santos")
-    '            Guna2ComboBox4.Items.Add("Mabini")
-    '            Guna2ComboBox4.Items.Add("Bonifacio")
-    '            Guna2ComboBox4.Items.Add("T. Alonzo")
-    '            Guna2ComboBox4.Items.Add("Paterno")
-
-    '        Case "Sitio 6"
-    '            Guna2ComboBox4.Items.Add("Jose Abad Santos")
-    '            Guna2ComboBox4.Items.Add("T. Alonzo")
-    '            Guna2ComboBox4.Items.Add("Paterno")
-    '            Guna2ComboBox4.Items.Add("Veronica")
-    '            Guna2ComboBox4.Items.Add("Agoncillo")
-    '            Guna2ComboBox4.Items.Add("Natividad")
-    '            Guna2ComboBox4.Items.Add("Rajah Soliman")
-
-    '        Case "Sitio 7"
-    '            Guna2ComboBox4.Items.Add("F. Calderon")
-    '            Guna2ComboBox4.Items.Add("J. Palma")
-    '            Guna2ComboBox4.Items.Add("Lapu-Lapu")
-    '            Guna2ComboBox4.Items.Add("Gumamela")
-    '            Guna2ComboBox4.Items.Add("Dahlia")
-    '            Guna2ComboBox4.Items.Add("Rosas")
-    '            Guna2ComboBox4.Items.Add("Camia")
-    '            Guna2ComboBox4.Items.Add("Rosal")
-    '            Guna2ComboBox4.Items.Add("Sampaguita")
-    '            Guna2ComboBox4.Items.Add("Tarhaville Ave.")
-
-    '        Case Else
-    '            ' Optional: If an unrecognized item is selected, you could show a message or keep Guna2ComboBox4 empty
-    '            Guna2ComboBox4.Items.Add("No streets available")
-    '    End Select
-    'End Sub
+            Case Else
+                ' Optional: If an unrecognized item is selected, you could show a message or keep Guna2ComboBox3 empty
+                Guna2ComboBox4.Items.Add("No streets available")
+        End Select
+    End Sub
 End Class

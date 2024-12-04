@@ -113,16 +113,19 @@ Public Class Form7
 
                 ' Execute the query and retrieve the last inserted log_id
                 logId = Convert.ToInt32(cmd.ExecuteScalar())
-                MessageBox.Show("Transaction completed moving to permits. ", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                'MessageBox.Show("Transaction completed moving to permits. ", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                MessageBox.Show("Log ID: " & logId.ToString(), "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
 
             End Using
 
             ' Insert into permit_log table
-            Dim insertPermitLog As String = "INSERT INTO permits_log (log_id, resident_id, loc_type, b_name, b_address, stay_duration, m_rental, b_details) VALUES (@log_id, @resident_id, @loc_type, @b_name, @b_address, @stay_duration, @m_rental, @b_details);"
+            Dim insertPermitLog As String = "INSERT INTO permits_log (log_id, resnum, loc_type, b_name, b_address, stay_duration, m_rental, b_details) VALUES (@log_id, @resnum, @loc_type, @b_name, @b_address, @stay_duration, @m_rental, @b_details);"
+            'Dim insertPermitLog As String = "INSERT INTO permits_log ( resnum, loc_type, b_name, b_address, stay_duration, m_rental, b_details) VALUES ( @resnum, @loc_type, @b_name, @b_address, @stay_duration, @m_rental, @b_details);"
 
             Using cmd As New MySqlCommand(insertPermitLog, con)
                 cmd.Parameters.AddWithValue("@log_id", logId)
-                cmd.Parameters.AddWithValue("@resident_id", residentId)
+                cmd.Parameters.AddWithValue("@resnum", residentId)
                 cmd.Parameters.AddWithValue("@loc_type", Guna2TextBox1.Text) ' Replace with actual location type
                 cmd.Parameters.AddWithValue("@b_name", BNAME) ' Replace with actual building name
                 cmd.Parameters.AddWithValue("@b_address", BADDRESS) ' Replace with actual address
@@ -146,7 +149,8 @@ Public Class Form7
     End Sub
     Private Sub generatedocfile()
         ' Path to the template document
-        Dim templatePath As String = "C:\Users\John Roi\source\repos\BrgyS\BrgyS\docu\permits.docx"
+        'Dim templatePath As String = "C:\Users\John Roi\source\repos\BrgyS\BrgyS\docu\permits.docx"
+        Dim templatePath As String = "C:\Users\Ericka Louise\Source\Repos\BrgyS\BrgyS\docu\permits.docx"
 
         ' Input values from the textboxes
         Dim NAMEOFAPPLICANT As String = Guna2TextBox7.Text
@@ -161,7 +165,8 @@ Public Class Form7
         Dim typeofpaper As String = Form3.Guna2ComboBox1.Text
         Dim newDocxFileName As String = dateTimeStamp & " " & sanitizedStudentName & "_" & typeofpaper & ".docx"
 
-        Dim newDocxFilePath As String = Path.Combine("C:\Users\John Roi\source\repos\BrgyS\BrgyS\docu\generated docu\", newDocxFileName)
+        'Dim newDocxFilePath As String = Path.Combine("C:\Users\John Roi\source\repos\BrgyS\BrgyS\docu\generated docu\", newDocxFileName)
+        Dim newDocxFilePath As String = Path.Combine("C:\Users\Ericka Louise\Source\Repos\BrgyS\BrgyS\docu\generated docu\", newDocxFileName)
 
         ' Copy the template file to a new .docx file
         File.Copy(templatePath, newDocxFilePath, True)

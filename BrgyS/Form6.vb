@@ -2,103 +2,84 @@
 
 Public Class Form6
     Private Sub Form6_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        updateMessage()
+        UpdateBusinesses()
     End Sub
 
-    Public Sub updateMessage()
+    Public Sub UpdateBusinesses()
         FlowLayoutPanel1.Controls.Clear()
 
         Try
             con.Open()
-            Using cmd As New MySqlCommand("SELECT iid, title, idate, itime, content, istatus, uid, grid FROM permits_log WHERE uid = @id;", con)
-                'Using cmd As New MySqlCommand("SELECT * FROM p_log_id WHERE uid = @id;", con)
+            Using cmd As New MySqlCommand("SELECT p_log_id, b_name, loc_type, b_address, b_details FROM permits_log;", con)
+                Dim reader As MySqlDataReader = cmd.ExecuteReader()
+                While reader.Read()
+                    Dim pLogId = reader.GetInt32("p_log_id")
+                    Dim businessName = reader.GetString("b_name")
+                    Dim ownerName = reader.GetString("loc_type") ' Assuming loc_type represents owner name
+                    Dim status = reader.GetString("b_details") ' Assuming b_details represents status
 
-                'cmd.Parameters.AddWithValue("@id", orgID)
-                Dim reader As MySqlDataReader = cmd.ExecuteReader
-                While reader.Read
-                    Dim iid = reader.GetInt32(0)
-                    Dim title = reader.GetString(1)
-                    Dim idate = reader.GetDateTime(2)
-                    Dim itime = reader.GetTimeSpan(3)
-                    Dim content = reader.GetString(4)
-                    Dim istatus = reader.GetString(5)
-                    Dim uid = reader.GetInt32(6)
-                    Dim grid = reader.GetInt32(7)
-
-                    NewMessage(iid, title, idate, itime, content, istatus, uid, grid)
+                    AddBusinessPanel(pLogId, businessName, ownerName, status)
                 End While
-                cmd.Parameters.Clear()
                 reader.Close()
             End Using
         Catch ex As Exception
-            MsgBox("From updating the message " & ex.Message)
+            MsgBox("Error fetching data: " & ex.Message)
         Finally
             con.Close()
         End Try
-
     End Sub
-    Private Sub NewMessage(ByVal iid As Integer, ByVal title As String, ByVal idate As DateTime, ByVal itime As TimeSpan, ByVal content As String, ByVal istatus As String, ByVal uid As Integer, ByVal grid As Integer)
 
-        Dim idateString As String = idate.ToString("yyyy-MM-dd")
+    Private Sub AddBusinessPanel(ByVal pLogId As Integer, ByVal businessName As String, ByVal ownerName As String, ByVal status As String)
+        ' Create a panel for the business
+        Dim businessPanel As New Panel With {
+            .Size = New Size(755, 80),
+            .BackColor = Color.LightGray,
+            .Margin = New Padding(10)
+        }
 
-        Dim messagePanel As New Panel With {
-        .Size = New Size(755, 60),
-        .BackColor = Color.FromArgb(44, 193, 146),
-        .Enabled = True,
-        .Visible = True
-    }
+        ' Add business name label
+        Dim lblBusinessName As New Label With {
+            .Text = "Business: " & businessName,
+            .Font = New Font("Arial", 10, FontStyle.Bold),
+            .Location = New Point(10, 10),
+            .AutoSize = True
+        }
+        businessPanel.Controls.Add(lblBusinessName)
 
-        If istatus = "read" Then
-            messagePanel.BackColor = Color.White
-        End If
+        ' Add owner name label
+        Dim lblOwnerName As New Label With {
+            .Text = "Owner: " & ownerName,
+            .Font = New Font("Arial", 10),
+            .Location = New Point(10, 30),
+            .AutoSize = True
+        }
+        businessPanel.Controls.Add(lblOwnerName)
 
-        FlowLayoutPanel1.Controls.Add(messagePanel)
+        ' Add status label
+        Dim lblStatus As New Label With {
+            .Text = "Status: " & status,
+            .Font = New Font("Arial", 10),
+            .Location = New Point(10, 50),
+            .AutoSize = True
+        }
+        businessPanel.Controls.Add(lblStatus)
 
-        Dim mesTitle As New Label With {
-        .Size = New Size(118, 21),
-        .Location = New Point(29, 15),
-        .Font = New Font("Bahnschrift SemiBold", 12.0F, FontStyle.Bold),
-        .ForeColor = Color.White,
-        .Text = title,
-        .AutoSize = True,
-        .Margin = New Padding(10, 10, 10, 10)
-    }
+        ' Add email button
+        Dim btnEmail As New Button With {
+            .Text = "Send Email",
+            .Size = New Size(100, 30),
+            .Location = New Point(640, 25),
+            .Tag = businessName ' Use Tag to store business information if needed
+        }
+        AddHandler btnEmail.Click, Sub() SendEmail(pLogId, businessName)
+        businessPanel.Controls.Add(btnEmail)
 
-        If istatus = "read" Then
-            mesTitle.ForeColor = Color.Black
-        End If
-
-        Dim mesDate As New Label With {
-        .Size = New Size(118, 21),
-        .Location = New Point(650, 15),
-        .Font = New Font("Bahnschrift SemiBold", 12.0F, FontStyle.Bold),
-        .ForeColor = Color.White,
-        .Text = idate.ToString("yyyy-MM-dd"),
-        .AutoSize = False,
-        .Margin = New Padding(10, 10, 10, 10)
-    }
-
-        If istatus = "read" Then
-            mesDate.ForeColor = Color.Black
-        End If
-
-        messagePanel.Controls.Add(mesTitle)
-        messagePanel.Controls.Add(mesDate)
-
-        AddHandler messagePanel.Click, Sub()
-                                           updateInboxStatus(iid)
-                                           'Dim formInfo As New messageDetails(iid, title, idate, itime, content, istatus, uid, grid) 'open new form
-                                           'formInfo.Show()
-                                       End Sub
-
+        ' Add the panel to the FlowLayoutPanel
+        FlowLayoutPanel1.Controls.Add(businessPanel)
     End Sub
-    Private Sub updateInboxStatus(ByVal iid As Integer)
-        openCon()
-        Dim updateQuery As String = "UPDATE inbox SET istatus = 'read' WHERE iid = @iid"
-        Using cmd As New MySqlCommand(updateQuery, con)
-            cmd.Parameters.AddWithValue("@iid", iid)
-            cmd.ExecuteNonQuery()
-        End Using
-        con.Close()
+
+    Private Sub SendEmail(ByVal pLogId As Integer, ByVal businessName As String)
+        ' Placeholder for sending email logic
+        MsgBox("Sending email to business: " & businessName & " (ID: " & pLogId & ")")
     End Sub
 End Class

@@ -97,6 +97,8 @@ Public Class Form7
         Dim NATUREB As String = Guna2TextBox9.Text
 
         Try
+
+            con.Open()
             ' Insert into transaction_log table
             Dim insertTransactionLog As String = "INSERT INTO transaction_log (log_date, log_time, type, status, payment, resident_id, staff_id) VALUES (@log_date, @log_time, @type, @status, @payment, @resident_id, @staff_id); SELECT LAST_INSERT_ID();"
             Dim logId As Integer
@@ -111,14 +113,17 @@ Public Class Form7
 
                 ' Execute the query and retrieve the last inserted log_id
                 logId = Convert.ToInt32(cmd.ExecuteScalar())
+                MessageBox.Show("Transaction completed moving to permits. ", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
             End Using
 
             ' Insert into permit_log table
-            Dim insertPermitLog As String = "INSERT INTO permit_log (log_id, loc_type, b_name, b_address, stay_duration, m_rental, b_details) VALUES (@log_id, @loc_type, @b_name, @b_address, @stay_duration, @m_rental, @b_details);"
+            Dim insertPermitLog As String = "INSERT INTO permits_log (log_id, resident_id, loc_type, b_name, b_address, stay_duration, m_rental, b_details) VALUES (@log_id, @resident_id, @loc_type, @b_name, @b_address, @stay_duration, @m_rental, @b_details);"
 
             Using cmd As New MySqlCommand(insertPermitLog, con)
                 cmd.Parameters.AddWithValue("@log_id", logId)
-                cmd.Parameters.AddWithValue("@loc_type", Guna2ComboBox2.Text) ' Replace with actual location type
+                cmd.Parameters.AddWithValue("@resident_id", residentId)
+                cmd.Parameters.AddWithValue("@loc_type", Guna2TextBox1.Text) ' Replace with actual location type
                 cmd.Parameters.AddWithValue("@b_name", BNAME) ' Replace with actual building name
                 cmd.Parameters.AddWithValue("@b_address", BADDRESS) ' Replace with actual address
                 cmd.Parameters.AddWithValue("@stay_duration", Guna2TextBox6.Text) ' Replace with actual duration in months
@@ -130,11 +135,13 @@ Public Class Form7
 
             ' Commit transaction
             'Transaction.Commit()
-            Console.WriteLine("Transaction completed successfully.")
+            con.Close()
+            MessageBox.Show("Transaction completed successfully. ", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
         Catch ex As Exception
             ' Rollback transaction in case of error
             'Transaction.Rollback()
-            Console.WriteLine("Error: " & ex.Message)
+            MessageBox.Show("Error in transaction log: " & ex.Message)
         End Try
     End Sub
     Private Sub generatedocfile()
@@ -150,8 +157,10 @@ Public Class Form7
 
         ' Generate a new file path for the modified .docx file
         Dim sanitizedStudentName As String = NAMEOFAPPLICANT
-        Dim dateTimeStamp As String = DateTime.Now.ToString("yyyyMMdd")
-        Dim newDocxFileName As String = sanitizedStudentName & "_" & dateTimeStamp & ".docx"
+        Dim dateTimeStamp As String = DateTime.Now.ToString("yyyy MM dd, HH mm")
+        Dim typeofpaper As String = Form3.Guna2ComboBox1.Text
+        Dim newDocxFileName As String = dateTimeStamp & " " & sanitizedStudentName & "_" & typeofpaper & ".docx"
+
         Dim newDocxFilePath As String = Path.Combine("C:\Users\John Roi\source\repos\BrgyS\BrgyS\docu\generated docu\", newDocxFileName)
 
         ' Copy the template file to a new .docx file
@@ -163,6 +172,9 @@ Public Class Form7
         ReplaceTextInWordDocument(newDocxFilePath, "{BName}", BNAME)
         ReplaceTextInWordDocument(newDocxFilePath, "{BAddress}", BADDRESS)
         ReplaceTextInWordDocument(newDocxFilePath, "{NatureB}", NATUREB)
+
+        MessageBox.Show("Document created And ready to print ", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
 
         '' Convert the .docx to a .pdf file
         'Dim newPdfFileName As String = sanitizedStudentName & "_" & dateTimeStamp & ".pdf"
@@ -223,18 +235,63 @@ Public Class Form7
         End Try
     End Sub
 
+    'Private Sub ReplaceTextInWordDocument(filePath As String, placeholder As String, replacementText As String)
+    '    Using wordDoc As WordprocessingDocument = WordprocessingDocument.Open(filePath, True)
+    '        Dim mainPart As MainDocumentPart = wordDoc.MainDocumentPart
+    '        Dim documentBody As DocumentFormat.OpenXml.Wordprocessing.Body = mainPart.Document.Body
+
+    '        For Each textElement As Text In documentBody.Descendants(Of Text)()
+    '            If textElement.Text.Contains(placeholder) Then
+    '                textElement.Text = textElement.Text.Replace(placeholder, replacementText)
+    '            End If
+    '        Next
+    '        mainPart.Document.Save()
+    '    End Using
+    'End Sub
+
     Private Sub ReplaceTextInWordDocument(filePath As String, placeholder As String, replacementText As String)
+        ' Open the existing Word document as read/write
         Using wordDoc As WordprocessingDocument = WordprocessingDocument.Open(filePath, True)
+            ' Get the main document part
             Dim mainPart As MainDocumentPart = wordDoc.MainDocumentPart
             Dim documentBody As DocumentFormat.OpenXml.Wordprocessing.Body = mainPart.Document.Body
 
-            For Each textElement As Text In documentBody.Descendants(Of Text)()
-                If textElement.Text.Contains(placeholder) Then
-                    textElement.Text = textElement.Text.Replace(placeholder, replacementText)
-                End If
-            Next
+            ' Combine all text elements into a single string for easy replacement
+            Dim fullText As String = String.Join("", documentBody.Descendants(Of Text)().Select(Function(t) t.Text))
+
+            ' Replace the placeholder in the combined string
+            If fullText.Contains(placeholder) Then
+                fullText = fullText.Replace(placeholder, replacementText)
+
+                ' Split the combined string back into text elements
+                'Dim textElements = documentBody.Descendants(Of Text)().ToArray()
+                'Dim index As Integer = 0
+                'For Each textElement As Text In textElements
+                '    If index < fullText.Length Then
+                '        textElement.Text = fullText.Substring(index, textElement.Text.Length)
+                '        index += textElement.Text.Length
+                '    Else
+                '        textElement.Text = ""
+                '    End If
+                'Next
+                Dim textElements = documentBody.Descendants(Of Text)().ToArray()
+                Dim index As Integer = 0
+                For Each textElement As Text In textElements
+                    If index < fullText.Length Then
+                        ' Ensure the length doesn't exceed the remaining text
+                        Dim lengthToCopy As Integer = Math.Min(textElement.Text.Length, fullText.Length - index)
+                        textElement.Text = fullText.Substring(index, lengthToCopy)
+                        index += lengthToCopy
+                    Else
+                        textElement.Text = ""
+                    End If
+                Next
+            End If
+
+            ' Save changes to the document
             mainPart.Document.Save()
         End Using
+
     End Sub
     Private Sub ConvertDocxToPdf(docxFilePath As String, pdfFilePath As String)
         Dim wordApp As New Application()

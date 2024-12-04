@@ -122,12 +122,24 @@ Public Class clearanceQCID
                 fullText = fullText.Replace(placeholder, replacementText)
 
                 ' Split the combined string back into text elements
+                'Dim textElements = documentBody.Descendants(Of Text)().ToArray()
+                'Dim index As Integer = 0
+                'For Each textElement As Text In textElements
+                '    If index < fullText.Length Then
+                '        textElement.Text = fullText.Substring(index, textElement.Text.Length)
+                '        index += textElement.Text.Length
+                '    Else
+                '        textElement.Text = ""
+                '    End If
+                'Next
                 Dim textElements = documentBody.Descendants(Of Text)().ToArray()
                 Dim index As Integer = 0
                 For Each textElement As Text In textElements
                     If index < fullText.Length Then
-                        textElement.Text = fullText.Substring(index, textElement.Text.Length)
-                        index += textElement.Text.Length
+                        ' Ensure the length doesn't exceed the remaining text
+                        Dim lengthToCopy As Integer = Math.Min(textElement.Text.Length, fullText.Length - index)
+                        textElement.Text = fullText.Substring(index, lengthToCopy)
+                        index += lengthToCopy
                     Else
                         textElement.Text = ""
                     End If
@@ -153,8 +165,8 @@ Public Class clearanceQCID
             con.Open()
 
             'Prepare the SQL query to insert the transaction log data
-            Dim insertQuery As String = "INSERT INTO transaction_log (log_date, log_time, type, status, payment, resident_id, staff_id) 
-                                     VALUES (@log_date, @log_time, @type, @status, @payment, @resident_id, @staff_id)"
+            Dim insertQuery As String = "INSERT INTO transaction_log (log_date, log_time, type, status, payment, residentId, staff_id) 
+                                     VALUES (@log_date, @log_time, @type, @status, @payment, @residentId, @staff_id)"
 
             'Dim insertQuery As String = "INSERT INTO transaction_log (log_date, log_time, type, status, payment) 
             '                         VALUES (@log_date, @log_time, @type, @status, @payment)"

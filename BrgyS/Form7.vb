@@ -23,7 +23,7 @@ Public Class Form7
         Label3.Text = Form2.staffID
     End Sub
     Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
-        generatedocfile()
+        'generatedocfile()
         InsertTransactionLog()
         'sendtoadmin2()
 

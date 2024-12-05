@@ -102,27 +102,26 @@ Public Class Form7
             ' Insert into transaction_log table
             Dim insertTransactionLog As String = "INSERT INTO transaction_log (log_date, log_time, type, status, payment, resident_id, staff_id) VALUES (@log_date, @log_time, @type, @status, @payment, @resident_id, @staff_id); SELECT LAST_INSERT_ID();"
             Dim logId As Integer
-            Using cmd As New MySqlCommand(insertTransactionLog, con)
-                cmd.Parameters.AddWithValue("@log_date", logDate)
-                cmd.Parameters.AddWithValue("@log_time", logTime)
-                cmd.Parameters.AddWithValue("@type", logType)
-                cmd.Parameters.AddWithValue("@status", logStatus)
-                cmd.Parameters.AddWithValue("@payment", payment)
-                cmd.Parameters.AddWithValue("@resident_id", residentId)
-                cmd.Parameters.AddWithValue("@staff_id", staffId)
+            Using cmd1 As New MySqlCommand(insertTransactionLog, con)
+                cmd1.Parameters.AddWithValue("@log_date", logDate)
+                cmd1.Parameters.AddWithValue("@log_time", logTime)
+                cmd1.Parameters.AddWithValue("@type", logType)
+                cmd1.Parameters.AddWithValue("@status", logStatus)
+                cmd1.Parameters.AddWithValue("@payment", payment)
+                cmd1.Parameters.AddWithValue("@resident_id", residentId)
+                cmd1.Parameters.AddWithValue("@staff_id", staffId)
 
                 ' Execute the query and retrieve the last inserted log_id
-                logId = Convert.ToInt32(cmd.ExecuteScalar())
+                logId = Convert.ToInt32(cmd1.ExecuteScalar())
                 MessageBox.Show("Transaction completed moving to permits. ", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
             End Using
 
             ' Insert into permit_log table
-            Dim insertPermitLog As String = "INSERT INTO permits_log (log_id, resident_id, loc_type, b_name, b_address, stay_duration, m_rental, b_details) VALUES (@log_id, @resident_id, @loc_type, @b_name, @b_address, @stay_duration, @m_rental, @b_details);"
+            Dim insertPermitLog As String = "INSERT INTO permits_log (log_id, loc_type, b_name, b_address, stay_duration, m_rental, b_details) VALUES (@log_id, @loc_type, @b_name, @b_address, @stay_duration, @m_rental, @b_details);"
 
             Using cmd As New MySqlCommand(insertPermitLog, con)
                 cmd.Parameters.AddWithValue("@log_id", logId)
-                cmd.Parameters.AddWithValue("@resident_id", residentId)
                 cmd.Parameters.AddWithValue("@loc_type", Guna2TextBox1.Text) ' Replace with actual location type
                 cmd.Parameters.AddWithValue("@b_name", BNAME) ' Replace with actual building name
                 cmd.Parameters.AddWithValue("@b_address", BADDRESS) ' Replace with actual address
@@ -142,6 +141,8 @@ Public Class Form7
             ' Rollback transaction in case of error
             'Transaction.Rollback()
             MessageBox.Show("Error in transaction log: " & ex.Message)
+        Finally
+            con.Close()
         End Try
     End Sub
     Private Sub generatedocfile()

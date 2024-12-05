@@ -112,18 +112,16 @@ Public Class Form7
                 cmd1.Parameters.AddWithValue("@staff_id", staffId)
 
                 ' Execute the query and retrieve the last inserted log_id
-                logId = Convert.ToInt32(cmd.ExecuteScalar())
-                MessageBox.Show("Transaction completed moving to permits. ", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-
+                logId = Convert.ToInt32(cmd1.ExecuteScalar())
+                'MessageBox.Show("Transaction completed moving to permits. ", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
             End Using
 
             ' Insert into permit_log table
-            Dim insertPermitLog As String = "INSERT INTO permits_log (log_id, resident_id, loc_type, b_name, b_address, stay_duration, m_rental, b_details) VALUES (@log_id, @resident_id, @loc_type, @b_name, @b_address, @stay_duration, @m_rental, @b_details);"
+            Dim insertPermitLog As String = "INSERT INTO permits_log (log_id, loc_type, b_name, b_address, stay_duration, m_rental, b_details) VALUES (@log_id, @loc_type, @b_name, @b_address, @stay_duration, @m_rental, @b_details);"
 
             Using cmd As New MySqlCommand(insertPermitLog, con)
                 cmd.Parameters.AddWithValue("@log_id", logId)
-                cmd.Parameters.AddWithValue("@resident_id", residentId)
                 cmd.Parameters.AddWithValue("@loc_type", Guna2TextBox1.Text) ' Replace with actual location type
                 cmd.Parameters.AddWithValue("@b_name", BNAME) ' Replace with actual building name
                 cmd.Parameters.AddWithValue("@b_address", BADDRESS) ' Replace with actual address

@@ -113,7 +113,7 @@ Public Class Form7
 
                 ' Execute the query and retrieve the last inserted log_id
                 logId = Convert.ToInt32(cmd1.ExecuteScalar())
-                MessageBox.Show("Transaction completed moving to permits. ", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                'MessageBox.Show("Transaction completed moving to permits. ", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
             End Using
 

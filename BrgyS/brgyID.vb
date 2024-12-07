@@ -3,6 +3,7 @@ Imports AForge.Video.DirectShow
 
 Imports DocumentFormat.OpenXml.Packaging
 Imports DocumentFormat.OpenXml.Wordprocessing
+Imports Guna.UI2.WinForms
 
 Imports MySql.Data.MySqlClient
 
@@ -49,7 +50,7 @@ Public Class brgyID
     Private Sub brgyID_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Camstart() 'load camera
         Guna2TextBox1.Text = Form3.Guna2TextBox6.Text + "," + Form3.Guna2TextBox7.Text + " " + Form3.Guna2TextBox8.Text 'fullname
-        Guna2TextBox3.Text = Form3.Guna2TextBox9.Text + " " + Form3.Guna2ComboBox2.Text + " " + Form3.Guna2ComboBox3.SelectedIndex 'address
+        Guna2TextBox3.Text = Form3.Guna2TextBox9.Text + " " + Form3.Guna2ComboBox2.Text + " " + Form3.Guna2ComboBox3.Text 'address
 
         Label2.Text = Form3.Guna2HtmlLabel15.Text
         Label3.Text = Form2.staffID
@@ -78,6 +79,21 @@ Public Class brgyID
     End Sub
     Private Sub Guna2Button3_Click(sender As Object, e As EventArgs) Handles Guna2Button3.Click
         'save and print docu
+
+
+        ID_PREV.resName = Guna2TextBox1.Text
+        ID_PREV.idnum = Label2.Text
+        'ID_PREV.img = PictureBox1.Image.ToString
+        ID_PREV.addr = Guna2TextBox3.Text + " Brgy Sta Lucia, QUEZON CITY"
+        ID_PREV.tin = Guna2TextBox4.Text
+        ID_PREV.bday = Guna2DateTimePicker1.Value.ToString("MMMM, dd yyyy")
+        ID_PREV.btype = Guna2ComboBox1.Text
+        ID_PREV.precint = Guna2TextBox6.Text
+        ID_PREV.emername = Guna2TextBox8.Text
+        ID_PREV.emercont = Guna2TextBox7.Text
+        ID_PREV.emeraddr = Guna2TextBox9.Text
+
+        ID_PREV.Show()
         generatedocfile()
         'InsertTransactionLog()
     End Sub

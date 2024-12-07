@@ -119,7 +119,9 @@ Partial Class Clearance_PREV
         Controls.Add(Guna2Button2)
         Controls.Add(Guna2Button1)
         Controls.Add(PictureBox1)
+        FormBorderStyle = FormBorderStyle.None
         Name = "Clearance_PREV"
+        StartPosition = FormStartPosition.CenterScreen
         Text = "Clearance_PREV"
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)

@@ -65,7 +65,7 @@
 
   <ItemGroup>
     <Folder Include="docu\printeddocs\" />
-    <Folder Include="Generated Pics\" />
+    <Folder Include="Generated Pics\captured form\" />
   </ItemGroup>
 
   <ItemGroup>

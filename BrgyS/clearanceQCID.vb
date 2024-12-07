@@ -5,11 +5,14 @@ Imports MySql.Data.MySqlClient
 Imports System.IO
 Imports System.Reflection.Emit
 Public Class clearanceQCID
+
+
+
+
     Private Sub clearanceQCID_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Guna2TextBox1.Text = Form3.Guna2TextBox6.Text + "," + Form3.Guna2TextBox7.Text + " " + Form3.Guna2TextBox8.Text
         Guna2TextBox4.Text = Form3.Guna2TextBox9.Text + " " + Form3.Guna2ComboBox3.Text + " " + Form3.Guna2ComboBox4.Text 'address
         Guna2ComboBox3.Text = Form3.Guna2ComboBox1.Text
-
 
 
 
@@ -18,8 +21,18 @@ Public Class clearanceQCID
     End Sub
 
     Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
-        generatedocfile()
-        InsertTransactionLog()
+        Clearance_PREV.resName = Guna2TextBox1.Text
+        Clearance_PREV.stat = Guna2ComboBox1.Text
+        Clearance_PREV.addr = Guna2TextBox4.Text + " Brgy Sta Lucia, QUEZON CITY"
+        Clearance_PREV.stay = Guna2TextBox2.Text
+        Clearance_PREV.purp = Guna2ComboBox3.Text
+
+
+        'Dim anotherForm As New Clearance_PREV()
+        Clearance_PREV.Show()
+
+        'generatedocfile()
+        'InsertTransactionLog()
     End Sub
 
 

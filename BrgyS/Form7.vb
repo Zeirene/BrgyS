@@ -15,16 +15,39 @@ Imports System.Transactions
 
 
 Public Class Form7
+    Private _busname As String
+    Public BNAME, BADDRESS, NATUREB As String
+
+
     Private Sub Form7_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Guna2TextBox7.Text = Form3.Guna2TextBox6.Text + "," + Form3.Guna2TextBox7.Text + " " + Form3.Guna2TextBox8.Text 'name
         Guna2TextBox4.Text = Form3.Guna2TextBox9.Text + " " + Form3.Guna2ComboBox2.Text + " " + Form3.Guna2ComboBox3.Text 'address
 
         Label2.Text = Form3.Guna2HtmlLabel15.Text
         Label3.Text = Form2.staffID
+
+
+        Dim NAMEOFAPPLICANT As String = Guna2TextBox7.Text
+        Dim resaddress As String = Guna2TextBox4.Text + " Brgy Sta Lucia, QUEZON CITY"
+        BNAME = Guna2TextBox2.Text
+        BADDRESS = Guna2TextBox5.Text + " Brgy Sta Lucia, QUEZON CITY"
+        NATUREB = Guna2TextBox9.Text
+
+
+
     End Sub
     Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
+        'Dim anotherForm As New Permits_PREV()
+        'anotherForm.Show()
+
+        Permits_PREV.busname = Guna2TextBox2.Text
+        Permits_PREV.BADDRESS = Guna2TextBox5.Text + " Brgy Sta Lucia, QUEZON CITY"
+        Permits_PREV.NATUREB = Guna2TextBox9.Text
+
+        Permits_PREV.Show()
+
         'generatedocfile()
-        InsertTransactionLog()
+        'InsertTransactionLog()
         'sendtoadmin2()
 
     End Sub

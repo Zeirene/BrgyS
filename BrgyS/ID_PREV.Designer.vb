@@ -131,7 +131,7 @@ Partial Class ID_PREV
         ' Label4
         ' 
         Label4.AutoSize = True
-        Label4.Location = New Point(132, 357)
+        Label4.Location = New Point(63, 377)
         Label4.Name = "Label4"
         Label4.Size = New Size(41, 15)
         Label4.TabIndex = 7
@@ -140,7 +140,7 @@ Partial Class ID_PREV
         ' Label5
         ' 
         Label5.AutoSize = True
-        Label5.Location = New Point(132, 382)
+        Label5.Location = New Point(93, 404)
         Label5.Name = "Label5"
         Label5.Size = New Size(41, 15)
         Label5.TabIndex = 8
@@ -149,7 +149,7 @@ Partial Class ID_PREV
         ' Label6
         ' 
         Label6.AutoSize = True
-        Label6.Location = New Point(132, 410)
+        Label6.Location = New Point(104, 432)
         Label6.Name = "Label6"
         Label6.Size = New Size(41, 15)
         Label6.TabIndex = 9
@@ -158,7 +158,7 @@ Partial Class ID_PREV
         ' Label7
         ' 
         Label7.AutoSize = True
-        Label7.Location = New Point(132, 440)
+        Label7.Location = New Point(104, 457)
         Label7.Name = "Label7"
         Label7.Size = New Size(41, 15)
         Label7.TabIndex = 10
@@ -167,7 +167,7 @@ Partial Class ID_PREV
         ' Label8
         ' 
         Label8.AutoSize = True
-        Label8.Location = New Point(22, 482)
+        Label8.Location = New Point(35, 527)
         Label8.Name = "Label8"
         Label8.Size = New Size(41, 15)
         Label8.TabIndex = 11
@@ -176,7 +176,7 @@ Partial Class ID_PREV
         ' Label9
         ' 
         Label9.AutoSize = True
-        Label9.Location = New Point(22, 497)
+        Label9.Location = New Point(35, 542)
         Label9.Name = "Label9"
         Label9.Size = New Size(41, 15)
         Label9.TabIndex = 12
@@ -197,7 +197,7 @@ Partial Class ID_PREV
         ' Label10
         ' 
         Label10.AutoSize = True
-        Label10.Location = New Point(22, 512)
+        Label10.Location = New Point(35, 557)
         Label10.Name = "Label10"
         Label10.Size = New Size(47, 15)
         Label10.TabIndex = 14

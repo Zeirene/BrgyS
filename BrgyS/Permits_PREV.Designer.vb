@@ -93,7 +93,7 @@ Partial Class Permits_PREV
         ' Label1
         ' 
         Label1.AutoSize = True
-        Label1.Location = New Point(181, 315)
+        Label1.Location = New Point(162, 370)
         Label1.Name = "Label1"
         Label1.Size = New Size(41, 15)
         Label1.TabIndex = 12
@@ -102,7 +102,7 @@ Partial Class Permits_PREV
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Location = New Point(195, 330)
+        Label2.Location = New Point(181, 385)
         Label2.Name = "Label2"
         Label2.Size = New Size(41, 15)
         Label2.TabIndex = 13
@@ -111,7 +111,7 @@ Partial Class Permits_PREV
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Location = New Point(168, 345)
+        Label3.Location = New Point(143, 400)
         Label3.Name = "Label3"
         Label3.Size = New Size(41, 15)
         Label3.TabIndex = 14
@@ -120,7 +120,7 @@ Partial Class Permits_PREV
         ' Label4
         ' 
         Label4.AutoSize = True
-        Label4.Location = New Point(195, 360)
+        Label4.Location = New Point(162, 415)
         Label4.Name = "Label4"
         Label4.Size = New Size(41, 15)
         Label4.TabIndex = 15
@@ -129,7 +129,7 @@ Partial Class Permits_PREV
         ' Label5
         ' 
         Label5.AutoSize = True
-        Label5.Location = New Point(204, 375)
+        Label5.Location = New Point(172, 430)
         Label5.Name = "Label5"
         Label5.Size = New Size(41, 15)
         Label5.TabIndex = 16

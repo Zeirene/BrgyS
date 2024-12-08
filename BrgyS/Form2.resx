@@ -334,13 +334,13 @@
     <value>975, 26</value>
   </data>
   <data name="Guna2HtmlLabel4.Size" type="System.Drawing.Size, System.Drawing">
-    <value>71, 15</value>
+    <value>93, 21</value>
   </data>
   <data name="Guna2HtmlLabel4.TabIndex" type="System.Int32, mscorlib">
     <value>19</value>
   </data>
   <data name="Guna2HtmlLabel4.Text" xml:space="preserve">
-    <value>CLERK NAME</value>
+    <value>DELA CRUZ, JUAN</value>
   </data>
   <data name="&gt;&gt;Guna2HtmlLabel4.Name" xml:space="preserve">
     <value>Guna2HtmlLabel4</value>

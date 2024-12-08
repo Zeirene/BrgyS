@@ -455,7 +455,7 @@ Partial Class Form7
         Guna2Button1.FillColor = Color.Black
         Guna2Button1.Font = New Font("Bahnschrift", 9.75F, FontStyle.Bold)
         Guna2Button1.ForeColor = Color.White
-        Guna2Button1.Location = New Point(532, 97)
+        Guna2Button1.Location = New Point(532, 92)
         Guna2Button1.Name = "Guna2Button1"
         Guna2Button1.PressedColor = Color.FromArgb(CByte(155), CByte(192), CByte(228))
         Guna2Button1.ShadowDecoration.CustomizableEdges = CustomizableEdges22

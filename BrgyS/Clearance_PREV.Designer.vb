@@ -80,6 +80,7 @@ Partial Class Clearance_PREV
         ' 
         ' RichTextBox1
         ' 
+        RichTextBox1.BackColor = Color.White
         RichTextBox1.BorderStyle = BorderStyle.None
         RichTextBox1.Location = New Point(55, 204)
         RichTextBox1.Name = "RichTextBox1"
@@ -90,6 +91,7 @@ Partial Class Clearance_PREV
         ' 
         ' RichTextBox2
         ' 
+        RichTextBox2.BackColor = Color.White
         RichTextBox2.BorderStyle = BorderStyle.None
         RichTextBox2.Location = New Point(55, 416)
         RichTextBox2.Name = "RichTextBox2"
@@ -100,6 +102,7 @@ Partial Class Clearance_PREV
         ' 
         ' RichTextBox3
         ' 
+        RichTextBox3.BackColor = Color.White
         RichTextBox3.BorderStyle = BorderStyle.None
         RichTextBox3.Location = New Point(55, 479)
         RichTextBox3.Name = "RichTextBox3"

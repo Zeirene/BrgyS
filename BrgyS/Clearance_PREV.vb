@@ -98,6 +98,8 @@ Public Class Clearance_PREV
     Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
         CaptureForm()
         'clearanceQCID.InsertTransactionLog()
+        Dim newform As New Form3()
+        Form2.switchPanel(newform)
     End Sub
 
     'Private Sub CaptureForm()

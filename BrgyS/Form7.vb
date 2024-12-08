@@ -21,7 +21,7 @@ Public Class Form7
 
     Private Sub Form7_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Guna2TextBox7.Text = Form3.Guna2TextBox6.Text + "," + Form3.Guna2TextBox7.Text + " " + Form3.Guna2TextBox8.Text 'name
-        Guna2TextBox4.Text = Form3.Guna2TextBox9.Text + " " + Form3.Guna2ComboBox2.Text + " " + Form3.Guna2ComboBox3.Text 'address
+        Guna2TextBox4.Text = Form3.Guna2TextBox9.Text + " " + Form3.Guna2ComboBox2.Text
 
         Label2.Text = Form3.Guna2HtmlLabel15.Text
         Label3.Text = Form2.staffID
@@ -103,27 +103,43 @@ Public Class Form7
     'End Sub
 
     Public Sub InsertTransactionLog()
+        ' Initialize input data
         Dim logDate As Date = Date.Today
-        Dim logTime As Date = DateTime.Now.ToString("HH:mm:ss")
+        Dim logTime As String = DateTime.Now.ToString("HH:mm:ss") ' Use String for time representation
         Dim logType As String = Form3.Guna2ComboBox2.Text
         Dim logStatus As String = "Completed"
-        Dim payment As Decimal = Decimal.Parse(Form3.Guna2TextBox16.Text)
+        Dim payment As Decimal
         Dim residentId As String = Label2.Text
         Dim staffId As String = Form2.staffID ' staffId is treated as a String
 
-
-        ' Input values from the textboxes
+        ' Input values from textboxes
         Dim NAMEOFAPPLICANT As String = Guna2TextBox7.Text
-        Dim resaddress As String = Guna2TextBox4.Text + " Brgy Sta Lucia, QUEZON CITY"
+        Dim resaddress As String = Guna2TextBox4.Text & " Brgy Sta Lucia, QUEZON CITY"
         Dim BNAME As String = Guna2TextBox2.Text
-        Dim BADDRESS As String = Guna2TextBox5.Text + " Brgy Sta Lucia, QUEZON CITY"
+        Dim BADDRESS As String = Guna2TextBox5.Text & " Brgy Sta Lucia, QUEZON CITY"
         Dim NATUREB As String = Guna2TextBox9.Text
 
-        Try
+        ' Validate payment input
+        If Not Decimal.TryParse(Form3.Guna2TextBox16.Text, payment) Then
+            MessageBox.Show("Invalid payment amount. Please enter a valid number.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
 
-            con.Open()
+        ' Validate other mandatory fields
+        If String.IsNullOrWhiteSpace(logType) OrElse String.IsNullOrWhiteSpace(residentId) OrElse String.IsNullOrWhiteSpace(staffId) Then
+            MessageBox.Show("Required fields are missing. Please fill out all fields.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+
+        Try
+            ' Open database connection
+            If con.State <> ConnectionState.Open Then
+                con.Open()
+            End If
+
             ' Insert into transaction_log table
-            Dim insertTransactionLog As String = "INSERT INTO transaction_log (log_date, log_time, type, status, payment, resident_id, staff_id) VALUES (@log_date, @log_time, @type, @status, @payment, @resident_id, @staff_id); SELECT LAST_INSERT_ID();"
+            Dim insertTransactionLog As String = "INSERT INTO transaction_log (log_date, log_time, type, status, payment, resident_id, staff_id) " &
+                                             "VALUES (@log_date, @log_time, @type, @status, @payment, @resident_id, @staff_id); SELECT LAST_INSERT_ID();"
             Dim logId As Integer
             Using cmd1 As New MySqlCommand(insertTransactionLog, con)
                 cmd1.Parameters.AddWithValue("@log_date", logDate)
@@ -144,6 +160,7 @@ Public Class Form7
             Dim insertPermitLog As String = "INSERT INTO permits_log (log_id, loc_type, b_name, b_address, stay_duration, m_rental, b_details) VALUES (@log_id, @loc_type, @b_name, @b_address, @stay_duration, @m_rental, @b_details);"
 
             Using cmd As New MySqlCommand(insertPermitLog, con)
+                ' Add parameters for permits log
                 cmd.Parameters.AddWithValue("@log_id", logId)
                 cmd.Parameters.AddWithValue("@loc_type", Guna2TextBox1.Text) ' Replace with actual location type
                 cmd.Parameters.AddWithValue("@b_name", BNAME) ' Replace with actual building name
@@ -152,13 +169,15 @@ Public Class Form7
                 cmd.Parameters.AddWithValue("@m_rental", Guna2TextBox8.Text) ' Replace with actual rental amount
                 cmd.Parameters.AddWithValue("@b_details", NATUREB) ' Replace with actual details
 
+                ' Execute the command
                 cmd.ExecuteNonQuery()
             End Using
 
-            ' Commit transaction
-            'Transaction.Commit()
+            ' Close the connection
             con.Close()
-            MessageBox.Show("Transaction completed successfully. ", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+            ' Notify success
+            MessageBox.Show("Transaction completed successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
         Catch ex As Exception
             ' Rollback transaction in case of error
@@ -168,10 +187,11 @@ Public Class Form7
             con.Close()
         End Try
     End Sub
+
     Private Sub generatedocfile()
         ' Path to the template document
         'Dim templatePath As String = "C:\Users\John Roi\source\repos\BrgyS\BrgyS\docu\permits.docx"
-        Dim templatePath As String = "C:\Users\Ericka Louise\Source\Repos\BrgyS\BrgyS\docu\permits.docx"
+        Dim templatePath As String = "C:\Users\Administrator\source\repos\pseudoclans\BrgyS\BrgyS\docu\permits.docx"
 
         ' Input values from the textboxes
         Dim NAMEOFAPPLICANT As String = Guna2TextBox7.Text
@@ -187,7 +207,7 @@ Public Class Form7
         Dim newDocxFileName As String = dateTimeStamp & " " & sanitizedStudentName & "_" & typeofpaper & ".docx"
 
         'Dim newDocxFilePath As String = Path.Combine("C:\Users\John Roi\source\repos\BrgyS\BrgyS\docu\generated docu\", newDocxFileName)
-        Dim newDocxFilePath As String = Path.Combine("C:\Users\Ericka Louise\Source\Repos\BrgyS\BrgyS\docu\generated docu\", newDocxFileName)
+        Dim newDocxFilePath As String = Path.Combine("C:\Users\Administrator\source\repos\pseudoclans\BrgyS\BrgyS\docu\generated docu\", newDocxFileName)
 
         ' Copy the template file to a new .docx file
         File.Copy(templatePath, newDocxFilePath, True)

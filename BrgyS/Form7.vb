@@ -10,6 +10,7 @@ Imports Document = Spire.Doc.Document
 Imports System.Drawing.Printing
 Imports DocumentFormat.OpenXml.Drawing.Charts
 Imports System.Transactions
+Imports BrgyS.ApiResponse
 
 
 
@@ -47,7 +48,7 @@ Public Class Form7
         Permits_PREV.Show()
 
         'generatedocfile()
-        'InsertTransactionLog()
+        InsertTransactionLog()
         'sendtoadmin2()
 
     End Sub
@@ -102,91 +103,59 @@ Public Class Form7
     '    End Try
     'End Sub
 
-    Public Sub InsertTransactionLog()
-        ' Initialize input data
-        Dim logDate As Date = Date.Today
-        Dim logTime As String = DateTime.Now.ToString("HH:mm:ss") ' Use String for time representation
-        Dim logType As String = Form3.Guna2ComboBox2.Text
-        Dim logStatus As String = "Completed"
-        Dim payment As Decimal
-        Dim residentId As String = Label2.Text
-        Dim staffId As String = Form2.staffID ' staffId is treated as a String
-
-        ' Input values from textboxes
-        Dim NAMEOFAPPLICANT As String = Guna2TextBox7.Text
-        Dim resaddress As String = Guna2TextBox4.Text & " Brgy Sta Lucia, QUEZON CITY"
-        Dim BNAME As String = Guna2TextBox2.Text
-        Dim BADDRESS As String = Guna2TextBox5.Text & " Brgy Sta Lucia, QUEZON CITY"
-        Dim NATUREB As String = Guna2TextBox9.Text
-
-        ' Validate payment input
-        If Not Decimal.TryParse(Form3.Guna2TextBox16.Text, payment) Then
-            MessageBox.Show("Invalid payment amount. Please enter a valid number.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Exit Sub
-        End If
-
-        ' Validate other mandatory fields
-        If String.IsNullOrWhiteSpace(logType) OrElse String.IsNullOrWhiteSpace(residentId) OrElse String.IsNullOrWhiteSpace(staffId) Then
-            MessageBox.Show("Required fields are missing. Please fill out all fields.", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-            Exit Sub
-        End If
-
+    Public Async Sub InsertTransactionLog()
         Try
-            ' Open database connection
-            If con.State <> ConnectionState.Open Then
-                con.Open()
+            ' Create the transaction log object
+            Dim transactionLog As New TransactionLog() With {
+            .LogDate = Date.Today.ToString("yyyy-MM-dd"),
+            .LogTime = DateTime.Now.ToString("HH:mm:ss"),
+            .Type = Form3.Guna2ComboBox2.Text,
+            .Status = "Completed",
+            .Payment = Decimal.Parse(Form3.Guna2TextBox16.Text),
+            .ResidentId = Long.Parse(Label2.Text),
+            .StaffId = Form2.staffID
+        }
+
+            ' Insert the transaction log and get the log_id
+            Dim client As New ApiClient()
+            Dim logId As Long? = Await client.InsertTransactionLogAsync(transactionLog)
+
+            If logId.HasValue Then
+                ' Notify the user of success
+                MessageBox.Show($"Transaction log inserted successfully with Log ID: {logId.Value}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                ' Prepare the permit log data
+                Dim permitLog As New PermitLog With {
+                .ResidentId = transactionLog.ResidentId.ToString(),
+                .BDetails = Guna2TextBox9.Text, ' Nature of Business
+                .LocType = Guna2TextBox1.Text,
+                .BAddress = Guna2TextBox5.Text & " Brgy Sta Lucia, QUEZON CITY",
+                .BName = Guna2TextBox2.Text,
+                .MRental = Decimal.Parse(Guna2TextBox8.Text),
+                .LogId = logId.Value.ToString(), ' Use the returned log_id
+                .StayDuration = Guna2TextBox6.Text
+            }
+
+                ' Insert the permit log
+                Dim permitResult As Boolean = Await client.InsertPermitLogAsync(permitLog)
+
+                If permitResult Then
+                    MessageBox.Show("Permit log inserted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                Else
+                    MessageBox.Show("Failed to insert permit log.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                End If
+            Else
+                ' Log ID was not retrieved
+                MessageBox.Show("Failed to retrieve Log ID for transaction log.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
-
-            ' Insert into transaction_log table
-            Dim insertTransactionLog As String = "INSERT INTO transaction_log (log_date, log_time, type, status, payment, resident_id, staff_id) " &
-                                             "VALUES (@log_date, @log_time, @type, @status, @payment, @resident_id, @staff_id); SELECT LAST_INSERT_ID();"
-            Dim logId As Integer
-            Using cmd1 As New MySqlCommand(insertTransactionLog, con)
-                cmd1.Parameters.AddWithValue("@log_date", logDate)
-                cmd1.Parameters.AddWithValue("@log_time", logTime)
-                cmd1.Parameters.AddWithValue("@type", logType)
-                cmd1.Parameters.AddWithValue("@status", logStatus)
-                cmd1.Parameters.AddWithValue("@payment", payment)
-                cmd1.Parameters.AddWithValue("@resident_id", residentId)
-                cmd1.Parameters.AddWithValue("@staff_id", staffId)
-
-                ' Execute the query and retrieve the last inserted log_id
-                logId = Convert.ToInt32(cmd1.ExecuteScalar())
-                'MessageBox.Show("Transaction completed moving to permits. ", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-
-            End Using
-
-            ' Insert into permit_log table
-            Dim insertPermitLog As String = "INSERT INTO permits_log (log_id, loc_type, b_name, b_address, stay_duration, m_rental, b_details) VALUES (@log_id, @loc_type, @b_name, @b_address, @stay_duration, @m_rental, @b_details);"
-
-            Using cmd As New MySqlCommand(insertPermitLog, con)
-                ' Add parameters for permits log
-                cmd.Parameters.AddWithValue("@log_id", logId)
-                cmd.Parameters.AddWithValue("@loc_type", Guna2TextBox1.Text) ' Replace with actual location type
-                cmd.Parameters.AddWithValue("@b_name", BNAME) ' Replace with actual building name
-                cmd.Parameters.AddWithValue("@b_address", BADDRESS) ' Replace with actual address
-                cmd.Parameters.AddWithValue("@stay_duration", Guna2TextBox6.Text) ' Replace with actual duration in months
-                cmd.Parameters.AddWithValue("@m_rental", Guna2TextBox8.Text) ' Replace with actual rental amount
-                cmd.Parameters.AddWithValue("@b_details", NATUREB) ' Replace with actual details
-
-                ' Execute the command
-                cmd.ExecuteNonQuery()
-            End Using
-
-            ' Close the connection
-            con.Close()
-
-            ' Notify success
-            MessageBox.Show("Transaction completed successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-
+        Catch ex As FormatException
+            MessageBox.Show($"Invalid input format: {ex.Message}", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         Catch ex As Exception
-            ' Rollback transaction in case of error
-            'Transaction.Rollback()
-            MessageBox.Show("Error in transaction log: " & ex.Message)
-        Finally
-            con.Close()
+            ' Handle general exceptions
+            MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
 
     Private Sub generatedocfile()
         ' Path to the template document

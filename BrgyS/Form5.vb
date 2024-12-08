@@ -1,4 +1,5 @@
-﻿Imports MySql.Data.MySqlClient
+﻿Imports BrgyS.ApiResponse
+Imports MySql.Data.MySqlClient
 
 Public Class Form5
     Private Sub Form5_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -30,92 +31,56 @@ Public Class Form5
             End If
         Next
 
-        ' Now, fetch the transaction data from the database
-        openCon()
+        ' Now, fetch the transaction data from the API
         Try
-            ' SQL query to fetch the transaction data (ensure resident_id is returned as VARCHAR)
-            Dim query As String = "
-                SELECT 
-                    tl.resident_id, 
-                    si.staff_id, 
-                    CONCAT(si.last_name, ', ', si.given_name, ' ', si.middle_name) AS StaffName, 
-                    CONCAT(tl.log_date, ' ', tl.log_time) AS Transaction_data,
-                    tl.payment,
-                    CASE 
-                        WHEN tl.type = 'A' THEN 'Barangay ID'
-                        WHEN tl.type = 'B' THEN 'Barangay Clearance'
-                        WHEN tl.type = 'Z' THEN 'Certification'
-                        WHEN tl.type = 'D' THEN 'Business Permit'
-                        WHEN tl.type = 'E' THEN 'Residency for QCID'
-                        WHEN tl.type = 'F' THEN 'Burial/Medical & Financial/Educational/Philhealth'
-                        WHEN tl.type = 'I' THEN 'ID (TEST)'
-                        WHEN tl.type = 'P' THEN 'PERMIT (TEST)'
-                        WHEN tl.type = 'C' THEN 'CLEARANCE (TEST)'
-                        ELSE 'Unknown'
-                    END AS Type,
-                    CASE 
-                        WHEN tl.status = 'A' THEN 'Accepted'
-                        WHEN tl.status = 'R' THEN 'Rejected'
-                        WHEN tl.status = 'P' THEN 'Pending'
-                        WHEN tl.status = 'C' THEN 'Completed'
-                        ELSE 'Unknown'
-                    END AS Status
-                FROM 
-                    transaction_log tl
-                INNER JOIN 
-                    staff_info si 
-                    ON tl.staff_id = si.staff_id;"
+            ' Fetch transaction logs from the API
+            Dim transactionLogs As List(Of TransactionLog) = Await apiClient.GetTransactionLogsAsync()
 
-            ' Create a MySqlCommand object
-            Dim command As New MySqlCommand(query, con)
+            ' Fetch account details (this is used to map staff_id to their full name)
+            Dim accountRecords As List(Of ApiResponse.Account) = Await apiClient.GetAccountRecordsAsync()
 
-            ' Execute the command and obtain a MySqlDataReader
-            Dim reader As MySqlDataReader = command.ExecuteReader()
+            ' Loop through the transaction logs and display them in the DataGridView
+            For Each log As TransactionLog In transactionLogs
+                ' Fetch the resident name from the dictionary using the resident_id
+                Dim residentName As String = If(residentDictionary.ContainsKey(log.ResidentId), residentDictionary(log.ResidentId), "Unknown Resident")
 
-            ' Loop through the rows in the MySqlDataReader
-            While reader.Read()
-                ' Fetch the resident_id from the database (as VARCHAR)
-                Dim residentId As String = reader("resident_id").ToString()
+                ' Convert staff_id (string) to long for comparison
+                Dim staffIdLong As Long = 0
+                If Long.TryParse(log.StaffId, staffIdLong) Then
+                    ' Find the staff account details using staff_id
+                    Dim staffAccount As ApiResponse.Account = accountRecords.FirstOrDefault(Function(acc) acc.BrgyUserId = staffIdLong)
 
-                ' Try to convert resident_id (VARCHAR) to Long (or handle as String)
-                Dim residentIdAsLong As Long = 0
-                If Long.TryParse(residentId, residentIdAsLong) Then
-                    ' Fetch the resident name from the API response using the resident_id
-                    Dim residentName As String = If(residentDictionary.ContainsKey(residentIdAsLong), residentDictionary(residentIdAsLong), "Unknown Resident")
+                    ' Get the staff name, if the account is found
+                    Dim staffName As String = If(staffAccount IsNot Nothing, $"{staffAccount.BrgyFirstName} {staffAccount.BrgyLastName}", "Unknown Staff")
 
-                    ' Add a new row to the DataGridView
+                    ' Add a new row to the DataGridView with the transaction log details and staff name
                     Guna2DataGridView1.Rows.Add(
-                        residentName,
-                        reader("StaffName"),
-                        reader("Transaction_data"),
-                        reader("payment"),
-                        reader("type"),
-                        reader("status")
-                    )
+                    residentName,
+                    staffName,  ' Display staff name instead of ID
+                    $"{log.LogDate} {log.LogTime}",
+                    log.Payment,
+                    log.Type,
+                    log.Status
+                )
                 Else
-                    ' Handle invalid resident_id format (if it can't be parsed to Long)
+                    ' Handle the case where staff_id can't be converted to long (invalid staff_id format)
                     Guna2DataGridView1.Rows.Add(
-                        "Invalid Resident ID",
-                        reader("StaffName"),
-                        reader("Transaction_data"),
-                        reader("payment"),
-                        reader("type"),
-                        reader("status")
-                    )
+                    residentName,
+                    "Invalid Staff ID",  ' Display an error message if staff_id is invalid
+                    $"{log.LogDate} {log.LogTime}",
+                    log.Payment,
+                    log.Type,
+                    log.Status
+                )
                 End If
-            End While
-
-            ' Close the MySqlDataReader
-            reader.Close()
+            Next
 
         Catch ex As Exception
             ' Show an error message if an exception occurs
             MessageBox.Show("Error: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        Finally
-            ' Ensure the connection is closed
-            con.Close()
         End Try
     End Sub
+
 
     Private Sub Guna2DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles Guna2DataGridView1.CellContentClick
 

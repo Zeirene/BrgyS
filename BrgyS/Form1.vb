@@ -31,41 +31,35 @@ Public Class Form1
         End If
     End Sub
 
-    Private Sub mylogin()
-        Try
-            openCon()
+    Private Async Sub mylogin()
+        ' Fetch account records using API
+        Dim client As New ApiClient()
 
-            Using command As New MySqlCommand("SELECT * FROM staff_info WHERE user = @username  AND pass = @password", con)
-                command.Parameters.Add("@username", MySqlDbType.VarChar).Value = Guna2TextBox1.Text
-                command.Parameters.Add("@password", MySqlDbType.VarChar).Value = Guna2TextBox2.Text
+        ' Fetch the list of account records
+        Dim accountRecords As List(Of ApiResponse.Account) = Await client.GetAccountRecordsAsync()
 
-                Dim adapter As New MySqlDataAdapter(command)
-                Dim table As New DataTable
-                adapter.Fill(table)
-
-                If Guna2TextBox1.Text = "" Or
-                   Guna2TextBox2.Text = "" Then
-                    MsgBox("Please Fill All Fields!")
-                ElseIf table.Rows.Count = 0 Then
-                    MsgBox("Invalid username or password. Please try again.", MsgBoxStyle.Exclamation, "Login Error")
-                Else
-                    ' MsgBox("Login successful!", MsgBoxStyle.Information, "Success")
-                    con.Close()
-                    Form2.staffID = table.Rows(0)("staff_id").ToString
-                    'brgyID.staffID = table.Rows(0)("staff_id").ToString
-
+        ' Check if account records are available
+        If accountRecords IsNot Nothing AndAlso accountRecords.Any() Then
+            ' Iterate through each account record to match the username and password
+            For Each account As ApiResponse.Account In accountRecords
+                ' Check if the entered username and password match any account from the API response
+                If account.BrgyEmail = Guna2TextBox1.Text AndAlso account.BrgyPassword = Guna2TextBox2.Text Then
+                    ' If match found, proceed to Form2
+                    Form2.staffID = account.BrgyUserId.ToString() ' Use brgy_user_id for staffID
                     Form2.Show()
                     Me.Hide()
-
-
+                    Exit Sub ' Exit the loop once a valid login is found
                 End If
-            End Using
-        Catch ex As Exception
-            MsgBox("An error occurred: " & ex.Message, MsgBoxStyle.Critical, "Error")
-        Finally
-            con.Close()
-        End Try
+            Next
+
+            ' If no match is found, show an error message
+            MessageBox.Show("Invalid username or password. Please try again.", "Login Error", MessageBoxButtons.OK, MessageBoxIcon.Exclamation)
+        Else
+            ' If no account records found, show an error message
+            MessageBox.Show("No account records found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
     End Sub
+
 
     Private Sub Guna2Button4_Click(sender As Object, e As EventArgs) Handles Guna2Button4.Click
         Form2.Close()
@@ -88,8 +82,30 @@ Public Class Form1
         End Try
     End Sub
 
+
+    Private Async Sub FetchAccount()
+
+        Dim client As New ApiClient()
+
+        ' Fetch the list of account records
+        Dim accountRecords As List(Of ApiResponse.Account) = Await client.GetAccountRecordsAsync()
+
+        ' Display account details for each record in the list using MessageBox
+        For Each account As ApiResponse.Account In accountRecords
+            MessageBox.Show($"User ID: {account.BrgyUserId}" & Environment.NewLine &
+                    $"Account ID: {account.BrgyAccountId}" & Environment.NewLine &
+                    $"Email: {account.BrgyEmail}")
+            ' You can also display other properties as needed
+        Next
+
+    End Sub
+
+
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'FetchResidents()
+
+
+
     End Sub
 
     Private Sub Guna2HtmlLabel1_Click(sender As Object, e As EventArgs) Handles Guna2HtmlLabel1.Click

@@ -1,7 +1,9 @@
-﻿Imports DocumentFormat.OpenXml.Packaging
+﻿Imports BrgyS.ApiResponse
+Imports DocumentFormat.OpenXml.Packaging
 Imports DocumentFormat.OpenXml.Wordprocessing
 Imports Guna.UI2.WinForms
 Imports MySql.Data.MySqlClient
+Imports Newtonsoft.Json
 Imports System.IO
 Imports System.Reflection.Emit
 Public Class clearanceQCID
@@ -32,7 +34,7 @@ Public Class clearanceQCID
         Clearance_PREV.Show()
 
         'generatedocfile()
-        'InsertTransactionLog()
+        InsertTransactionLog()
     End Sub
 
 
@@ -164,54 +166,44 @@ Public Class clearanceQCID
         End Using
 
     End Sub
-    Public Sub InsertTransactionLog()
-        Dim logDate As Date = Date.Today
-        Dim logTime As Date = DateTime.Now.ToString("HH: mm:ss")
-        Dim logType As String = Form3.Guna2ComboBox2.Text
-        Dim logStatus As String = "Completed"
-        Dim payment As Decimal = Decimal.Parse(Form3.Guna2TextBox16.Text)
-        Dim residentId As String = Label2.Text
-        Dim staffId As String = Form2.staffID ' staffId is treated as a String
+    Public Async Sub InsertTransactionLog()
+        ' Create the transaction log object
+        Dim log As New TransactionLog() With {
+        .LogDate = Date.Today.ToString("yyyy-MM-dd"),
+        .LogTime = DateTime.Now.ToString("HH:mm:ss"),
+        .Type = Form3.Guna2ComboBox2.Text,
+        .Status = "Completed",
+        .Payment = Decimal.Parse(Form3.Guna2TextBox16.Text),
+        .ResidentId = Label2.Text,
+        .StaffId = Form2.staffID
+    }
+
+
 
         Try
-            ' Open the connection to the database
-            con.Open()
+            ' Call the asynchronous insert function
+            Dim client As New ApiClient()
 
-            'Prepare the SQL query to insert the transaction log data
-            Dim insertQuery As String = "INSERT INTO transaction_log (log_date, log_time, type, status, payment, residentId, staff_id) 
-                                     VALUES (@log_date, @log_time, @type, @status, @payment, @residentId, @staff_id)"
+            ' Debugging message before calling the API
+            MessageBox.Show("Attempting to insert transaction log...")
 
-            'Dim insertQuery As String = "INSERT INTO transaction_log (log_date, log_time, type, status, payment) 
-            '                         VALUES (@log_date, @log_time, @type, @status, @payment)"
+            Dim success As Boolean = Await client.InsertTransactionLogAsync(log)
 
-            ' Create a MySQL command object with the query and connection
-            Using cmd As New MySqlCommand(insertQuery, con)
-                ' Add parameters to the command
-                cmd.Parameters.AddWithValue("@log_date", logDate)
-                cmd.Parameters.AddWithValue("@log_time", logTime)
-                cmd.Parameters.AddWithValue("@type", logType)
-                cmd.Parameters.AddWithValue("@status", logStatus)
-                cmd.Parameters.AddWithValue("@payment", payment)
-                cmd.Parameters.AddWithValue("@resident_id", residentId)
-                cmd.Parameters.AddWithValue("@staff_id", staffId)
-
-                ' Execute the command to insert data into the transaction_log table
-                cmd.ExecuteNonQuery()
-
-                ' Optional: Show a success message after insertion
+            If success Then
+                ' Notify the user of success
                 MessageBox.Show("Transaction log inserted successfully!")
-            End Using
-
-        Catch ex As Exception
-            ' Handle any errors that may have occurred
-            MessageBox.Show("Error: " & ex.Message)
-        Finally
-            ' Ensure the connection is closed
-            If con IsNot Nothing AndAlso con.State = ConnectionState.Open Then
-                con.Close()
+            Else
+                ' Notify the user of failure
+                MessageBox.Show("Failed to insert transaction log.")
             End If
+        Catch ex As Exception
+            ' Handle any exceptions that occurred and display the error message
+            MessageBox.Show("Error: " & ex.Message)
         End Try
     End Sub
+
+
+
 
 
 

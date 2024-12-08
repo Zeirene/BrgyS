@@ -15,16 +15,39 @@ Imports System.Transactions
 
 
 Public Class Form7
+    Private _busname As String
+    Public BNAME, BADDRESS, NATUREB As String
+
+
     Private Sub Form7_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Guna2TextBox7.Text = Form3.Guna2TextBox6.Text + "," + Form3.Guna2TextBox7.Text + " " + Form3.Guna2TextBox8.Text 'name
         Guna2TextBox4.Text = Form3.Guna2TextBox9.Text + " " + Form3.Guna2ComboBox2.Text
 
         Label2.Text = Form3.Guna2HtmlLabel15.Text
         Label3.Text = Form2.staffID
+
+
+        Dim NAMEOFAPPLICANT As String = Guna2TextBox7.Text
+        Dim resaddress As String = Guna2TextBox4.Text + " Brgy Sta Lucia, QUEZON CITY"
+        BNAME = Guna2TextBox2.Text
+        BADDRESS = Guna2TextBox5.Text + " Brgy Sta Lucia, QUEZON CITY"
+        NATUREB = Guna2TextBox9.Text
+
+
+
     End Sub
     Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
-        generatedocfile()
-        InsertTransactionLog()
+        'Dim anotherForm As New Permits_PREV()
+        'anotherForm.Show()
+
+        Permits_PREV.busname = Guna2TextBox2.Text
+        Permits_PREV.BADDRESS = Guna2TextBox5.Text + " Brgy Sta Lucia, QUEZON CITY"
+        Permits_PREV.NATUREB = Guna2TextBox9.Text
+
+        Permits_PREV.Show()
+
+        'generatedocfile()
+        'InsertTransactionLog()
         'sendtoadmin2()
 
     End Sub
@@ -118,34 +141,33 @@ Public Class Form7
             Dim insertTransactionLog As String = "INSERT INTO transaction_log (log_date, log_time, type, status, payment, resident_id, staff_id) " &
                                              "VALUES (@log_date, @log_time, @type, @status, @payment, @resident_id, @staff_id); SELECT LAST_INSERT_ID();"
             Dim logId As Integer
-
-            Using cmd As New MySqlCommand(insertTransactionLog, con)
-                ' Add parameters for transaction log
-                cmd.Parameters.AddWithValue("@log_date", logDate)
-                cmd.Parameters.AddWithValue("@log_time", logTime)
-                cmd.Parameters.AddWithValue("@type", logType)
-                cmd.Parameters.AddWithValue("@status", logStatus)
-                cmd.Parameters.AddWithValue("@payment", payment)
-                cmd.Parameters.AddWithValue("@resident_id", residentId)
-                cmd.Parameters.AddWithValue("@staff_id", staffId)
+            Using cmd1 As New MySqlCommand(insertTransactionLog, con)
+                cmd1.Parameters.AddWithValue("@log_date", logDate)
+                cmd1.Parameters.AddWithValue("@log_time", logTime)
+                cmd1.Parameters.AddWithValue("@type", logType)
+                cmd1.Parameters.AddWithValue("@status", logStatus)
+                cmd1.Parameters.AddWithValue("@payment", payment)
+                cmd1.Parameters.AddWithValue("@resident_id", residentId)
+                cmd1.Parameters.AddWithValue("@staff_id", staffId)
 
                 ' Execute the query and retrieve the last inserted log_id
-                logId = Convert.ToInt32(cmd.ExecuteScalar())
+                logId = Convert.ToInt32(cmd1.ExecuteScalar())
+                'MessageBox.Show("Transaction completed moving to permits. ", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
             End Using
 
-            ' Insert into permits_log table
-            Dim insertPermitLog As String = "INSERT INTO permits_log (log_id, loc_type, b_name, b_address, stay_duration, m_rental, b_details) " &
-                                        "VALUES (@log_id, @loc_type, @b_name, @b_address, @stay_duration, @m_rental, @b_details);"
+            ' Insert into permit_log table
+            Dim insertPermitLog As String = "INSERT INTO permits_log (log_id, loc_type, b_name, b_address, stay_duration, m_rental, b_details) VALUES (@log_id, @loc_type, @b_name, @b_address, @stay_duration, @m_rental, @b_details);"
 
             Using cmd As New MySqlCommand(insertPermitLog, con)
                 ' Add parameters for permits log
                 cmd.Parameters.AddWithValue("@log_id", logId)
-                cmd.Parameters.AddWithValue("@loc_type", Guna2TextBox1.Text)
-                cmd.Parameters.AddWithValue("@b_name", BNAME)
-                cmd.Parameters.AddWithValue("@b_address", BADDRESS)
-                cmd.Parameters.AddWithValue("@stay_duration", Guna2TextBox6.Text)
-                cmd.Parameters.AddWithValue("@m_rental", Guna2TextBox8.Text)
-                cmd.Parameters.AddWithValue("@b_details", NATUREB)
+                cmd.Parameters.AddWithValue("@loc_type", Guna2TextBox1.Text) ' Replace with actual location type
+                cmd.Parameters.AddWithValue("@b_name", BNAME) ' Replace with actual building name
+                cmd.Parameters.AddWithValue("@b_address", BADDRESS) ' Replace with actual address
+                cmd.Parameters.AddWithValue("@stay_duration", Guna2TextBox6.Text) ' Replace with actual duration in months
+                cmd.Parameters.AddWithValue("@m_rental", Guna2TextBox8.Text) ' Replace with actual rental amount
+                cmd.Parameters.AddWithValue("@b_details", NATUREB) ' Replace with actual details
 
                 ' Execute the command
                 cmd.ExecuteNonQuery()
@@ -158,18 +180,11 @@ Public Class Form7
             MessageBox.Show("Transaction completed successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
         Catch ex As Exception
-            ' Handle errors
-            MessageBox.Show("Error in transaction log: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-
-            ' Ensure connection is closed in case of an error
-            If con.State = ConnectionState.Open Then
-                con.Close()
-            End If
+            ' Rollback transaction in case of error
+            'Transaction.Rollback()
+            MessageBox.Show("Error in transaction log: " & ex.Message)
         Finally
-            ' Ensure resources are cleaned up
-            If con.State = ConnectionState.Open Then
-                con.Close()
-            End If
+            con.Close()
         End Try
     End Sub
 

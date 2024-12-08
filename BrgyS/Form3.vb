@@ -80,6 +80,7 @@ Public Class Form3
                     Dim anotherForm As New clearanceQCID()
                     Form2.switchPanel(anotherForm)
 
+
                 Case "PERMITS"
                     ' Show the Permits form
                     Dim anotherForm As New Form7()

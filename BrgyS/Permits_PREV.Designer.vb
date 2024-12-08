@@ -27,6 +27,10 @@ Partial Class Permits_PREV
         Dim CustomizableEdges3 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges4 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Permits_PREV))
+        Dim CustomizableEdges5 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges6 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges7 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges8 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Guna2Button2 = New Guna.UI2.WinForms.Guna2Button()
         Guna2Button1 = New Guna.UI2.WinForms.Guna2Button()
         PictureBox1 = New PictureBox()
@@ -36,6 +40,8 @@ Partial Class Permits_PREV
         Label3 = New Label()
         Label4 = New Label()
         Label5 = New Label()
+        Guna2Button4 = New Guna.UI2.WinForms.Guna2Button()
+        Guna2Button3 = New Guna.UI2.WinForms.Guna2Button()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -48,7 +54,7 @@ Partial Class Permits_PREV
         Guna2Button2.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
         Guna2Button2.Font = New Font("Segoe UI", 9F)
         Guna2Button2.ForeColor = Color.White
-        Guna2Button2.Location = New Point(560, 285)
+        Guna2Button2.Location = New Point(554, 204)
         Guna2Button2.Name = "Guna2Button2"
         Guna2Button2.ShadowDecoration.CustomizableEdges = CustomizableEdges2
         Guna2Button2.Size = New Size(180, 45)
@@ -64,7 +70,7 @@ Partial Class Permits_PREV
         Guna2Button1.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
         Guna2Button1.Font = New Font("Segoe UI", 9F)
         Guna2Button1.ForeColor = Color.White
-        Guna2Button1.Location = New Point(560, 225)
+        Guna2Button1.Location = New Point(554, 144)
         Guna2Button1.Name = "Guna2Button1"
         Guna2Button1.ShadowDecoration.CustomizableEdges = CustomizableEdges4
         Guna2Button1.Size = New Size(180, 45)
@@ -93,53 +99,104 @@ Partial Class Permits_PREV
         ' Label1
         ' 
         Label1.AutoSize = True
+        Label1.Font = New Font("Arial", 8F)
         Label1.Location = New Point(162, 370)
         Label1.Name = "Label1"
-        Label1.Size = New Size(41, 15)
+        Label1.Size = New Size(39, 14)
         Label1.TabIndex = 12
         Label1.Text = "Label1"
         ' 
         ' Label2
         ' 
         Label2.AutoSize = True
+        Label2.Font = New Font("Arial", 8F)
         Label2.Location = New Point(181, 385)
         Label2.Name = "Label2"
-        Label2.Size = New Size(41, 15)
+        Label2.Size = New Size(39, 14)
         Label2.TabIndex = 13
         Label2.Text = "Label2"
         ' 
         ' Label3
         ' 
         Label3.AutoSize = True
+        Label3.Font = New Font("Arial", 8F)
         Label3.Location = New Point(143, 400)
         Label3.Name = "Label3"
-        Label3.Size = New Size(41, 15)
+        Label3.Size = New Size(39, 14)
         Label3.TabIndex = 14
         Label3.Text = "Label3"
         ' 
         ' Label4
         ' 
         Label4.AutoSize = True
+        Label4.Font = New Font("Arial", 8F)
         Label4.Location = New Point(162, 415)
         Label4.Name = "Label4"
-        Label4.Size = New Size(41, 15)
+        Label4.Size = New Size(39, 14)
         Label4.TabIndex = 15
         Label4.Text = "Label4"
         ' 
         ' Label5
         ' 
         Label5.AutoSize = True
+        Label5.Font = New Font("Arial", 8F)
         Label5.Location = New Point(172, 430)
         Label5.Name = "Label5"
-        Label5.Size = New Size(41, 15)
+        Label5.Size = New Size(39, 14)
         Label5.TabIndex = 16
         Label5.Text = "Label5"
+        ' 
+        ' Guna2Button4
+        ' 
+        Guna2Button4.Animated = True
+        Guna2Button4.BorderColor = Color.Firebrick
+        Guna2Button4.BorderRadius = 18
+        Guna2Button4.BorderThickness = 2
+        Guna2Button4.CustomBorderColor = Color.Firebrick
+        Guna2Button4.CustomizableEdges = CustomizableEdges5
+        Guna2Button4.DisabledState.BorderColor = Color.DarkGray
+        Guna2Button4.DisabledState.CustomBorderColor = Color.DarkGray
+        Guna2Button4.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        Guna2Button4.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
+        Guna2Button4.FillColor = Color.Firebrick
+        Guna2Button4.Font = New Font("Bahnschrift", 9.75F, FontStyle.Bold)
+        Guna2Button4.ForeColor = Color.White
+        Guna2Button4.Location = New Point(554, 370)
+        Guna2Button4.Name = "Guna2Button4"
+        Guna2Button4.PressedColor = Color.Firebrick
+        Guna2Button4.ShadowDecoration.CustomizableEdges = CustomizableEdges6
+        Guna2Button4.Size = New Size(180, 44)
+        Guna2Button4.TabIndex = 20
+        Guna2Button4.Text = "CANCEL"
+        ' 
+        ' Guna2Button3
+        ' 
+        Guna2Button3.Animated = True
+        Guna2Button3.BorderRadius = 18
+        Guna2Button3.BorderThickness = 2
+        Guna2Button3.CustomizableEdges = CustomizableEdges7
+        Guna2Button3.DisabledState.BorderColor = Color.DarkGray
+        Guna2Button3.DisabledState.CustomBorderColor = Color.DarkGray
+        Guna2Button3.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        Guna2Button3.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
+        Guna2Button3.FillColor = Color.Black
+        Guna2Button3.Font = New Font("Bahnschrift", 9.75F, FontStyle.Bold)
+        Guna2Button3.ForeColor = Color.White
+        Guna2Button3.Location = New Point(554, 320)
+        Guna2Button3.Name = "Guna2Button3"
+        Guna2Button3.ShadowDecoration.CustomizableEdges = CustomizableEdges8
+        Guna2Button3.Size = New Size(180, 44)
+        Guna2Button3.TabIndex = 19
+        Guna2Button3.Text = "PRINT"
         ' 
         ' Permits_PREV
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
+        BackColor = Color.White
         ClientSize = New Size(765, 738)
+        Controls.Add(Guna2Button4)
+        Controls.Add(Guna2Button3)
         Controls.Add(Label5)
         Controls.Add(Label4)
         Controls.Add(Label3)
@@ -149,6 +206,7 @@ Partial Class Permits_PREV
         Controls.Add(Guna2Button2)
         Controls.Add(Guna2Button1)
         Controls.Add(PictureBox1)
+        FormBorderStyle = FormBorderStyle.None
         Name = "Permits_PREV"
         Text = "Permits_PREV"
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
@@ -165,4 +223,6 @@ Partial Class Permits_PREV
     Friend WithEvents Label3 As Label
     Friend WithEvents Label4 As Label
     Friend WithEvents Label5 As Label
+    Friend WithEvents Guna2Button4 As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents Guna2Button3 As Guna.UI2.WinForms.Guna2Button
 End Class

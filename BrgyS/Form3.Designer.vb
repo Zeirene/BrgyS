@@ -102,7 +102,7 @@ Partial Class Form3
         Guna2Button2.FillColor = Color.Firebrick
         Guna2Button2.Font = New Font("Bahnschrift", 9.75F, FontStyle.Bold)
         Guna2Button2.ForeColor = Color.White
-        Guna2Button2.Location = New Point(134, 530)
+        Guna2Button2.Location = New Point(127, 530)
         Guna2Button2.Name = "Guna2Button2"
         Guna2Button2.PressedColor = Color.Firebrick
         Guna2Button2.ShadowDecoration.CustomizableEdges = CustomizableEdges2
@@ -214,7 +214,7 @@ Partial Class Form3
         Guna2Button1.FillColor = Color.Black
         Guna2Button1.Font = New Font("Bahnschrift", 9.75F, FontStyle.Bold)
         Guna2Button1.ForeColor = Color.White
-        Guna2Button1.Location = New Point(134, 483)
+        Guna2Button1.Location = New Point(127, 483)
         Guna2Button1.Name = "Guna2Button1"
         Guna2Button1.ShadowDecoration.CustomizableEdges = CustomizableEdges6
         Guna2Button1.Size = New Size(242, 41)

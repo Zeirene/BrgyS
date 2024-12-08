@@ -27,12 +27,18 @@ Partial Class Clearance_PREV
         Dim CustomizableEdges3 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges4 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Clearance_PREV))
+        Dim CustomizableEdges5 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges6 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges7 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges8 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Guna2Button2 = New Guna.UI2.WinForms.Guna2Button()
         Guna2Button1 = New Guna.UI2.WinForms.Guna2Button()
         PictureBox1 = New PictureBox()
         RichTextBox1 = New RichTextBox()
         RichTextBox2 = New RichTextBox()
         RichTextBox3 = New RichTextBox()
+        Guna2Button4 = New Guna.UI2.WinForms.Guna2Button()
+        Guna2Button3 = New Guna.UI2.WinForms.Guna2Button()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
         ' 
@@ -45,7 +51,7 @@ Partial Class Clearance_PREV
         Guna2Button2.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
         Guna2Button2.Font = New Font("Segoe UI", 9F)
         Guna2Button2.ForeColor = Color.White
-        Guna2Button2.Location = New Point(560, 285)
+        Guna2Button2.Location = New Point(554, 176)
         Guna2Button2.Name = "Guna2Button2"
         Guna2Button2.ShadowDecoration.CustomizableEdges = CustomizableEdges2
         Guna2Button2.Size = New Size(180, 45)
@@ -61,7 +67,7 @@ Partial Class Clearance_PREV
         Guna2Button1.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
         Guna2Button1.Font = New Font("Segoe UI", 9F)
         Guna2Button1.ForeColor = Color.White
-        Guna2Button1.Location = New Point(560, 225)
+        Guna2Button1.Location = New Point(554, 116)
         Guna2Button1.Name = "Guna2Button1"
         Guna2Button1.ShadowDecoration.CustomizableEdges = CustomizableEdges4
         Guna2Button1.Size = New Size(180, 45)
@@ -82,7 +88,8 @@ Partial Class Clearance_PREV
         ' 
         RichTextBox1.BackColor = Color.White
         RichTextBox1.BorderStyle = BorderStyle.None
-        RichTextBox1.Location = New Point(55, 204)
+        RichTextBox1.Font = New Font("Arial", 8F)
+        RichTextBox1.Location = New Point(55, 214)
         RichTextBox1.Name = "RichTextBox1"
         RichTextBox1.ReadOnly = True
         RichTextBox1.Size = New Size(416, 126)
@@ -93,6 +100,7 @@ Partial Class Clearance_PREV
         ' 
         RichTextBox2.BackColor = Color.White
         RichTextBox2.BorderStyle = BorderStyle.None
+        RichTextBox2.Font = New Font("Arial", 8F)
         RichTextBox2.Location = New Point(55, 416)
         RichTextBox2.Name = "RichTextBox2"
         RichTextBox2.ReadOnly = True
@@ -104,6 +112,7 @@ Partial Class Clearance_PREV
         ' 
         RichTextBox3.BackColor = Color.White
         RichTextBox3.BorderStyle = BorderStyle.None
+        RichTextBox3.Font = New Font("Arial", 8F)
         RichTextBox3.Location = New Point(55, 479)
         RichTextBox3.Name = "RichTextBox3"
         RichTextBox3.ReadOnly = True
@@ -111,11 +120,57 @@ Partial Class Clearance_PREV
         RichTextBox3.TabIndex = 10
         RichTextBox3.Text = "Issued this {day} of {monthyear} at Barangay Sta. Lucia, Quezon City, Philippines."
         ' 
+        ' Guna2Button4
+        ' 
+        Guna2Button4.Animated = True
+        Guna2Button4.BorderColor = Color.Firebrick
+        Guna2Button4.BorderRadius = 18
+        Guna2Button4.BorderThickness = 2
+        Guna2Button4.CustomBorderColor = Color.Firebrick
+        Guna2Button4.CustomizableEdges = CustomizableEdges5
+        Guna2Button4.DisabledState.BorderColor = Color.DarkGray
+        Guna2Button4.DisabledState.CustomBorderColor = Color.DarkGray
+        Guna2Button4.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        Guna2Button4.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
+        Guna2Button4.FillColor = Color.Firebrick
+        Guna2Button4.Font = New Font("Bahnschrift", 9.75F, FontStyle.Bold)
+        Guna2Button4.ForeColor = Color.White
+        Guna2Button4.Location = New Point(554, 370)
+        Guna2Button4.Name = "Guna2Button4"
+        Guna2Button4.PressedColor = Color.Firebrick
+        Guna2Button4.ShadowDecoration.CustomizableEdges = CustomizableEdges6
+        Guna2Button4.Size = New Size(180, 44)
+        Guna2Button4.TabIndex = 18
+        Guna2Button4.Text = "CANCEL"
+        ' 
+        ' Guna2Button3
+        ' 
+        Guna2Button3.Animated = True
+        Guna2Button3.BorderRadius = 18
+        Guna2Button3.BorderThickness = 2
+        Guna2Button3.CustomizableEdges = CustomizableEdges7
+        Guna2Button3.DisabledState.BorderColor = Color.DarkGray
+        Guna2Button3.DisabledState.CustomBorderColor = Color.DarkGray
+        Guna2Button3.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
+        Guna2Button3.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
+        Guna2Button3.FillColor = Color.Black
+        Guna2Button3.Font = New Font("Bahnschrift", 9.75F, FontStyle.Bold)
+        Guna2Button3.ForeColor = Color.White
+        Guna2Button3.Location = New Point(554, 320)
+        Guna2Button3.Name = "Guna2Button3"
+        Guna2Button3.ShadowDecoration.CustomizableEdges = CustomizableEdges8
+        Guna2Button3.Size = New Size(180, 44)
+        Guna2Button3.TabIndex = 17
+        Guna2Button3.Text = "PRINT"
+        ' 
         ' Clearance_PREV
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
+        BackColor = Color.White
         ClientSize = New Size(765, 738)
+        Controls.Add(Guna2Button4)
+        Controls.Add(Guna2Button3)
         Controls.Add(RichTextBox3)
         Controls.Add(RichTextBox2)
         Controls.Add(RichTextBox1)
@@ -136,4 +191,6 @@ Partial Class Clearance_PREV
     Friend WithEvents RichTextBox1 As RichTextBox
     Friend WithEvents RichTextBox2 As RichTextBox
     Friend WithEvents RichTextBox3 As RichTextBox
+    Friend WithEvents Guna2Button4 As Guna.UI2.WinForms.Guna2Button
+    Friend WithEvents Guna2Button3 As Guna.UI2.WinForms.Guna2Button
 End Class

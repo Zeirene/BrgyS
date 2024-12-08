@@ -95,7 +95,7 @@ Partial Class brgyID
         Guna2HtmlLabel1.BackColor = Color.Transparent
         Guna2HtmlLabel1.Font = New Font("Bahnschrift", 9.75F)
         Guna2HtmlLabel1.ForeColor = Color.Black
-        Guna2HtmlLabel1.Location = New Point(12, 68)
+        Guna2HtmlLabel1.Location = New Point(35, 70)
         Guna2HtmlLabel1.Name = "Guna2HtmlLabel1"
         Guna2HtmlLabel1.Size = New Size(65, 18)
         Guna2HtmlLabel1.TabIndex = 25
@@ -106,7 +106,7 @@ Partial Class brgyID
         Guna2HtmlLabel2.BackColor = Color.Transparent
         Guna2HtmlLabel2.Font = New Font("Bahnschrift", 9.75F)
         Guna2HtmlLabel2.ForeColor = Color.Black
-        Guna2HtmlLabel2.Location = New Point(12, 151)
+        Guna2HtmlLabel2.Location = New Point(35, 153)
         Guna2HtmlLabel2.Name = "Guna2HtmlLabel2"
         Guna2HtmlLabel2.Size = New Size(64, 18)
         Guna2HtmlLabel2.TabIndex = 26
@@ -117,7 +117,7 @@ Partial Class brgyID
         Guna2HtmlLabel3.BackColor = Color.Transparent
         Guna2HtmlLabel3.Font = New Font("Bahnschrift", 9.75F)
         Guna2HtmlLabel3.ForeColor = Color.Black
-        Guna2HtmlLabel3.Location = New Point(10, 228)
+        Guna2HtmlLabel3.Location = New Point(33, 230)
         Guna2HtmlLabel3.Name = "Guna2HtmlLabel3"
         Guna2HtmlLabel3.Size = New Size(140, 18)
         Guna2HtmlLabel3.TabIndex = 27
@@ -128,7 +128,7 @@ Partial Class brgyID
         Guna2HtmlLabel4.BackColor = Color.Transparent
         Guna2HtmlLabel4.Font = New Font("Bahnschrift", 9.75F)
         Guna2HtmlLabel4.ForeColor = Color.Black
-        Guna2HtmlLabel4.Location = New Point(11, 310)
+        Guna2HtmlLabel4.Location = New Point(34, 312)
         Guna2HtmlLabel4.Name = "Guna2HtmlLabel4"
         Guna2HtmlLabel4.Size = New Size(33, 18)
         Guna2HtmlLabel4.TabIndex = 28
@@ -139,7 +139,7 @@ Partial Class brgyID
         Guna2HtmlLabel5.BackColor = Color.Transparent
         Guna2HtmlLabel5.Font = New Font("Bahnschrift", 9.75F)
         Guna2HtmlLabel5.ForeColor = Color.Black
-        Guna2HtmlLabel5.Location = New Point(255, 151)
+        Guna2HtmlLabel5.Location = New Point(278, 153)
         Guna2HtmlLabel5.Name = "Guna2HtmlLabel5"
         Guna2HtmlLabel5.Size = New Size(68, 18)
         Guna2HtmlLabel5.TabIndex = 29
@@ -150,7 +150,7 @@ Partial Class brgyID
         Guna2HtmlLabel6.BackColor = Color.Transparent
         Guna2HtmlLabel6.Font = New Font("Bahnschrift", 9.75F)
         Guna2HtmlLabel6.ForeColor = Color.Black
-        Guna2HtmlLabel6.Location = New Point(254, 310)
+        Guna2HtmlLabel6.Location = New Point(277, 312)
         Guna2HtmlLabel6.Name = "Guna2HtmlLabel6"
         Guna2HtmlLabel6.Size = New Size(64, 18)
         Guna2HtmlLabel6.TabIndex = 30
@@ -161,7 +161,7 @@ Partial Class brgyID
         Guna2HtmlLabel7.BackColor = Color.Transparent
         Guna2HtmlLabel7.Font = New Font("Bahnschrift", 9.75F)
         Guna2HtmlLabel7.ForeColor = Color.Black
-        Guna2HtmlLabel7.Location = New Point(11, 422)
+        Guna2HtmlLabel7.Location = New Point(34, 424)
         Guna2HtmlLabel7.Name = "Guna2HtmlLabel7"
         Guna2HtmlLabel7.Size = New Size(220, 18)
         Guna2HtmlLabel7.TabIndex = 31
@@ -172,7 +172,7 @@ Partial Class brgyID
         Guna2HtmlLabel8.BackColor = Color.Transparent
         Guna2HtmlLabel8.Font = New Font("Bahnschrift", 9.75F)
         Guna2HtmlLabel8.ForeColor = Color.Black
-        Guna2HtmlLabel8.Location = New Point(12, 509)
+        Guna2HtmlLabel8.Location = New Point(35, 511)
         Guna2HtmlLabel8.Name = "Guna2HtmlLabel8"
         Guna2HtmlLabel8.Size = New Size(60, 18)
         Guna2HtmlLabel8.TabIndex = 32
@@ -193,7 +193,7 @@ Partial Class brgyID
         Guna2TextBox1.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
         Guna2TextBox1.ForeColor = Color.Black
         Guna2TextBox1.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2TextBox1.Location = New Point(12, 92)
+        Guna2TextBox1.Location = New Point(35, 94)
         Guna2TextBox1.Name = "Guna2TextBox1"
         Guna2TextBox1.PasswordChar = ChrW(0)
         Guna2TextBox1.PlaceholderText = "Resident's Full Name"
@@ -218,7 +218,7 @@ Partial Class brgyID
         Guna2TextBox3.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
         Guna2TextBox3.ForeColor = Color.Black
         Guna2TextBox3.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2TextBox3.Location = New Point(12, 252)
+        Guna2TextBox3.Location = New Point(35, 254)
         Guna2TextBox3.Name = "Guna2TextBox3"
         Guna2TextBox3.PasswordChar = ChrW(0)
         Guna2TextBox3.PlaceholderText = "Address"
@@ -241,7 +241,7 @@ Partial Class brgyID
         Guna2TextBox4.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
         Guna2TextBox4.ForeColor = Color.Black
         Guna2TextBox4.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2TextBox4.Location = New Point(11, 334)
+        Guna2TextBox4.Location = New Point(34, 336)
         Guna2TextBox4.Name = "Guna2TextBox4"
         Guna2TextBox4.PasswordChar = ChrW(0)
         Guna2TextBox4.PlaceholderText = "TIN Number"
@@ -264,7 +264,7 @@ Partial Class brgyID
         Guna2TextBox6.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
         Guna2TextBox6.ForeColor = Color.Black
         Guna2TextBox6.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2TextBox6.Location = New Point(254, 334)
+        Guna2TextBox6.Location = New Point(277, 336)
         Guna2TextBox6.Name = "Guna2TextBox6"
         Guna2TextBox6.PasswordChar = ChrW(0)
         Guna2TextBox6.PlaceholderText = "Precinct Number"
@@ -287,7 +287,7 @@ Partial Class brgyID
         Guna2TextBox7.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
         Guna2TextBox7.ForeColor = Color.Black
         Guna2TextBox7.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2TextBox7.Location = New Point(12, 533)
+        Guna2TextBox7.Location = New Point(35, 535)
         Guna2TextBox7.Name = "Guna2TextBox7"
         Guna2TextBox7.PasswordChar = ChrW(0)
         Guna2TextBox7.PlaceholderText = "Contact Number"
@@ -310,7 +310,7 @@ Partial Class brgyID
         Guna2TextBox8.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
         Guna2TextBox8.ForeColor = Color.Black
         Guna2TextBox8.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2TextBox8.Location = New Point(12, 446)
+        Guna2TextBox8.Location = New Point(35, 448)
         Guna2TextBox8.Name = "Guna2TextBox8"
         Guna2TextBox8.PasswordChar = ChrW(0)
         Guna2TextBox8.PlaceholderText = "Emergency Contact's Name"
@@ -333,7 +333,7 @@ Partial Class brgyID
         Guna2Button2.FillColor = Color.Firebrick
         Guna2Button2.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
         Guna2Button2.ForeColor = Color.White
-        Guna2Button2.Location = New Point(534, 509)
+        Guna2Button2.Location = New Point(557, 511)
         Guna2Button2.Name = "Guna2Button2"
         Guna2Button2.PressedColor = Color.Firebrick
         Guna2Button2.ShadowDecoration.CustomizableEdges = CustomizableEdges14
@@ -353,7 +353,7 @@ Partial Class brgyID
         Guna2Button1.FillColor = Color.Black
         Guna2Button1.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
         Guna2Button1.ForeColor = Color.White
-        Guna2Button1.Location = New Point(534, 415)
+        Guna2Button1.Location = New Point(557, 417)
         Guna2Button1.Name = "Guna2Button1"
         Guna2Button1.ShadowDecoration.CustomizableEdges = CustomizableEdges16
         Guna2Button1.Size = New Size(242, 41)
@@ -372,7 +372,7 @@ Partial Class brgyID
         Guna2Button3.FillColor = Color.Black
         Guna2Button3.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
         Guna2Button3.ForeColor = Color.White
-        Guna2Button3.Location = New Point(534, 462)
+        Guna2Button3.Location = New Point(557, 464)
         Guna2Button3.Name = "Guna2Button3"
         Guna2Button3.ShadowDecoration.CustomizableEdges = CustomizableEdges18
         Guna2Button3.Size = New Size(242, 41)
@@ -383,7 +383,7 @@ Partial Class brgyID
         ' 
         PictureBox1.Image = My.Resources.Resources._2dv8cshvdod51
         PictureBox1.InitialImage = My.Resources.Resources._2dv8cshvdod51
-        PictureBox1.Location = New Point(534, 68)
+        PictureBox1.Location = New Point(557, 70)
         PictureBox1.Name = "PictureBox1"
         PictureBox1.Size = New Size(242, 199)
         PictureBox1.SizeMode = PictureBoxSizeMode.CenterImage
@@ -402,7 +402,7 @@ Partial Class brgyID
         Guna2Button4.FillColor = Color.Black
         Guna2Button4.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
         Guna2Button4.ForeColor = Color.White
-        Guna2Button4.Location = New Point(534, 368)
+        Guna2Button4.Location = New Point(557, 370)
         Guna2Button4.Name = "Guna2Button4"
         Guna2Button4.ShadowDecoration.CustomizableEdges = CustomizableEdges20
         Guna2Button4.Size = New Size(242, 41)
@@ -423,7 +423,7 @@ Partial Class brgyID
         Guna2TextBox9.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
         Guna2TextBox9.ForeColor = Color.Black
         Guna2TextBox9.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2TextBox9.Location = New Point(255, 533)
+        Guna2TextBox9.Location = New Point(278, 535)
         Guna2TextBox9.Name = "Guna2TextBox9"
         Guna2TextBox9.PasswordChar = ChrW(0)
         Guna2TextBox9.PlaceholderText = "Address"
@@ -437,7 +437,7 @@ Partial Class brgyID
         Guna2HtmlLabel9.BackColor = Color.Transparent
         Guna2HtmlLabel9.Font = New Font("Bahnschrift", 9.75F)
         Guna2HtmlLabel9.ForeColor = Color.Black
-        Guna2HtmlLabel9.Location = New Point(255, 509)
+        Guna2HtmlLabel9.Location = New Point(278, 511)
         Guna2HtmlLabel9.Name = "Guna2HtmlLabel9"
         Guna2HtmlLabel9.Size = New Size(55, 18)
         Guna2HtmlLabel9.TabIndex = 46
@@ -455,7 +455,7 @@ Partial Class brgyID
         Guna2DateTimePicker1.FillColor = Color.White
         Guna2DateTimePicker1.Font = New Font("Bahnschrift", 9.75F)
         Guna2DateTimePicker1.Format = DateTimePickerFormat.Short
-        Guna2DateTimePicker1.Location = New Point(12, 175)
+        Guna2DateTimePicker1.Location = New Point(35, 177)
         Guna2DateTimePicker1.MaxDate = New Date(9998, 12, 31, 0, 0, 0, 0)
         Guna2DateTimePicker1.MinDate = New Date(1753, 1, 1, 0, 0, 0, 0)
         Guna2DateTimePicker1.Name = "Guna2DateTimePicker1"
@@ -478,7 +478,7 @@ Partial Class brgyID
         Guna2ComboBox1.ForeColor = Color.FromArgb(CByte(68), CByte(88), CByte(112))
         Guna2ComboBox1.ItemHeight = 30
         Guna2ComboBox1.Items.AddRange(New Object() {"A", "B", "AB", "O+", "O-"})
-        Guna2ComboBox1.Location = New Point(255, 175)
+        Guna2ComboBox1.Location = New Point(278, 177)
         Guna2ComboBox1.Name = "Guna2ComboBox1"
         Guna2ComboBox1.ShadowDecoration.CustomizableEdges = CustomizableEdges26
         Guna2ComboBox1.Size = New Size(214, 36)
@@ -486,7 +486,7 @@ Partial Class brgyID
         ' 
         ' Guna2Separator1
         ' 
-        Guna2Separator1.Location = New Point(12, 399)
+        Guna2Separator1.Location = New Point(35, 401)
         Guna2Separator1.Name = "Guna2Separator1"
         Guna2Separator1.Size = New Size(457, 10)
         Guna2Separator1.TabIndex = 51
@@ -494,7 +494,7 @@ Partial Class brgyID
         ' Label2
         ' 
         Label2.AutoSize = True
-        Label2.Location = New Point(484, 26)
+        Label2.Location = New Point(507, 28)
         Label2.Name = "Label2"
         Label2.Size = New Size(41, 15)
         Label2.TabIndex = 52
@@ -504,7 +504,7 @@ Partial Class brgyID
         ' Label3
         ' 
         Label3.AutoSize = True
-        Label3.Location = New Point(609, 26)
+        Label3.Location = New Point(632, 28)
         Label3.Name = "Label3"
         Label3.Size = New Size(41, 15)
         Label3.TabIndex = 53
@@ -514,7 +514,7 @@ Partial Class brgyID
         ' Label5
         ' 
         Label5.AutoSize = True
-        Label5.Location = New Point(190, 18)
+        Label5.Location = New Point(213, 20)
         Label5.Name = "Label5"
         Label5.Size = New Size(41, 15)
         Label5.TabIndex = 55

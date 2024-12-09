@@ -161,7 +161,15 @@ Public Class Form7
             End If
         Else
             ' If Label2.Text has a value, use it as the ResidentId
-            InResidentId = Long.Parse(Label2.Text)
+            ' If Label2.Text has a value, use it as the ResidentId
+            Dim parsedValue As Long
+            If Long.TryParse(Label2.Text, parsedValue) Then
+                ' Successfully parsed ResidentId
+                InResidentId = parsedValue
+            Else
+
+                Exit Sub ' Stop further processing if ResidentId is invalid
+            End If
         End If
 
         Try
@@ -200,6 +208,7 @@ Public Class Form7
                 Dim permitResult As Boolean = Await client.InsertPermitLogAsync(permitLog)
 
                 If permitResult Then
+
                     MessageBox.Show("Permit log inserted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 Else
                     MessageBox.Show("Failed to insert permit log.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)

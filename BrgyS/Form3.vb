@@ -103,7 +103,10 @@ Public Class Form3
         Guna2TextBox8.Clear()
         Guna2TextBox9.Clear()
         Guna2HtmlLabel15.Text = ""
-
+        Guna2ComboBox1.SelectedIndex = -1
+        Guna2ComboBox2.SelectedIndex = -1
+        Guna2ComboBox3.SelectedIndex = -1
+        Guna2ComboBox4.SelectedIndex = -1
 
     End Sub
 
@@ -464,5 +467,32 @@ Public Class Form3
                 Guna2ComboBox1.Items.AddRange(TypeToIds(selectedType).ToArray())
             End If
         End If
+    End Sub
+
+    Private Sub Guna2ComboBox1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles Guna2ComboBox1.SelectedIndexChanged
+        Select Case Guna2ComboBox1.SelectedItem.ToString
+            Case "BRGY ID"
+
+                Guna2ComboBox4.Items.Add("J.P. Rizal")
+                Guna2TextBox16.Text("")
+            Case "NBI"
+
+                Guna2ComboBox4.Items.Add("J.P. Rizal")
+            Case "TIN"
+
+                Guna2ComboBox4.Items.Add("J.P. Rizal")
+            Case "PHILHEALTH"
+
+                Guna2ComboBox4.Items.Add("J.P. Rizal")
+            Case "POLICE CLEARANCE"
+
+                Guna2ComboBox4.Items.Add("J.P. Rizal")
+            Case "POSTAL"
+
+                Guna2ComboBox4.Items.Add("J.P. Rizal")
+            Case "LTAP (license to operate And possess firearms)"
+                Guna2ComboBox4.Items.Add("J.P. Rizal")
+
+        End Select
     End Sub
 End Class

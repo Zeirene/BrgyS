@@ -193,7 +193,7 @@ Partial Class clearanceQCID
         Guna2Button1.ShadowDecoration.CustomizableEdges = CustomizableEdges6
         Guna2Button1.Size = New Size(242, 41)
         Guna2Button1.TabIndex = 55
-        Guna2Button1.Text = "PRINT"
+        Guna2Button1.Text = "PREVIEW"
         ' 
         ' Guna2Button2
         ' 

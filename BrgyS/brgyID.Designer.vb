@@ -381,7 +381,7 @@ Partial Class brgyID
         Guna2Button3.ShadowDecoration.CustomizableEdges = CustomizableEdges18
         Guna2Button3.Size = New Size(242, 41)
         Guna2Button3.TabIndex = 43
-        Guna2Button3.Text = "PRINT"
+        Guna2Button3.Text = "PREVIEW"
         ' 
         ' PictureBox1
         ' 
@@ -539,7 +539,7 @@ Partial Class brgyID
         Guna2TextBox2.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
         Guna2TextBox2.ForeColor = Color.Black
         Guna2TextBox2.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
-        Guna2TextBox2.Location = New Point(277, 103)
+        Guna2TextBox2.Location = New Point(278, 94)
         Guna2TextBox2.Name = "Guna2TextBox2"
         Guna2TextBox2.PasswordChar = ChrW(0)
         Guna2TextBox2.PlaceholderText = "Email"
@@ -553,7 +553,7 @@ Partial Class brgyID
         Guna2HtmlLabel10.BackColor = Color.Transparent
         Guna2HtmlLabel10.Font = New Font("Bahnschrift", 9.75F)
         Guna2HtmlLabel10.ForeColor = Color.Black
-        Guna2HtmlLabel10.Location = New Point(277, 79)
+        Guna2HtmlLabel10.Location = New Point(278, 70)
         Guna2HtmlLabel10.Name = "Guna2HtmlLabel10"
         Guna2HtmlLabel10.Size = New Size(39, 18)
         Guna2HtmlLabel10.TabIndex = 56

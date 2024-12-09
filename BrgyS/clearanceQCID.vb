@@ -23,18 +23,46 @@ Public Class clearanceQCID
     End Sub
 
     Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
+        ' Validate if any required field is empty
+        If String.IsNullOrWhiteSpace(Guna2TextBox1.Text) Then
+            MessageBox.Show("Please enter the Resident Name.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+
+        If String.IsNullOrWhiteSpace(Guna2ComboBox1.Text) Then
+            MessageBox.Show("Please select the Status.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+
+        If String.IsNullOrWhiteSpace(Guna2TextBox4.Text) Then
+            MessageBox.Show("Please enter the Address.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+
+        If String.IsNullOrWhiteSpace(Guna2TextBox2.Text) Then
+            MessageBox.Show("Please enter the Length of Stay.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+
+        If String.IsNullOrWhiteSpace(Guna2ComboBox3.Text) Then
+            MessageBox.Show("Please select the Purpose.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+
+        ' If validation passes, assign values to Clearance_PREV
         Clearance_PREV.resName = Guna2TextBox1.Text
         Clearance_PREV.stat = Guna2ComboBox1.Text
         Clearance_PREV.addr = Guna2TextBox4.Text + " Brgy Sta Lucia, QUEZON CITY"
         Clearance_PREV.stay = Guna2TextBox2.Text
         Clearance_PREV.purp = Guna2ComboBox3.Text
 
-
-        'Dim anotherForm As New Clearance_PREV()
+        ' Show the Clearance_PREV form
         Clearance_PREV.Show()
 
-        'generatedocfile()
-        InsertTransactionLog()
+        ' Optional: Call additional methods if needed
+        ' generatedocfile()
+        ' InsertTransactionLog()
+
     End Sub
 
 

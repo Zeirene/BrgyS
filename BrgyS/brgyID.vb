@@ -96,8 +96,48 @@ Public Class brgyID
     End Sub
     Private Sub Guna2Button3_Click(sender As Object, e As EventArgs) Handles Guna2Button3.Click
         'save and print docu
+        ' Validate if any required field is empty
+        If String.IsNullOrWhiteSpace(Guna2TextBox1.Text) Then
+            MessageBox.Show("Please enter the Resident Name.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
 
+        If String.IsNullOrWhiteSpace(Guna2TextBox3.Text) Then
+            MessageBox.Show("Please enter the Address.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
 
+        If String.IsNullOrWhiteSpace(Guna2TextBox4.Text) Then
+            MessageBox.Show("Please enter the TIN.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+
+        If String.IsNullOrWhiteSpace(Guna2TextBox6.Text) Then
+            MessageBox.Show("Please enter the Precinct.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+
+        If String.IsNullOrWhiteSpace(Guna2TextBox8.Text) Then
+            MessageBox.Show("Please enter the Emergency Contact Name.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+
+        If String.IsNullOrWhiteSpace(Guna2TextBox7.Text) Then
+            MessageBox.Show("Please enter the Emergency Contact Number.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+
+        If String.IsNullOrWhiteSpace(Guna2TextBox9.Text) Then
+            MessageBox.Show("Please enter the Emergency Contact Address.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+
+        If PictureBox1.Image Is Nothing Then
+            MessageBox.Show("Please take a picture.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Exit Sub
+        End If
+
+        ' After validation passes, assign values to ID_PREV
         ID_PREV.resName = Guna2TextBox1.Text
         ID_PREV.idnum = Label2.Text
         ID_PREV.img = PictureBox1.Image
@@ -110,7 +150,9 @@ Public Class brgyID
         ID_PREV.emercont = Guna2TextBox7.Text
         ID_PREV.emeraddr = Guna2TextBox9.Text
 
+        ' Show the ID_PREV form
         ID_PREV.Show()
+
         'generatedocfile()
         'InsertTransactionLog()
     End Sub

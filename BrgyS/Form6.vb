@@ -49,6 +49,7 @@ Public Class Form6
             Dim permitsLogId As String = If(permitLog IsNot Nothing, permitLog.PLogId.ToString(), "N/A")
             Dim businessName As String = If(permitLog IsNot Nothing, permitLog.BName, "N/A")
             Dim businessAddress As String = If(permitLog IsNot Nothing, permitLog.BAddress, "N/A")
+
             Dim status As String = log.Status
 
             ' Add row to DataGridView

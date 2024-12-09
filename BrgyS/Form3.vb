@@ -103,10 +103,17 @@ Public Class Form3
         Guna2TextBox8.Clear()
         Guna2TextBox9.Clear()
         Guna2HtmlLabel15.Text = ""
-        Guna2ComboBox1.SelectedIndex = -1
-        Guna2ComboBox2.SelectedIndex = -1
-        Guna2ComboBox3.SelectedIndex = -1
-        Guna2ComboBox4.SelectedIndex = -1
+        Guna2ComboBox1.Items.Clear()
+        Guna2ComboBox2.Items.Clear()
+        Guna2ComboBox3.SelectedItem = ""
+        Guna2ComboBox4.Items.Clear()
+        Guna2TextBox16.Clear()
+        Guna2ComboBox2.Items.AddRange(TypeToIds.Keys.ToArray())
+
+        'Guna2ComboBox1.SelectedIndex = -1
+        'Guna2ComboBox2.SelectedIndex = -1
+        'Guna2ComboBox3.SelectedIndex = -1
+        'Guna2ComboBox4.SelectedIndex = -1
 
     End Sub
 

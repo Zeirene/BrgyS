@@ -92,7 +92,25 @@ Public Class brgyID
     End Sub
     Private Sub Guna2Button2_Click(sender As Object, e As EventArgs) Handles Guna2Button2.Click
         'clear
+        'PictureBox1.Image = Nothing
+        ' Reset the text fields
+        Guna2TextBox1.Text = String.Empty
+        Guna2TextBox3.Text = String.Empty
+        Guna2TextBox4.Text = String.Empty
+        Guna2TextBox6.Text = String.Empty
+        Guna2TextBox8.Text = String.Empty
+        Guna2TextBox7.Text = String.Empty
+        Guna2TextBox9.Text = String.Empty
+
+        ' Clear the label and combo box selections
+        Label2.Text = String.Empty
+        Guna2ComboBox1.SelectedIndex = -1
+
+        ' Clear the picture box image
         PictureBox1.Image = Nothing
+
+        ' Reset the date picker
+        Guna2DateTimePicker1.Value = DateTime.Now
     End Sub
     Private Sub Guna2Button3_Click(sender As Object, e As EventArgs) Handles Guna2Button3.Click
         'save and print docu
@@ -455,7 +473,7 @@ Public Class brgyID
             Try
                 InResidentId = Long.Parse(Label2.Text)
             Catch ex As FormatException
-                MessageBox.Show("Invalid Resident ID format.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                'MessageBox.Show("Invalid Resident ID format.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Exit Sub
             End Try
         End If

@@ -31,6 +31,8 @@ Partial Class Form6
         Column2 = New DataGridViewTextBoxColumn()
         Column3 = New DataGridViewTextBoxColumn()
         Column5 = New DataGridViewTextBoxColumn()
+        Column6 = New DataGridViewTextBoxColumn()
+        Column7 = New DataGridViewTextBoxColumn()
         Column1 = New DataGridViewTextBoxColumn()
         CType(Guna2DataGridView1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
@@ -52,7 +54,7 @@ Partial Class Form6
         Guna2DataGridView1.ColumnHeadersDefaultCellStyle = DataGridViewCellStyle2
         Guna2DataGridView1.ColumnHeadersHeight = 17
         Guna2DataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.EnableResizing
-        Guna2DataGridView1.Columns.AddRange(New DataGridViewColumn() {Names, Column4, Column2, Column3, Column5, Column1})
+        Guna2DataGridView1.Columns.AddRange(New DataGridViewColumn() {Names, Column4, Column2, Column3, Column5, Column6, Column7, Column1})
         DataGridViewCellStyle3.Alignment = DataGridViewContentAlignment.MiddleLeft
         DataGridViewCellStyle3.BackColor = Color.FromArgb(CByte(33), CByte(37), CByte(41))
         DataGridViewCellStyle3.Font = New Font("Segoe UI", 9F)
@@ -121,6 +123,18 @@ Partial Class Form6
         Column5.Name = "Column5"
         Column5.ReadOnly = True
         ' 
+        ' Column6
+        ' 
+        Column6.HeaderText = "Contact Number"
+        Column6.Name = "Column6"
+        Column6.ReadOnly = True
+        ' 
+        ' Column7
+        ' 
+        Column7.HeaderText = "Email"
+        Column7.Name = "Column7"
+        Column7.ReadOnly = True
+        ' 
         ' Column1
         ' 
         Column1.HeaderText = "Status"
@@ -152,5 +166,7 @@ Partial Class Form6
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
     Friend WithEvents Column3 As DataGridViewTextBoxColumn
     Friend WithEvents Column5 As DataGridViewTextBoxColumn
+    Friend WithEvents Column6 As DataGridViewTextBoxColumn
+    Friend WithEvents Column7 As DataGridViewTextBoxColumn
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
 End Class

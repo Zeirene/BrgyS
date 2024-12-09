@@ -605,7 +605,7 @@ Partial Class Form3
         Guna2ComboBox3.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
         Guna2ComboBox3.ForeColor = Color.Black
         Guna2ComboBox3.ItemHeight = 38
-        Guna2ComboBox3.Items.AddRange(New Object() {"Sitio 1", "Sitio 2", "Sitio 3", "Sitio 4", "Sitio 5", "Sitio 6", "Sitio 7"})
+        Guna2ComboBox3.Items.AddRange(New Object() {"", "Sitio 1", "Sitio 2", "Sitio 3", "Sitio 4", "Sitio 5", "Sitio 6", "Sitio 7"})
         Guna2ComboBox3.Location = New Point(175, 287)
         Guna2ComboBox3.Name = "Guna2ComboBox3"
         Guna2ComboBox3.ShadowDecoration.CustomizableEdges = CustomizableEdges22
@@ -636,7 +636,6 @@ Partial Class Form3
         Guna2ComboBox4.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
         Guna2ComboBox4.ForeColor = Color.Black
         Guna2ComboBox4.ItemHeight = 38
-        Guna2ComboBox4.Items.AddRange(New Object() {"BRGY ID", "NBI", "TIN", "PHILHEALTH", "POLICE CLEARANCE", "POSTAL", "LTAP (license to operate and posses fire armed) ", "BUILDING PERMIT ", "BUSINESS PERMIT", "TODA PERMIT", "MERACLO", "MWSI"})
         Guna2ComboBox4.Location = New Point(338, 287)
         Guna2ComboBox4.Name = "Guna2ComboBox4"
         Guna2ComboBox4.ShadowDecoration.CustomizableEdges = CustomizableEdges24

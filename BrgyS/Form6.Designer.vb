@@ -30,7 +30,7 @@ Partial Class Form6
         FlowLayoutPanel1.AutoScroll = True
         FlowLayoutPanel1.Location = New Point(12, 61)
         FlowLayoutPanel1.Name = "FlowLayoutPanel1"
-        FlowLayoutPanel1.Size = New Size(818, 512)
+        FlowLayoutPanel1.Size = New Size(54, 59)
         FlowLayoutPanel1.TabIndex = 0
         ' 
         ' Form6

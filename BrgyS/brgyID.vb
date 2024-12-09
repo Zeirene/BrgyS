@@ -382,7 +382,6 @@ Public Class brgyID
 
             ' Adjust the DateTime to the first day of the selected month
             Dim firstDayOfMonth As New DateTime(selectedDate.Year, selectedDate.Month, 1)
-            ' .ResidentEmail = Guna2TextBox2.Text,
             ' Prepare the new resident data
             Dim newResident As New ResidentRecord() With {
             .ResidentFirstName = Form3.Guna2TextBox7.Text,
@@ -396,6 +395,7 @@ Public Class brgyID
             .CivilStatus = "Single",
             .Sitio = Form3.Guna2ComboBox3.SelectedItem?.ToString(),
             .ResidentMiddleName = Form3.Guna2TextBox6.Text,
+            .ResidentEmail = Guna2TextBox2.Text,
             .Street = Form3.Guna2ComboBox4.SelectedItem?.ToString()
         }
 

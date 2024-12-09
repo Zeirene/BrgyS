@@ -167,26 +167,68 @@ Public Class clearanceQCID
 
     End Sub
     Public Async Sub InsertTransactionLog()
-        ' Create the transaction log object
-        Dim log As New TransactionLog() With {
-        .LogDate = Date.Today.ToString("yyyy-MM-dd"),
-        .LogTime = DateTime.Now.ToString("HH:mm:ss"),
-        .Type = Form3.Guna2ComboBox2.Text,
-        .Status = "Completed",
-        .Payment = Decimal.Parse(Form3.Guna2TextBox16.Text),
-        .ResidentId = Label2.Text,
-        .StaffId = Form2.staffID
-    }
 
+        Dim InResidentId As Long?
+        '.ResidentEmail = Guna2TextBox3.Text,
+        ' If Label2.Text is empty, create a new resident
+        If String.IsNullOrWhiteSpace(Label2.Text) Then
+            ' Insert new resident
+            Dim residentAccountCreated As New Date(2025, 1, 10, 8, 48, 30) ' Example date with time
+            Dim formattedDate As String = residentAccountCreated.ToString("yyyy-MM-ddTHH:mm:sszzz")
 
+            Dim newResident As New ResidentRecord() With {
+            .ResidentFirstName = Form3.Guna2TextBox7.Text,
+            .ResidentType = "Resident",
+            .BirthPlace = "Sauyo",
+            .Sex = "Male",
+            .Address = Form3.Guna2TextBox9.Text,
+            .ResidentBirthdate = formattedDate,
+            .ResidentLastName = Form3.Guna2TextBox8.Text,
+            .CivilStatus = Guna2ComboBox1.SelectedItem?.ToString(),
+            .Sitio = Form3.Guna2ComboBox3.SelectedItem?.ToString(),
+            .ResidentMiddleName = Form3.Guna2TextBox6.Text,
+            .Street = Form3.Guna2ComboBox4.SelectedItem?.ToString()
+        }
+
+            ' Call API to insert new resident
+            Dim client As New ApiClient()
+            InResidentId = Await client.InsertResidentAsync(newResident)
+
+            If InResidentId.HasValue Then
+                MessageBox.Show($"Resident created successfully with ID: {InResidentId.Value}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Else
+                MessageBox.Show("Failed to create resident.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub ' Stop further processing if resident creation fails
+            End If
+        Else
+            ' If Label2.Text has a value, use it as the ResidentId
+            Try
+                InResidentId = Long.Parse(Label2.Text)
+            Catch ex As FormatException
+                MessageBox.Show("Invalid Resident ID format.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub
+            End Try
+        End If
 
         Try
-            ' Call the asynchronous insert function
+            ' Create the transaction log object
+            Dim log As New TransactionLog() With {
+            .LogDate = Date.Today.ToString("yyyy-MM-dd"),
+            .LogTime = DateTime.Now.ToString("HH:mm:ss"),
+            .Type = Form3.Guna2ComboBox2.Text,
+            .Status = "Completed",
+            .Payment = Decimal.Parse(Form3.Guna2TextBox16.Text),
+            .ResidentId = InResidentId,
+            .StaffId = Form2.staffID
+        }
+
+            ' Use the same API client for both operations
             Dim client As New ApiClient()
 
             ' Debugging message before calling the API
             MessageBox.Show("Attempting to insert transaction log...")
 
+            ' Insert transaction log
             Dim success As Boolean = Await client.InsertTransactionLogAsync(log)
 
             If success Then
@@ -196,11 +238,15 @@ Public Class clearanceQCID
                 ' Notify the user of failure
                 MessageBox.Show("Failed to insert transaction log.")
             End If
+        Catch ex As FormatException
+            ' Handle invalid number format or other issues
+            MessageBox.Show("Invalid input format: " & ex.Message, "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         Catch ex As Exception
-            ' Handle any exceptions that occurred and display the error message
-            MessageBox.Show("Error: " & ex.Message)
+            ' Handle any other exceptions that occurred and display the error message
+            MessageBox.Show("Error: " & ex.Message, "General Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
 
 
 

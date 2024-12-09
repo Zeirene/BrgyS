@@ -55,50 +55,54 @@ Public Class Form6
         Next
     End Sub
 
-    Private Async Sub Guna2DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs)
-        Try
-            ' Ensure the clicked row and column are valid
-            If e.RowIndex < 0 OrElse e.ColumnIndex < 0 Then Exit Sub
+    'Private Async Sub Guna2DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs)
+    '    Try
+    '        ' Ensure the clicked row and column are valid
+    '        If e.RowIndex < 0 OrElse e.ColumnIndex < 0 Then Exit Sub
 
-            ' Retrieve the ResidentId from the DataGridView
-            Dim residentId As String = Guna2DataGridView1.Rows(e.RowIndex).Cells("ResidentIdColumn").Value.ToString()
+    '        ' Retrieve the ResidentId from the DataGridView
+    '        Dim residentId As String = Guna2DataGridView1.Rows(e.RowIndex).Cells("ResidentIdColumn").Value.ToString()
 
-            ' Ensure ResidentId is valid
-            If String.IsNullOrWhiteSpace(residentId) OrElse Not Long.TryParse(residentId, Nothing) Then
-                MessageBox.Show("Invalid Resident ID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                Exit Sub
-            End If
+    '        ' Ensure ResidentId is valid
+    '        If String.IsNullOrWhiteSpace(residentId) OrElse Not Long.TryParse(residentId, Nothing) Then
+    '            MessageBox.Show("Invalid Resident ID.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+    '            Exit Sub
+    '        End If
 
-            ' Fetch the resident's details asynchronously
-            Dim residentEmail As String = Await GetResidentEmailAsync(Long.Parse(residentId))
-            If String.IsNullOrWhiteSpace(residentEmail) Then
-                MessageBox.Show("Resident email not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                Exit Sub
-            End If
+    '        ' Fetch the resident's details asynchronously
+    '        Dim residentEmail As String = Await GetResidentEmailAsync(Long.Parse(residentId))
+    '        If String.IsNullOrWhiteSpace(residentEmail) Then
+    '            MessageBox.Show("Resident email not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+    '            Exit Sub
+    '        End If
 
-            ' Retrieve the resident name
-            Dim residentName = If(residentDictionary.ContainsKey(Long.Parse(residentId)), residentDictionary(Long.Parse(residentId)), "Unknown Resident")
+    '        ' Retrieve the resident name
+    '        Dim residentName = If(residentDictionary.ContainsKey(Long.Parse(residentId)), residentDictionary(Long.Parse(residentId)), "Unknown Resident")
 
-            ' Retrieve the approval/rejection status
-            Dim status As String = Guna2DataGridView1.Rows(e.RowIndex).Cells("StatusColumn").Value.ToString()
+    '        ' Retrieve the approval/rejection status
+    '        Dim status As String = Guna2DataGridView1.Rows(e.RowIndex).Cells("StatusColumn").Value.ToString()
 
-            ' Compose the email body
-            Dim emailSubject = $"Your Application Status: {status}"
-            Dim emailBody = $"Dear {residentName}," & vbCrLf &
-                                  vbCrLf &
-                                  $"We are writing to inform you that your application has been {status}." & vbCrLf &
-                                  "For further details, please contact us at our office." & vbCrLf &
-                                  vbCrLf &
-                                  "Thank you," & vbCrLf &
-                                  "Your Organization"
+    '        ' Compose the email body
+    '        Dim emailSubject = $"Your Application Status: {status}"
+    '        Dim emailBody = $"Dear {residentName}," & vbCrLf &
+    '                              vbCrLf &
+    '                              $"We are writing to inform you that your application has been {status}." & vbCrLf &
+    '                              "For further details, please contact us at our office." & vbCrLf &
+    '                              vbCrLf &
+    '                              "Thank you," & vbCrLf &
+    '                              "Your Organization"
 
-            ' Open the default email client with the email pre-filled
-            Dim mailtoUri = $"mailto:{residentEmail}?subject={Uri.EscapeDataString(emailSubject)}&body={Uri.EscapeDataString(emailBody)}"
-            Process.Start(mailtoUri)
+    '        ' Open the default email client with the email pre-filled
+    '        Dim mailtoUri = $"mailto:{residentEmail}?subject={Uri.EscapeDataString(emailSubject)}&body={Uri.EscapeDataString(emailBody)}"
+    '        Process.Start(mailtoUri)
 
-        Catch ex As Exception
-            MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-        End Try
+    '    Catch ex As Exception
+    '        MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+    '    End Try
+    'End Sub
+
+    Private Sub Guna2DataGridView1_CellContentClick_1(sender As Object, e As DataGridViewCellEventArgs) Handles Guna2DataGridView1.CellContentClick
+
     End Sub
 
     'Private Async Function GetResidentEmailAsync(residentId As Long) As Task(Of String)

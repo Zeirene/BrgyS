@@ -67,12 +67,28 @@ Public Class brgyID
 
     Private Sub Guna2Button4_Click(sender As Object, e As EventArgs) Handles Guna2Button4.Click
         'capture pic
-        If PictureBox1.Image IsNot Nothing Then
-            Dim newBitmap As Bitmap = PictureBox1.Image
-        End If
-        Savepic()
-        PictureBox1.Image = PictureBox1.Image
+        'If PictureBox1.Image IsNot Nothing Then
+        '    Dim newBitmap As Bitmap = PictureBox1.Image
+        'End If
+        'If ID_PREV.Guna2PictureBox1.Image IsNot Nothing Then
+        '    Dim newBitmap2 As Bitmap = ID_PREV.Guna2PictureBox1.Image
+        'End If
+        'Savepic()
+        'PictureBox1.Image = PictureBox1.Image
+        'ID_PREV.img = PictureBox1.Image
+
+        'ID_PREV.img = ID_PREV.Guna2PictureBox1.Image
         'CAMERA.SignalToStop()
+
+        ' Ensure the image is captured and exists
+        If PictureBox1.Image IsNot Nothing Then
+            ' Transfer image to ID_PREV's Guna2PictureBox1
+            ID_PREV.Guna2PictureBox1.Image = CType(PictureBox1.Image.Clone(), Image)
+            Savepic()
+            PictureBox1.Image = PictureBox1.Image
+        Else
+            MessageBox.Show("No image captured to transfer.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End If
     End Sub
     Private Sub Guna2Button2_Click(sender As Object, e As EventArgs) Handles Guna2Button2.Click
         'clear
@@ -84,7 +100,7 @@ Public Class brgyID
 
         ID_PREV.resName = Guna2TextBox1.Text
         ID_PREV.idnum = Label2.Text
-        'ID_PREV.img = PictureBox1.Image.ToString
+        ID_PREV.img = PictureBox1.Image
         ID_PREV.addr = Guna2TextBox3.Text + " Brgy Sta Lucia, QUEZON CITY"
         ID_PREV.tin = Guna2TextBox4.Text
         ID_PREV.bday = Guna2DateTimePicker1.Value.ToString("MMMM, dd yyyy")
@@ -95,8 +111,8 @@ Public Class brgyID
         ID_PREV.emeraddr = Guna2TextBox9.Text
 
         ID_PREV.Show()
-        generatedocfile()
-        InsertTransactionLog()
+        'generatedocfile()
+        'InsertTransactionLog()
     End Sub
 
 
@@ -342,6 +358,7 @@ Public Class brgyID
 
         If PictureBox1.Image IsNot Nothing Then
             Dim newBitmap As Bitmap = PictureBox1.Image
+            Dim newBitmap2 As Bitmap = ID_PREV.Guna2PictureBox1.Image
             newBitmap.Save(filepath, ImageFormat.Png)
             Label5.Text = filepath
         End If

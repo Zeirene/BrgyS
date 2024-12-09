@@ -64,9 +64,8 @@ Public Class Permits_PREV
 
     End Sub
 
-    Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
-        CaptureForm()
-        'Form7.InsertTransactionLog()
+    Private Sub Guna2Button1_Click(sender As Object, e As EventArgs)
+
 
     End Sub
     Private Sub CaptureForm()
@@ -144,5 +143,17 @@ Public Class Permits_PREV
 
             e.Graphics.DrawImage(_bitmapToPrint, marginX, marginY)
         End If
+    End Sub
+
+    Private Sub Guna2Button3_Click(sender As Object, e As EventArgs) Handles Guna2Button3.Click
+        CaptureForm()
+        Form7.InsertTransactionLog()
+        Dim newform As New Form3
+        Form2.switchPanel(newform)
+        Me.Close()
+    End Sub
+
+    Private Sub Guna2Button4_Click(sender As Object, e As EventArgs) Handles Guna2Button4.Click
+        Me.Close()
     End Sub
 End Class

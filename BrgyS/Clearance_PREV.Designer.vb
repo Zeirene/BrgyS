@@ -22,17 +22,11 @@ Partial Class Clearance_PREV
     'Do not modify it using the code editor.
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Clearance_PREV))
         Dim CustomizableEdges1 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges2 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges3 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges4 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Clearance_PREV))
-        Dim CustomizableEdges5 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges6 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges7 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Dim CustomizableEdges8 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
-        Guna2Button2 = New Guna.UI2.WinForms.Guna2Button()
-        Guna2Button1 = New Guna.UI2.WinForms.Guna2Button()
         PictureBox1 = New PictureBox()
         RichTextBox1 = New RichTextBox()
         RichTextBox2 = New RichTextBox()
@@ -41,38 +35,6 @@ Partial Class Clearance_PREV
         Guna2Button3 = New Guna.UI2.WinForms.Guna2Button()
         CType(PictureBox1, ComponentModel.ISupportInitialize).BeginInit()
         SuspendLayout()
-        ' 
-        ' Guna2Button2
-        ' 
-        Guna2Button2.CustomizableEdges = CustomizableEdges1
-        Guna2Button2.DisabledState.BorderColor = Color.DarkGray
-        Guna2Button2.DisabledState.CustomBorderColor = Color.DarkGray
-        Guna2Button2.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
-        Guna2Button2.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
-        Guna2Button2.Font = New Font("Segoe UI", 9F)
-        Guna2Button2.ForeColor = Color.White
-        Guna2Button2.Location = New Point(554, 176)
-        Guna2Button2.Name = "Guna2Button2"
-        Guna2Button2.ShadowDecoration.CustomizableEdges = CustomizableEdges2
-        Guna2Button2.Size = New Size(180, 45)
-        Guna2Button2.TabIndex = 7
-        Guna2Button2.Text = "Cancel"
-        ' 
-        ' Guna2Button1
-        ' 
-        Guna2Button1.CustomizableEdges = CustomizableEdges3
-        Guna2Button1.DisabledState.BorderColor = Color.DarkGray
-        Guna2Button1.DisabledState.CustomBorderColor = Color.DarkGray
-        Guna2Button1.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
-        Guna2Button1.DisabledState.ForeColor = Color.FromArgb(CByte(141), CByte(141), CByte(141))
-        Guna2Button1.Font = New Font("Segoe UI", 9F)
-        Guna2Button1.ForeColor = Color.White
-        Guna2Button1.Location = New Point(554, 116)
-        Guna2Button1.Name = "Guna2Button1"
-        Guna2Button1.ShadowDecoration.CustomizableEdges = CustomizableEdges4
-        Guna2Button1.Size = New Size(180, 45)
-        Guna2Button1.TabIndex = 6
-        Guna2Button1.Text = "Print"
         ' 
         ' PictureBox1
         ' 
@@ -127,7 +89,7 @@ Partial Class Clearance_PREV
         Guna2Button4.BorderRadius = 18
         Guna2Button4.BorderThickness = 2
         Guna2Button4.CustomBorderColor = Color.Firebrick
-        Guna2Button4.CustomizableEdges = CustomizableEdges5
+        Guna2Button4.CustomizableEdges = CustomizableEdges1
         Guna2Button4.DisabledState.BorderColor = Color.DarkGray
         Guna2Button4.DisabledState.CustomBorderColor = Color.DarkGray
         Guna2Button4.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
@@ -138,7 +100,7 @@ Partial Class Clearance_PREV
         Guna2Button4.Location = New Point(554, 370)
         Guna2Button4.Name = "Guna2Button4"
         Guna2Button4.PressedColor = Color.Firebrick
-        Guna2Button4.ShadowDecoration.CustomizableEdges = CustomizableEdges6
+        Guna2Button4.ShadowDecoration.CustomizableEdges = CustomizableEdges2
         Guna2Button4.Size = New Size(180, 44)
         Guna2Button4.TabIndex = 18
         Guna2Button4.Text = "CANCEL"
@@ -148,7 +110,7 @@ Partial Class Clearance_PREV
         Guna2Button3.Animated = True
         Guna2Button3.BorderRadius = 18
         Guna2Button3.BorderThickness = 2
-        Guna2Button3.CustomizableEdges = CustomizableEdges7
+        Guna2Button3.CustomizableEdges = CustomizableEdges3
         Guna2Button3.DisabledState.BorderColor = Color.DarkGray
         Guna2Button3.DisabledState.CustomBorderColor = Color.DarkGray
         Guna2Button3.DisabledState.FillColor = Color.FromArgb(CByte(169), CByte(169), CByte(169))
@@ -158,7 +120,7 @@ Partial Class Clearance_PREV
         Guna2Button3.ForeColor = Color.White
         Guna2Button3.Location = New Point(554, 320)
         Guna2Button3.Name = "Guna2Button3"
-        Guna2Button3.ShadowDecoration.CustomizableEdges = CustomizableEdges8
+        Guna2Button3.ShadowDecoration.CustomizableEdges = CustomizableEdges4
         Guna2Button3.Size = New Size(180, 44)
         Guna2Button3.TabIndex = 17
         Guna2Button3.Text = "PRINT"
@@ -174,8 +136,6 @@ Partial Class Clearance_PREV
         Controls.Add(RichTextBox3)
         Controls.Add(RichTextBox2)
         Controls.Add(RichTextBox1)
-        Controls.Add(Guna2Button2)
-        Controls.Add(Guna2Button1)
         Controls.Add(PictureBox1)
         FormBorderStyle = FormBorderStyle.None
         Name = "Clearance_PREV"
@@ -184,9 +144,6 @@ Partial Class Clearance_PREV
         CType(PictureBox1, ComponentModel.ISupportInitialize).EndInit()
         ResumeLayout(False)
     End Sub
-
-    Friend WithEvents Guna2Button2 As Guna.UI2.WinForms.Guna2Button
-    Friend WithEvents Guna2Button1 As Guna.UI2.WinForms.Guna2Button
     Friend WithEvents PictureBox1 As PictureBox
     Friend WithEvents RichTextBox1 As RichTextBox
     Friend WithEvents RichTextBox2 As RichTextBox

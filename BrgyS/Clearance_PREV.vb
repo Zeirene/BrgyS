@@ -74,8 +74,27 @@ Public Class Clearance_PREV
     Private Sub Clearance_PREV_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         insertintoRTB()
     End Sub
+    Private Sub Guna2Button1_Click(sender As Object, e As EventArgs)
+        CaptureForm()
+        clearanceQCID.InsertTransactionLog()
+        Dim newform As New Form3
+        Form2.switchPanel(newform)
+    End Sub
+    Private Sub Guna2Button3_Click(sender As Object, e As EventArgs) Handles Guna2Button3.Click
+        CaptureForm()
+        clearanceQCID.InsertTransactionLog()
+        Dim newform As New Form3()
+        Form2.switchPanel(newform)
+        Me.Close()
+    End Sub
+    Private Sub Guna2Button4_Click(sender As Object, e As EventArgs) Handles Guna2Button4.Click
+        Me.Close()
+    End Sub
 
-    ' Method to insert values into RichTextBox controls
+
+
+
+
     Public Sub insertintoRTB()
         Try
             ' Prepare the text
@@ -94,41 +113,6 @@ Public Class Clearance_PREV
             MsgBox($"An error occurred: {ex.Message}", MsgBoxStyle.Critical, "Error")
         End Try
     End Sub
-
-    Private Sub Guna2Button1_Click(sender As Object, e As EventArgs) Handles Guna2Button1.Click
-        CaptureForm()
-        'clearanceQCID.InsertTransactionLog()
-        Dim newform As New Form3()
-        Form2.switchPanel(newform)
-    End Sub
-
-    'Private Sub CaptureForm()
-    '    ' Define the rectangle for the part of the form to capture
-    '    Dim captureArea As New Rectangle(1, 1, 522, 700)
-
-    '    ' Create a bitmap with the size of the capture area
-    '    Dim bmp As New Bitmap(captureArea.Width, captureArea.Height)
-
-    '    ' Create a graphics object to draw onto the bitmap
-    '    Using g As Graphics = Graphics.FromImage(bmp)
-    '        ' Capture the specified part of the form
-    '        g.CopyFromScreen(Me.PointToScreen(captureArea.Location), Point.Empty, captureArea.Size)
-    '    End Using
-
-    '    ' Generate file name with details
-    '    Dim typeofpaper As String = Form3.Guna2ComboBox1.Text
-    '    Dim dateTimeStamp As String = DateTime.Now.ToString("yyyyMMdd")
-    '    Dim newDocxFileName As String = _resName & "_" & typeofpaper & "_" & dateTimeStamp
-
-    '    ' Save the bitmap to a file (e.g., PNG)
-    '    Dim savePath As String = "C:\Users\John Roi\source\repos\BrgyS\BrgyS\Generated Pics\captured form\" & newDocxFileName & ".png"
-    '    bmp.Save(savePath, Imaging.ImageFormat.Png)
-
-    '    ' Release resources
-    '    bmp.Dispose()
-
-    '    MessageBox.Show("Specified part of the form captured and saved!")
-    'End Sub
     Private Sub CaptureForm()
         ' Define the rectangle for the part of the form to capture
         Dim captureArea As New Rectangle(1, 1, 522, 700)
@@ -205,6 +189,5 @@ Public Class Clearance_PREV
             e.Graphics.DrawImage(_bitmapToPrint, marginX, marginY)
         End If
     End Sub
-
 
 End Class

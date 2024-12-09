@@ -449,7 +449,7 @@ Public Class Form3
                 Guna2ComboBox4.Items.Add("Tarhaville Ave.")
 
             Case Else
-                ' Optional: If an unrecognized item is selected, you could show a message or keep Guna2ComboBox3 empty
+                ' Optional: If an unrecognized item is selected, you could show a message or keep Guna2ComboBox3 empt
                 Guna2ComboBox4.Items.Add("No streets available")
         End Select
     End Sub

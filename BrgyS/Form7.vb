@@ -11,6 +11,7 @@ Imports System.Drawing.Printing
 Imports DocumentFormat.OpenXml.Drawing.Charts
 Imports System.Transactions
 Imports BrgyS.ApiResponse
+Imports Guna.UI2.WinForms
 
 
 
@@ -18,6 +19,8 @@ Imports BrgyS.ApiResponse
 Public Class Form7
     Private _busname As String
     Public BNAME, BADDRESS, NATUREB As String
+
+
 
 
     Private Sub Form7_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -103,16 +106,73 @@ Public Class Form7
     '    End Try
     'End Sub
 
+    '  .ResidentFirstName = Form3.Guna2TextBox7.Text,
+    '.ResidentType = "Resident",
+    '.YearOfStay = Integer.Parse(Guna2TextBox6.Text),
+    '.BirthPlace = "Sauyo",
+    '.Sex = "Male",
+    '.Address = Form3.Guna2TextBox9.Text,
+    '.ResidentContactNumber = Guna2TextBox3.Text,
+    '.BloodType = "Unidentified",
+    '.ResidentEmail = Guna2TextBox10.Text,
+    '.ResidentRegisteredDate = formattedDate,
+    '.ResidentBirthdate = formattedDate,
+    '.ResidentLastName = Form3.Guna2TextBox8.Text,
+    '.CivilStatus = "Single",
+    '.Sitio = Form3.Guna2ComboBox3.SelectedItem?.ToString(),
+    '.ResidentMiddleName = Form3.Guna2TextBox6.Text,
+    '.Street = Form3.Guna2ComboBox4.SelectedItem?.ToString()'
     Public Async Sub InsertTransactionLog()
+        Dim InResidentId As Long?
+
+        ' If Label2.Text is empty, create a new resident
+        If String.IsNullOrWhiteSpace(Label2.Text) Then
+            ' Insert new resident
+            Dim residentAccountCreated As New Date(2025, 1, 10, 8, 48, 30) ' Example date with time
+            Dim formattedDate As String = residentAccountCreated.ToString("yyyy-MM-ddTHH:mm:sszzz")
+            '            .ResidentEmail = Guna2TextBox10.Text,
+            Dim newResident As New ResidentRecord() With {
+            .ResidentFirstName = Form3.Guna2TextBox7.Text,
+            .ResidentType = "Resident",
+            .YearOfStay = Integer.Parse(Guna2TextBox6.Text),
+            .BirthPlace = "Sauyo",
+            .Sex = "Male",
+            .Address = Form3.Guna2TextBox9.Text,
+            .ResidentContactNumber = Guna2TextBox3.Text,
+            .BloodType = "Unidentified",
+            .ResidentRegisteredDate = formattedDate,
+            .ResidentBirthdate = formattedDate,
+            .ResidentLastName = Form3.Guna2TextBox8.Text,
+            .CivilStatus = "Single",
+            .Sitio = Form3.Guna2ComboBox3.SelectedItem?.ToString(),
+            .ResidentMiddleName = Form3.Guna2TextBox6.Text,
+            .Street = Form3.Guna2ComboBox4.SelectedItem?.ToString()
+        }
+
+            ' Call API to insert new resident
+            Dim client As New ApiClient()
+            InResidentId = Await client.InsertResidentAsync(newResident)
+
+            If InResidentId.HasValue Then
+                MessageBox.Show($"Resident created successfully with ID: {InResidentId.Value}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            Else
+                MessageBox.Show("Failed to create resident.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Exit Sub ' Stop further processing if resident creation fails
+            End If
+        Else
+            ' If Label2.Text has a value, use it as the ResidentId
+            InResidentId = Long.Parse(Label2.Text)
+        End If
+
         Try
             ' Create the transaction log object
             Dim transactionLog As New TransactionLog() With {
             .LogDate = Date.Today.ToString("yyyy-MM-dd"),
             .LogTime = DateTime.Now.ToString("HH:mm:ss"),
             .Type = Form3.Guna2ComboBox2.Text,
-            .Status = "Completed",
+            .Status = "Pending",
             .Payment = Decimal.Parse(Form3.Guna2TextBox16.Text),
-            .ResidentId = Long.Parse(Label2.Text),
+            .ResidentId = InResidentId, ' This will now have a valid ID
             .StaffId = Form2.staffID
         }
 
@@ -132,7 +192,7 @@ Public Class Form7
                 .BAddress = Guna2TextBox5.Text & " Brgy Sta Lucia, QUEZON CITY",
                 .BName = Guna2TextBox2.Text,
                 .MRental = Decimal.Parse(Guna2TextBox8.Text),
-                .LogId = logId.Value.ToString(), ' Use the returned log_id
+                .LogId = logId.Value.ToString(),
                 .StayDuration = Guna2TextBox6.Text
             }
 
@@ -145,7 +205,6 @@ Public Class Form7
                     MessageBox.Show("Failed to insert permit log.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 End If
             Else
-                ' Log ID was not retrieved
                 MessageBox.Show("Failed to retrieve Log ID for transaction log.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
         Catch ex As FormatException
@@ -155,6 +214,9 @@ Public Class Form7
             MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
+
+
+
 
 
     Private Sub generatedocfile()

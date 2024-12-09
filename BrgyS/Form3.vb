@@ -474,7 +474,6 @@ Public Class Form3
             Case "BRGY ID"
 
                 Guna2ComboBox4.Items.Add("J.P. Rizal")
-                Guna2TextBox16.Text("")
             Case "NBI"
 
                 Guna2ComboBox4.Items.Add("J.P. Rizal")

@@ -135,200 +135,200 @@ Public Class brgyID
 
 
     'functions and sub/////////////////////////////////////////////////////////////
-    'Private Sub generatedocfile()
-    '    ' Path to the template document
-    '    Dim templatePath As String = "C:\Users\John Roi\source\repos\BrgyS\BrgyS\docu\BRGYidTEMP.docx"
+    Private Sub generatedocfile()
+        ' Path to the template document
+        Dim templatePath As String = "C:\Users\John Roi\source\repos\BrgyS\BrgyS\docu\BRGYidTEMP.docx"
 
-    '    ' Check if the template file exists
-    '    If Not File.Exists(templatePath) Then
-    '        MessageBox.Show("Template file not found at: " & templatePath, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-    '        Return
-    '    End If
+        ' Check if the template file exists
+        If Not File.Exists(templatePath) Then
+            MessageBox.Show("Template file not found at: " & templatePath, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            Return
+        End If
 
-    '    ' Input values from the textboxes
-    '    Dim NAMEOFAPPLICANT As String = Guna2TextBox1.Text
-    '    Dim BRGYID As String = Label2.Text
-    '    Dim RESADDRESS As String = Guna2TextBox3.Text + " Brgy Sta Lucia, QUEZON CITY"
-    '    Dim PHOTO As String = Label5.Text
-    '    Dim TIN As String = Guna2TextBox4.Text
-    '    Dim BDAY As String = Guna2DateTimePicker1.Value.ToString("MM:dd:yy")
-    '    Dim BTYPE As String = Guna2ComboBox1.Text
-    '    Dim PRECINTNO As String = Guna2TextBox6.Text
-    '    Dim EMERNAME As String = Guna2TextBox8.Text
-    '    Dim EMERNO As String = Guna2TextBox7.Text
-    '    Dim EMERADD As String = Guna2TextBox9.Text
+        ' Input values from the textboxes
+        Dim NAMEOFAPPLICANT As String = Guna2TextBox1.Text
+        Dim BRGYID As String = Label2.Text
+        Dim RESADDRESS As String = Guna2TextBox3.Text + " Brgy Sta Lucia, QUEZON CITY"
+        Dim PHOTO As String = Label5.Text
+        Dim TIN As String = Guna2TextBox4.Text
+        Dim BDAY As String = Guna2DateTimePicker1.Value.ToString("MM:dd:yy")
+        Dim BTYPE As String = Guna2ComboBox1.Text
+        Dim PRECINTNO As String = Guna2TextBox6.Text
+        Dim EMERNAME As String = Guna2TextBox8.Text
+        Dim EMERNO As String = Guna2TextBox7.Text
+        Dim EMERADD As String = Guna2TextBox9.Text
 
-    '    ' Generate a new .docx file path
-    '    Dim sanitizedStudentName As String = NAMEOFAPPLICANT
-    '    Dim typeofpaper As String = Form3.Guna2ComboBox1.Text
-    '    Dim dateTimeStamp As String = DateTime.Now.ToString("yyyyMMdd")
-    '    Dim newDocxFileName As String = typeofpaper & "_" & sanitizedStudentName & "_" & dateTimeStamp & ".docx"
-    '    Dim newDocxFilePath As String = Path.Combine("C:\Users\John Roi\source\repos\BrgyS\BrgyS\docu\generated docu\", newDocxFileName)
+        ' Generate a new .docx file path
+        Dim sanitizedStudentName As String = NAMEOFAPPLICANT
+        Dim typeofpaper As String = Form3.Guna2ComboBox1.Text
+        Dim dateTimeStamp As String = DateTime.Now.ToString("yyyyMMdd")
+        Dim newDocxFileName As String = typeofpaper & "_" & sanitizedStudentName & "_" & dateTimeStamp & ".docx"
+        Dim newDocxFilePath As String = Path.Combine("C:\Users\John Roi\source\repos\BrgyS\BrgyS\docu\generated docu\", newDocxFileName)
 
-    '    Try
-    '        ' Copy the template file and replace placeholders
-    '        File.Copy(templatePath, newDocxFilePath, True)
-    '        ReplaceTextInWordDocument(newDocxFilePath, "{BDay}", BDAY)
-
-
-    '        ReplaceTextInWordDocument(newDocxFilePath, "{IDNumber}", BRGYID)
-    '        ReplaceTextInWordDocument(newDocxFilePath, "{TIN}", TIN)
-    '        ReplaceTextInWordDocument(newDocxFilePath, "{Precinct}", PRECINTNO)
-    '        ReplaceTextInWordDocument(newDocxFilePath, "{numcon}", EMERNO)
+        Try
+            ' Copy the template file and replace placeholders
+            File.Copy(templatePath, newDocxFilePath, True)
+            ReplaceTextInWordDocument(newDocxFilePath, "{BDay}", BDAY)
 
 
-
-    '        ReplaceTextInWordDocument(newDocxFilePath, "{Name}", NAMEOFAPPLICANT)
-    '        ReplaceTextInWordDocument(newDocxFilePath, "{Address}", RESADDRESS)
-    '        ReplaceTextInWordDocument(newDocxFilePath, "{BloodType}", BTYPE)
-    '        ReplaceTextInWordDocument(newDocxFilePath, "{NameOfEmerContact}", EMERNAME)
-    '        ReplaceTextInWordDocument(newDocxFilePath, "{addcon}", EMERADD)
-
-    '        InsertImageInWordDocument(newDocxFilePath, "{image}", PHOTO)
+            ReplaceTextInWordDocument(newDocxFilePath, "{IDNumber}", BRGYID)
+            ReplaceTextInWordDocument(newDocxFilePath, "{TIN}", TIN)
+            ReplaceTextInWordDocument(newDocxFilePath, "{Precinct}", PRECINTNO)
+            ReplaceTextInWordDocument(newDocxFilePath, "{numcon}", EMERNO)
 
 
-    '        PrintDocxFile(newDocxFilePath, newDocxFileName)
 
-    '    Catch ex As Exception
-    '        MessageBox.Show("An error occurred on insert: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-    '    End Try
-    'End Sub
-    'Public Sub PrintDocxFile(docxFilePath As String, filename As String)
-    '    'Create a Document object
+            ReplaceTextInWordDocument(newDocxFilePath, "{Name}", NAMEOFAPPLICANT)
+            ReplaceTextInWordDocument(newDocxFilePath, "{Address}", RESADDRESS)
+            ReplaceTextInWordDocument(newDocxFilePath, "{BloodType}", BTYPE)
+            ReplaceTextInWordDocument(newDocxFilePath, "{NameOfEmerContact}", EMERNAME)
+            ReplaceTextInWordDocument(newDocxFilePath, "{addcon}", EMERADD)
 
-    '    ' Create a Document object
-    '    Try
-    '        ' Load the Word document using Spire.Doc
-    '        Dim doc As New Documentss()
-    '        doc.LoadFromFile(docxFilePath)
+            InsertImageInWordDocument(newDocxFilePath, "{image}", PHOTO)
 
-    '        ' Generate a uniformed file name with timestamp
-    '        'Dim folderPath As String = "C:\Users\John Roi\source\repos\BrgyS\BrgyS\docu\printeddocs\" ' Specify your folder path
-    '        'If Not Directory.Exists(folderPath) Then
-    '        '    Directory.CreateDirectory(folderPath) ' Create folder if it doesn't exist
-    '        'End If
 
-    '        '' Create a uniformed name for the file
-    '        'Dim newFilePath As String = Path.Combine(folderPath, filename)
+            PrintDocxFile(newDocxFilePath, newDocxFileName)
 
-    '        '' Save the document with the uniformed file name
-    '        'doc.SaveToFile(newFilePath)
+        Catch ex As Exception
+            MessageBox.Show("An error occurred on insert: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+    Public Sub PrintDocxFile(docxFilePath As String, filename As String)
+        'Create a Document object
 
-    '        '' Optional: Show message confirming the file has been saved
-    '        'MessageBox.Show("Document saved as: " & filename, "Save Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        ' Create a Document object
+        Try
+            ' Load the Word document using Spire.Doc
+            Dim doc As New Documentss()
+            doc.LoadFromFile(docxFilePath)
 
-    '        ' Get the PrintDocument object from Spire.Doc document
-    '        Dim printDoc As PrintDocument = doc.PrintDocument
+            ' Generate a uniformed file name with timestamp
+            'Dim folderPath As String = "C:\Users\John Roi\source\repos\BrgyS\BrgyS\docu\printeddocs\" ' Specify your folder path
+            'If Not Directory.Exists(folderPath) Then
+            '    Directory.CreateDirectory(folderPath) ' Create folder if it doesn't exist
+            'End If
 
-    '        ' Optional: Specify the printer name
-    '        ' printDoc.PrinterSettings.PrinterName = "Your Printer Name"
+            '' Create a uniformed name for the file
+            'Dim newFilePath As String = Path.Combine(folderPath, filename)
 
-    '        ' Optional: Specify the range of pages to print
-    '        ' printDoc.PrinterSettings.FromPage = 1
-    '        ' printDoc.PrinterSettings.ToPage = 1
+            '' Save the document with the uniformed file name
+            'doc.SaveToFile(newFilePath)
 
-    '        ' Optional: Specify the number of copies to print
-    '        ' printDoc.PrinterSettings.Copies = 1
+            '' Optional: Show message confirming the file has been saved
+            'MessageBox.Show("Document saved as: " & filename, "Save Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-    '        ' Print the document
-    '        printDoc.Print()
+            ' Get the PrintDocument object from Spire.Doc document
+            Dim printDoc As PrintDocument = doc.PrintDocument
 
-    '        ' Show success message for printing
-    '        MessageBox.Show("Document sent to printer successfully.", "Print Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            ' Optional: Specify the printer name
+            ' printDoc.PrinterSettings.PrinterName = "Your Printer Name"
 
-    '    Catch ex As Exception
-    '        ' Handle any errors
-    '        MessageBox.Show("Error printing or saving document: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-    '    End Try
-    'End Sub
-    'Private Sub InsertImageInWordDocument(filePath As String, imagePlaceholder As String, imagePath As String)
-    '    Using wordDoc As WordprocessingDocument = WordprocessingDocument.Open(filePath, True)
-    '        Dim mainPart As MainDocumentPart = wordDoc.MainDocumentPart
-    '        Dim picbody As Body = mainPart.Document.Body
+            ' Optional: Specify the range of pages to print
+            ' printDoc.PrinterSettings.FromPage = 1
+            ' printDoc.PrinterSettings.ToPage = 1
 
-    '        ' Find the paragraph containing the image placeholder
-    '        For Each paragraph As Paragraph In picbody.Descendants(Of Paragraph)()
-    '            For Each run As Run In paragraph.Descendants(Of Run)()
-    '                For Each textElement As Text In run.Descendants(Of Text)()
-    '                    If textElement.Text.Contains(imagePlaceholder) Then
-    '                        ' Replace the placeholder text with an empty string (removing the placeholder)
-    '                        textElement.Text = textElement.Text.Replace(imagePlaceholder, "")
+            ' Optional: Specify the number of copies to print
+            ' printDoc.PrinterSettings.Copies = 1
 
-    '                        ' Add an image part to the document
-    '                        Dim imagePart As ImagePart = mainPart.AddImagePart(ImagePartType.Jpeg)
+            ' Print the document
+            printDoc.Print()
 
-    '                        ' Feed the image data
-    '                        Using stream As FileStream = New FileStream(imagePath, FileMode.Open)
-    '                            imagePart.FeedData(stream)
-    '                        End Using
+            ' Show success message for printing
+            MessageBox.Show("Document sent to printer successfully.", "Print Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
-    '                        ' Get the unique relationship ID for the image part
-    '                        Dim relationshipId As String = mainPart.GetIdOfPart(imagePart)
+        Catch ex As Exception
+            ' Handle any errors
+            MessageBox.Show("Error printing or saving document: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+    Private Sub InsertImageInWordDocument(filePath As String, imagePlaceholder As String, imagePath As String)
+        Using wordDoc As WordprocessingDocument = WordprocessingDocument.Open(filePath, True)
+            Dim mainPart As MainDocumentPart = wordDoc.MainDocumentPart
+            Dim picbody As Body = mainPart.Document.Body
 
-    '                        ' Insert the image at the location of the placeholder
-    '                        Dim element As New Drawing(
-    '                            New DocumentFormat.OpenXml.Drawing.Wordprocessing.Inline(
-    '                                New DocumentFormat.OpenXml.Drawing.Wordprocessing.Extent() With {.Cx = 2116800L, .Cy = 2116800L}, ' Image size in EMU
-    '                                New DocumentFormat.OpenXml.Drawing.Wordprocessing.EffectExtent() With {.LeftEdge = 0L, .TopEdge = 0L, .RightEdge = 0L, .BottomEdge = 0L},
-    '                                New DocumentFormat.OpenXml.Drawing.Wordprocessing.DocProperties() With {.Id = 1UI, .Name = "Image 1"},
-    '                                New DocumentFormat.OpenXml.Drawing.Wordprocessing.NonVisualGraphicFrameDrawingProperties(
-    '                                    New DocumentFormat.OpenXml.Drawing.GraphicFrameLocks() With {.NoChangeAspect = True}),
-    '                                New DocumentFormat.OpenXml.Drawing.Graphic(
-    '                                    New DocumentFormat.OpenXml.Drawing.GraphicData(
-    '                                        New DocumentFormat.OpenXml.Drawing.Pictures.Picture(
-    '                                            New DocumentFormat.OpenXml.Drawing.Pictures.NonVisualPictureProperties(
-    '                                                New DocumentFormat.OpenXml.Drawing.Pictures.NonVisualDrawingProperties() With {.Id = 0UI, .Name = "Image"},
-    '                                                New DocumentFormat.OpenXml.Drawing.Pictures.NonVisualPictureDrawingProperties()
-    '                                            ),
-    '                                            New DocumentFormat.OpenXml.Drawing.Pictures.BlipFill(
-    '                                                New DocumentFormat.OpenXml.Drawing.Blip() With {.Embed = relationshipId, .CompressionState = DocumentFormat.OpenXml.Drawing.BlipCompressionValues.Print},
-    '                                                New DocumentFormat.OpenXml.Drawing.Stretch(New DocumentFormat.OpenXml.Drawing.FillRectangle())
-    '                                            ),
-    '                                            New DocumentFormat.OpenXml.Drawing.Pictures.ShapeProperties(
-    '                                                New DocumentFormat.OpenXml.Drawing.Transform2D(
-    '                                                    New DocumentFormat.OpenXml.Drawing.Offset() With {.X = 0L, .Y = 0L},
-    '                                                    New DocumentFormat.OpenXml.Drawing.Extents() With {.Cx = 2116800L, .Cy = 1944000L}
-    '                                                ),
-    '                                                New DocumentFormat.OpenXml.Drawing.PresetGeometry(New DocumentFormat.OpenXml.Drawing.AdjustValueList()) With {.Preset = DocumentFormat.OpenXml.Drawing.ShapeTypeValues.Rectangle}
-    '                                            )
-    '                                        )
-    '                                    ) With {.Uri = "http://schemas.openxmlformats.org/drawingml/2006/picture"}
-    '                                )
-    '                            )
-    '                        )
+            ' Find the paragraph containing the image placeholder
+            For Each paragraph As Paragraph In picbody.Descendants(Of Paragraph)()
+                For Each run As Run In paragraph.Descendants(Of Run)()
+                    For Each textElement As Text In run.Descendants(Of Text)()
+                        If textElement.Text.Contains(imagePlaceholder) Then
+                            ' Replace the placeholder text with an empty string (removing the placeholder)
+                            textElement.Text = textElement.Text.Replace(imagePlaceholder, "")
 
-    '                        ' Append the drawing to the Run
-    '                        run.AppendChild(New Run(element))
-    '                    End If
-    '                Next
-    '            Next
-    '        Next
+                            ' Add an image part to the document
+                            Dim imagePart As ImagePart = mainPart.AddImagePart(ImagePartType.Jpeg)
 
-    '        ' Save changes to the document
-    '        mainPart.Document.Save()
-    '    End Using
-    'End Sub
+                            ' Feed the image data
+                            Using stream As FileStream = New FileStream(imagePath, FileMode.Open)
+                                imagePart.FeedData(stream)
+                            End Using
 
-    'Private Sub ReplaceTextInWordDocument(filePath As String, placeholder As String, replacementText As String)
-    '    ' Open the existing Word document as read/write
-    '    Using wordDoc As WordprocessingDocument = WordprocessingDocument.Open(filePath, True)
-    '        ' Get the main document part
-    '        Dim mainPart As MainDocumentPart = wordDoc.MainDocumentPart
-    '        Dim documentBody As Body = mainPart.Document.Body
+                            ' Get the unique relationship ID for the image part
+                            Dim relationshipId As String = mainPart.GetIdOfPart(imagePart)
 
-    '        ' Loop through all text elements in the document
-    '        For Each textElement As Text In documentBody.Descendants(Of Text)()
-    '            ' Check if the text contains the placeholder
-    '            If textElement.Text.Contains(placeholder) Then
-    '                ' Replace the placeholder with the actual value
-    '                textElement.Text = textElement.Text.Replace(placeholder, replacementText)
-    '            End If
-    '        Next
+                            ' Insert the image at the location of the placeholder
+                            Dim element As New Drawing(
+                                New DocumentFormat.OpenXml.Drawing.Wordprocessing.Inline(
+                                    New DocumentFormat.OpenXml.Drawing.Wordprocessing.Extent() With {.Cx = 2116800L, .Cy = 2116800L}, ' Image size in EMU
+                                    New DocumentFormat.OpenXml.Drawing.Wordprocessing.EffectExtent() With {.LeftEdge = 0L, .TopEdge = 0L, .RightEdge = 0L, .BottomEdge = 0L},
+                                    New DocumentFormat.OpenXml.Drawing.Wordprocessing.DocProperties() With {.Id = 1UI, .Name = "Image 1"},
+                                    New DocumentFormat.OpenXml.Drawing.Wordprocessing.NonVisualGraphicFrameDrawingProperties(
+                                        New DocumentFormat.OpenXml.Drawing.GraphicFrameLocks() With {.NoChangeAspect = True}),
+                                    New DocumentFormat.OpenXml.Drawing.Graphic(
+                                        New DocumentFormat.OpenXml.Drawing.GraphicData(
+                                            New DocumentFormat.OpenXml.Drawing.Pictures.Picture(
+                                                New DocumentFormat.OpenXml.Drawing.Pictures.NonVisualPictureProperties(
+                                                    New DocumentFormat.OpenXml.Drawing.Pictures.NonVisualDrawingProperties() With {.Id = 0UI, .Name = "Image"},
+                                                    New DocumentFormat.OpenXml.Drawing.Pictures.NonVisualPictureDrawingProperties()
+                                                ),
+                                                New DocumentFormat.OpenXml.Drawing.Pictures.BlipFill(
+                                                    New DocumentFormat.OpenXml.Drawing.Blip() With {.Embed = relationshipId, .CompressionState = DocumentFormat.OpenXml.Drawing.BlipCompressionValues.Print},
+                                                    New DocumentFormat.OpenXml.Drawing.Stretch(New DocumentFormat.OpenXml.Drawing.FillRectangle())
+                                                ),
+                                                New DocumentFormat.OpenXml.Drawing.Pictures.ShapeProperties(
+                                                    New DocumentFormat.OpenXml.Drawing.Transform2D(
+                                                        New DocumentFormat.OpenXml.Drawing.Offset() With {.X = 0L, .Y = 0L},
+                                                        New DocumentFormat.OpenXml.Drawing.Extents() With {.Cx = 2116800L, .Cy = 1944000L}
+                                                    ),
+                                                    New DocumentFormat.OpenXml.Drawing.PresetGeometry(New DocumentFormat.OpenXml.Drawing.AdjustValueList()) With {.Preset = DocumentFormat.OpenXml.Drawing.ShapeTypeValues.Rectangle}
+                                                )
+                                            )
+                                        ) With {.Uri = "http://schemas.openxmlformats.org/drawingml/2006/picture"}
+                                    )
+                                )
+                            )
 
-    '        ' Save changes to the document
-    '        mainPart.Document.Save()
-    '    End Using
-    'End Sub
+                            ' Append the drawing to the Run
+                            run.AppendChild(New Run(element))
+                        End If
+                    Next
+                Next
+            Next
+
+            ' Save changes to the document
+            mainPart.Document.Save()
+        End Using
+    End Sub
+
+    Private Sub ReplaceTextInWordDocument(filePath As String, placeholder As String, replacementText As String)
+        ' Open the existing Word document as read/write
+        Using wordDoc As WordprocessingDocument = WordprocessingDocument.Open(filePath, True)
+            ' Get the main document part
+            Dim mainPart As MainDocumentPart = wordDoc.MainDocumentPart
+            Dim documentBody As Body = mainPart.Document.Body
+
+            ' Loop through all text elements in the document
+            For Each textElement As Text In documentBody.Descendants(Of Text)()
+                ' Check if the text contains the placeholder
+                If textElement.Text.Contains(placeholder) Then
+                    ' Replace the placeholder with the actual value
+                    textElement.Text = textElement.Text.Replace(placeholder, replacementText)
+                End If
+            Next
+
+            ' Save changes to the document
+            mainPart.Document.Save()
+        End Using
+    End Sub
 
 
 
@@ -337,7 +337,6 @@ Public Class brgyID
 
 
     'camera//////////////////////////////////////////////////////////////////////////////////////
-
     Private Sub Camstart()
         Dim cameras As VideoCaptureDeviceForm = New VideoCaptureDeviceForm
         If cameras.ShowDialog = DialogResult.OK Then

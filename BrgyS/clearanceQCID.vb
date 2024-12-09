@@ -38,138 +38,134 @@ Public Class clearanceQCID
     End Sub
 
 
-    'validations//////////////////////////////////////////////////////////////////////////////////////////////
-    Private Sub Guna2TextBox6_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Guna2TextBox2.KeyPress
-        'validations
-        onlyacceptnum(e)
-    End Sub
+
 
 
 
 
 
     'functions and sub/////////////////////////////////////////////////////////////
-    'Private Sub generatedocfile()
-    '    ' Path to the template document
-    '    Dim templatePath As String = "C:\Users\John Roi\source\repos\BrgyS\BrgyS\docu\clearancetemplate.docx"
+    Private Sub generatedocfile()
+        ' Path to the template document
+        Dim templatePath As String = "C:\Users\John Roi\source\repos\BrgyS\BrgyS\docu\clearancetemplate.docx"
 
-    '    ' Input values from the textboxes
-    '    Dim NAMEOFRESIDENT As String = Guna2TextBox1.Text
-    '    Dim BDAY As String = Guna2DateTimePicker1.Value.ToString("MMM,d yyyy")
-    '    Dim CIVITSTAT As String = Guna2ComboBox1.Text
-
-
-    '    Dim RESADDRESS As String = Guna2TextBox4.Text + " Brgy Sta Lucia, QUEZON CITY"
-    '    Dim YEARSOFSTAY As String = Guna2TextBox2.Text
-    '    Dim PURPOSE As String = Guna2ComboBox3.Text
-    '    Dim day As String = DateTime.Now.ToString("dd")
-    '    Dim monthyear As String = DateTime.Now.ToString("MM,yyyy")
-
-    '    'Dim studentSection As String = TextBox2.Text
-    '    'Dim studentYear As String = TextBox3.Text
-
-    '    ' Generate a customized file name based on student's name and current date/time
-    '    Dim sanitizedStudentName As String = NAMEOFRESIDENT
-    '    Dim dateTimeStamp As String = DateTime.Now.ToString("yyyyMMdd hh mm") ' Add a timestamp to the file name
-    '    Dim typeofpaper As String = Form3.Guna2ComboBox1.Text
-
-    '    Dim newFileName As String = dateTimeStamp & " " & sanitizedStudentName & "_" & typeofpaper & ".docx"
-    '    Dim newFilePath As String = Path.Combine("C:\Users\John Roi\source\repos\BrgyS\BrgyS\docu\generated docu\", newFileName)
-
-    '    ' Copy the template file to a new file with the customized name
-    '    File.Copy(templatePath, newFilePath, True) ' The True flag will overwrite if the file already exists
-
-    '    Try
-    '        ' Replace placeholders in the new document
-    '        ReplaceTextInWordDocument(newFilePath, "{name}", NAMEOFRESIDENT)
-    '        ReplaceTextInWordDocument(newFilePath, "{BDAY}", BDAY)
-    '        ReplaceTextInWordDocument(newFilePath, "{stat}", CIVITSTAT)
-
-    '        ReplaceTextInWordDocument(newFilePath, "{add}", RESADDRESS)
-    '        ReplaceTextInWordDocument(newFilePath, "{stay}", YEARSOFSTAY)
-    '        ReplaceTextInWordDocument(newFilePath, "{purp}", PURPOSE)
-    '        ReplaceTextInWordDocument2(newFilePath, "{day}", day)
-    '        ReplaceTextInWordDocument2(newFilePath, "{monthyear}", monthyear)
-
-    '        ' Inform the user that the document has been saved
-    '        'MessageBox.Show("Document created And saved successfully as " & newFilePath, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-    '        MessageBox.Show("Document created And ready to print ", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-    '    Catch ex As Exception
-    '        MessageBox.Show("An error occurred on insert: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-    '    End Try
-    'End Sub
-    'Private Sub Guna2TextBox2_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Guna2TextBox2.KeyPress
-    '    onlyacceptnum(e)
-    'End Sub
+        ' Input values from the textboxes
+        Dim NAMEOFRESIDENT As String = Guna2TextBox1.Text
+        Dim BDAY As String = Guna2DateTimePicker1.Value.ToString("MMM,d yyyy")
+        Dim CIVITSTAT As String = Guna2ComboBox1.Text
 
 
-    ''function
-    'Private Sub ReplaceTextInWordDocument2(filePath As String, placeholder As String, replacementText As String)
-    '    ' Open the existing Word document as read/write
-    '    Using wordDoc As WordprocessingDocument = WordprocessingDocument.Open(filePath, True)
-    '        ' Get the main document part
-    '        Dim mainPart As MainDocumentPart = wordDoc.MainDocumentPart
-    '        Dim documentBody As Body = mainPart.Document.Body
+        Dim RESADDRESS As String = Guna2TextBox4.Text + " Brgy Sta Lucia, QUEZON CITY"
+        Dim YEARSOFSTAY As String = Guna2TextBox2.Text
+        Dim PURPOSE As String = Guna2ComboBox3.Text
+        Dim day As String = DateTime.Now.ToString("dd")
+        Dim monthyear As String = DateTime.Now.ToString("MM,yyyy")
 
-    '        ' Loop through all text elements in the document
-    '        For Each textElement As Text In documentBody.Descendants(Of Text)()
-    '            ' Check if the text contains the placeholder
-    '            If textElement.Text.Contains(placeholder) Then
-    '                ' Replace the placeholder with the actual value
-    '                textElement.Text = textElement.Text.Replace(placeholder, replacementText)
-    '            End If
-    '        Next
+        'Dim studentSection As String = TextBox2.Text
+        'Dim studentYear As String = TextBox3.Text
 
-    '        ' Save changes to the document
-    '        mainPart.Document.Save()
-    '    End Using
-    'End Sub
+        ' Generate a customized file name based on student's name and current date/time
+        Dim sanitizedStudentName As String = NAMEOFRESIDENT
+        Dim dateTimeStamp As String = DateTime.Now.ToString("yyyyMMdd hh mm") ' Add a timestamp to the file name
+        Dim typeofpaper As String = Form3.Guna2ComboBox1.Text
+
+        Dim newFileName As String = dateTimeStamp & " " & sanitizedStudentName & "_" & typeofpaper & ".docx"
+        Dim newFilePath As String = Path.Combine("C:\Users\John Roi\source\repos\BrgyS\BrgyS\docu\generated docu\", newFileName)
+
+        ' Copy the template file to a new file with the customized name
+        File.Copy(templatePath, newFilePath, True) ' The True flag will overwrite if the file already exists
+
+        Try
+            ' Replace placeholders in the new document
+            ReplaceTextInWordDocument(newFilePath, "{name}", NAMEOFRESIDENT)
+            ReplaceTextInWordDocument(newFilePath, "{BDAY}", BDAY)
+            ReplaceTextInWordDocument(newFilePath, "{stat}", CIVITSTAT)
+
+            ReplaceTextInWordDocument(newFilePath, "{add}", RESADDRESS)
+            ReplaceTextInWordDocument(newFilePath, "{stay}", YEARSOFSTAY)
+            ReplaceTextInWordDocument(newFilePath, "{purp}", PURPOSE)
+            ReplaceTextInWordDocument2(newFilePath, "{day}", day)
+            ReplaceTextInWordDocument2(newFilePath, "{monthyear}", monthyear)
+
+            ' Inform the user that the document has been saved
+            'MessageBox.Show("Document created And saved successfully as " & newFilePath, "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show("Document created And ready to print ", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+        Catch ex As Exception
+            MessageBox.Show("An error occurred on insert: " & ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+        End Try
+    End Sub
+    Private Sub Guna2TextBox2_KeyPress(sender As Object, e As KeyPressEventArgs) Handles Guna2TextBox2.KeyPress
+        onlyacceptnum(e)
+    End Sub
 
 
-    'Private Sub ReplaceTextInWordDocument(filePath As String, placeholder As String, replacementText As String)
-    '    ' Open the existing Word document as read/write
-    '    Using wordDoc As WordprocessingDocument = WordprocessingDocument.Open(filePath, True)
-    '        ' Get the main document part
-    '        Dim mainPart As MainDocumentPart = wordDoc.MainDocumentPart
-    '        Dim documentBody As Body = mainPart.Document.Body
+    'function
+    Private Sub ReplaceTextInWordDocument2(filePath As String, placeholder As String, replacementText As String)
+        ' Open the existing Word document as read/write
+        Using wordDoc As WordprocessingDocument = WordprocessingDocument.Open(filePath, True)
+            ' Get the main document part
+            Dim mainPart As MainDocumentPart = wordDoc.MainDocumentPart
+            Dim documentBody As Body = mainPart.Document.Body
 
-    '        ' Combine all text elements into a single string for easy replacement
-    '        Dim fullText As String = String.Join("", documentBody.Descendants(Of Text)().Select(Function(t) t.Text))
+            ' Loop through all text elements in the document
+            For Each textElement As Text In documentBody.Descendants(Of Text)()
+                ' Check if the text contains the placeholder
+                If textElement.Text.Contains(placeholder) Then
+                    ' Replace the placeholder with the actual value
+                    textElement.Text = textElement.Text.Replace(placeholder, replacementText)
+                End If
+            Next
 
-    '        ' Replace the placeholder in the combined string
-    '        If fullText.Contains(placeholder) Then
-    '            fullText = fullText.Replace(placeholder, replacementText)
+            ' Save changes to the document
+            mainPart.Document.Save()
+        End Using
+    End Sub
 
-    '            ' Split the combined string back into text elements
-    '            'Dim textElements = documentBody.Descendants(Of Text)().ToArray()
-    '            'Dim index As Integer = 0
-    '            'For Each textElement As Text In textElements
-    '            '    If index < fullText.Length Then
-    '            '        textElement.Text = fullText.Substring(index, textElement.Text.Length)
-    '            '        index += textElement.Text.Length
-    '            '    Else
-    '            '        textElement.Text = ""
-    '            '    End If
-    '            'Next
-    '            Dim textElements = documentBody.Descendants(Of Text)().ToArray()
-    '            Dim index As Integer = 0
-    '            For Each textElement As Text In textElements
-    '                If index < fullText.Length Then
-    '                    ' Ensure the length doesn't exceed the remaining text
-    '                    Dim lengthToCopy As Integer = Math.Min(textElement.Text.Length, fullText.Length - index)
-    '                    textElement.Text = fullText.Substring(index, lengthToCopy)
-    '                    index += lengthToCopy
-    '                Else
-    '                    textElement.Text = ""
-    '                End If
-    '            Next
-    '        End If
 
-    '        ' Save changes to the document
-    '        mainPart.Document.Save()
-    '    End Using
+    Private Sub ReplaceTextInWordDocument(filePath As String, placeholder As String, replacementText As String)
+        ' Open the existing Word document as read/write
+        Using wordDoc As WordprocessingDocument = WordprocessingDocument.Open(filePath, True)
+            ' Get the main document part
+            Dim mainPart As MainDocumentPart = wordDoc.MainDocumentPart
+            Dim documentBody As Body = mainPart.Document.Body
 
-    'End Sub
+            ' Combine all text elements into a single string for easy replacement
+            Dim fullText As String = String.Join("", documentBody.Descendants(Of Text)().Select(Function(t) t.Text))
+
+            ' Replace the placeholder in the combined string
+            If fullText.Contains(placeholder) Then
+                fullText = fullText.Replace(placeholder, replacementText)
+
+                ' Split the combined string back into text elements
+                'Dim textElements = documentBody.Descendants(Of Text)().ToArray()
+                'Dim index As Integer = 0
+                'For Each textElement As Text In textElements
+                '    If index < fullText.Length Then
+                '        textElement.Text = fullText.Substring(index, textElement.Text.Length)
+                '        index += textElement.Text.Length
+                '    Else
+                '        textElement.Text = ""
+                '    End If
+                'Next
+                Dim textElements = documentBody.Descendants(Of Text)().ToArray()
+                Dim index As Integer = 0
+                For Each textElement As Text In textElements
+                    If index < fullText.Length Then
+                        ' Ensure the length doesn't exceed the remaining text
+                        Dim lengthToCopy As Integer = Math.Min(textElement.Text.Length, fullText.Length - index)
+                        textElement.Text = fullText.Substring(index, lengthToCopy)
+                        index += lengthToCopy
+                    Else
+                        textElement.Text = ""
+                    End If
+                Next
+            End If
+
+            ' Save changes to the document
+            mainPart.Document.Save()
+        End Using
+
+    End Sub
     Public Async Sub InsertTransactionLog()
         ' Create the transaction log object
         Dim log As New TransactionLog() With {

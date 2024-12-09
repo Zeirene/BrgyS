@@ -473,31 +473,26 @@ Public Class Form3
         Select Case Guna2ComboBox1.SelectedItem.ToString
             Case "BRGY ID"
 
-                Guna2TextBox16.Text = ""
+                Guna2ComboBox4.Items.Add("J.P. Rizal")
+                Guna2TextBox16.Text("")
             Case "NBI"
 
-                Guna2TextBox16.Text = ""
+                Guna2ComboBox4.Items.Add("J.P. Rizal")
             Case "TIN"
 
-                Guna2TextBox16.Text = ""
+                Guna2ComboBox4.Items.Add("J.P. Rizal")
             Case "PHILHEALTH"
 
-                Guna2TextBox16.Text = ""
+                Guna2ComboBox4.Items.Add("J.P. Rizal")
             Case "POLICE CLEARANCE"
 
-                Guna2TextBox16.Text = ""
+                Guna2ComboBox4.Items.Add("J.P. Rizal")
             Case "POSTAL"
 
-                Guna2TextBox16.Text = ""
+                Guna2ComboBox4.Items.Add("J.P. Rizal")
             Case "LTAP (license to operate And possess firearms)"
+                Guna2ComboBox4.Items.Add("J.P. Rizal")
 
-                Guna2TextBox16.Text = ""
-            Case "BUILDING PERMIT"
-
-                Guna2TextBox16.Text = ""
-            Case "BUSINESS PERMIT"
-
-                Guna2TextBox16.Text = ""
         End Select
     End Sub
 End Class

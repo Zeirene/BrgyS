@@ -103,6 +103,8 @@ Public Class Form1
 
     Private Sub Form1_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'FetchResidents()
+        Guna2TextBox1.Text = "juan.delacruz@example.com"
+        Guna2TextBox2.Text = "password123"
 
 
 

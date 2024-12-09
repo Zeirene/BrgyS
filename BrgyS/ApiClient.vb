@@ -46,6 +46,49 @@ Public Class ApiClient
     End Function
 
     ' Function to fetch resident records
+    Public Async Function InsertResidentAsync(resident As ResidentRecord) As Task(Of Long?)
+        Using client As New HttpClient()
+            client.DefaultRequestHeaders.Accept.Add(New MediaTypeWithQualityHeaderValue("application/json"))
+
+            Try
+                ' Serialize the resident object to JSON
+                Dim jsonContent As String = JsonConvert.SerializeObject(resident)
+                Dim httpContent As New StringContent(jsonContent, Encoding.UTF8, "application/json")
+
+                ' Send POST request
+                Dim response As HttpResponseMessage = Await client.PostAsync(apiUrl, httpContent)
+
+                If response.IsSuccessStatusCode Then
+                    ' Read the response content
+                    Dim jsonResponse As String = Await response.Content.ReadAsStringAsync()
+
+                    ' Display the full JSON response in a MessageBox (for debugging purposes)
+                    MessageBox.Show("API Response: " & jsonResponse, "API Response", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                    ' Parse the response to extract resident_id
+                    Dim responseData As JObject = JObject.Parse(jsonResponse)
+                    Dim residentId As Long = responseData("newly_data")("resident_id").ToObject(Of Long)()
+
+                    ' Display the resident ID in a MessageBox
+                    MessageBox.Show($"Resident created successfully with ID: {residentId}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                    ' Return the resident_id
+                    Return residentId
+                Else
+                    ' Log failure and show response details
+                    Dim errorContent As String = Await response.Content.ReadAsStringAsync()
+                    MessageBox.Show($"API Request failed: {response.StatusCode}{vbCrLf}Details: {errorContent}", "API Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                    Return Nothing
+                End If
+            Catch ex As Exception
+                ' Handle exceptions
+                MessageBox.Show("Error: " & ex.Message, "Exception", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                Return Nothing
+            End Try
+        End Using
+    End Function
+
+
     Public Async Function GetResidentRecordsAsync() As Task(Of List(Of ApiResponse.ResidentRecord))
         Using client As New HttpClient()
             ' Set headers (if required)

@@ -81,7 +81,7 @@ Public Class ApiResponse
         <JsonProperty("resident_registered_date")>
         Public Property ResidentRegisteredDate As DateTime
 
-        <JsonProperty("birthdate")>
+        <JsonProperty("birth_date")>
         Public Property ResidentBirthdate As Date
 
         <JsonProperty("last_name")>

@@ -211,6 +211,9 @@ Public Class Form3
                 Guna2TextBox9.Text = firstRecord.Address
                 Guna2ComboBox3.Text = firstRecord.Sitio
                 Guna2ComboBox4.Text = firstRecord.Street
+                'brgyID.Guna2TextBox2.Text = firstRecord.ResidentEmail
+                'Form7.Guna2TextBox10.Text = firstRecord.ResidentEmail
+                Form7.Guna2TextBox3.Text = firstRecord.ResidentEmail
                 Guna2HtmlLabel15.Text = firstRecord.ResidentId.ToString()
             Else
 

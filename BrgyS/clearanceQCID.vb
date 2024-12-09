@@ -169,7 +169,6 @@ Public Class clearanceQCID
     Public Async Sub InsertTransactionLog()
 
         Dim InResidentId As Long?
-        '.ResidentEmail = Guna2TextBox3.Text,
         ' If Label2.Text is empty, create a new resident
         If String.IsNullOrWhiteSpace(Label2.Text) Then
             ' Insert new resident
@@ -187,6 +186,7 @@ Public Class clearanceQCID
             .CivilStatus = Guna2ComboBox1.SelectedItem?.ToString(),
             .Sitio = Form3.Guna2ComboBox3.SelectedItem?.ToString(),
             .ResidentMiddleName = Form3.Guna2TextBox6.Text,
+            .ResidentEmail = Guna2TextBox3.Text,
             .Street = Form3.Guna2ComboBox4.SelectedItem?.ToString()
         }
 

@@ -211,8 +211,8 @@ Public Class Form3
                 Guna2TextBox9.Text = firstRecord.Address
                 Guna2ComboBox3.Text = firstRecord.Sitio
                 Guna2ComboBox4.Text = firstRecord.Street
-                'brgyID.Guna2TextBox2.Text = firstRecord.ResidentEmail
-                'Form7.Guna2TextBox10.Text = firstRecord.ResidentEmail
+                brgyID.Guna2TextBox2.Text = firstRecord.ResidentEmail
+                Form7.Guna2TextBox10.Text = firstRecord.ResidentEmail
                 Form7.Guna2TextBox3.Text = firstRecord.ResidentEmail
                 Guna2HtmlLabel15.Text = firstRecord.ResidentId.ToString()
             Else
@@ -476,25 +476,31 @@ Public Class Form3
         Select Case Guna2ComboBox1.SelectedItem.ToString
             Case "BRGY ID"
 
-                Guna2ComboBox4.Items.Add("J.P. Rizal")
-
+                Guna2TextBox16.Text = ""
             Case "NBI"
 
-                Guna2ComboBox4.Items.Add("J.P. Rizal")
+                Guna2TextBox16.Text = ""
             Case "TIN"
 
-                Guna2ComboBox4.Items.Add("J.P. Rizal")
+                Guna2TextBox16.Text = ""
             Case "PHILHEALTH"
 
-                Guna2ComboBox4.Items.Add("J.P. Rizal")
+                Guna2TextBox16.Text = ""
             Case "POLICE CLEARANCE"
 
-                Guna2ComboBox4.Items.Add("J.P. Rizal")
+                Guna2TextBox16.Text = ""
             Case "POSTAL"
 
-                Guna2ComboBox4.Items.Add("J.P. Rizal")
+                Guna2TextBox16.Text = ""
             Case "LTAP (license to operate And possess firearms)"
-                Guna2ComboBox4.Items.Add("J.P. Rizal")
+
+                Guna2TextBox16.Text = ""
+            Case "BUILDING PERMIT"
+
+                Guna2TextBox16.Text = ""
+            Case "BUSINESS PERMIT"
+
+                Guna2TextBox16.Text = ""
 
         End Select
     End Sub

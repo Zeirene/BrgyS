@@ -48,6 +48,8 @@ Partial Class Form7
         Dim CustomizableEdges24 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges25 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Dim CustomizableEdges26 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges27 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
+        Dim CustomizableEdges28 As Guna.UI2.WinForms.Suite.CustomizableEdges = New Guna.UI2.WinForms.Suite.CustomizableEdges()
         Guna2TextBox8 = New Guna.UI2.WinForms.Guna2TextBox()
         Guna2TextBox6 = New Guna.UI2.WinForms.Guna2TextBox()
         Guna2TextBox5 = New Guna.UI2.WinForms.Guna2TextBox()
@@ -76,6 +78,8 @@ Partial Class Form7
         Label3 = New Label()
         Label2 = New Label()
         Guna2TextBox1 = New Guna.UI2.WinForms.Guna2TextBox()
+        Guna2HtmlLabel2 = New Guna.UI2.WinForms.Guna2HtmlLabel()
+        Guna2TextBox10 = New Guna.UI2.WinForms.Guna2TextBox()
         SuspendLayout()
         ' 
         ' Guna2TextBox8
@@ -171,7 +175,7 @@ Partial Class Form7
         Guna2TextBox3.PlaceholderText = "Contact Number"
         Guna2TextBox3.SelectedText = ""
         Guna2TextBox3.ShadowDecoration.CustomizableEdges = CustomizableEdges8
-        Guna2TextBox3.Size = New Size(214, 44)
+        Guna2TextBox3.Size = New Size(156, 44)
         Guna2TextBox3.TabIndex = 52
         ' 
         ' Guna2TextBox2
@@ -539,12 +543,49 @@ Partial Class Form7
         Guna2TextBox1.Size = New Size(230, 44)
         Guna2TextBox1.TabIndex = 75
         ' 
+        ' Guna2HtmlLabel2
+        ' 
+        Guna2HtmlLabel2.BackColor = Color.Transparent
+        Guna2HtmlLabel2.Font = New Font("Bahnschrift", 9.75F)
+        Guna2HtmlLabel2.ForeColor = Color.Black
+        Guna2HtmlLabel2.Location = New Point(674, 219)
+        Guna2HtmlLabel2.Name = "Guna2HtmlLabel2"
+        Guna2HtmlLabel2.Size = New Size(39, 18)
+        Guna2HtmlLabel2.TabIndex = 77
+        Guna2HtmlLabel2.Text = "Email:"
+        ' 
+        ' Guna2TextBox10
+        ' 
+        Guna2TextBox10.Animated = True
+        Guna2TextBox10.BorderColor = Color.FromArgb(CByte(183), CByte(185), CByte(204))
+        Guna2TextBox10.BorderRadius = 10
+        Guna2TextBox10.CustomizableEdges = CustomizableEdges27
+        Guna2TextBox10.DefaultText = ""
+        Guna2TextBox10.DisabledState.BorderColor = Color.FromArgb(CByte(208), CByte(208), CByte(208))
+        Guna2TextBox10.DisabledState.FillColor = Color.FromArgb(CByte(226), CByte(226), CByte(226))
+        Guna2TextBox10.DisabledState.ForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        Guna2TextBox10.DisabledState.PlaceholderForeColor = Color.FromArgb(CByte(138), CByte(138), CByte(138))
+        Guna2TextBox10.FocusedState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        Guna2TextBox10.Font = New Font("Bahnschrift SemiBold", 9.75F, FontStyle.Bold)
+        Guna2TextBox10.ForeColor = Color.Black
+        Guna2TextBox10.HoverState.BorderColor = Color.FromArgb(CByte(94), CByte(148), CByte(255))
+        Guna2TextBox10.Location = New Point(674, 243)
+        Guna2TextBox10.Name = "Guna2TextBox10"
+        Guna2TextBox10.PasswordChar = ChrW(0)
+        Guna2TextBox10.PlaceholderText = "Email"
+        Guna2TextBox10.SelectedText = ""
+        Guna2TextBox10.ShadowDecoration.CustomizableEdges = CustomizableEdges28
+        Guna2TextBox10.Size = New Size(156, 44)
+        Guna2TextBox10.TabIndex = 76
+        ' 
         ' Form7
         ' 
         AutoScaleDimensions = New SizeF(7F, 15F)
         AutoScaleMode = AutoScaleMode.Font
         BackColor = Color.White
         ClientSize = New Size(842, 598)
+        Controls.Add(Guna2HtmlLabel2)
+        Controls.Add(Guna2TextBox10)
         Controls.Add(Guna2TextBox1)
         Controls.Add(Label3)
         Controls.Add(Label2)
@@ -609,4 +650,6 @@ Partial Class Form7
     Friend WithEvents Label3 As Label
     Friend WithEvents Label2 As Label
     Friend WithEvents Guna2TextBox1 As Guna.UI2.WinForms.Guna2TextBox
+    Friend WithEvents Guna2HtmlLabel2 As Guna.UI2.WinForms.Guna2HtmlLabel
+    Friend WithEvents Guna2TextBox10 As Guna.UI2.WinForms.Guna2TextBox
 End Class

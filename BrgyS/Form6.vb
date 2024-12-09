@@ -1,6 +1,7 @@
 ﻿Imports Guna.UI2.WinForms
 Imports MySql.Data.MySqlClient
 Imports BrgyS.ApiResponse
+Imports Microsoft.VisualBasic.Logging
 
 
 Public Class Form6
@@ -55,13 +56,18 @@ Public Class Form6
         Next
     End Sub
 
-    'Private Async Sub Guna2DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs)
+    'Private Async Sub Guna2DataGridView1_CellContentClick(sender As Object, e As DataGridViewCellEventArgs) Handles Guna2DataGridView1.CellContentClick
+    '    Dim apiClient As New ApiClient()
+
+    '    ' Fetch the residents list asynchronously
+    '    Dim residents As List(Of ApiResponse.ResidentRecord) = Await apiClient.GetResidentRecordsAsync()
+
     '    Try
     '        ' Ensure the clicked row and column are valid
     '        If e.RowIndex < 0 OrElse e.ColumnIndex < 0 Then Exit Sub
 
     '        ' Retrieve the ResidentId from the DataGridView
-    '        Dim residentId As String = Guna2DataGridView1.Rows(e.RowIndex).Cells("ResidentIdColumn").Value.ToString()
+    '        Dim residentId As String = Guna2DataGridView1.Rows(e.RowIndex).Cells("ResidentIdColumn").Value?.ToString()
 
     '        ' Ensure ResidentId is valid
     '        If String.IsNullOrWhiteSpace(residentId) OrElse Not Long.TryParse(residentId, Nothing) Then
@@ -69,31 +75,35 @@ Public Class Form6
     '            Exit Sub
     '        End If
 
-    '        ' Fetch the resident's details asynchronously
+    '        ' Map resident ID to name (Populate dictionary)
+    '        Dim residentDictionary As New Dictionary(Of Long, String)
+    '        For Each resident In residents
+    '            residentDictionary(resident.ResidentId) = $"{resident.ResidentFirstName} {resident.ResidentLastName}"
+    '        Next
+
+    '        ' Retrieve the resident name from the resident dictionary
+    '        Dim residentName As String = If(residentDictionary.ContainsKey(Long.Parse(residentId)), residentDictionary(Long.Parse(residentId)), "Unknown Resident")
+
+    '        ' Fetch the resident's email using the dictionary or an API call if necessary
     '        Dim residentEmail As String = Await GetResidentEmailAsync(Long.Parse(residentId))
     '        If String.IsNullOrWhiteSpace(residentEmail) Then
     '            MessageBox.Show("Resident email not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
     '            Exit Sub
     '        End If
 
-    '        ' Retrieve the resident name
-    '        Dim residentName = If(residentDictionary.ContainsKey(Long.Parse(residentId)), residentDictionary(Long.Parse(residentId)), "Unknown Resident")
-
     '        ' Retrieve the approval/rejection status
-    '        Dim status As String = Guna2DataGridView1.Rows(e.RowIndex).Cells("StatusColumn").Value.ToString()
+    '        Dim status As String = Guna2DataGridView1.Rows(e.RowIndex).Cells("StatusColumn").Value?.ToString()
 
     '        ' Compose the email body
-    '        Dim emailSubject = $"Your Application Status: {status}"
-    '        Dim emailBody = $"Dear {residentName}," & vbCrLf &
-    '                              vbCrLf &
-    '                              $"We are writing to inform you that your application has been {status}." & vbCrLf &
-    '                              "For further details, please contact us at our office." & vbCrLf &
-    '                              vbCrLf &
-    '                              "Thank you," & vbCrLf &
-    '                              "Your Organization"
+    '        Dim emailSubject As String = $"Your Application Status: {status}"
+    '        Dim emailBody As String = $"Dear {residentName}," & vbCrLf & vbCrLf &
+    '                           $"We are writing to inform you that your application has been {status}." & vbCrLf &
+    '                           "For further details, please contact us at our office." & vbCrLf & vbCrLf &
+    '                           "Thank you," & vbCrLf &
+    '                           "Your Organization"
 
     '        ' Open the default email client with the email pre-filled
-    '        Dim mailtoUri = $"mailto:{residentEmail}?subject={Uri.EscapeDataString(emailSubject)}&body={Uri.EscapeDataString(emailBody)}"
+    '        Dim mailtoUri As String = $"mailto:{residentEmail}?subject={Uri.EscapeDataString(emailSubject)}&body={Uri.EscapeDataString(emailBody)}"
     '        Process.Start(mailtoUri)
 
     '    Catch ex As Exception
@@ -101,11 +111,8 @@ Public Class Form6
     '    End Try
     'End Sub
 
-    Private Sub Guna2DataGridView1_CellContentClick_1(sender As Object, e As DataGridViewCellEventArgs) Handles Guna2DataGridView1.CellContentClick
-
-    End Sub
-
     'Private Async Function GetResidentEmailAsync(residentId As Long) As Task(Of String)
+
     '    Try
     '        ' Fetch the resident's email using the API
     '        Dim apiClient As New ApiClient()
@@ -116,4 +123,5 @@ Public Class Form6
     '        Return Nothing
     '    End Try
     'End Function
+
 End Class

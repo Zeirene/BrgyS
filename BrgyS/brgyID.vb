@@ -436,7 +436,7 @@ Public Class brgyID
         Dim InResidentId As Long? = Nothing
 
         ' Check if Label2.Text is empty or if InResidentId is null
-        If String.IsNullOrWhiteSpace(Form3.Guna2TextBox1.Text) OrElse Not InResidentId.HasValue Then
+        If String.IsNullOrWhiteSpace(Form3.Guna2TextBox1.Text) Then
             ' Insert new resident if InResidentId is null or Label2.Text is empty
             Dim selectedDate As DateTime = Guna2DateTimePicker1.Value
 
@@ -463,12 +463,12 @@ Public Class brgyID
             Dim client As New ApiClient()
             InResidentId = Await client.InsertResidentAsync(newResident)
 
-            If InResidentId.HasValue Then
-                MessageBox.Show($"Resident created successfully with ID: {InResidentId.Value}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
-            Else
-                MessageBox.Show("Failed to create resident.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                Exit Sub ' Stop further processing if resident creation fails
-            End If
+            'If InResidentId.HasValue Then
+            '    MessageBox.Show($"Resident created successfully with ID: {InResidentId.Value}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            'Else
+            '    MessageBox.Show("Failed to create resident.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            '    Exit Sub ' Stop further processing if resident creation fails
+            'End If
         Else
             Dim parsedValue As Long
             If Long.TryParse(Form3.Guna2TextBox1.Text, parsedValue) Then
@@ -495,8 +495,7 @@ Public Class brgyID
             ' Use the same API client for both operations
             Dim client As New ApiClient()
 
-            ' Debugging message before calling the API
-            MessageBox.Show("Attempting to insert transaction log...")
+
 
             ' Insert transaction log
             Dim success As Boolean = Await client.InsertTransactionLogAsync(log)

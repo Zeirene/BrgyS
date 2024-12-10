@@ -154,7 +154,7 @@ Public Class Form7
             InResidentId = Await client.InsertResidentAsync(newResident)
 
             If InResidentId.HasValue Then
-                MessageBox.Show($"Resident created successfully with ID: {InResidentId.Value}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                'MessageBox.Show($"Resident created successfully with ID: {InResidentId.Value}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Else
                 MessageBox.Show("Failed to create resident.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
                 Exit Sub ' Stop further processing if resident creation fails
@@ -190,7 +190,7 @@ Public Class Form7
 
             If logId.HasValue Then
                 ' Notify the user of success
-                MessageBox.Show($"Transaction log inserted successfully with Log ID: {logId.Value}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                'MessageBox.Show($"Transaction log inserted successfully with Log ID: {logId.Value}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
 
                 ' Prepare the permit log data
                 Dim permitLog As New PermitLog With {

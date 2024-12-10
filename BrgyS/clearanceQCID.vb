@@ -230,48 +230,66 @@ Public Class clearanceQCID
             End If
         Else
             ' If Label2.Text has a value, use it as the ResidentId
-            Try
-                InResidentId = Long.Parse(Label2.Text)
-            Catch ex As FormatException
-                MessageBox.Show("Invalid Resident ID format.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                Exit Sub
-            End Try
+            ' If Label2.Text has a value, use it as the ResidentId
+            Dim parsedValue As Long
+            If Long.TryParse(Form3.Guna2TextBox1.Text, parsedValue) Then
+                ' Successfully parsed ResidentId
+                InResidentId = parsedValue
+            Else
+
+                Exit Sub ' Stop further processing if ResidentId is invalid
+            End If
         End If
 
         Try
             ' Create the transaction log object
-            Dim log As New TransactionLog() With {
+            Dim transactionLog As New TransactionLog() With {
             .LogDate = Date.Today.ToString("yyyy-MM-dd"),
             .LogTime = DateTime.Now.ToString("HH:mm:ss"),
             .Type = Form3.Guna2ComboBox2.Text,
-            .Status = "Completed",
+            .Status = "Pending",
             .Payment = Decimal.Parse(Form3.Guna2TextBox16.Text),
-            .ResidentId = InResidentId,
+            .ResidentId = InResidentId, ' This will now have a valid ID
             .StaffId = Form2.staffID
         }
 
-            ' Use the same API client for both operations
+            ' Insert the transaction log and get the log_id
             Dim client As New ApiClient()
+            Dim logId As Long? = Await client.InsertTransactionLogAsync(transactionLog)
 
-            ' Debugging message before calling the API
-            MessageBox.Show("Attempting to insert transaction log...")
-
-            ' Insert transaction log
-            Dim success As Boolean = Await client.InsertTransactionLogAsync(log)
-
-            If success Then
+            If logId.HasValue Then
                 ' Notify the user of success
-                MessageBox.Show("Transaction log inserted successfully!")
+                MessageBox.Show($"Transaction log inserted successfully with Log ID: {logId.Value}", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
+                '    ' Prepare the permit log data
+                '    Dim permitLog As New PermitLog With {
+                '    .ResidentId = transactionLog.ResidentId.ToString(),
+                '    .BDetails = Guna2TextBox9.Text, ' Nature of Business
+                '    .LocType = Guna2TextBox1.Text,
+                '    .BAddress = Guna2TextBox5.Text & " Brgy Sta Lucia, QUEZON CITY",
+                '    .BName = Guna2TextBox2.Text,
+                '    .MRental = Decimal.Parse(Guna2TextBox8.Text),
+                '    .LogId = logId.Value.ToString(),
+                '    .StayDuration = Guna2TextBox6.Text
+                '}
+
+                '    ' Insert the permit log
+                '    Dim permitResult As Boolean = Await client.InsertPermitLogAsync(permitLog)
+
+                '    If permitResult Then
+
+                '        MessageBox.Show("Permit log inserted successfully!", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                '    Else
+                '        MessageBox.Show("Failed to insert permit log.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+                '    End If
             Else
-                ' Notify the user of failure
-                MessageBox.Show("Failed to insert transaction log.")
+                MessageBox.Show("Failed to retrieve Log ID for transaction log.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
             End If
         Catch ex As FormatException
-            ' Handle invalid number format or other issues
-            MessageBox.Show("Invalid input format: " & ex.Message, "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            MessageBox.Show($"Invalid input format: {ex.Message}", "Input Error", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         Catch ex As Exception
-            ' Handle any other exceptions that occurred and display the error message
-            MessageBox.Show("Error: " & ex.Message, "General Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
+            ' Handle general exceptions
+            MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
         End Try
     End Sub
 

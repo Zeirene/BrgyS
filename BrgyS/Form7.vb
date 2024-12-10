@@ -126,7 +126,7 @@ Public Class Form7
         Dim InResidentId As Long?
 
         ' If Label2.Text is empty, create a new resident
-        If String.IsNullOrWhiteSpace(Label2.Text) Then
+        If String.IsNullOrWhiteSpace(Form3.Guna2TextBox1.Text) Then
             ' Insert new resident
             Dim residentAccountCreated As New Date(2025, 1, 10, 8, 48, 30) ' Example date with time
             Dim formattedDate As String = residentAccountCreated.ToString("yyyy-MM-ddTHH:mm:sszzz")
@@ -163,7 +163,7 @@ Public Class Form7
             ' If Label2.Text has a value, use it as the ResidentId
             ' If Label2.Text has a value, use it as the ResidentId
             Dim parsedValue As Long
-            If Long.TryParse(Label2.Text, parsedValue) Then
+            If Long.TryParse(Form3.Guna2TextBox1.Text, parsedValue) Then
                 ' Successfully parsed ResidentId
                 InResidentId = parsedValue
             Else

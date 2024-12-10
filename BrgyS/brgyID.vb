@@ -436,7 +436,7 @@ Public Class brgyID
         Dim InResidentId As Long? = Nothing
 
         ' Check if Label2.Text is empty or if InResidentId is null
-        If String.IsNullOrWhiteSpace(Label2.Text) OrElse Not InResidentId.HasValue Then
+        If String.IsNullOrWhiteSpace(Form3.Guna2TextBox1.Text) OrElse Not InResidentId.HasValue Then
             ' Insert new resident if InResidentId is null or Label2.Text is empty
             Dim selectedDate As DateTime = Guna2DateTimePicker1.Value
 
@@ -470,12 +470,14 @@ Public Class brgyID
                 Exit Sub ' Stop further processing if resident creation fails
             End If
         Else
-            Try
-                InResidentId = Long.Parse(Label2.Text)
-            Catch ex As FormatException
-                'MessageBox.Show("Invalid Resident ID format.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error)
-                Exit Sub
-            End Try
+            Dim parsedValue As Long
+            If Long.TryParse(Form3.Guna2TextBox1.Text, parsedValue) Then
+                ' Successfully parsed ResidentId
+                InResidentId = parsedValue
+            Else
+
+                Exit Sub ' Stop further processing if ResidentId is invalid
+            End If
         End If
 
         Try
